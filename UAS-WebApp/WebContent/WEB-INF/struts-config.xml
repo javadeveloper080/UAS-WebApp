@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="loginForm" type="org.edu.uams.client.form.LoginForm" />
+		<form-bean name="adminForm" type="org.edu.uams.client.form.AdminForm" />
+		<form-bean name="userForm" type="org.edu.uams.client.form.UserForm" />
+		<form-bean name="adminLoginForm" type="org.edu.uams.client.form.AdminLoginForm" />
+		<form-bean name="courseForm" type="org.edu.uams.client.form.CourseForm" />
+		<form-bean name="examForm" type="org.edu.uams.client.form.ExamForm" />
+
+		<form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
+		<form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
+		<form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
+	</form-beans>
+
+
+	<global-exceptions>
+		<exception key="error.dataBase.mesage" type="java.sql.SQLException"
+			handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+			path="/views/error.jsp" />
+
+		<exception key="error.nullError.mesage" type="jjava.lang.NullPointerException"
+			handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+			path="/views/error.jsp" />
+
+		<exception key="error.global.mesage" type="java.lang.Exception"
+			handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+			path="/views/error.jsp" />
+
+		<exception key="error.dataBase.mesage" type="org.hibernate.HibernateException"
+			handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+			path="/views/error.jsp" />
+			
+			<exception key="error.session.mesage" type="org.edu.uams.server.util.SessionTimeException"
+			handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+			path="/views/error.jsp" />
+
+
+	</global-exceptions>
+
+	<global-forwards>
+		<forward name="nextQuestionPage" path="/examAction.do?method=selectedCourseExam" />
+		<forward name="studentHomePage" path="/views/studentHome.jsp" />
+	</global-forwards>
+
+
+	<action-mappings>
+
+		<action path="/adminAction" name="adminForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.AdminAction">
+			<forward name="adminAddPage" path="/views/addNewAdmin.jsp" />
+			<forward name="loginErrorPage" path="/views/loginError.jsp"></forward>
+			<forward name="registrationSuccess" path="/views/adminHome.jsp" />
+			<forward name="unqueAdmin" path="/views/addNewAdmin.jsp" />
+		</action>
+
+
+		<action path="/loginAction" name="loginForm" parameter="method"
+			scope="session" type="org.edu.uams.client.action.LoginAction">
+			<forward name="adminLoginPage" path="/views/adminLoginPage.jsp" />
+			<forward name="userLoginPage" path="/views/userLoginPage.jsp" />
+			<forward name="adminPage" path="/views/adminHome.jsp" />
+			<forward name="studentPage" path="/views/studentHome.jsp" />
+			<forward name="professorPage" path="/views/professorHome.jsp" />
+			<forward name="loginErrorPage" path="/views/loginError.jsp" />
+			<forward name="forgotPassWordPage" path="/views/forgotPass.jsp" />
+			<forward name="userFound" path="/views/loginError.jsp" />
+			<forward name="noUserFound" path="/views/loginError.jsp" />
+		</action>
+
+		<action path="/userAction" name="userForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.UserAction">
+			<forward name="userRegister" path="/views/userRegistration.jsp" />
+			<forward name="registrationSuccess" path="/views/validationMessage.jsp" />
+			<forward name="registrationFail" path="/views/validationMessage.jsp"/>
+		</action>
+
+		<action path="/courseAction" name="courseForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.CourseAction">
+			<forward name="addCoursePage" path="/views/addCourse.jsp" />
+			<forward name="courseDetails" path="/views/courseDetails.jsp" />
+			<forward name="modifyCourse" path="/views/modifyCourse.jsp" />
+			<forward name="addCourseContent" path="/views/addCourseContent.jsp" />
+			<forward name="addCourseTopic" path="/views/addCourseTopic.jsp" />
+			<forward name="displaySelectedCourseContent" path="/views/selectedCourse.jsp" />
+			<forward name="readCourseTopic" path="/views/readCourseContent.jsp" />
+			<forward name="deleteCourse" path="/views/deleteCourse.jsp" />
+			<forward name="noDocumentFound" path="/views/validationMessage.jsp"/>
+			<forward name="redirectCourseDetails" path="/courseAction.do?method=displayCourses"/>
+
+		</action>
+
+
+		<action path="/examAction" name="examForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.ExamAction">
+			<forward name="examSelect" path="/views/examSelect.jsp" />
+			<forward name="selectedExam" path="/views/exam.jsp" />
+			<forward name="exceeded" path="/views/validationMessage.jsp" />
+		</action>
+
+		<action path="/questionAction" name="questionForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.QuestionAction">
+			<forward name="addQuestionPage" path="/views/addQuestion.jsp" />
+			<forward name="numberOfQuestionValidation" path="/views/validationMessage.jsp" />
+		</action>
+
+
+		<action path="/resultAction" name="resultForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.ResultAction">
+			<forward name="resultPage" path="/views/resultPage.jsp" />
+		</action>
+		
+		<action path="/forumMasterAction" name="forumMasterForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.ForumMasterAction">
+			<forward name="forumPage" path="/views/forumPage.jsp" />
+			<forward name="addForumPage" path="/views/addForum.jsp"/>
+			<forward name="enterForumPage" path="/views/forumDiscussionPage.jsp"/>
+			<forward name="adminForumValidation" path="/views/validationMessage.jsp"></forward>
+		</action>
+
+
+	</action-mappings>
+
+	<message-resources parameter="org.edu.uams.client.propeties.Common" />
+        
+        <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+            <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+            <set-property property="moduleAware" value="true" />
+        </plug-in>
+
+</struts-config>
