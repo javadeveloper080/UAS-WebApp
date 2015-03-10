@@ -47,9 +47,9 @@
         <put name="footer" value="/footer.jsp" />        
     </definition>
     
-    <definition name="friends" extends="baseLayout">
-        <put name="title" value="Friends" />
-        <put name="body" value="/friends.jsp" />
+    <definition name="login" extends="baseLayout">
+        <put name="title" value="Login" />
+        <put name="body" value="/login.jsp" />
     </definition>
     
     <definition name="office" extends="baseLayout">

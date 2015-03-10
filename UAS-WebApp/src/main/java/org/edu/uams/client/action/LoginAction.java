@@ -23,6 +23,16 @@ import org.edu.uams.server.util.SessionTracker;
 
 
 public class LoginAction extends DispatchAction {
+    
+    
+     //Forwarding to login page
+	public ActionForward loginPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+			HttpServletResponse res)throws Exception
+			{
+             return mapping.findForward("loginPage");
+                        
+                        
+                        }
 
 
 
@@ -138,7 +148,7 @@ public class LoginAction extends DispatchAction {
 			}
 
 
-
+        //Forwarding to login page
 	public ActionForward userLoginPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
 			HttpServletResponse res)throws Exception
 			{

@@ -38,8 +38,8 @@ function userLoginPage()
 
             <div class="form">
                 <table>
-                    <tr><td><a style="color: green;" href="#" onclick="adminLoginPage();">Login</a></td></tr>
-                    <tr><td><a style="color: green;" href="#" onclick="adminLoginPage();">Student Enrollment</a></td></tr>
+                    <tr><td><a style="color: green;"  href="loginAction.do?method=loginPage">Login</a></td></tr>
+                    <tr><td><a style="color: green;"  href="loginAction.do?method=friends">Student Enrollment</a></td></tr>
                 </table>
                 <br clear="all" />
             </div>

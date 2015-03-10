@@ -65,6 +65,7 @@
 
 		<action path="/loginAction" name="loginForm" parameter="method"
 			scope="session" type="org.edu.uams.client.action.LoginAction">
+                        <forward name="loginPage" path="login" />
 			<forward name="adminLoginPage" path="/views/adminLoginPage.jsp" />
 			<forward name="userLoginPage" path="/views/userLoginPage.jsp" />
 			<forward name="adminPage" path="/views/adminHome.jsp" />
@@ -129,6 +130,7 @@
 
 	</action-mappings>
 
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
 	<message-resources parameter="org.edu.uams.client.propeties.Common" />
         
         <plug-in className="org.apache.struts.tiles.TilesPlugin" >
