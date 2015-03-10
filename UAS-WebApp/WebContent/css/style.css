@@ -17,7 +17,7 @@ body, div, a, h3, h2, h1, span
 
 #wrapper
 {
-	width: 1024px;
+	width: auto;
 	margin: auto;
 	text-align: left;
 }
@@ -124,6 +124,7 @@ body, div, a, h3, h2, h1, span
 	width: 213px;
 	margin-left: 25px;
 	margin-bottom: 25px;
+        height:auto;
 }
 
 #lwrap
@@ -290,8 +291,8 @@ body, div, a, h3, h2, h1, span
 
 #content
 {
-	margin-left: 280px;
-	margin-right: 25px;
+	margin-left: 50px;
+	margin-right: 50px;
 }
 
 #content h2

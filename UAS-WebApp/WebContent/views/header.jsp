@@ -19,7 +19,7 @@
             <div id="header">
                 <div id="logo">
                     <strong>University Advance Management System</strong> 
-                    <span>earn more knowledge</span>
+                    <span>Earn More Knowledge</span>
                 </div>
             </div>
         </div>

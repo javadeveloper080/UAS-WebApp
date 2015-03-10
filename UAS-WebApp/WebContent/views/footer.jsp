@@ -12,6 +12,6 @@
     <head>
     </head>
     <body>
-         <p align="center" style="height:16px;background-color:skyblue">Copyright &copy; 2015 <span title="">Team</span></p>
+         <p align="center" style="height:16px;background-color:red">Copyright &copy; 2015 <span title="">Team</span></p>
     </body>
 </html>
