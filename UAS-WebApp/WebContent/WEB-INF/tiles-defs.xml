@@ -39,17 +39,17 @@
     <definition name="${YOUR_DEFINITION_HERE}">
     </definition>
 
-    <definition name="baseLayout" path="/baseLayout.jsp">
+    <definition name="baseLayout" path="/views/baseLayout.jsp">
         <put name="title"  value="Tiles Example" />
-        <put name="header" value="/header.jsp" />
-        <put name="menu"   value="/menu.jsp" />
-        <put name="body"   value="/body.jsp" />
-        <put name="footer" value="/footer.jsp" />        
+        <put name="header" value="/views/header.jsp" />
+        <put name="menu"   value="/views/menu.jsp" />
+        <put name="body"   value="/views/body.jsp" />
+        <put name="footer" value="/views/footer.jsp" />        
     </definition>
     
     <definition name="login" extends="baseLayout">
         <put name="title" value="Login" />
-        <put name="body" value="/login.jsp" />
+        <put name="body" value="/views/login.jsp" />
     </definition>
     
     <definition name="office" extends="baseLayout">

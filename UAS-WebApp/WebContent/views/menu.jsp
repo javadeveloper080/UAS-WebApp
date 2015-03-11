@@ -8,24 +8,6 @@
         <title>JSP Page</title>
         <script type="text/javascript">
 
-function adminLoginPage()
-{	
-	alert('Admin Login Page');
-	
-	document.loginForm.action="loginAction.do?method=adminLoginPage";
-	document.loginForm.submit();
-	
-}	
-
-function userLoginPage()
-{	
-	alert('User Login Page');
-	
-	document.loginForm.action="loginAction.do?method=userLoginPage";
-	document.loginForm.submit();
-	
-}	
-
 </script>
     </head>
     <body>

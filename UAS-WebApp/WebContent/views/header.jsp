@@ -15,13 +15,11 @@
     </head>
     
     <body>
-        <div id="wrapper">
             <div id="header">
                 <div id="logo">
                     <strong>University Advance Management System</strong> 
                     <span>Earn More Knowledge</span>
                 </div>
             </div>
-        </div>
     </body>
 </html>
