@@ -1,16 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Login</title>
-        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
-        <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
+
+<!--        <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style2.css" />
-        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
-    </head>
-    <body>
+        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />-->
+    
 <!--           <section>				
                 <div id="container_demo" >
                     <div id="wrapper">
@@ -38,5 +32,4 @@
                     </div>
                 </div>  
             </section>-->
-    </body>
-</html>
+  
