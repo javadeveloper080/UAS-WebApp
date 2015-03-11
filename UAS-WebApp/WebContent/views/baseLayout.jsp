@@ -3,29 +3,29 @@
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%> 
 
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title></title>
-         
-            <link rel="stylesheet" type="text/css"  href="css/base.css" />
-       
-          
-</head>
-<body id="">
-<div id="base_layout_header">
-	<tiles:insert attribute="header" ignore="true" />
-</div>
-<div id="base_layout_wrap">
-        <div id="base_layout_sidebar">
-		<tiles:insert attribute="menu" />
-	</div>
-	<div id="base_layout_content">
-		<tiles:insert attribute ="body" />
-	</div>
-	
-	<div id="base_layout_footer">
-		<tiles:insert attribute="footer" />
-	</div>
-</div>
-</body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+
+        <link rel="stylesheet" type="text/css"  href="css/base.css" />
+
+
+    </head>
+    <body>
+        <div id="base_layout_header">
+            <tiles:insert attribute="header" ignore="true" />
+        </div>
+        <div id="base_layout_wrap">
+            <div id="base_layout_sidebar">
+                <tiles:insert attribute="menu" />
+            </div>
+            <div id="base_layout_content">
+                <tiles:insert attribute ="body" />
+            </div>
+
+            <div id="base_layout_footer">
+                <tiles:insert attribute="footer" />
+            </div>
+        </div>
+    </body>
 </html>
