@@ -32,6 +32,19 @@
         <p>To give a learning platform that is safe and secure environment that is reliable, available online and accessible to a wide user base.
         </p>
         <p>To give a learning platform that is safe and secure environment that is reliable, available online and accessible to a wide user base.
+            Virtual Learning Environment (VLE)-It is a standardized, computer-based environment that supports the delivery of real-time web-based education system.
+		This system facilitates online courses virtually either by audio or text or power point presentation or video. It is also a social space where students and teachers can interact through threaded discussions or chat.
+		Our System is based on "Self-paced" learning; students are expected to complete lessons, assignments, quizzes and Final
+                Virtual Learning Environment (VLE)-It is a standardized, computer-based environment that supports the delivery of real-time web-based education system.
+		This system facilitates online courses virtually either by audio or text or power point presentation or video. It is also a social space where students and teachers can interact through threaded discussions or chat.
+		Our System is based on "Self-paced" learning; students are expected to complete lessons, assignments, quizzes and Final
+                Virtual Learning Environment (VLE)-It is a standardized, computer-based environment that supports the delivery of real-time web-based education system.
+		This system facilitates online courses virtually either by audio or text or power point presentation or video. It is also a social space where students and teachers can interact through threaded discussions or chat.
+		Our System is based on "Self-paced" learning; students are expected to complete lessons, assignments, quizzes and Final
+                Virtual Learning Environment (VLE)-It is a standardized, computer-based environment that supports the delivery of real-time web-based education system.
+		This system facilitates online courses virtually either by audio or text or power point presentation or video. It is also a social space where students and teachers can interact through threaded discussions or chat.
+		Our System is based on "Self-paced" learning; students are expected to complete lessons, assignments, quizzes and Final
+                
         </p>
 </div>
         

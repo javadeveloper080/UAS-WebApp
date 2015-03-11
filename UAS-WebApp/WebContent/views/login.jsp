@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!--        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style2.css" />
-        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />-->
+        <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
     
-<!--           <section>				
-                <div id="container_demo" >
+        			
+                
                     <div id="wrapper">
                         <div id="login" class="animate form">
                             <form  action="mysuperscript.php" autocomplete="on"> 
@@ -29,7 +29,6 @@
 
 
 						
-                    </div>
                 </div>  
-            </section>-->
+          
   
