@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
     </head>
     <body>
-           <section>				
+<!--           <section>				
                 <div id="container_demo" >
                     <div id="wrapper">
                         <div id="login" class="animate form">
@@ -37,6 +37,6 @@
 						
                     </div>
                 </div>  
-            </section>
+            </section>-->
     </body>
 </html>
