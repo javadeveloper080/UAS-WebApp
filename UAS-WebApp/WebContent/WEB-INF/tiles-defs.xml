@@ -52,9 +52,9 @@
         <put name="body" value="/views/login.jsp" />
     </definition>
     
-    <definition name="office" extends="baseLayout">
-        <put name="title" value="The Office" />
-        <put name="body" value="/office.jsp" />
+    <definition name="adminHome" extends="baseLayout">
+        <put name="title" value="Admin Home" />
+        <put name="body" value="/views/adminHome.jsp" />
     </definition>
     
      <definition name="feeLayout" extends="baseLayout">
