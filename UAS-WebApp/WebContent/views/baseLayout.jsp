@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html" %>
 <%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles"%> 
 
@@ -6,9 +6,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <link rel="stylesheet" type="text/css"  href="css/base.css" />
-
+ 
 
     </head>
     <body>

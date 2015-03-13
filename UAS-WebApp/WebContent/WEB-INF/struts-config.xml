@@ -126,6 +126,9 @@
 			<forward name="enterForumPage" path="/views/forumDiscussionPage.jsp"/>
 			<forward name="adminForumValidation" path="/views/validationMessage.jsp"></forward>
 		</action>
+                <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
+                    <forward name="fee" path="feeLayout"></forward>
+                </action>
 
 
 	</action-mappings>
