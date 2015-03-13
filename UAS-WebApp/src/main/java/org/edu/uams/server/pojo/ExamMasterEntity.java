@@ -38,9 +38,9 @@ public class ExamMasterEntity implements Serializable {
 	@JoinColumn(name = "question_Id", referencedColumnName = "id", nullable = false, updatable = false)
 	private QuestionMasterEntity questionMaster;
 	
-	@ManyToOne(optional = false, targetEntity = UserMasterEntity.class)
-	@JoinColumn(name = "user_master_id", referencedColumnName = "id", nullable = false, updatable = false)
-	private UserMasterEntity userMaster;
+//	@ManyToOne(optional = false, targetEntity = UserMasterEntity.class)
+//	@JoinColumn(name = "user_master_id", referencedColumnName = "id", nullable = false, updatable = false)
+//	private UserMasterEntity userMaster;
 
 	@Column(name = "answer_number", nullable = false, length = 1)
 	private int answerNumber;
@@ -61,13 +61,13 @@ public class ExamMasterEntity implements Serializable {
 		this.questionMaster = questionMaster;
 	}
 
-	public UserMasterEntity getUserMaster() {
-		return userMaster;
-	}
-
-	public void setUserMaster(UserMasterEntity userMaster) {
-		this.userMaster = userMaster;
-	}
+//	public UserMasterEntity getUserMaster() {
+//		return userMaster;
+//	}
+//
+//	public void setUserMaster(UserMasterEntity userMaster) {
+//		this.userMaster = userMaster;
+//	}
 
 	public int getAnswerNumber() {
 		return answerNumber;

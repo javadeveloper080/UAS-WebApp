@@ -94,7 +94,7 @@ public class ForumMasterAction extends DispatchAction {
 			forumMasterEntity.setCourseId(courseMasterDao.findByPrimaryKey(courseId));
 			forumMasterEntity.setForumName(forumMasterForm.getForumName());
 			forumMasterEntity.setTopic(forumMasterForm.getTopic());
-			forumMasterEntity.setOwner(userMasterDao.findByPrimaryKey(userId));
+			//forumMasterEntity.setOwner(userMasterDao.findByPrimaryKey(userId));
 			forumMasterEntity.setCreatedOn(new Date());
 
 			forumMasterEntity = forumMasterDao.persist(forumMasterEntity);
@@ -137,7 +137,7 @@ public class ForumMasterAction extends DispatchAction {
 			ForumSubscribersEntity forumSubscribersEntity=new ForumSubscribersEntity();
 			forumSubscribersEntity.setForumMasterId(forumMasterDao.findByPrimaryKey(forumMasterId));
 			forumSubscribersEntity.setComment(forumMasterForm.getComment());
-			forumSubscribersEntity.setSubscriber(userMasterDao.findByPrimaryKey(userId));
+			//forumSubscribersEntity.setSubscriber(userMasterDao.findByPrimaryKey(userId));
 			forumSubscribersEntity.setCommentOn(new Date());
 			forumsSubscribersDao.persist(forumSubscribersEntity);
 			forumMasterForm.setComment(null);
@@ -170,7 +170,8 @@ public class ForumMasterAction extends DispatchAction {
 		forumMasterForm.setCourseKey(formForumMasterEntity.getCourseId().getCourseName() +":"+formForumMasterEntity.getCourseId().getCourseKey() );
 		forumMasterForm.setTopic(formForumMasterEntity.getTopic());
 
-		String ownerName = formForumMasterEntity.getOwner().getFirstName() + " "+ formForumMasterEntity.getOwner().getLastName() +"@"+formForumMasterEntity.getCreatedOn();
+                String ownerName ="";
+		//String ownerName = formForumMasterEntity.getOwner().getFirstName() + " "+ formForumMasterEntity.getOwner().getLastName() +"@"+formForumMasterEntity.getCreatedOn();
 		forumMasterForm.seOwnerName(ownerName);
 
 		forumMasterForm.setForumName(formForumMasterEntity.getForumName());
@@ -186,8 +187,8 @@ public class ForumMasterAction extends DispatchAction {
 
 		if (forumsSubscribers!=null && !forumsSubscribers.isEmpty()) {
 			for (ForumSubscribersEntity forumSubscribersEntity : forumsSubscribers) {
-				
-				String subscriberName=forumSubscribersEntity.getSubscriber().getFirstName()+ " "+ forumSubscribersEntity.getSubscriber().getLastName();
+				String subscriberName ="";
+				//String subscriberName=forumSubscribersEntity.getSubscriber().getFirstName()+ " "+ forumSubscribersEntity.getSubscriber().getLastName();
 				ForumSubscribersDTO forumSubscribersDTO=new ForumSubscribersDTO(forumSubscribersEntity.getComment(),subscriberName);
 				forumSubscribersDTO.setCommentedOn(forumSubscribersEntity.getCommentOn());
 				forumSubscribersDTOList.add(forumSubscribersDTO);

@@ -30,9 +30,9 @@ public class StudentCourseEntity implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private long id;
 
-	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
-	@JoinColumn(name = "user_master_id", referencedColumnName="id",nullable=false, updatable=false)
-	private UserMasterEntity userMaster;
+//	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
+//	@JoinColumn(name = "user_master_id", referencedColumnName="id",nullable=false, updatable=false)
+//	private UserMasterEntity userMaster;
 
 	@ManyToOne(optional=false,targetEntity=CourseMasterEntity.class) 
 	@JoinColumn(name = "course_id", referencedColumnName="id",nullable=false, updatable=false)
@@ -49,13 +49,13 @@ public class StudentCourseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public UserMasterEntity getUserMaster() {
-		return userMaster;
-	}
-
-	public void setUserName(UserMasterEntity userMaster) {
-		this.userMaster = userMaster;
-	}
+//	public UserMasterEntity getUserMaster() {
+//		return userMaster;
+//	}
+//
+//	public void setUserName(UserMasterEntity userMaster) {
+//		this.userMaster = userMaster;
+//	}
 
 	public CourseMasterEntity getCourseId() {
 		return courseId;

@@ -30,9 +30,9 @@ public class ResultMasterEntity implements Serializable {
 	@JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false, updatable = false)
 	private CourseMasterEntity courseId;
 
-	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
-	@JoinColumn(name = "user_name_id", referencedColumnName="id",nullable=false, updatable=false)
-	private UserMasterEntity userName;
+//	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
+//	@JoinColumn(name = "user_name_id", referencedColumnName="id",nullable=false, updatable=false)
+//	private UserMasterEntity userName;
 	
 	@Column(name = "percentage", nullable = false, length =4)
 	private double percentage;
@@ -53,13 +53,13 @@ public class ResultMasterEntity implements Serializable {
 		this.courseId = courseId;
 	}
 
-	public UserMasterEntity getUserName() {
-		return userName;
-	}
-
-	public void setUserName(UserMasterEntity userName) {
-		this.userName = userName;
-	}
+//	public UserMasterEntity getUserName() {
+//		return userName;
+//	}
+//
+//	public void setUserName(UserMasterEntity userName) {
+//		this.userName = userName;
+//	}
 
 	public double getPercentage() {
 		return percentage;

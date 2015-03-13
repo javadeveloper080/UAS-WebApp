@@ -38,7 +38,7 @@
         <div class="form">
         	<table>
 				<tr><td><font color="red" size="3px">*</font>Name</td><td>&nbsp;:&nbsp;</td><td><bean:write name="loginForm" property="name" /></td></tr>
-				<tr><td><font color="red" size="3px">*</font>Email</td><td>&nbsp;:&nbsp;</td><td><bean:write name="loginForm" property="email" /></td></tr>
+
 			</table>
             <br clear="all" />
         </div>

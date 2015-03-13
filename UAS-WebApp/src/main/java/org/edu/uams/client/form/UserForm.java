@@ -6,7 +6,7 @@ package org.edu.uams.client.form;
 import java.util.List;
 
 import org.apache.struts.action.ActionForm;
-import org.edu.uams.server.pojo.UserMasterTypeEntity;
+
 
 public class UserForm extends ActionForm {
 

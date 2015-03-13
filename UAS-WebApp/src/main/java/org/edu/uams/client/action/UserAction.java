@@ -15,9 +15,8 @@ import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.DisplayMessageForm;
 import org.edu.uams.client.form.UserForm;
 import org.edu.uams.server.business.UserMasterDao;
-import org.edu.uams.server.business.UserMasterTypeDao;
+import org.edu.uams.server.business.UsersRoleTypeDao;
 import org.edu.uams.server.pojo.UserMasterEntity;
-import org.edu.uams.server.pojo.UserMasterTypeEntity;
 
 /**
  * @author Syed Yaseer
@@ -26,19 +25,19 @@ import org.edu.uams.server.pojo.UserMasterTypeEntity;
 public class UserAction extends DispatchAction {
 
 
-	public ActionForward registerUser(ActionMapping mapping,ActionForm form,
-			HttpServletRequest req,HttpServletResponse res)throws Exception
-			{
-		UserForm userForm = (UserForm)form;
-		UserMasterTypeDao userMasterTypeDao = new UserMasterTypeDao();
-
-		List<UserMasterTypeEntity> userTypeList = userMasterTypeDao.findAll();
-
-		userForm.setUserTypeList(userTypeList);
-
-		return mapping.findForward("userRegister");
-
-			}
+//	public ActionForward registerUser(ActionMapping mapping,ActionForm form,
+//			HttpServletRequest req,HttpServletResponse res)throws Exception
+//			{
+//		UserForm userForm = (UserForm)form;
+//		UsersRoleTypeDao userMasterTypeDao = new UsersRoleTypeDao();
+//
+//		List<UserMasterTypeEntity> userTypeList = userMasterTypeDao.findAll();
+//
+//		userForm.setUserTypeList(userTypeList);
+//
+//		return mapping.findForward("userRegister");
+//
+//			}
 
 
 
@@ -72,22 +71,22 @@ public class UserAction extends DispatchAction {
 
 
 	private void setValues(UserForm userForm,UserMasterEntity userMasterEntity) {
-		userMasterEntity.setAddressLine1(userForm.getAddressLine1());
-		userMasterEntity.setAddressLine2(userForm.getAddressLine2());
-		userMasterEntity.setCity(userForm.getCity());
-		userMasterEntity.setCountry(userForm.getCountry());
-		userMasterEntity.setEmail(userForm.getEmail());
-		userMasterEntity.setFirstName(userForm.getFirstName());
-		userMasterEntity.setGender(userForm.getGender());
-		userMasterEntity.setLastName(userForm.getLastName());
-		userMasterEntity.setMobile(userForm.getMobile());
-		userMasterEntity.setPassWord(userForm.getPassWord());
-		userMasterEntity.setPin(userForm.getPin());
-		userMasterEntity.setState(userForm.getState());
+//		userMasterEntity.setAddressLine1(userForm.getAddressLine1());
+//		userMasterEntity.setAddressLine2(userForm.getAddressLine2());
+//		userMasterEntity.setCity(userForm.getCity());
+//		userMasterEntity.setCountry(userForm.getCountry());
+//		userMasterEntity.setEmail(userForm.getEmail());
+//		userMasterEntity.setFirstName(userForm.getFirstName());
+//		userMasterEntity.setGender(userForm.getGender());
+//		userMasterEntity.setLastName(userForm.getLastName());
+//		userMasterEntity.setMobile(userForm.getMobile());
+//		userMasterEntity.setPassWord(userForm.getPassWord());
+//		userMasterEntity.setPin(userForm.getPin());
+//		userMasterEntity.setState(userForm.getState());
 		
 		if (userForm.getUserTypeId()!=null) {
-			UserMasterTypeEntity userMasterTypeEntity = new UserMasterTypeDao().findByPrimaryKey(userForm.getUserTypeId());
-			userMasterEntity.setUserMasterType(	userMasterTypeEntity);
+//			UserMasterTypeEntity userMasterTypeEntity = new UsersRoleTypeDao().findByPrimaryKey(userForm.getUserTypeId());
+//			userMasterEntity.setUserMasterType(	userMasterTypeEntity);
 		}
 	
 

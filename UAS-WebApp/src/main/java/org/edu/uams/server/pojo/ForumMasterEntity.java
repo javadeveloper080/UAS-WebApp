@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -42,15 +43,16 @@ public class ForumMasterEntity implements Serializable {
 	@JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false, updatable = false)
 	private CourseMasterEntity courseId;
 
-
-	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
-	@JoinColumn(name = "owner", referencedColumnName="id",nullable=false, updatable=false)
-	private UserMasterEntity owner;
+//
+//	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
+//	@JoinColumn(name = "owner", referencedColumnName="id",nullable=false, updatable=false)
+//	private UserMasterEntity owner;
 
 	@Column(name = "topic", nullable = false,length=1024)
 	private String topic;
 	
 	@Column(name = "created_on", nullable = false)
+        @Temporal(javax.persistence.TemporalType.DATE)
 	private Date createdOn;
 
 	public long getId() {
@@ -77,13 +79,13 @@ public class ForumMasterEntity implements Serializable {
 		this.courseId = courseId;
 	}
 
-	public UserMasterEntity getOwner() {
-		return owner;
-	}
-
-	public void setOwner(UserMasterEntity owner) {
-		this.owner = owner;
-	}
+//	public UserMasterEntity getOwner() {
+//		return owner;
+//	}
+//
+//	public void setOwner(UserMasterEntity owner) {
+//		this.owner = owner;
+//	}
 
 	public String getTopic() {
 		return topic;

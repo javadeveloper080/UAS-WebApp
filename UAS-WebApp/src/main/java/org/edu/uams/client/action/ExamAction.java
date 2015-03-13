@@ -135,7 +135,7 @@ public class ExamAction extends DispatchAction {
 		ExamMasterEntity examMasterEntity=new ExamMasterEntity();
 		
 		examMasterEntity.setAnswerNumber(examForm.getAnswerNumber());
-		examMasterEntity.setUserMaster(userMasterDao.findByPrimaryKey(userId));
+		//examMasterEntity.setUserMaster(userMasterDao.findByPrimaryKey(userId));
 		examMasterEntity.setQuestionMaster(questionMaster);
 		examMasterDao.persist(examMasterEntity);
 
@@ -172,7 +172,7 @@ public class ExamAction extends DispatchAction {
 					ResultMasterDao resultMasterDao=new ResultMasterDao();
 					ResultMasterEntity resultMasterEntity=new ResultMasterEntity();
 					resultMasterEntity.setCourseId(courseMasterDao.findByPrimaryKey(courseId));
-					resultMasterEntity.setUserName(new UserMasterDao().findByPrimaryKey(userId));
+					//resultMasterEntity.setUserName(new UserMasterDao().findByPrimaryKey(userId));
 
 					double resultPercentage = numberCorrectAnswers * 100 /10;
 

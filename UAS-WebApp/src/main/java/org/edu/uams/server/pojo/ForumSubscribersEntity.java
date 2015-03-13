@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity(name = "ForumSubscriber")
 @Table(name = "forum_subscriber")
@@ -31,9 +32,9 @@ public class ForumSubscribersEntity implements Serializable {
 	private long id;
 
 
-	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
-	@JoinColumn(name = "subscriber", referencedColumnName="id",nullable=false, updatable=false)
-	private UserMasterEntity subscriber;
+//	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
+//	@JoinColumn(name = "subscriber", referencedColumnName="id",nullable=false, updatable=false)
+//	private UserMasterEntity subscriber;
 
 	@ManyToOne(optional = false, targetEntity = ForumMasterEntity.class)
 	@JoinColumn(name = "forum_master_id", referencedColumnName = "id", nullable = false, updatable = false)
@@ -43,6 +44,7 @@ public class ForumSubscribersEntity implements Serializable {
 	private String comment;
 	
 	@Column(name = "comment_on", nullable = false)
+        @Temporal(javax.persistence.TemporalType.DATE)
 	private Date commentOn;
 
 	public long getId() {
@@ -53,13 +55,13 @@ public class ForumSubscribersEntity implements Serializable {
 		this.id = id;
 	}
 
-	public UserMasterEntity getSubscriber() {
-		return subscriber;
-	}
-
-	public void setSubscriber(UserMasterEntity subscriber) {
-		this.subscriber = subscriber;
-	}
+//	public UserMasterEntity getSubscriber() {
+//		return subscriber;
+//	}
+//
+//	public void setSubscriber(UserMasterEntity subscriber) {
+//		this.subscriber = subscriber;
+//	}
 
 	public ForumMasterEntity getForumMasterId() {
 		return forumMasterId;
