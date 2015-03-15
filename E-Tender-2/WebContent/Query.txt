@@ -1,0 +1,13 @@
+update indent_master set status='Closed' where ind_no in (select ind_no from itt_master where itt_status='Closed')
+
+
+select sup_id from supplier_info where sup_id not in(select sup_id from itt_details where itt_no=1)
+
+select itm.itt_no,to_char(itm.ittdate,'dd-mon-yyyy'),to_char(itm.ittldate,'dd-mon-yyyy'),im.name,ind.qty_rec,itm.itt_status from itt_master itm,indent_master ind,items_info im  where itm.ind_no=ind.ind_no and im.item_id=ind.item_id order by itm.itt_no
+
+
+
+select itm.itt_no,to_char(itm.ittdate,'dd-mon-yyyy'),to_char(itm.ittldate,'dd-mon-yyyy'),im.name,ind.qty_rec,itm.itt_status from itt_master itm,indent_master ind,items_info im where itm.ind_no=ind.ind_no and im.item_id=ind.item_id and itm.itt_no in (select itt_no from itt_details where sup_id='" + supid + "') order by itm.itt_no
+/
+
+select sup_id,name,address,phno,email from supplier_info where sup_id =(select sup_id from itt_details where itt_no=1 and sbidamt=(select min(sbidamt) from itt_details where itt_no=1)

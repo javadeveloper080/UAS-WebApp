@@ -1,0 +1,210 @@
+-- Table: employee_info
+
+-- DROP TABLE employee_info;
+
+CREATE TABLE employee_info
+(
+  emp_id character varying(20) NOT NULL,
+  pwd character varying(10) NOT NULL,
+  "name" character varying(50) NOT NULL,
+  gen character varying(7) NOT NULL,
+  phno bigint,
+  address character varying(100) NOT NULL,
+  qlfy character varying(20) NOT NULL,
+  doj date NOT NULL,
+  desg character varying(20) NOT NULL,
+  dept character varying(100) NOT NULL,
+  CONSTRAINT emp_id_pk PRIMARY KEY (emp_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE employee_info OWNER TO postgres;
+
+-- Table: indent_master
+
+-- DROP TABLE indent_master;
+
+CREATE TABLE indent_master
+(
+  ind_no bigint NOT NULL,
+  inddate date NOT NULL,
+  emp_id character varying(20),
+  delv_date date,
+  est_rate numeric(10,2) NOT NULL,
+  status character varying(12),
+  CONSTRAINT ind_no_pk PRIMARY KEY (ind_no),
+  CONSTRAINT indent_master_emp_id_fkey FOREIGN KEY (emp_id)
+      REFERENCES employee_info (emp_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE indent_master OWNER TO postgres;
+
+
+-- Table: items_info
+
+-- DROP TABLE items_info;
+
+CREATE TABLE items_info
+(
+  item_id bigint NOT NULL,
+  "name" character varying(50) NOT NULL,
+  itemdesc character varying(60) NOT NULL,
+  itemspec character varying(100) NOT NULL,
+  units character varying(12),
+  rate numeric(10,2),
+  itcat character varying(100),
+  CONSTRAINT itm_id_pk PRIMARY KEY (item_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE items_info OWNER TO postgres;
+
+
+-- Table: ind_items
+
+-- DROP TABLE ind_items;
+
+CREATE TABLE ind_items
+(
+  ind_no bigint,
+  item_id bigint,
+  qty bigint,
+  CONSTRAINT ind_items_ind_no_fkey FOREIGN KEY (ind_no)
+      REFERENCES indent_master (ind_no) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT ind_items_item_id_fkey FOREIGN KEY (item_id)
+      REFERENCES items_info (item_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ind_items OWNER TO postgres;
+
+
+-- Table: ind_items_tmp
+
+-- DROP TABLE ind_items_tmp;
+
+CREATE TABLE ind_items_tmp
+(
+  item_id bigint,
+  qty bigint,
+  CONSTRAINT ind_items_tmp_item_id_fkey FOREIGN KEY (item_id)
+      REFERENCES items_info (item_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ind_items_tmp OWNER TO postgres;
+
+
+-- Table: itt_master
+
+-- DROP TABLE itt_master;
+
+CREATE TABLE itt_master
+(
+  itt_no bigint NOT NULL,
+  ittdate date NOT NULL,
+  ind_no bigint,
+  ittldate date NOT NULL,
+  itt_status character varying(10),
+  CONSTRAINT itt_no_pk PRIMARY KEY (itt_no),
+  CONSTRAINT itt_master_ind_no_fkey FOREIGN KEY (ind_no)
+      REFERENCES indent_master (ind_no) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE itt_master OWNER TO postgres;
+
+
+-- Table: supplier_info
+
+-- DROP TABLE supplier_info;
+
+CREATE TABLE supplier_info
+(
+  sup_id character varying(20) NOT NULL,
+  pwd character varying(10) NOT NULL,
+  "name" character varying(50) NOT NULL,
+  gen character varying(7) NOT NULL,
+  address character varying(100) NOT NULL,
+  phno bigint,
+  email character varying(50),
+  remarks character varying(100) NOT NULL,
+  scat character varying(100),
+  CONSTRAINT sup_id_pk PRIMARY KEY (sup_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE supplier_info OWNER TO postgres;
+
+
+
+-- Table: itt_details
+
+-- DROP TABLE itt_details;
+
+CREATE TABLE itt_details
+(
+  itt_no bigint,
+  sup_id character varying(20),
+  sbidamt bigint,
+  sid bigint,
+  CONSTRAINT itt_details_itt_no_fkey FOREIGN KEY (itt_no)
+      REFERENCES itt_master (itt_no) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT itt_details_sup_id_fkey FOREIGN KEY (sup_id)
+      REFERENCES supplier_info (sup_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE itt_details OWNER TO postgres;
+
+
+
+
+
+
+-- Table: sup_item_amnt
+
+-- DROP TABLE sup_item_amnt;
+
+CREATE TABLE sup_item_amnt
+(
+  sup_id character varying(20),
+  ind_no bigint,
+  item_id bigint,
+  qty bigint,
+  amt numeric(10,2),
+  CONSTRAINT sup_item_amnt_ind_no_fkey FOREIGN KEY (ind_no)
+      REFERENCES indent_master (ind_no) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT sup_item_amnt_item_id_fkey FOREIGN KEY (item_id)
+      REFERENCES items_info (item_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT sup_item_amnt_sup_id_fkey FOREIGN KEY (sup_id)
+      REFERENCES supplier_info (sup_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE sup_item_amnt OWNER TO postgres;
+
+
+
+
+

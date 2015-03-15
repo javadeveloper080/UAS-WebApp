@@ -1,0 +1,575 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<script>
+
+var letters=' ABCÇDEFGHIJKLMNÑOPQRSTUVWXYZabcçdefghijklmnñopqrstuvwxyzàáÀÁéèÈÉíìÍÌïÏóòÓÒúùÚÙüÜ';
+var numbers='1234567890';
+
+
+function alpha(e,allow)
+{
+var k;
+k=document.all?parseInt(e.keyCode): parseInt(e.which);
+return (allow.indexOf(String.fromCharCode(k))!=-1);
+}
+
+
+
+
+function echeck(id)
+{
+                                  var str=id.value;
+                                  if(str.length==0)
+                                      return true;
+		var at="@"
+		var dot="."
+		var lat=str.indexOf(at)
+		var lstr=str.length
+           	                 var ldot=str.indexOf(dot)
+		if ((str.indexOf(at)==-1) || (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr) || (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr) || (str.indexOf(at,(lat+1))!=-1) || (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot) || (str.indexOf(dot,(lat+2))==-1)  || (str.indexOf(" ")!=-1))
+                                   {
+		   alert("Invalid E-mail ID")
+                                     id.select();
+                                     id.focus();
+		   return false
+		}
+                                  emailRegEx = /^[^@]+@[a-z]+.[a-z]{3,}$/i
+                                  if(str.search(emailRegEx) == -1)
+                                  {
+		   alert("Invalid E-mail ID")
+                                     id.select();
+                                     id.focus();
+		   return false
+                                   }
+
+	}
+
+
+
+function acheck(id)
+{
+                                  var str=id.value;
+                                  emailRegEx = /^[0-9]+.[0-9]{1}$/i
+
+	}
+
+
+
+
+
+function textCounter(field, countfield, maxlimit)
+{
+    if (field.value.length > maxlimit) // if too long...trim it!
+
+       field.value = field.value.substring(0, maxlimit);
+     // otherwise, update 'characters left' counter
+    else
+      countfield.value = maxlimit - field.value.length;
+
+
+
+}
+function Clear()
+{
+
+
+cfrm.ans.value="";
+return false;
+
+
+}
+
+
+
+
+function ValidInput(obj)
+{
+
+if(cfrm.sq.selectedIndex==4)
+{
+	n = event.keyCode;
+	len=obj.value;
+
+
+	if((n<=57 && n>=48) ||  n==8 || (n<=105 && n>=96) || n==46)
+	{
+	}else
+	{
+		 obj.value="";
+	}
+}else
+{
+len=obj.value;
+
+len=obj.value;
+if(len.charAt(0)==" ")
+{
+  var oldvalue=len.substring(1,len.length);
+  obj.value=oldvalue;
+}
+
+
+n = event.keyCode;
+len=obj.value;
+if((n>=65 && n<=90) || (n==32) || (n==8) || (n==110) || (n==190) || (n==20) || (n==16) || (n==9))
+{
+}else
+{
+  obj.value="";
+  return false;
+}
+
+
+}
+
+
+
+
+}
+
+
+
+function CheckInput()
+ {
+
+
+
+    if(cfrm.username.value=="")
+    {
+       alert("Please Enter Customer Name");
+       cfrm.username.focus();
+
+       return false;
+    }else if(cfrm.userid.value=="")
+	{
+	      alert("Please Enter Customer Id ");
+	      cfrm.userid.focus();
+	      return false;
+    }else if(cfrm.userpwd.value=="")
+    {
+       alert("Please Enter Customer Password ");
+       cfrm.userpwd.focus();
+
+       return false;
+    }else if(cfrm.cpwd.value=="")
+    {
+       alert("Please Enter Confirm Password ");
+       cfrm.cpwd.focus();
+
+       return false;
+    }else if(cfrm.userpwd.value!=cfrm.cpwd.value)
+    {
+      alert("Confirm Password MisMatch");
+      cfrm.userpwd.value="";
+      cfrm.cpwd.value="";
+      cfrm.userpwd.focus();
+      return false;
+    }else if(cfrm.userid.value==cfrm.userpwd.value)
+	{
+	    alert("LoginId and Password both are Same");
+	    cfrm.userid.value="";
+	    cfrm.userpwd.value="";
+	    cfrm.cpwd.value="";
+	    cfrm.userid.focus();
+	    return false;
+    }else if(cfrm.address.value=="")
+    {
+       alert("Please Enter Customer Address");
+        cfrm.address.focus();
+       return false;
+    }else if(cfrm.city.value=="")
+    {
+       alert("Please Enter City");
+        cfrm.city.focus();
+       return false;
+    }else if(cfrm.state.value=="")
+    {
+       alert("Please Enter State");
+        cfrm.state.focus();
+       return false;
+    }else if(cfrm.cellnumber.value=="")
+    {
+       alert("Please Enter Mobile Number");
+           cfrm.cellnumber.focus();
+       return false;
+    }else if(cfrm.emailid.value=="")
+    {
+       alert("Please Enter Email Id");
+       cfrm.emailid.focus();
+       return false;
+    }else if(cfrm.sq.selectedIndex==0)
+    {
+       alert("Please Select Secret Question");
+
+       return false;
+    }else if(cfrm.ans.value=="")
+    {
+       alert("Please Enter Your Answer");
+         	cfrm.ans.focus();
+       return false;
+    }else if(cfrm.ctype.selectedIndex==0)
+    {
+      alert("Please Select Credit Card Type");
+      return false;
+    }else if(cfrm.cno.value=="")
+    {
+      alert("Please Enter Credit Card Number");
+      cfrm.cno.focus();
+      return false;
+    }else if(cfrm.username.value.length<4)
+
+    {
+      alert("Customer Name Should Be Minimum 4 Characters");
+      cfrm.username.focus();
+      return false;
+
+    }else if(cfrm.userid.value.length<4)
+
+    {
+      alert("User Id Name Should Be Minimum 4 Characters");
+      cfrm.userid.focus();
+      return false;
+
+    }else if(cfrm.userpwd.value.length<4)
+
+    {
+      alert("User Password Should Be Minimum 4 Characters");
+      cfrm.userpwd.focus();
+      return false;
+
+    }else if(cfrm.address.value.length<20)
+    {
+      alert("Address Should Be Minimum 20 Characters");
+      cfrm.address.focus();
+      return false;
+    }else if(cfrm.city.value.length<5)
+    {
+
+      alert("City Should Be Minimum 5 Characters");
+      cfrm.city.focus();
+      return false;
+    }else if(cfrm.state.value.length<5)
+    {
+      alert("State Should Be Minimum 5 Characters");
+      cfrm.state.focus();
+      return false;
+    }else if((cfrm.phonenumber.value!="") && (cfrm.phonenumber.value.length<7))
+    {
+
+		  alert("Phone Number Should Be Minimum 7 Digits");
+	      cfrm.phonenumber.focus();
+	      return false;
+    }else if(cfrm.cellnumber.value.length<10)
+    {
+      alert("Mobile Number Should Be Minimum 10  Digits");
+      cfrm.cellnumber.focus();
+      return false;
+    }else if(cfrm.cno.value.length<16)
+    {
+      alert("Credit Card Number Should Be 16 Digits");
+      cfrm.cno.focus();
+      return false;
+    }
+
+
+
+
+ }
+
+
+function SetFocus()
+{
+  cfrm.username.focus();
+  return false;
+}
+
+
+
+
+
+function CheckUser(Uname)
+    {
+    var oXMLHTTP = new ActiveXObject( "Microsoft.XMLHTTP" );
+	var sURL = "./CheckUser?userid=" + Uname
+	oXMLHTTP.open("POST", sURL, false );
+	oXMLHTTP.send();
+	var  status=oXMLHTTP.responseText;
+	var s=status;
+	var str="U";
+	if(s.charAt(0)==str)
+	{
+	   alert(oXMLHTTP.responseText);
+       cfrm.userid.value="";
+
+        cfrm.userpwd.value="";
+	      cfrm.cpwd.value="";
+
+       cfrm.userid.focus();
+
+    }
+
+    }
+
+
+
+function NoCheck(obj)
+{
+n = event.keyCode;
+len=obj.value;
+if((n<=57 && n>=48) ||  n==8 || (n<=105 && n>=96) || n==46)
+{
+}else
+{
+ obj.value="";
+
+}
+
+}
+
+
+
+
+
+function CharCheck(obj)
+{
+len=obj.value;
+
+len=obj.value;
+if(len.charAt(0)==" ")
+{
+  var oldvalue=len.substring(1,len.length);
+  obj.value=oldvalue;
+}
+
+n = event.keyCode;
+
+
+len=obj.value;
+if((n>=65 && n<=90) || (n==32) || (n==8) || (n==110) || (n==190) || (n==20) || (n==9))
+{
+}else
+{
+  obj.value="";
+  return false;
+}
+
+
+
+}
+
+function nospace(obj)
+{
+
+    len=obj.value;
+    if(len.charAt(len.length-1)==" ")
+   {
+         obj.value=len.substring(0,len.length-1);
+   }
+
+
+n = event.keyCode;
+
+
+if(n==220 || n==180 || n==192 || n==188)
+{
+  obj.value="";
+   return false;
+}
+
+len=obj.value;
+
+len=obj.value;
+
+var char=len.substring(len.length,len.length-1);
+
+var colors=new Array("!","@","#","$","%","^","&","*","(",")","_","+","<",">","/","?","}","{","[","]","'",";","=","-","|");
+
+for(i=0;i<=colors.length-1;i++)
+{
+ var sNumber=colors[i];
+ if(sNumber==char)
+ {
+  obj.value="";
+  return false;
+ }
+}
+}
+
+
+function nospace1(obj)
+{
+
+    len=obj.value;
+    if(len.charAt(len.length-1)==" ")
+   {
+         obj.value=len.substring(0,len.length-1);
+   }
+
+
+n = event.keyCode;
+if(n==220 || n==180 || n==192 || n==188)
+{
+  obj.value="";
+  return false;
+}
+
+len=obj.value;
+
+
+var char=len.substring(len.length,len.length-1);
+
+var colors=new Array("!","@","#","$","%","^","&","*","(",")","+","<",">","/","?","}","{","[","]","'",";","=","-","|");
+
+for(i=0;i<=colors.length-1;i++)
+{
+ var sNumber=colors[i];
+ if(sNumber==char)
+ {
+  obj.value="";
+  return false;
+ }
+}
+}
+
+
+</script>
+<HTML>
+<HEAD>
+<TITLE>CUSOMER DETAILS PAGE</TITLE>
+</HEAD>
+<BODY BGCOLOR="#gggebff"  onload="SetFocus()">
+<H3><B>CUSTOMER REGISTRATION FORM</B></H3><HR>
+<LINK title=report  media=screen href="CRMS/simple.css" type=text/css  rel=stylesheet>
+<FORM METHOD=POST ACTION="RegisterVal" name=cfrm>
+<TABLE>
+<TR>
+	<TH align ="left" >Customer Name:</TH>
+	<TD align= "left" >
+	   <INPUT TYPE="text" NAME="username" maxlength=30  onkeyup="CharCheck(this)">
+	 </TD>
+</TR>
+<TH align ="left" >User ID:</TH>
+	<TD align= "left" >
+	   <INPUT TYPE="text" NAME="userid" maxlength=20  onblur="return CheckUser(this.value)" onkeyup="nospace1(userid)">
+	 </TD>
+</TR>
+<TR>
+	<TH align ="left" >User Password:</TH>
+	<TD align= "left" >
+	   <INPUT TYPE="password" NAME="userpwd" maxlength=20  onkeyup="nospace(userpwd)">
+	 </TD>
+</TR>
+
+<TR>
+	<TH align ="left" >Confirm Password:</TH>
+	<TD align= "left" >
+	   <INPUT TYPE="password" NAME="cpwd" maxlength=20  onkeyup="nospace(cpwd)" >
+	 </TD>
+</TR>
+<TR>
+ 	<TH align ="left" >Address:</TH>
+     <TD align= "left">
+	<textarea  name=address  rows=4 maxlength=100 onKeyDown="textCounter(this.form.address,this.form.remLen,100);"
+	onKeyUp="textCounter(this.form.address,this.form.remLen,100);">
+	</textarea>
+     </TD>
+ </TR>
+ <input readonly type=hidden name=remLen size=3 maxlength=3 value="100">
+
+ <TR>
+ 	<TH align ="left" >City:</TH>
+     <TD align= "left" >
+		<INPUT TYPE="text" NAME="city" maxlength=30  onkeyup="CharCheck(this)">
+     </TD>
+ </TR>
+ <TR>
+ 	<TH align ="left" >State:</TH>
+     <TD align= "left" >
+		<INPUT TYPE="text" NAME="state" maxlength=30  onkeyup="CharCheck(this)">
+     </TD>
+ </TR>
+ <TR>
+ 	<TH align ="left" >Phone Number:</TH>
+     <TD align= "left" >
+		<INPUT TYPE="text" NAME="phonenumber" onkeyup="NoCheck(this)" maxlength=12>
+     </TD>
+ </TR>
+ <TR>
+ 	<TH align ="left" >Mobile Number:</TH>
+     <TD align= "left" >
+		<INPUT TYPE="text" NAME="cellnumber" onkeyup="NoCheck(this)" maxlength=12>
+     </TD>
+ </TR>
+ <TR>
+ 	<TH align ="left" >EmailId:</TH>
+     <TD align= "left" >
+		<INPUT TYPE="text" NAME="emailid" maxlength=50 onBlur="echeck(this)" onkeypress="return alpha(event,letters+numbers+'@_.')" />
+     </TD>
+ </TR>
+ <tr></tr>
+
+ <TR>
+  	<TH align ="left" >Secret Question</TH>
+  	<TD align= "left" >
+ 		<select name=sq onchange="Clear()">
+ 		<option>Select Secret Question?</option>
+ 		<option>Your Pet Name</option>
+ 		<option>Your Favourite Color</option>
+ 		<option>Your Favourite Dish</option>
+ 		<option>Your Lucky Number</option>
+
+ 		</select>
+
+      </TD>
+  </TR>
+
+
+  <TR>
+    	<TH align ="left" >Your Answer</TH>
+    	<TD align= "left" >
+   		<INPUT TYPE="text" NAME="ans" maxlength=15 onkeyup="ValidInput(this)">
+        </TD>
+  </TR>
+  <tr></tr>
+
+<TR>
+    	<TH align ="left">Credit Card Type</TH>
+    	<TD align= "left">
+        <select name=ctype>
+ 		<option>Select Credit Card Type</option>
+ 		<option>VISA</option>
+ 		<option>Premium</option>
+ 		<option>CoBranded</option>
+ 		</select>
+
+        </TD>
+  </TR>
+  <tr></tr>
+
+
+
+<TR>
+    	<TH align ="left" >Credit Card Number</TH>
+    	<TD align= "left" >
+
+   		<INPUT TYPE="text" NAME="cno" maxlength=16 onkeyup="NoCheck(this)">
+        </TD>
+  </TR>
+  <tr></tr>
+	 <table><br>
+  <TR>
+	 <th align="center" colspan="2">
+	 <TD align=right>
+     <INPUT TYPE="submit" value = "Save" onclick="return CheckInput()" align = "center">
+	 </TD>
+	 <TD align=right>
+     <INPUT TYPE="reset" value = "Cancel" align = "center">
+	 </TD>
+  </TR>
+  <tr>
+  <td>
+  </tr>
+</TABLE>
+</center>
+</FORM>
+</BODY>
+</HTML>

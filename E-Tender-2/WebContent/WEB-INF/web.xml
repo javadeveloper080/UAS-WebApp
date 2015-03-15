@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>E-Tender</display-name>
+  
+  
+  <servlet>
+         <servlet-name>EmpRegister</servlet-name>
+         <servlet-class>EPR.EmpRegister</servlet-class>
+      </servlet>
+      
+      <servlet-mapping>
+      	<servlet-name>EmpRegister</servlet-name>
+      	<url-pattern>/EmpRegister</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+             <servlet-name>SupRegister</servlet-name>
+             <servlet-class>EPR.SupRegister</servlet-class>
+          </servlet>
+          
+          <servlet-mapping>
+          	<servlet-name>SupRegister</servlet-name>
+          	<url-pattern>/SupRegister</url-pattern>
+    </servlet-mapping>
+    
+    
+       <servlet>
+                 <servlet-name>FirstServlet</servlet-name>
+                 <servlet-class>EPR.FirstServlet</servlet-class>
+              </servlet>
+              
+              <servlet-mapping>
+              	<servlet-name>FirstServlet</servlet-name>
+              	<url-pattern>/New</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+                 <servlet-name>ItemRegister</servlet-name>
+                 <servlet-class>EPR.ItemRegister</servlet-class>
+              </servlet>
+              
+              <servlet-mapping>
+              	<servlet-name>ItemRegister</servlet-name>
+              	<url-pattern>/ItemRegister</url-pattern>
+        </servlet-mapping>
+        
+    
+    
+   
+   <servlet>
+                    <servlet-name>EmpUpdate</servlet-name>
+                    <servlet-class>EPR.EmpUpdate</servlet-class>
+                 </servlet>
+                 
+                 <servlet-mapping>
+                 	<servlet-name>EmpUpdate</servlet-name>
+                 	<url-pattern>/EmpUpdate</url-pattern>
+           </servlet-mapping>
+        
+        <servlet>
+	                    <servlet-name>SupUpdate</servlet-name>
+	                    <servlet-class>EPR.SupUpdate</servlet-class>
+	                 </servlet>
+	                 
+	                 <servlet-mapping>
+	                 	<servlet-name>SupUpdate</servlet-name>
+	                 	<url-pattern>/SupUpdate</url-pattern>
+           </servlet-mapping>
+           <servlet>
+	   	                    <servlet-name>ItemUpdate</servlet-name>
+	   	                    <servlet-class>EPR.ItemUpdate</servlet-class>
+	   	                 </servlet>
+	   	                 
+	   	                 <servlet-mapping>
+	   	                 	<servlet-name>ItemUpdate</servlet-name>
+	   	                 	<url-pattern>/ItemUpdate</url-pattern>
+           </servlet-mapping>
+           
+        <servlet>
+		   	                    <servlet-name>CheckEmp</servlet-name>
+		   	                    <servlet-class>EPR.CheckEmp</servlet-class>
+		   	                 </servlet>
+		   	                 
+		   	                 <servlet-mapping>
+		   	                 	<servlet-name>CheckEmp</servlet-name>
+		   	                 	<url-pattern>/CheckEmp</url-pattern>
+	           </servlet-mapping>
+           
+             <servlet>
+	   		   	                    <servlet-name>IndentRegister</servlet-name>
+	   		   	                    <servlet-class>EPR.IndentRegister</servlet-class>
+	   		   	                 </servlet>
+	   		   	                 
+	   		   	                 <servlet-mapping>
+	   		   	                 	<servlet-name>IndentRegister</servlet-name>
+	   		   	                 	<url-pattern>/IndentRegister</url-pattern>
+	   	           </servlet-mapping>
+	              
+           
+	    <servlet>
+		    <servlet-name>UpdateIndent</servlet-name>
+		    <servlet-class>EPR.UpdateIndent</servlet-class>
+	    </servlet>
+	   		   	                 
+		  <servlet-mapping>
+			<servlet-name>UpdateIndent</servlet-name>
+			<url-pattern>/UpdateIndent</url-pattern>
+		  </servlet-mapping>
+
+
+        
+
+ <servlet>
+	<servlet-name>InvRegister</servlet-name>
+	<servlet-class>EPR.InvRegister</servlet-class>
+ </servlet>
+	   		   	                 
+ <servlet-mapping>
+	<servlet-name>InvRegister</servlet-name>
+	<url-pattern>/InvRegister</url-pattern>
+ </servlet-mapping>
+	              
+ <servlet>
+	<servlet-name>AcceptInvitation</servlet-name>
+	<servlet-class>EPR.AcceptInvitation</servlet-class>
+ </servlet>
+	   		   	                 
+ <servlet-mapping>
+	<servlet-name>AcceptInvitation</servlet-name>
+	<url-pattern>/AcceptInvitation</url-pattern>
+ </servlet-mapping>
+	              	              
+    <servlet>
+	<servlet-name>CheckSup</servlet-name>
+	<servlet-class>EPR.CheckSup</servlet-class>
+ </servlet>
+	   		   	                 
+ <servlet-mapping>
+	<servlet-name>CheckSup</servlet-name>
+	<url-pattern>/CheckSup</url-pattern>
+ </servlet-mapping>
+	              	
+	              	
+          <servlet>
+	<servlet-name>BidAmount</servlet-name>
+	<servlet-class>EPR.BidAmount</servlet-class>
+ </servlet>
+	   		   	                 
+ <servlet-mapping>
+	<servlet-name>BidAmount</servlet-name>
+	<url-pattern>/BidAmount</url-pattern>
+ </servlet-mapping>
+
+
+
+          <servlet>
+	<servlet-name>SaveItem</servlet-name>
+	<servlet-class>EPR.SaveItem</servlet-class>
+ </servlet>
+	   		   	                 
+ <servlet-mapping>
+	<servlet-name>SaveItem</servlet-name>
+	<url-pattern>/SaveItem</url-pattern>
+ </servlet-mapping>
+
+
+
+<welcome-file-list>
+   <welcome-file>Home.jsp</welcome-file>
+</welcome-file-list>
+  
+  
+  
+  
+</web-app>

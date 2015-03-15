@@ -1,0 +1,46 @@
+<?xml version="1.0" ?> 
+<project name="E-Tender-2" default="war">
+	
+	<property file="build.properties" />
+
+	<path id="compile.classpath">
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<!-- Create  directories -->
+	<target name="init">
+		<mkdir dir="build/classes"/>
+		<mkdir dir="target" />
+	</target>
+	
+	<target name="compile" depends="init" >
+		<javac destdir="build/classes" debug="true" srcdir="src">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war destfile="target/E-Tender.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<!--<lib dir="WebContent/WEB-INF/lib"/>-->
+			<classes dir="build/classes"/>
+		</war>
+	</target>
+	
+	<target name="clean">
+		<delete dir="classes" />
+		<delete dir="build" />
+	</target>
+	
+	
+	<target name="deploy">
+			<delete dir="${deploydir}"/>
+			<copy file="target/E-Tender.war" todir="${deploydir}"/>
+    </target> 
+	
+	<target name="all" depends="init,compile,war, clean,deploy "></target>
+	
+	
+</project>
