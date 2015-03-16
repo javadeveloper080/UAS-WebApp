@@ -5,5 +5,10 @@
                     <strong>University Advance Management System</strong> 
                     <span>Earn More Knowledge</span>
                 </div>
+     
+        <ul id="navigation">
+        	 <li><a href="loginAction.do?method=logOutAction">Logout</a></li>
+        </ul>
+     
             </div>
    

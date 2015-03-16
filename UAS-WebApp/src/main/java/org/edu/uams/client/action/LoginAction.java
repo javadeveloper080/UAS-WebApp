@@ -1,6 +1,6 @@
-/**
- *
- */
+ /**
+  *
+  */
 package org.edu.uams.client.action;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,22 +69,12 @@ public class LoginAction extends DispatchAction {
     {
         
         LoginForm loginForm = (LoginForm)form;
-
         if (SessionTracker.checkLoginContext(req)!=null) {
-            UserContext userContext = SessionTracker.checkLoginContext(req);
-            if (userContext.isAdmin()) {
-                SessionTracker.logOut(req);
-                loginForm.clearFormValues();
-                return mapping.findForward("adminLoginPage");
-            } else {
-                SessionTracker.logOut(req);
-                loginForm.clearFormValues();
-                return mapping.findForward("userLoginPage");
-            }
+            SessionTracker.logOut(req);
+            
         }
-        else{
-            return mapping.findForward("userLoginPage");
-        }
+        loginForm.clearFormValues();
+        return mapping.findForward("loginPage");
     }
     
     
@@ -147,7 +137,7 @@ public class LoginAction extends DispatchAction {
     }
     
     
-     private void populateUserDetails(LoginForm loginForm,UserMasterEntity userMasterEntity) {
+    private void populateUserDetails(LoginForm loginForm,UserMasterEntity userMasterEntity) {
         // loginForm.setName(userMasterEntity.getFirstName()+" "+userMasterEntity.getLastName());
         loginForm.setPassword(userMasterEntity.getPassWord());
         loginForm.setUserId(userMasterEntity.getUserId());
