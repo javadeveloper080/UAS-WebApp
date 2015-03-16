@@ -14,7 +14,22 @@
                 -> Learner engagement and administration - managed access to learner information and resources and tracking of progress and achievement.<br />
                 -> Communication and collaboration - emails, notices, chat, wikis, blogs.</p>
 
-
+ <p> -> Content management - creation, storage, access to and use of learning resources.<br />
+                -> Curriculum mapping and planning - lesson planning, assessment and personalisation of the learning experience.<br />
+                -> Learner engagement and administration - managed access to learner information and resources and tracking of progress and achievement.<br />
+                -> Communication and collaboration - emails, notices, chat, wikis, blogs.</p>
+  <p> -> Content management - creation, storage, access to and use of learning resources.<br />
+                -> Curriculum mapping and planning - lesson planning, assessment and personalisation of the learning experience.<br />
+                -> Learner engagement and administration - managed access to learner information and resources and tracking of progress and achievement.<br />
+                -> Communication and collaboration - emails, notices, chat, wikis, blogs.</p>
+   <p> -> Content management - creation, storage, access to and use of learning resources.<br />
+                -> Curriculum mapping and planning - lesson planning, assessment and personalisation of the learning experience.<br />
+                -> Learner engagement and administration - managed access to learner information and resources and tracking of progress and achievement.<br />
+                -> Communication and collaboration - emails, notices, chat, wikis, blogs.</p>
+    <p> -> Content management - creation, storage, access to and use of learning resources.<br />
+                -> Curriculum mapping and planning - lesson planning, assessment and personalisation of the learning experience.<br />
+                -> Learner engagement and administration - managed access to learner information and resources and tracking of progress and achievement.<br />
+                -> Communication and collaboration - emails, notices, chat, wikis, blogs.</p>
             <h2>Our Motto:</h2> 
             <p>To give a learning platform that is safe and secure environment that is reliable, available online and accessible to a wide user base.
             </p>

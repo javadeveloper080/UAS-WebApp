@@ -6,7 +6,7 @@ function fun(){
         document.getElementById('menuDiv').style.display = "none";
 }
 </script>
-<!--<div ondblclick="fun()" id="menuDiv">-->
+<div ondblclick="fun()" id="menuDiv">
 <div id="leftmenu" >
             <div style="padding-left:0px;padding-top:10px;"><img height="220" width="200" src="images/karthik.jpg" alt="userimage.jpg" /></div>
 
@@ -23,5 +23,5 @@ function fun(){
                 <br clear="all" />
             </div>
         </div>
-<!--</div>-->
+</div>
 

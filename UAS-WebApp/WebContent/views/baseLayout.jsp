@@ -15,7 +15,7 @@
         <div id="base_layout_header">
             <tiles:insert attribute="header" ignore="true" />
         </div>
-        <div id="base_layout_wrap">
+        <div id="base_layout_wrap" >
             <div id="base_layout_sidebar">
                 <tiles:insert attribute="menu" />
             </div>
@@ -23,9 +23,10 @@
                 <tiles:insert attribute ="body" />
             </div>
 
-            <div id="base_layout_footer">
+           
+        </div>
+             <div id="base_layout_footer">
                 <tiles:insert attribute="footer" />
             </div>
-        </div>
     </body>
 </html>

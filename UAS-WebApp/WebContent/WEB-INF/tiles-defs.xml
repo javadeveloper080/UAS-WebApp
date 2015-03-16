@@ -57,8 +57,17 @@
         <put name="body" value="/views/adminHome.jsp" />
     </definition>
     
-     <definition name="feeLayout" extends="baseLayout">
+     <definition name="MainFeeLayout" path="/eviews/Template.jsp">
+        <put name="title"  value="Tiles Example" />
+        <put name="header" value="/eviews/header.jsp" />
+        <put name="menu"   value="/eviews/enavigation.jsp" />
+        <put name="body"   value="/eviews/body.jsp" />
+        <put name="footer" value="/eviews/footer.jsp" />        
+    </definition>
+    
+     <definition name="addCourse" extends="MainFeeLayout">
         <put name="title" value="Fee" />
-        <put name="body" value="/views/fee.jsp" />
+        <!--<put name="body" value="/views/fee.jsp" />-->
+        <put name="body" value="/eviews/addCourse.jsp" />
     </definition>
 </tiles-definitions>
