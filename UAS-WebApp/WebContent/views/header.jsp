@@ -2,13 +2,11 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" />
  <div id="header">
                 <div id="logo">
-                    <strong>University Advance Management System</strong> 
-                    <span>Earn More Knowledge</span>
+                    <strong><font color="#5D5D5D" >University Advance Management System</font></strong> 
+                    <span><font color="#5D5D5D" >Earn More Knowledge</font></span>
                 </div>
      
-        <ul id="navigation">
-        	 <li><a href="loginAction.do?method=logOutAction">Logout</a></li>
-        </ul>
+     
      
             </div>
    

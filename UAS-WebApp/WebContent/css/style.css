@@ -37,10 +37,9 @@ body, div, a, h3, h2, h1, span
 {
 	border: 1px solid #FFFFFF;
 	border-top: 0px;
-	   background: none repeat scroll 0 0 #FFD777;
-    border-bottom: 1px solid #C9AA5F;
+	background-color: #FFD777;
 	position: relative;
-	height: 128px;
+	height: 100px;
         
 }
 
@@ -49,7 +48,7 @@ body, div, a, h3, h2, h1, span
 	position: absolute;
 	top: 38px;
 	left: 24px;
-	background-image: url(../images/ui-sam.jpg);
+	background-image: url(../images/logo.jpg);
 	background-repeat: no-repeat;
 	margin: 0;
 	padding-top: 0px;
