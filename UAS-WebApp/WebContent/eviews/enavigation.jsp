@@ -32,7 +32,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="courseAction.do?method=courseAddPage">Add Course</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
+                          <li><a  href="courseAction.do?method=gridExample">Grid Example</a></li>
                           <li><a  href="todo_list.html">Todo List</a></li>
                       </ul>
                   </li>

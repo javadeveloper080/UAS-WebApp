@@ -23,7 +23,8 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
-    
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -61,8 +62,7 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    
     <script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>

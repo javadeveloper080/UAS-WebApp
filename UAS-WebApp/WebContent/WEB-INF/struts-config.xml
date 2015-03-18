@@ -95,6 +95,7 @@
 			<forward name="deleteCourse" path="/views/deleteCourse.jsp" />
 			<forward name="noDocumentFound" path="/views/validationMessage.jsp"/>
 			<forward name="redirectCourseDetails" path="/courseAction.do?method=displayCourses"/>
+                        <forward name="gridExamplePage" path="gridExample"></forward>
 
 		</action>
 

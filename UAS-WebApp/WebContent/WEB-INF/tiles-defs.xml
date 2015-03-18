@@ -70,4 +70,10 @@
         <!--<put name="body" value="/views/fee.jsp" />-->
         <put name="body" value="/eviews/addCourse.jsp" />
     </definition>
+    
+    <definition name="gridExample" extends="MainFeeLayout">
+        <put name="title" value="Grid Example" />
+        <!--<put name="body" value="/views/fee.jsp" />-->
+        <put name="body" value="/eviews/grid.jsp" />
+    </definition>
 </tiles-definitions>
