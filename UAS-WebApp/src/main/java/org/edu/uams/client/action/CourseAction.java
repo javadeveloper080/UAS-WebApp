@@ -480,7 +480,11 @@ public class CourseAction extends DispatchAction {
 
 	}
 
-
+        public ActionForward gridExample(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+			HttpServletResponse res)throws Exception
+			{
+		return mapping.findForward("gridExamplePage");
+			}
 
 }
 
