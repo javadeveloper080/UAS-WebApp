@@ -129,6 +129,7 @@
                 <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
                     <forward name="fee" path="MainFeeLayout"></forward>
                 </action>
+                
 
 
 	</action-mappings>

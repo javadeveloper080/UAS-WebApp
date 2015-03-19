@@ -34,12 +34,12 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="index.html">
+                    <form class="form-login" action="loginAction.do?method=logInAction" method="POST">
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="User ID" autofocus>
+		            <input id="userName" name="userName" type="text" class="form-control" placeholder="User ID" autofocus>
 		            <br>
-		            <input type="password" class="form-control" placeholder="Password">
+		            <input id="password" name="password" type="password" class="form-control" placeholder="Password">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>

@@ -52,9 +52,12 @@
         <put name="body" value="/views/login.jsp" />
     </definition>
     
-    <definition name="adminHome" extends="baseLayout">
-        <put name="title" value="Admin Home" />
-        <put name="body" value="/views/adminHome.jsp" />
+    <definition name="adminHome" path="/eviews/Template.jsp">
+        <put name="title"  value="Tiles Example" />
+        <put name="header" value="/eviews/header.jsp" />
+        <put name="menu"   value="/eviews/enavigation.jsp" />
+        <put name="body"   value="/eviews/body.jsp" />
+        <put name="footer" value="/eviews/footer.jsp" />   
     </definition>
     
      <definition name="MainFeeLayout" path="/eviews/Template.jsp">
