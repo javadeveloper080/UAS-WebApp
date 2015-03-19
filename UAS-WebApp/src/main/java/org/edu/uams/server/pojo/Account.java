@@ -63,8 +63,7 @@ public class Account implements Serializable {
     @Column(name = "account_number")
     private String accountNumber;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account_id")
-    private List<FeeDetailsEntity> feeTabList;
+ 
 
     public Account() {
     }
@@ -119,14 +118,7 @@ public class Account implements Serializable {
         this.accountNumber = accountNumber;
     }
 
-    @XmlTransient
-    public List<FeeDetailsEntity> getFeeTabList() {
-        return feeTabList;
-    }
-
-    public void setFeeTabList(List<FeeDetailsEntity> feeTabList) {
-        this.feeTabList = feeTabList;
-    }
+   
     
 
     @Override
