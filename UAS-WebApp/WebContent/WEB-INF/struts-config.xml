@@ -19,6 +19,7 @@
 		<form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
 		<form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
 		<form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
+                <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
 	</form-beans>
 
 
@@ -53,6 +54,12 @@
 
 
 	<action-mappings>
+            
+            
+                <action path="/typeTableAction" name="typeTableForm" parameter="method"
+			scope="request" type="org.edu.uams.client.action.TypeTableAction">
+			<forward name="feeTypePage" path="FeeTypePage" />
+		</action>
 
 		<action path="/adminAction" name="adminForm" parameter="method"
 			scope="request" type="org.edu.uams.client.action.AdminAction">

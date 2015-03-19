@@ -64,6 +64,7 @@
                       <ul class="sub">
                           <li><a  href="basic_table.html">Basic Table</a></li>
                           <li><a  href="responsive_table.html">Responsive Table</a></li>
+                          <li><a  href="typeTableAction.do?method=feeTypePage">Fee Type</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
