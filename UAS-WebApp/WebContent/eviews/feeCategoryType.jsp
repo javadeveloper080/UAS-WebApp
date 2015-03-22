@@ -130,11 +130,11 @@
                                 
                                 <table >
                                     <tr>
-                                        <td class="form-control">
+                                        <td class="form-field-control">
                                             Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
                                             
                                         </td>	
-                                        <td class="form-control">
+                                        <td class="form-field-control">
                                             Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
                                         <td>
                                     </tr>

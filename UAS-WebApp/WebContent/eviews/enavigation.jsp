@@ -1,3 +1,6 @@
+<%@taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
+<%@taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic"%>
+<%@taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
 <aside>
     <div id="sidebar"  class="nav-collapse ">
         <!-- sidebar menu start-->
@@ -6,7 +9,7 @@
             <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                 
                 
-                
+              <h5 class="centered"><bean:write name="loginForm" property="name" /></h5>   
                 
                 
                 
