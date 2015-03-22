@@ -124,12 +124,12 @@
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Fee type</Strong> </h5>
                                     <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
-                                
+                                        
                                 <table >
                                     <tr>
                                         <td class="form-control">
                                             Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
+                                                
                                         </td>	
                                         <td class="form-control">
                                             Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
@@ -142,8 +142,8 @@
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="submitForm();" />
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
                                 </div> 
-                                
-                                
+                                    
+                                    
                             </html:form>
                         </div>
                     </div><!-- col-lg-12-->      	
