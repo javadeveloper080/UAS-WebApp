@@ -22,6 +22,53 @@
                     <li><a  href="typeTableAction.do?method=feeCategoryTypePage">Fee Category Type</a></li>
                 </ul>
             </li>
+            
+            
+            <li class="sub-menu">
+                <a href="javascript:;"  id="FeeModuleNav">
+                    <i class="fa fa-th"></i>
+                    <span>Hostel</span>
+                </a>
+                    
+                <ul class="sub">
+                    <li id="FeeTypeNav"><a  href="typeTableAction.do?method=feeTypePage" onclick="highlightNavTree('FeeType');" >Hostel Type</a></li>
+                </ul>
+            </li>
+            
+            
+             <li class="sub-menu">
+                <a href="javascript:;"  id="FeeModuleNav">
+                    <i class="fa fa-th"></i>
+                    <span>Transport</span>
+                </a>
+                    
+                <ul class="sub">
+                    <li id="FeeTypeNav"><a  href="typeTableAction.do?method=feeTypePage" onclick="highlightNavTree('FeeType');" >Transport Type</a></li>
+                </ul>
+            </li>
+            
+             <li class="sub-menu">
+                <a href="javascript:;"  id="FeeModuleNav">
+                    <i class="fa fa-th"></i>
+                    <span>Employee</span>
+                </a>
+                    
+                <ul class="sub">
+                    <li id="FeeTypeNav"><a  href="typeTableAction.do?method=feeTypePage" onclick="highlightNavTree('FeeType');" >Employee Profiles</a></li>
+                </ul>
+            </li>
+            
+            
+             <li class="sub-menu">
+                <a href="javascript:;"  id="FeeModuleNav">
+                    <i class="fa fa-th"></i>
+                    <span>Courses</span>
+                </a>
+                    
+                <ul class="sub">
+                    <li id="FeeTypeNav"><a  href="typeTableAction.do?method=feeTypePage" onclick="highlightNavTree('FeeType');" >Course Type</a></li>
+                </ul>
+            </li>
                 
                 
                 
