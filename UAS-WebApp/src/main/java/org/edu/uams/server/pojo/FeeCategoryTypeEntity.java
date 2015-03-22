@@ -18,8 +18,8 @@ public class FeeCategoryTypeEntity implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-    public static final  String  FIND_ALL="SELECT f FROM FeeType f";
-    public static final  String  FIND_BY_CODE="SELECT f FROM FeeType f where f.code = :code";
+    public static final  String  FIND_ALL="SELECT f FROM FeeCategoryType f";
+    public static final  String  FIND_BY_CODE="SELECT f FROM FeeCategoryType f where f.code = :code";
 
 
 

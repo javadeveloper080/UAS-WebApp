@@ -56,10 +56,13 @@
 	<action-mappings>
             
             
+            <!--Type table Entry starts-->
                 <action path="/typeTableAction" name="typeTableForm" parameter="method"
 			scope="request" type="org.edu.uams.client.action.TypeTableAction">
 			<forward name="feeTypePage" path="FeeTypePage" />
+                        <forward name="feeCategoryTypePage" path="FeeCategoryTypePage" />
 		</action>
+                <!--Type table Entry ends-->
 
 		<action path="/adminAction" name="adminForm" parameter="method"
 			scope="request" type="org.edu.uams.client.action.AdminAction">

@@ -44,7 +44,7 @@
 		                                        <input id="password" name="password" required="required" type="password" class="form-control" placeholder="eg. X8df!90EO" /> 
 		            
 		            <br>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 		            <hr>
 		           </div>  
 		          

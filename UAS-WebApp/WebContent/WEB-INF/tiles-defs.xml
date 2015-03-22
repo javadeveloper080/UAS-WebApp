@@ -47,6 +47,15 @@
         <put name="footer" value="/views/footer.jsp" />        
     </definition>
     
+    
+     <definition name="baseTemplateLayout" path="/eviews/Template.jsp">
+        <put name="title"  value="Tiles Example" />
+        <put name="header" value="/eviews/header.jsp" />
+        <put name="menu"   value="/eviews/enavigation.jsp" />
+        <put name="body"   value="/eviews/body.jsp" />
+        <put name="footer" value="/eviews/footer.jsp" />            
+    </definition>
+    
     <definition name="login" extends="baseLayout">
         <put name="title" value="Login" />
         <put name="body" value="/views/login.jsp" />
@@ -68,13 +77,21 @@
         <put name="footer" value="/eviews/footer.jsp" />        
     </definition>
     
-     <definition name="FeeTypePage" path="/eviews/Template.jsp">
-        <put name="title"  value="Tiles Example" />
-        <put name="header" value="/eviews/header.jsp" />
-        <put name="menu"   value="/eviews/enavigation.jsp" />
+    
+    <!--Type table Entry starts-->
+     <definition name="FeeTypePage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/feeType.jsp" />
-        <put name="footer" value="/eviews/footer.jsp" />        
     </definition>
+    
+     <definition name="FeeCategoryTypePage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/feeCategoryType.jsp" />
+    </definition>
+    <!--Type table Entry ends-->
+    
+    
+    
+    
+    
     
      <definition name="addCourse" extends="MainFeeLayout">
         <put name="title" value="Fee" />
