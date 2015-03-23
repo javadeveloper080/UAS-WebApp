@@ -56,9 +56,7 @@
                     data: {
                         "code": code,
                         "pageName": "FeeCategoryType",
-                        if(id != null && id>0){
-                             "id": id
-                        }
+                        "id": id
                     },
                     
                     success: function(response){
@@ -105,6 +103,8 @@
                 alert('reset');
                 document.getElementById('code').value="";
                 document.getElementById('description').value="";
+                document.getElementById('id').value="0";
+                document.getElementById('pageName').value="";
 		
             }
         </script>

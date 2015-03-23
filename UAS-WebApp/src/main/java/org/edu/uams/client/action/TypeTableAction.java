@@ -145,10 +145,10 @@ public class TypeTableAction extends DispatchAction {
     private void checkUniqueCodeHelper(Type typeEntity, Long key, HttpServletResponse response) throws IOException {
         if (typeEntity!=null) {
             Long pkKey= typeEntity.getId();
-            if (key!=null && key>0 && !pkKey.equals(key)) {
-                response.getWriter().write("true");
-            }else{
+            if (key!=null && key>0 && pkKey.equals(key)) {
                 response.getWriter().write("false");
+            }else{
+                response.getWriter().write("true");
             }
         }else{
             response.getWriter().write("false");
