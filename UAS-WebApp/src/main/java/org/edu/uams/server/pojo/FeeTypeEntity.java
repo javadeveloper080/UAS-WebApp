@@ -1,18 +1,18 @@
 package org.edu.uams.server.pojo;
 
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.edu.uams.server.api.Type;
 
 
 @Entity(name = "FeeType")
 @Table(name = "fee_type")
-public class FeeTypeEntity implements Serializable {
+public class FeeTypeEntity implements Type {
     
     /**
      *
@@ -35,6 +35,7 @@ public class FeeTypeEntity implements Serializable {
     @Column(name = "description", nullable = false, length =100)
     private String description;
     
+    @Override
     public long getId() {
         return id;
     }
