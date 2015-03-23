@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+
+	<!-- Posgres usage -->
+
+
+	 <session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/NGP_DB</property>
+		<property name="hibernate.default_schema">uams</property>
+		<property name="hibernate.connection.username">jdbcusr</property>
+		<property name="hibernate.connection.password">password</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		
+		
+                <mapping class="org.edu.uams.server.pojo.CourseMasterEntity" />
+                <mapping class="org.edu.uams.server.pojo.ExamMasterEntity" />
+                <mapping class="org.edu.uams.server.pojo.ResultMasterEntity" />
+                <mapping class="org.edu.uams.server.pojo.SessionMasterEntity" />
+                <mapping class="org.edu.uams.server.pojo.StudentCourseEntity" />
+                <mapping class="org.edu.uams.server.pojo.UserMasterEntity" />
+                <mapping class="org.edu.uams.server.pojo.UserMasterTypeEntity"/>
+                <mapping class="org.edu.uams.server.pojo.AdminEntity"/>
+                <mapping class="org.edu.uams.server.pojo.QuestionMasterEntity"/>
+                <!-- 		<mapping class="org.edu.uams.server.pojo.ConfigurationMasterEntity"/> -->
+                <mapping class="org.edu.uams.server.pojo.ForumMasterEntity"/>
+                <mapping class="org.edu.uams.server.pojo.ForumSubscribersEntity" />
+                <mapping class="org.edu.uams.server.pojo.DocumentEntity" />
+           
+           
+                <mapping class="org.edu.uams.server.pojo.Account" />
+           <mapping class="org.edu.uams.server.pojo.FeeTypeEntity" />
+           <mapping class="org.edu.uams.server.pojo.FeeCategoryTypeEntity" />
+           <mapping class="org.edu.uams.server.pojo.FeeDetailsEntity" />
+           <mapping class="org.edu.uams.server.pojo.FeeMasterEntity" />
+	
+
+	</session-factory>
+
+			
+		
+</hibernate-configuration> 
