@@ -36,8 +36,9 @@ public class TypeTableAction extends DispatchAction {
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
         {
-            typeTableForm.resetForm();
+            
             FeeTypeEntity feeTypeEntity = feeTypeDao.findByPrimaryKey(typeTableForm.getId());
+            typeTableForm.resetForm();
             typeTableForm.setCode(feeTypeEntity.getCode());
             typeTableForm.setDescription(feeTypeEntity.getDescription());
             typeTableForm.setId(feeTypeEntity.getId());
@@ -50,6 +51,7 @@ public class TypeTableAction extends DispatchAction {
             feeTypeEntity.setDescription(typeTableForm.getDescription());
             feeTypeDao.update(feeTypeEntity);
             typeTableForm.resetForm();
+            
         }
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitAddType"))
@@ -81,8 +83,9 @@ public class TypeTableAction extends DispatchAction {
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
         {
-            typeTableForm.resetForm();
+            
             FeeCategoryTypeEntity feeCategoryType = feeCategoryTypeDao.findByPrimaryKey(typeTableForm.getId());
+            typeTableForm.resetForm();
             typeTableForm.setCode(feeCategoryType.getCode());
             typeTableForm.setDescription(feeCategoryType.getDescription());
             typeTableForm.setId(feeCategoryType.getId());

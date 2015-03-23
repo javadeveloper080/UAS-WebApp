@@ -1,10 +1,12 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.form;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 
 public class TypeTableForm extends ActionForm {
@@ -63,5 +65,15 @@ public class TypeTableForm extends ActionForm {
         this.code = null;
         this.description = null;
         this.typeFormList = null;
+        this.id = 0l;
     }
+    
+//    @Override
+//    public void reset(ActionMapping mapping, HttpServletRequest request) {
+//        this.pageName = null;
+//        this.code = null;
+//        this.description = null;
+//        this.typeFormList = null;
+//        this.id = 0l;
+//    }
 }

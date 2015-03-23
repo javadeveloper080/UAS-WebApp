@@ -61,7 +61,7 @@
                     
                     success: function(response){
                         if(response=='true'){
-                            alert('Code is present');
+                            alert('Code is '+code+' present');
                             document.getElementById('code').focus();
                             return false;
                         }

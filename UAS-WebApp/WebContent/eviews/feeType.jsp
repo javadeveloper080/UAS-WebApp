@@ -30,26 +30,44 @@
         
         <script>
             
-            
-            
-            function checkUniqueCode() {
-                // get the form values
-                var name = document.getElementById('code').value;
-                alert('Submit Form'+name);
+           
+             function validateForm() {
+                alert("Validate Form Values");
+                 // get the form values
+                var code = document.getElementById('code').value;
+                var description = document.getElementById('description').value;
+                
+                if (code== null || code =="") {
+                    alert("Please Enter Code");
+                    document.getElementById('code').cfocus();
+                    return false;
+                }
+				
+                if (description == null || description =="") {
+                    alert("Please Enter Description");
+                    document.getElementById('description').focus();
+                    return false;
+                }
+      
+                var id =document.getElementById('id').value;	
                 $.ajax({
                     type: "POST",
                     url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                     data: {
-                        "code": name,
-                        "pageName": "FeeType"
+                        "code": code,
+                        "pageName": "FeeType",
+                        "id": id
                     },
+                    
                     success: function(response){
                         if(response=='true'){
-                            alert('Code is present');
+                            alert('Code is '+code+' present');
                             document.getElementById('code').focus();
                             return false;
                         }
-                        return true;
+                        else{
+                            submitForm();
+                        }
                     },
                     error: function(e){
                         alert('Error: ' + e);
@@ -69,26 +87,6 @@
     
             function submitForm() {
                 alert('Submit Form');
-                var code = document.getElementById('code').value;
-                var description = document.getElementById('description').value;
-                
-                if (code== null || code =="") {
-                    alert("Please Enter Code");
-                    document.getElementById('code').cfocus();
-                    return false;
-                }
-				
-                if (description == null || description =="") {
-                    alert("Please Enter Description");
-                    document.getElementById('description').focus();
-                    return false;
-                }
-                if(!checkUniqueCode()){
-                    return false;
-                }
-                
-           
-                
                 var id =document.getElementById('id').value;	
                 if(id != null && id>0){
                     document.getElementById('pageName').value ="SubmitEditType"	
@@ -142,7 +140,7 @@
                                 <html:hidden name="typeTableForm" property="id" styleId="id"/>
                                 <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                 <div align="center">
-                                    <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="submitForm();" />
+                                    <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
                                 </div> 
                                 
