@@ -38,7 +38,7 @@
                 alert('Submit Form'+name);
                 $.ajax({
                     type: "POST",
-                    url: "/UAS_WebApp/typeTableAction.do?method=checkUniqueCode",
+                    url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                     data: {
                         "code": name,
                         "pageName": "FeeType"

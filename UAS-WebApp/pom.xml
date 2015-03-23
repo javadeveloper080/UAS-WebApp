@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>UAS-WebApp</groupId>
-	<artifactId>UAS-WebApp</artifactId>
+	<groupId>UAMS-WebApp</groupId>
+	<artifactId>UAMS-WebApp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>UAS-WebApp</name>
-	<description>UAS-WebApp description</description>
+	<name>UAMS-WebApp</name>
+	<description>UAMS-WebApp description</description>
 
 	<url>http://maven.apache.org</url>
 
@@ -134,7 +134,7 @@
 
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -178,7 +178,7 @@
 		</plugins>
 
 
-		<finalName>UAS-WebApp</finalName>
+		<finalName>UAMS-WebApp</finalName>
 	</build>
 
 

@@ -25,7 +25,7 @@
                 $("#jqGrid").jqGrid({
                     url: 'eviews/data/data.json',
                     // we set the changes to be made at client side using predefined word clientArray
-                    editurl: 'http://localhost:8084/UAS_WebApp/courseAction.do?method=gridExample',
+                    editurl: 'http://localhost:8084/UAMS-WebApp/courseAction.do?method=gridExample',
                     datatype: "json",
                     colModel: [
                         {

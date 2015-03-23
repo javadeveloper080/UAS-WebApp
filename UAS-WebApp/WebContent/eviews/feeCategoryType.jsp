@@ -52,7 +52,7 @@
                 var id =document.getElementById('id').value;	
                 $.ajax({
                     type: "POST",
-                    url: "/UAS_WebApp/typeTableAction.do?method=checkUniqueCode",
+                    url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                     data: {
                         "code": code,
                         "pageName": "FeeCategoryType",
