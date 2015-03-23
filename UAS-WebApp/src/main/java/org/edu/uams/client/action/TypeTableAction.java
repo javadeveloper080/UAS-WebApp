@@ -65,7 +65,8 @@ public class TypeTableAction extends DispatchAction {
         if(!feeTypeList.isEmpty()){
             typeTableForm.setTypeFormList(feeTypeList);
         }
-        
+        req.setAttribute("feeModule", "true");
+         req.setAttribute("feeTypePage", "true");
         return mapping.findForward("feeTypePage");
     }
     
@@ -110,7 +111,8 @@ public class TypeTableAction extends DispatchAction {
         if(!feeCategoryTypeList.isEmpty()){
             typeTableForm.setTypeFormList(feeCategoryTypeList);
         }
-        
+         req.setAttribute("feeModule", "true");
+         req.setAttribute("feeCategoryTypePage", "true");
         return mapping.findForward("feeCategoryTypePage");
     }
     
