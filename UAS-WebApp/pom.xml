@@ -130,6 +130,17 @@
 	  <artifactId>struts-scripting</artifactId>
 	  <version>1.3.10</version>
 	 </dependency>
+         <dependency>
+             <groupId>org.codehaus.jackson</groupId>
+             <artifactId>jackson-mapper-asl</artifactId>
+             <version>1.9.13</version>
+         </dependency>
+         <dependency>
+	<groupId>jstl</groupId>
+	<artifactId>jstl</artifactId>
+	<version>1.2</version>
+</dependency>
+
 	</dependencies>
 
 
@@ -167,19 +178,19 @@
 					<delete dir="D:/glassfish-3.1.2.2/glassfish/domains/domain/generated" includeemptydirs="true" includes="**/*"/>
 					<copy file="D:/Jenzabar_MS_WorkSpace/UAS-WebApp/target/UAS-WebApp.war" todir="D:/glassfish-3.1.2.2/glassfish/domains/domain/autodeploy"/>
 
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>-->
-		</plugins>
+                    </target>
+                  </configuration>
+                  <goals>
+                    <goal>run</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>-->
+        </plugins>
 
 
-		<finalName>UAMS-WebApp</finalName>
-	</build>
+        <finalName>UAMS-WebApp</finalName>
+    </build>
 
 
 </project>
