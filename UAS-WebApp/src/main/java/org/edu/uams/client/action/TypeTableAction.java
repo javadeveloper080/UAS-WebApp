@@ -1,8 +1,9 @@
-/**
- *
- */
+ /**
+  *
+  */
 package org.edu.uams.client.action;
 
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.TypeTableForm;
+import org.edu.uams.server.api.Type;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
 import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
@@ -125,30 +127,30 @@ public class TypeTableAction extends DispatchAction {
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("FeeType"))
         {
             FeeTypeDao feeTypeDao = new FeeTypeDao();
-            FeeTypeEntity feeTypeEntity =feeTypeDao.findByCode(typeTableForm.getCode());
-            if (feeTypeEntity!=null) {
-                Long pkKey= feeTypeEntity.getId();
-                if (key!=null && key>0 && !pkKey.equals(key)) {
-                    response.getWriter().write("true");
-                }else{
-                    response.getWriter().write("false");
-                }
-            }else{
-                response.getWriter().write("false");
-            }
+            Type typeEntity =feeTypeDao.findByCode(typeTableForm.getCode());
+            checkUniqueCodeHelper(typeEntity, key, response);
         }
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("FeeCategoryType"))
         {
             FeeCategoryTypeDao feeCategoryTypeDao = new FeeCategoryTypeDao();
-            FeeCategoryTypeEntity feeCategoryType =feeCategoryTypeDao.findByCode(typeTableForm.getCode());
-            if (feeCategoryType!=null) {
+            Type typeEntity =feeCategoryTypeDao.findByCode(typeTableForm.getCode());
+            checkUniqueCodeHelper(typeEntity, key, response);
+        }
+        return null;
+    }
+    
+    private void checkUniqueCodeHelper(Type typeEntity, Long key, HttpServletResponse response) throws IOException {
+        if (typeEntity!=null) {
+            Long pkKey= typeEntity.getId();
+            if (key!=null && key>0 && !pkKey.equals(key)) {
                 response.getWriter().write("true");
             }else{
                 response.getWriter().write("false");
             }
+        }else{
+            response.getWriter().write("false");
         }
-        return null;
     }
     
     

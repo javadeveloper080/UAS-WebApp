@@ -40,27 +40,29 @@ public class FeeTypeEntity implements Type {
         return id;
     }
     
+    @Override
     public void setId(long id) {
         this.id = id;
     }
     
+    @Override
     public String getCode() {
         return code;
     }
     
+    @Override
     public void setCode(String code) {
         this.code = code;
     }
     
+    @Override
     public String getDescription() {
         return description;
     }
     
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
     
 }
