@@ -1,6 +1,6 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.action;
 
 import java.util.List;
@@ -119,12 +119,20 @@ public class TypeTableAction extends DispatchAction {
         TypeTableForm typeTableForm = (TypeTableForm)form;
         response.setContentType("text/text;charset=utf-8");
         response.setHeader("cache-control", "no-cache");
+        
+        Long key = typeTableForm.getId();
+        
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("FeeType"))
         {
             FeeTypeDao feeTypeDao = new FeeTypeDao();
             FeeTypeEntity feeTypeEntity =feeTypeDao.findByCode(typeTableForm.getCode());
             if (feeTypeEntity!=null) {
-                response.getWriter().write("true");
+                Long pkKey= feeTypeEntity.getId();
+                if (key!=null && key>0 && !pkKey.equals(key)) {
+                    response.getWriter().write("true");
+                }else{
+                    response.getWriter().write("false");
+                }
             }else{
                 response.getWriter().write("false");
             }
