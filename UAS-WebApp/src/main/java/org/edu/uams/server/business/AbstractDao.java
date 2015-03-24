@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.edu.uams.server.api.Dao;
-import org.edu.uams.server.pojo.CourseMasterEntity;
 import org.edu.uams.server.util.SessionFactoryUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
