@@ -86,6 +86,10 @@
      <definition name="FeeCategoryTypePage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/feeCategoryType.jsp" />
     </definition>
+    
+    <definition name="DegreeTypePage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/degreeType.jsp" />
+    </definition>
     <!--Type table Entry ends-->
     
     

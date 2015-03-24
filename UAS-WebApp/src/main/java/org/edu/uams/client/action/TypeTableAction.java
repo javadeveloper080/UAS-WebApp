@@ -1,6 +1,6 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.action;
 
 import java.io.IOException;
@@ -14,8 +14,10 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.TypeTableForm;
 import org.edu.uams.server.api.Type;
+import org.edu.uams.server.business.DegreeTypeDao;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
+import org.edu.uams.server.pojo.DegreeTypeEntity;
 import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
 import org.edu.uams.server.pojo.FeeTypeEntity;
 
@@ -68,7 +70,7 @@ public class TypeTableAction extends DispatchAction {
             typeTableForm.setTypeFormList(feeTypeList);
         }
         req.setAttribute("feeModule", "true");
-         req.setAttribute("feeTypePage", "true");
+        req.setAttribute("feeTypePage", "true");
         return mapping.findForward("feeTypePage");
     }
     
@@ -114,9 +116,58 @@ public class TypeTableAction extends DispatchAction {
         if(!feeCategoryTypeList.isEmpty()){
             typeTableForm.setTypeFormList(feeCategoryTypeList);
         }
-         req.setAttribute("feeModule", "true");
-         req.setAttribute("feeCategoryTypePage", "true");
+        req.setAttribute("feeModule", "true");
+        req.setAttribute("feeCategoryTypePage", "true");
         return mapping.findForward("feeCategoryTypePage");
+    }
+    
+    
+    
+    public ActionForward degreeTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        
+        TypeTableForm typeTableForm = (TypeTableForm)form;
+        System.out.println("typeTableForm:"+typeTableForm.getPageName());
+        DegreeTypeDao degreeTypeDao = new DegreeTypeDao();
+        
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
+        {
+            
+            DegreeTypeEntity degreeTypeEntity = degreeTypeDao.findByPrimaryKey(typeTableForm.getId());
+            typeTableForm.resetForm();
+            typeTableForm.setCode(degreeTypeEntity.getCode());
+            typeTableForm.setDescription(degreeTypeEntity.getDescription());
+            typeTableForm.setId(degreeTypeEntity.getId());
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitEditType"))
+        {
+            DegreeTypeEntity degreeTypeEntity = degreeTypeDao.findByPrimaryKey(typeTableForm.getId());
+            degreeTypeEntity.setCode(typeTableForm.getCode());
+            degreeTypeEntity.setDescription(typeTableForm.getDescription());
+            degreeTypeDao.update(degreeTypeEntity);
+            typeTableForm.resetForm();
+            
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitAddType"))
+        {
+            DegreeTypeEntity degreeTypeEntity = new DegreeTypeEntity();
+            degreeTypeEntity.setCode(typeTableForm.getCode());
+            degreeTypeEntity.setDescription(typeTableForm.getDescription());
+            degreeTypeDao.persist(degreeTypeEntity);
+            typeTableForm.resetForm();
+        }
+        
+        List<DegreeTypeEntity> degreeTypeList = degreeTypeDao.findAll();
+        if(!degreeTypeList.isEmpty()){
+            typeTableForm.setTypeFormList(degreeTypeList);
+        }
+        req.setAttribute("courseModule", "true");
+        req.setAttribute("degreeTypePage", "true");
+        return mapping.findForward("degreeTypePage");
     }
     
     
@@ -142,6 +193,17 @@ public class TypeTableAction extends DispatchAction {
             Type typeEntity =feeCategoryTypeDao.findByCode(typeTableForm.getCode());
             checkUniqueCodeHelper(typeEntity, key, response);
         }
+        
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("DegreeType"))
+        {
+            DegreeTypeDao degreeTypeDao = new DegreeTypeDao();
+            Type typeEntity =degreeTypeDao.findByCode(typeTableForm.getCode());
+            checkUniqueCodeHelper(typeEntity, key, response);
+        }
+        
+        
+           
         return null;
     }
     

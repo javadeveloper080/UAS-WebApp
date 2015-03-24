@@ -61,6 +61,7 @@
 			scope="request" type="org.edu.uams.client.action.TypeTableAction">
 			<forward name="feeTypePage" path="FeeTypePage" />
                         <forward name="feeCategoryTypePage" path="FeeCategoryTypePage" />
+                        <forward name="degreeTypePage" path="DegreeTypePage" />
 		</action>
                 <!--Type table Entry ends-->
 
