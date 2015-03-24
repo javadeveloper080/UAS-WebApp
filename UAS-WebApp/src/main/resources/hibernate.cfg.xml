@@ -42,7 +42,7 @@
            <mapping class="org.edu.uams.server.pojo.FeeDetailsEntity" />
            <mapping class="org.edu.uams.server.pojo.FeeMasterEntity" />
               <mapping class="org.edu.uams.server.pojo.DegreeTypeEntity" />
-	
+	 <mapping class="org.edu.uams.server.pojo.CourseTypeEntity" />
 
 	</session-factory>
 
