@@ -28,7 +28,114 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         
-        <script>
+        
+    </head>
+    <body>
+        
+    <section id="container" >
+        
+        
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                
+                <!-- BASIC FORM ELEMENTS -->
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h5><Strong>Add/Edit Fee type</Strong> </h5>
+                                  <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                                
+                                <table >
+                                    <tr>
+                                        <td class="form-field-control">
+                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
+                                            
+                                        </td>	
+                                        <td class="form-field-control">
+                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
+                                        <td>
+                                    </tr>
+                                </table>
+                                <html:hidden name="typeTableForm" property="id" styleId="id"/>
+                                <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
+                                <div align="center">
+                                    <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
+                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
+                                </div> 
+                                
+                                
+                            </html:form>
+                        </div>
+                    </div><!-- col-lg-12-->      	
+                </div><!-- /row -->
+                
+                
+                <!-- GRID ELEMENTS -->
+                <div class="row mt">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <table class="table table-striped table-advance table-hover">
+                                <h4><i class="fa fa-angle-right"></i> Fee type table</h4>
+                                <hr>
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa fa-bullhorn"></i> Code</th>
+                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <logic:notEmpty name="typeTableForm" property="typeFormList">
+                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">
+                                            <tr>
+                                                <td><bean:write name="typeTable" property="code"/></td>
+                                                <td><bean:write name="typeTable" property="description"/></td>
+                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </logic:notEmpty>
+                                </tbody>
+                            </table>
+                        </div><!-- /content-panel -->
+                    </div><!-- /col-md-12 -->
+                </div><!-- /row -->
+                
+                
+                
+                
+                
+            </section><! --/wrapper -->
+        </section><!-- /MAIN CONTENT -->
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--main content end-->
+        
+    </section>
+    
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    
+    
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <!--script for this page-->
+    
+    <script>
             
            
              function validateForm() {
@@ -106,120 +213,7 @@
 		
             }
         </script>
-    </head>
-    <body>
-        
-    <section id="container" >
-        
-        
-        <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-        <!--main content start-->
-        <section id="main-content">
-            <section class="wrapper">
-                
-                <!-- BASIC FORM ELEMENTS -->
-                <div class="row mt">
-                    <div class="col-lg-12">
-                        <div class="form-panel">
-                            <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                  <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
-                                
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                </table>
-                                <html:hidden name="typeTableForm" property="id" styleId="id"/>
-                                <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
-                                <div align="center">
-                                    <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
-                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
-                                </div> 
-                                
-                                
-                            </html:form>
-                        </div>
-                    </div><!-- col-lg-12-->      	
-                </div><!-- /row -->
-                
-                
-                <!-- GRID ELEMENTS -->
-                <div class="row mt">
-                    <div class="col-md-12">
-                        <div class="content-panel">
-                            <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
-                                <hr>
-                                <thead>
-                                    <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Code</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">
-                                            <tr>
-                                                <td><bean:write name="typeTable" property="code"/></td>
-                                                <td><bean:write name="typeTable" property="description"/></td>
-                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>
-                                            </tr>
-                                        </logic:iterate>
-                                    </logic:notEmpty>
-                                </tbody>
-                            </table>
-                        </div><!-- /content-panel -->
-                    </div><!-- /col-md-12 -->
-                </div><!-- /row -->
-                
-                
-                
-                
-                
-            </section><! --/wrapper -->
-        </section><!-- /MAIN CONTENT -->
-        
-        
-        
-        
-        
-        
-        
-        
-        <!--main content end-->
-        
-    </section>
-    
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-    
-    
-    <!--common script for all pages-->
-    <script src="assets/js/common-scripts.js"></script>
-    
-    <!--script for this page-->
-    
-    <script>
-        //custom select box
 
-        $(function(){
-            $('select.styled').customSelect();
-        });
-
-    </script>
     
 </body>
 </html>
