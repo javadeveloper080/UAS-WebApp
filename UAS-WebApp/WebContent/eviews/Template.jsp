@@ -8,7 +8,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <title>UAMS WebApp</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -84,7 +84,7 @@
         $(document).ready(function () {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
+            title: 'Welcome to UAMS WebApp!',
             // (string | mandatory) the text inside the notification
             text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
             // (string | optional) the image to display on the left
