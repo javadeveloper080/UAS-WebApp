@@ -51,17 +51,6 @@
                 </ul>
             </li>
             
-             <li class="sub-menu">
-                <a href="javascript:;"  >
-                    <i class="fa fa-th"></i>
-                    <span>Employee</span>
-                </a>
-                    
-                <ul class="sub">
-                    <li ><a  href="typeTableAction.do?method=feeTypePage">Employee Profiles</a></li>
-                </ul>
-            </li>
-            
             
              <li class="sub-menu">
                <a href="javascript:;" <c:if test="${requestScope.courseModule != null}"> class="active"</c:if>>
@@ -70,7 +59,19 @@
                 </a>
                     
                 <ul class="sub">
-                    <li <c:if test="${requestScope.degreeTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=feeTypePage">Course Type</a></li>
+                    <li <c:if test="${requestScope.degreeTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=degreeTypePage">Degree Type</a></li>
+                </ul>
+            </li>
+            
+            
+              <li class="sub-menu">
+                <a href="javascript:;"  >
+                    <i class="fa fa-th"></i>
+                    <span>Employee</span>
+                </a>
+                    
+                <ul class="sub">
+                    <li ><a  href="typeTableAction.do?method=feeTypePage">Employee Profiles</a></li>
                 </ul>
             </li>
                 
