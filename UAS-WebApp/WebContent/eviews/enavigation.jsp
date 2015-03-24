@@ -61,6 +61,10 @@
                 <ul class="sub">
                     <li <c:if test="${requestScope.degreeTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=degreeTypePage">Degree Type</a></li>
                 </ul>
+                
+                 <ul class="sub">
+                    <li <c:if test="${requestScope.courseTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=courseTypePage">Course Type</a></li>
+                </ul>
             </li>
             
             
