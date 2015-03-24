@@ -1,6 +1,6 @@
-/**
- *
- */
+ /**
+  *
+  */
 package org.edu.uams.client.action;
 
 import java.io.IOException;
@@ -14,9 +14,11 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.TypeTableForm;
 import org.edu.uams.server.api.Type;
+import org.edu.uams.server.business.CourseTypeDao;
 import org.edu.uams.server.business.DegreeTypeDao;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
+import org.edu.uams.server.pojo.CourseTypeEntity;
 import org.edu.uams.server.pojo.DegreeTypeEntity;
 import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
 import org.edu.uams.server.pojo.FeeTypeEntity;
@@ -171,6 +173,54 @@ public class TypeTableAction extends DispatchAction {
     }
     
     
+    public ActionForward courseTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        
+        TypeTableForm typeTableForm = (TypeTableForm)form;
+        System.out.println("typeTableForm:"+typeTableForm.getPageName());
+        CourseTypeDao courseTypeDao = new CourseTypeDao();
+        
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
+        {
+            
+            CourseTypeEntity courseTypeEntity = courseTypeDao.findByPrimaryKey(typeTableForm.getId());
+            typeTableForm.resetForm();
+            typeTableForm.setCode(courseTypeEntity.getCode());
+            typeTableForm.setDescription(courseTypeEntity.getDescription());
+            typeTableForm.setId(courseTypeEntity.getId());
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitEditType"))
+        {
+            CourseTypeEntity courseTypeEntity = courseTypeDao.findByPrimaryKey(typeTableForm.getId());
+            courseTypeEntity.setCode(typeTableForm.getCode());
+            courseTypeEntity.setDescription(typeTableForm.getDescription());
+            courseTypeDao.update(courseTypeEntity);
+            typeTableForm.resetForm();
+            
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitAddType"))
+        {
+            CourseTypeEntity courseTypeEntity = new CourseTypeEntity();
+            courseTypeEntity.setCode(typeTableForm.getCode());
+            courseTypeEntity.setDescription(typeTableForm.getDescription());
+            courseTypeDao.persist(courseTypeEntity);
+            typeTableForm.resetForm();
+        }
+        
+        List<CourseTypeEntity> courseTypeList = courseTypeDao.findAll();
+        if(!courseTypeList.isEmpty()){
+            typeTableForm.setTypeFormList(courseTypeList);
+        }
+        req.setAttribute("courseModule", "true");
+        req.setAttribute("courseTypePage", "true");
+        return mapping.findForward("courseTypePage");
+    }
+    
+    
     public ActionForward checkUniqueCode(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -201,9 +251,15 @@ public class TypeTableAction extends DispatchAction {
             Type typeEntity =degreeTypeDao.findByCode(typeTableForm.getCode());
             checkUniqueCodeHelper(typeEntity, key, response);
         }
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("CourseType"))
+        {
+            CourseTypeDao courseTypeDao = new CourseTypeDao();
+            Type typeEntity =courseTypeDao.findByCode(typeTableForm.getCode());
+            checkUniqueCodeHelper(typeEntity, key, response);
+        }
         
         
-           
+        
         return null;
     }
     

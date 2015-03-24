@@ -62,6 +62,7 @@
 			<forward name="feeTypePage" path="FeeTypePage" />
                         <forward name="feeCategoryTypePage" path="FeeCategoryTypePage" />
                         <forward name="degreeTypePage" path="DegreeTypePage" />
+                         <forward name="courseTypePage" path="CourseTypePage" />
 		</action>
                 <!--Type table Entry ends-->
 

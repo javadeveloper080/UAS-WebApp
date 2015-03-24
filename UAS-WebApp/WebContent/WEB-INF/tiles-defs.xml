@@ -11,33 +11,6 @@
 
 <tiles-definitions>
 
-    <!-- sample tiles definitions
-    <definition name=".mainLayout" path="/common/layouts/classicLayout.jsp">
-        <put name="title"  value="Sample Page Title" />
-        <put name="header" value="/common/header.jsp" />
-        <put name="menu"   value=".mainMenu" />
-        <put name="footer" value="/common/footer.jsp" />
-        <put name="body"   value=".portal.body" />
-    </definition>
-
-    <definition name=".mainMenu" path="/common/layouts/vboxLayout.jsp" >
-        <putList name="list" >
-            <add value=".menu.links" />
-            <add value=".menu.taglib.references" />
-            <add value=".menu.printer.friendly" />
-            <add value=".menu.old.documents" />
-      </putList>
-    </definition>
-
-    <definition name="aPage" extends=".mainLayout">
-        <put name="title"  value="Another Title" />
-        <put name="body"   value=".aPage.body" />
-    </definition>
-
-    end samples -->
-
-    <definition name="${YOUR_DEFINITION_HERE}">
-    </definition>
 
     <definition name="baseLayout" path="/views/baseLayout.jsp">
         <put name="title"  value="Tiles Example" />
@@ -48,7 +21,7 @@
     </definition>
     
     
-     <definition name="baseTemplateLayout" path="/eviews/Template.jsp">
+    <definition name="baseTemplateLayout" path="/eviews/Template.jsp">
         <put name="title"  value="Tiles Example" />
         <put name="header" value="/eviews/header.jsp" />
         <put name="menu"   value="/eviews/enavigation.jsp" />
@@ -64,7 +37,7 @@
     <definition name="adminHome" extends="baseTemplateLayout">
     </definition>
     
-     <definition name="MainFeeLayout" path="/eviews/Template.jsp">
+    <definition name="MainFeeLayout" path="/eviews/Template.jsp">
         <put name="title"  value="Tiles Example" />
         <put name="header" value="/eviews/header.jsp" />
         <put name="menu"   value="/eviews/enavigation.jsp" />
@@ -74,16 +47,21 @@
     
     
     <!--Type table Entry starts-->
-     <definition name="FeeTypePage" extends="baseTemplateLayout">
+    <definition name="FeeTypePage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/feeType.jsp" />
     </definition>
     
-     <definition name="FeeCategoryTypePage" extends="baseTemplateLayout">
+    <definition name="FeeCategoryTypePage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/feeCategoryType.jsp" />
     </definition>
     
     <definition name="DegreeTypePage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/degreeType.jsp" />
+    </definition>
+    
+    
+    <definition name="CourseTypePage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/courseType.jsp" />
     </definition>
     <!--Type table Entry ends-->
     
@@ -92,7 +70,7 @@
     
     
     
-     <definition name="addCourse" extends="MainFeeLayout">
+    <definition name="addCourse" extends="MainFeeLayout">
         <put name="title" value="Fee" />
         <!--<put name="body" value="/views/fee.jsp" />-->
         <put name="body" value="/eviews/addCourse.jsp" />
