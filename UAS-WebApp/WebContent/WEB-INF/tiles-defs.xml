@@ -91,6 +91,11 @@
         <put name="body" value="/eviews/grid.jsp" />
     </definition>
     
+     <definition name="studentLayout" extends="baseTemplateLayout">
+        <put name="title" value="Student" />
+        <!--<put name="body" value="/views/fee.jsp" />-->
+        <put name="body" value="/eviews/student.jsp" />
+    </definition>
     <definition name="UsersPage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/users.jsp" />
     </definition>

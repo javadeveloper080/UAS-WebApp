@@ -95,7 +95,16 @@
                 </ul>
             </li>
                 
-                
+            <li class="sub-menu">
+                <a href="javascript:;"  <c:if test="${requestScope.studentModule != null}"> class="active"</c:if>>
+                    <i class="fa fa-th"></i>
+                    <span>Student</span>
+                </a>
+
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do">Student Details</a></li>
+                </ul>
+            </li>
                 
         </ul>
         <!-- sidebar menu end-->

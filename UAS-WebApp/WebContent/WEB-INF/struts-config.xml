@@ -8,6 +8,7 @@
 <struts-config>
 
     <form-beans>
+            <form-bean name="StudentForm" type="org.edu.uams.client.form.StudentForm"/>
 
         <form-bean name="loginForm" type="org.edu.uams.client.form.LoginForm" />
         <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
@@ -18,9 +19,15 @@
         <form-bean name="courseForm" type="org.edu.uams.client.form.CourseForm" />
         <form-bean name="examForm" type="org.edu.uams.client.form.ExamForm" />
 
+		<form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
+		<form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
+		<form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
         <form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
         <form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
         <form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
+                <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
+                <form-bean name="studentForm" type="org.edu.uams.client.form.StudentForm" ></form-bean>
+	</form-beans>
          
     </form-beans>
 
@@ -153,6 +160,10 @@
         <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
             <forward name="fee" path="MainFeeLayout"></forward>
         </action>
+                <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
+                  scope="request" >
+                    <forward name="student" path="studentLayout" ></forward>
+                </action>
                 
 
 
