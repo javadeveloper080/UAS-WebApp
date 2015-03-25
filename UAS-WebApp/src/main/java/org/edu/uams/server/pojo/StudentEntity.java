@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "StudentEntity.findByPhoto", query = "SELECT s FROM StudentEntity s WHERE s.photo = :photo"),
     @NamedQuery(name = "StudentEntity.findByPath", query = "SELECT s FROM StudentEntity s WHERE s.path = :path")})
 public class StudentEntity implements Serializable {
+    
+    public static final String FIND_ALL="StudentEntity.findAll";
+    
     private static final long serialVersionUID = 1L;
     @Column(name = "admn_num")
     private Long admnNum;
