@@ -6,9 +6,9 @@ import java.util.Map;
 
 import org.edu.uams.server.pojo.UserMasterTypeEntity;
 
-public class UsersRoleTypeDao extends AbstractDao<UserMasterTypeEntity> {
+public class UserMasterTypeDao extends AbstractDao<UserMasterTypeEntity> {
     
-    public UsersRoleTypeDao() {
+    public UserMasterTypeDao() {
         super(UserMasterTypeEntity.class);
     }
     

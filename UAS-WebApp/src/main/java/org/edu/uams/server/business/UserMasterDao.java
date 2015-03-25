@@ -28,7 +28,7 @@ public class UserMasterDao extends AbstractDao<UserMasterEntity> {
     public boolean checkUserLogin(String userName, String pwd) {
         UserMasterEntity userMasterEntity=findUserName(userName);
         if (userMasterEntity!=null) {
-            if (userMasterEntity.getUserName().equals(userName) && userMasterEntity.getPassWord().equals(pwd)) {
+            if (userMasterEntity.getUserName().equals(userName) && userMasterEntity.getPassword().equals(pwd)) {
                 return true;
             }
         }

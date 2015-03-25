@@ -7,7 +7,7 @@ import org.edu.uams.server.business.CourseMasterDao;
 import org.edu.uams.server.business.QuestionMasterDao;
 import org.edu.uams.server.business.SessionMasterDao;
 import org.edu.uams.server.business.UserMasterDao;
-import org.edu.uams.server.business.UsersRoleTypeDao;
+import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.CourseMasterEntity;
 import org.edu.uams.server.pojo.QuestionMasterEntity;
 import org.edu.uams.server.pojo.SessionMasterEntity;
@@ -16,7 +16,7 @@ import org.edu.uams.server.pojo.UserMasterTypeEntity;
 
 public class ApplicationIntializer {
     
-    private static UsersRoleTypeDao userMasterTypeDao=null;
+    private static UserMasterTypeDao userMasterTypeDao=null;
     private static CourseMasterDao courseMasterDao=null;
     private static SessionMasterDao sessionMasterDao=null;
     
@@ -32,7 +32,7 @@ public class ApplicationIntializer {
     
     private static void createUserMasterTypeValues() {
         
-        userMasterTypeDao=new UsersRoleTypeDao();
+        userMasterTypeDao=new UserMasterTypeDao();
         List<UserMasterTypeEntity> userTypelist = userMasterTypeDao.findAll();
         
         if (userTypelist==null || userTypelist.isEmpty()) {
@@ -56,9 +56,9 @@ public class ApplicationIntializer {
         
         if (admin==null) {
             admin=new UserMasterEntity();
-            admin.setPassWord("pwd");
+            admin.setPassword("pwd");
             admin.setUserName(ApplicationConstants.ADMIN);
-            admin.setUserMasterTypeEntity(userMasterTypeDao.findByCode(ApplicationConstants.ADMIN));
+            admin.setUserTypeList(userMasterTypeDao.findByCode(ApplicationConstants.ADMIN));
             userMasterDao.persist(admin);
         }
     }

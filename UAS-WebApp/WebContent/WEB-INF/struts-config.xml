@@ -65,6 +65,7 @@
             <forward name="feeCategoryTypePage" path="FeeCategoryTypePage" />
             <forward name="degreeTypePage" path="DegreeTypePage" />
             <forward name="courseTypePage" path="CourseTypePage" />
+            <forward name="userTypePage" path="UserTypePage" />
         </action>
         <!--Type table Entry ends-->
                 
@@ -93,6 +94,7 @@
             <forward name="forgotPassWordPage" path="/views/forgotPass.jsp" />
             <forward name="userFound" path="/views/loginError.jsp" />
             <forward name="noUserFound" path="/views/loginError.jsp" />
+            <forward name="usersPage" path="UsersPage" />
             <!--			<forward name="userLoginPage" path="/views/userLoginPage.jsp" />
             <forward name="studentPage" path="/views/studentHome.jsp" />
             <forward name="professorPage" path="/views/professorHome.jsp" />-->

@@ -1,18 +1,18 @@
 package org.edu.uams.server.pojo;
 
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.edu.uams.server.api.Type;
 
 
 @Entity(name = "UserMasterType")
-@Table(name = "users_role_type")
-public class UserMasterTypeEntity implements Serializable {
+@Table(name = "user_master_type")
+public class UserMasterTypeEntity implements Type {
     
     /**
      *

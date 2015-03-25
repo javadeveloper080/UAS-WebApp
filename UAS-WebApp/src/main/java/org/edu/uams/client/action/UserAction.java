@@ -15,7 +15,7 @@ import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.DisplayMessageForm;
 import org.edu.uams.client.form.UserForm;
 import org.edu.uams.server.business.UserMasterDao;
-import org.edu.uams.server.business.UsersRoleTypeDao;
+import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.UserMasterEntity;
 
 /**
@@ -51,7 +51,7 @@ public class UserAction extends DispatchAction {
 		UserMasterEntity userMasterEntity=new UserMasterEntity();
 		setValues(userForm, userMasterEntity);
 		userMasterEntity=userMasterDao.persist(userMasterEntity);
-		if (userMasterEntity.getUserId()>0) {
+		if (userMasterEntity.getId()>0) {
 			DisplayMessageForm displayMessageForm=new DisplayMessageForm();
 			displayMessageForm.setMessage("Congrats registration sucessfull. please login");
 			req.setAttribute("displayMessageForm", displayMessageForm);

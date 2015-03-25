@@ -18,10 +18,12 @@ import org.edu.uams.server.business.CourseTypeDao;
 import org.edu.uams.server.business.DegreeTypeDao;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
+import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.CourseTypeEntity;
 import org.edu.uams.server.pojo.DegreeTypeEntity;
 import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
 import org.edu.uams.server.pojo.FeeTypeEntity;
+import org.edu.uams.server.pojo.UserMasterTypeEntity;
 
 
 public class TypeTableAction extends DispatchAction {
@@ -122,7 +124,53 @@ public class TypeTableAction extends DispatchAction {
         req.setAttribute("feeCategoryTypePage", "true");
         return mapping.findForward("feeCategoryTypePage");
     }
-    
+
+    public ActionForward userTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        TypeTableForm typeTableForm = (TypeTableForm)form;
+        System.out.println("typeTableForm:"+typeTableForm.getPageName());
+        UserMasterTypeDao feeCategoryTypeDao = new UserMasterTypeDao();
+        
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
+        {
+            
+            UserMasterTypeEntity feeCategoryType = feeCategoryTypeDao.findByPrimaryKey(typeTableForm.getId());
+            typeTableForm.resetForm();
+            typeTableForm.setCode(feeCategoryType.getCode());
+            typeTableForm.setDescription(feeCategoryType.getDescription());
+            typeTableForm.setId(feeCategoryType.getId());
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitEditType"))
+        {
+            UserMasterTypeEntity feeCategoryType = feeCategoryTypeDao.findByPrimaryKey(typeTableForm.getId());
+            feeCategoryType.setCode(typeTableForm.getCode());
+            feeCategoryType.setDescription(typeTableForm.getDescription());
+            feeCategoryTypeDao.update(feeCategoryType);
+            typeTableForm.resetForm();
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitAddType"))
+        {
+            UserMasterTypeEntity feeCategoryType = new UserMasterTypeEntity();
+            feeCategoryType.setCode(typeTableForm.getCode());
+            feeCategoryType.setDescription(typeTableForm.getDescription());
+            feeCategoryTypeDao.persist(feeCategoryType);
+            typeTableForm.resetForm();
+        }
+        
+        List<UserMasterTypeEntity> feeCategoryTypeList = feeCategoryTypeDao.findAll();
+        typeTableForm.setTypeFormList(null);
+        if(!feeCategoryTypeList.isEmpty()){
+            typeTableForm.setTypeFormList(feeCategoryTypeList);
+        }
+        req.setAttribute("userModule", "true");
+        req.setAttribute("userTypePage", "true");
+        return mapping.findForward("userTypePage");
+    }
+
     
     
     public ActionForward degreeTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,

@@ -3,6 +3,7 @@
   */
 package org.edu.uams.client.action;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +17,7 @@ import org.edu.uams.server.api.EmailDTO;
 import org.edu.uams.server.api.UserContext;
 import org.edu.uams.server.business.AdminDao;
 import org.edu.uams.server.business.UserMasterDao;
+import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.AdminEntity;
 import org.edu.uams.server.pojo.UserMasterEntity;
 import org.edu.uams.server.util.SendMail;
@@ -46,9 +48,9 @@ public class LoginAction extends DispatchAction {
         UserMasterEntity userMasterEntity =userMasterDao.findByLoginName(loginForm.getUserName(),loginForm.getPassword());
         if (userMasterEntity!=null) {
             populateUserDetails(loginForm, userMasterEntity);
-            UserContext userContext=new UserContext(userMasterEntity.getUserId(), userMasterEntity.getUserName(),false,loginForm,userMasterEntity.getUserMasterTypeEntity().getCode());
+            UserContext userContext=new UserContext(userMasterEntity.getId(), userMasterEntity.getUserName(),false,loginForm,userMasterEntity.getUserTypeList().getCode());
             SessionTracker.registerUser(req, userContext);
-            if (userMasterEntity.getUserMasterTypeEntity().getCode().equals(ApplicationConstants.ADMIN)) {
+            if (userMasterEntity.getUserTypeList().getCode().equals(ApplicationConstants.ADMIN)) {
                 return mapping.findForward("adminHomePage");
             }
             else {
@@ -139,10 +141,64 @@ public class LoginAction extends DispatchAction {
     
     private void populateUserDetails(LoginForm loginForm,UserMasterEntity userMasterEntity) {
         loginForm.setName("Hard coded name");
-        loginForm.setPassword(userMasterEntity.getPassWord());
-        loginForm.setUserId(userMasterEntity.getUserId());
-        loginForm.setUserType(userMasterEntity.getUserMasterTypeEntity().getDescription());
+        loginForm.setPassword(userMasterEntity.getPassword());
+        loginForm.setId(userMasterEntity.getId());
+        loginForm.setUserType(userMasterEntity.getUserTypeList().getDescription());
     }
     
+    public ActionForward usersPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        LoginForm loginForm = (LoginForm)form;
+        System.out.println("loginForm:"+loginForm.getPageName());
+        UserMasterTypeDao userMasterTypeDao = new UserMasterTypeDao();
+        UserMasterDao userMasterDao = new UserMasterDao();
+        
+        
+        if(loginForm.getPageName()!=null && loginForm.getPageName().equals("GetEditTypeForm"))
+        {
+            
+            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(loginForm.getId());
+            loginForm.clearFormValues();
+            loginForm.setName(userMasterEntity.getUserName());
+            loginForm.setPassword(userMasterEntity.getPassword());
+            loginForm.setId(userMasterEntity.getId());
+            loginForm.addUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
+        }
+        
+        if(loginForm.getPageName()!=null && loginForm.getPageName().equals("SubmitEditType"))
+        {
+            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(loginForm.getId());
+            userMasterEntity.setUserName(loginForm.getUserName());
+            userMasterEntity.setPassword(loginForm.getPassword());
+            userMasterEntity.setId(loginForm.getId());
+            userMasterEntity.setUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
+            
+            userMasterDao.update(userMasterEntity);
+            loginForm.clearFormValues();
+        }
+        
+        if(loginForm.getPageName()!=null && loginForm.getPageName().equals("SubmitAddType"))
+        {
+            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(loginForm.getId());
+            userMasterEntity.setUserName(loginForm.getUserName());
+            userMasterEntity.setPassword(loginForm.getPassword());
+            userMasterEntity.setId(loginForm.getId());
+            userMasterEntity.setUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
+            
+            userMasterDao.persist(userMasterEntity);
+            loginForm.clearFormValues();
+        }
+        
+        List<UserMasterEntity> feeCategoryTypeList = userMasterDao.findAll();
+        loginForm.setUsersList(null);
+        if(!feeCategoryTypeList.isEmpty()){
+            loginForm.setUsersList(feeCategoryTypeList);
+        }
+        loginForm.addUserTypeList(userMasterTypeDao.findAll());
+        req.setAttribute("userModule", "true");
+        req.setAttribute("usersPage", "true");
+        return mapping.findForward("usersPage");
+    }
     
 }

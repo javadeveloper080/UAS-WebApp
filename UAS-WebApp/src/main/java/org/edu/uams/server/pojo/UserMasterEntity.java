@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity(name = "UserMaster")
 @NamedQueries( {
     @NamedQuery(name = UserMasterEntity.FIND_BY_USERNAME, query = "SELECT u from UserMaster u where u.userName = :userName"),
-    @NamedQuery(name = UserMasterEntity.FIND_ALL, query = "SELECT u FROM UserMaster u"),
+    @NamedQuery(name = UserMasterEntity.FIND_ALL, query = "SELECT u FROM UserMaster u left join u.userTypeList ut"),
     @NamedQuery(name = UserMasterEntity.FIND_BY_LOGIN_NAME_PWD, query = "SELECT u FROM UserMaster u")
 })
 @Table(name = "user_master")
@@ -29,8 +29,8 @@ public class UserMasterEntity implements Serializable  {
      */
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_USERNAME = "SELECT u from UserMaster u where u.userName = :userName";
-    public static final  String  FIND_ALL="SELECT u FROM UserMaster u";
-    public static final  String  FIND_BY_LOGIN_NAME_PWD="SELECT u FROM UserMaster u where u.userName=:userName and u.passWord=:passWord";
+    public static final  String  FIND_ALL="SELECT u FROM UserMaster u left join u.userTypeList ut";
+    public static final  String  FIND_BY_LOGIN_NAME_PWD="SELECT u FROM UserMaster u where u.userName=:userName and u.password=:passWord";
     
     
     @Id
@@ -42,28 +42,28 @@ public class UserMasterEntity implements Serializable  {
     private String userName;
     
     @Column(name = "pass_word", nullable = false, length = 10)
-    private String passWord;
+    private String password;
     
     @ManyToOne(optional = false, targetEntity = UserMasterTypeEntity.class)
-    @JoinColumn(name = "users_role_type_id", referencedColumnName = "id", nullable = false )
-    private UserMasterTypeEntity userMasterTypeEntity;
+    @JoinColumn(name = "user_master_type_id", referencedColumnName = "id", nullable = false )
+    private UserMasterTypeEntity userTypeList;
     
-    public UserMasterTypeEntity getUserMasterTypeEntity() {
-        return userMasterTypeEntity;
+    public UserMasterTypeEntity getUserTypeList() {
+        return userTypeList;
     }
     
-    public void setUserMasterTypeEntity(UserMasterTypeEntity userMasterTypeEntity) {
-        this.userMasterTypeEntity = userMasterTypeEntity;
+    public void setUserTypeList(UserMasterTypeEntity userTypeList) {
+        this.userTypeList = userTypeList;
     }
     
     
-    public long getUserId() {
+    public long getId() {
         return id;
     }
     
     
-    public void setUserId(long userId) {
-        this.id = userId;
+    public void setId(long id) {
+        this.id = id;
     }
     
     
@@ -76,13 +76,13 @@ public class UserMasterEntity implements Serializable  {
     }
     
     
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
     
     
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 }

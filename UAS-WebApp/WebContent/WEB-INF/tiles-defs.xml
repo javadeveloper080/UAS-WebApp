@@ -63,6 +63,11 @@
     <definition name="CourseTypePage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/courseType.jsp" />
     </definition>
+    
+    <definition name="UserTypePage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/userType.jsp" />
+    </definition>
+    
     <!--Type table Entry ends-->
     
     
@@ -86,7 +91,9 @@
         <put name="body" value="/eviews/grid.jsp" />
     </definition>
     
-    
+    <definition name="UsersPage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/users.jsp" />
+    </definition>
     
     
 </tiles-definitions>
