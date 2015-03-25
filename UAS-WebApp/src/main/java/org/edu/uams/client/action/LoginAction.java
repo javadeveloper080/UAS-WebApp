@@ -163,7 +163,9 @@ public class LoginAction extends DispatchAction {
             loginForm.setName(userMasterEntity.getUserName());
             loginForm.setPassword(userMasterEntity.getPassword());
             loginForm.setId(userMasterEntity.getId());
-            loginForm.addUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
+            loginForm.setUserType(userMasterEntity.getUserTypeList().getCode());
+            loginForm.setUserTypeId(userMasterEntity.getUserTypeList().getId());
+            //loginForm.addUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
         }
         
         if(loginForm.getPageName()!=null && loginForm.getPageName().equals("SubmitEditType"))
@@ -172,7 +174,7 @@ public class LoginAction extends DispatchAction {
             userMasterEntity.setUserName(loginForm.getUserName());
             userMasterEntity.setPassword(loginForm.getPassword());
             userMasterEntity.setId(loginForm.getId());
-            userMasterEntity.setUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
+            userMasterEntity.setUserTypeList(userMasterTypeDao.findByPrimaryKey(loginForm.getUserTypeId()));
             
             userMasterDao.update(userMasterEntity);
             loginForm.clearFormValues();
@@ -184,7 +186,7 @@ public class LoginAction extends DispatchAction {
             userMasterEntity.setUserName(loginForm.getUserName());
             userMasterEntity.setPassword(loginForm.getPassword());
             userMasterEntity.setId(loginForm.getId());
-            userMasterEntity.setUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
+            userMasterEntity.setUserTypeList(userMasterTypeDao.findByPrimaryKey(loginForm.getUserTypeId()));
             
             userMasterDao.persist(userMasterEntity);
             loginForm.clearFormValues();
@@ -195,7 +197,7 @@ public class LoginAction extends DispatchAction {
         if(!feeCategoryTypeList.isEmpty()){
             loginForm.setUsersList(feeCategoryTypeList);
         }
-        loginForm.addUserTypeList(userMasterTypeDao.findAll());
+        loginForm.setUserTypeList(userMasterTypeDao.findAll());
         req.setAttribute("userModule", "true");
         req.setAttribute("usersPage", "true");
         return mapping.findForward("usersPage");

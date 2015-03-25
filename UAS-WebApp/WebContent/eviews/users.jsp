@@ -50,18 +50,18 @@
 
                             <html:form  styleClass="form-inline" action="/loginAction" method="post">
                                 <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter Username" value="<bean:write name="loginForm" property="userName"/>">
+                                    User Name: <html:text name="loginForm" property="userName" styleClass="form-control" styleId="userName"  maxlength="50"  />
                                 </div>
                                 <div class="form-group">
-                                    <label for="pwd">Password:</label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" value="<bean:write name="loginForm" property="password"/>">
+                                    User Name: <html:password name="loginForm" property="password" styleClass="form-control" styleId="userName"  maxlength="50"  />
                                 </div>
 
-                                <html:select styleClass="selectpicker" style="display: none;" property="userType" value="Select">
-                                    <html:option value="Select">Select</html:option>
-                                    <html:optionsCollection name="loginForm" property="userTypeList" label="code" value="description" />
-                                </html:select>
+                            <html:select styleClass="selectpicker" style="display: none;" property="userTypeId" styleId="userTypeId">
+                                <html:option value="0">Select a user type</html:option>
+                                <html:optionsCollection name="loginForm"
+                                                        property="userTypeList" label="code" value="id" />
+                            </html:select>
+
                             </div>
                             <html:hidden name="loginForm" property="id" styleId="id"/>
                             <html:hidden name="loginForm" property="pageName" styleId="pageName" />
@@ -85,18 +85,18 @@
                                 <hr>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Code</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
+                                        <th><i class="fa fa-bullhorn"></i> User Name</th>
+                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
+                                    <logic:notEmpty name="loginForm" property="usersList">
+                                        <logic:iterate id="users" name="loginForm" property="usersList" type="org.edu.uams.server.pojo.UserMasterEntity">
                                             <tr>
-                                                <td><bean:write name="typeTable" property="code"/></td>
-                                                <td><bean:write name="typeTable" property="description"/></td>
-                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>
+                                                <td><bean:write name="users" property="userName"/></td>
+                                                <td><bean:write name="users" property="password"/></td>
+                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${users.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>
                                         </logic:iterate>
                                     </logic:notEmpty>

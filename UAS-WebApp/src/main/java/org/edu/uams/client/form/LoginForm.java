@@ -20,8 +20,17 @@ public class LoginForm extends ActionForm {
 
     private String pageName;
     private String userType;
+    private long userTypeId;
+
     private List usersList;
 
+    public long getUserTypeId() {
+        return userTypeId;
+    }
+
+    public void setUserTypeId(long userTypeId) {
+        this.userTypeId = userTypeId;
+    }
     public List getUsersList() {
         return usersList;
     }
