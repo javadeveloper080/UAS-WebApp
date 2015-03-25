@@ -66,8 +66,12 @@
     <!--Type table Entry ends-->
     
     
-    
-    
+     <!--Transport Entry starts-->
+    <definition name="BusFacultyPage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/feeType.jsp" />
+    </definition>
+   
+    <!--Transport table Entry ends-->
     
     
     <definition name="addCourse" extends="MainFeeLayout">

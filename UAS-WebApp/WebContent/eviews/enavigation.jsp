@@ -29,13 +29,18 @@
             
             
             <li class="sub-menu">
-                <a href="javascript:;"  >
+                 <a href="javascript:;" <c:if test="${requestScope.hostelModule != null}"> class="active"</c:if>>
                     <i class="fa fa-th"></i>
                     <span>Hostel</span>
                 </a>
                     
                 <ul class="sub">
-                    <li ><a  href="typeTableAction.do?method=feeTypePage">Hostel Type</a></li>
+                    <li <c:if test="${requestScope.hostelBlockPage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=feeTypePage">Hostel Block</a></li>
+                </ul>
+                    
+                    
+                <ul class="sub">
+                    <li <c:if test="${requestScope.hostelRoomsPage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=feeTypePage">Hostel Rooms</a></li>
                 </ul>
             </li>
             
