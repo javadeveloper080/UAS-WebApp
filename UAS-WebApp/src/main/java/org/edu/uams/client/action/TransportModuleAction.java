@@ -1,6 +1,6 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.action;
 
 import java.util.ArrayList;
@@ -47,6 +47,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setStateName(busFacultyEntity.getStateName());
             transportModuleForm.setZipCode(busFacultyEntity.getZipCode());
             transportModuleForm.setFacultyType(busFacultyEntity.getFacultyType().name());
+            transportModuleForm.setLicenceNum(busFacultyEntity.getLicenceNum());
             transportModuleForm.setId(busFacultyEntity.getId());
             List<String> facultyTypeList = getFacultyTypeList();
             transportModuleForm.setFacultyTypeList(facultyTypeList);
@@ -66,8 +67,8 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setStateName(transportModuleForm.getStateName());
             busFacultyEntity.setZipCode(transportModuleForm.getZipCode());
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
+            busFacultyEntity.setLicenceNum(transportModuleForm.getLicenceNum());
             busFacultyEntity.setId(transportModuleForm.getId());
-            busFacultyDao.update(busFacultyEntity);
             transportModuleForm.resetForm();
         }
         
@@ -85,6 +86,7 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setStateName(transportModuleForm.getStateName());
             busFacultyEntity.setZipCode(transportModuleForm.getZipCode());
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
+            busFacultyEntity.setLicenceNum(transportModuleForm.getLicenceNum());
             busFacultyDao.persist(busFacultyEntity);
             transportModuleForm.resetForm();
         }
@@ -97,7 +99,7 @@ public class TransportModuleAction extends DispatchAction {
         req.setAttribute("busFacultyPage", "true");
         return mapping.findForward("busFacultyPage");
     }
-
+    
     private List<String> getFacultyTypeList() {
         List<String> facultyTypeList = new ArrayList<>();
         for (FacultyType facultyType : FacultyType.values()) {

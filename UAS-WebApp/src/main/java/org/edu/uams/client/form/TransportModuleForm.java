@@ -3,6 +3,7 @@
  */
 package org.edu.uams.client.form;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.struts.action.ActionForm;
 
@@ -42,6 +43,9 @@ public class TransportModuleForm extends ActionForm {
     private long zipCode;
     private long mobile;
     private String facultyType;
+    private String licenceNum;
+    private Date licenceExpiryDate ;
+    
     private List facultyTypeList;
     private  List busFacultyList;
     
@@ -132,7 +136,7 @@ public class TransportModuleForm extends ActionForm {
     public void setFacultyTypeList(List facultyTypeList) {
         this.facultyTypeList = facultyTypeList;
     }
-
+    
     
     
     public List getBusFacultyList() {
@@ -142,17 +146,35 @@ public class TransportModuleForm extends ActionForm {
     public void setBusFacultyList(List busFacultyList) {
         this.busFacultyList = busFacultyList;
     }
-
+    
     public String getFacultyType() {
         return facultyType;
     }
-
+    
     public void setFacultyType(String facultyType) {
         this.facultyType = facultyType;
     }
     
-        //Bus Faculty details ends
-
+    public String getLicenceNum() {
+        return licenceNum;
+    }
+    
+    public void setLicenceNum(String licenceNum) {
+        this.licenceNum = licenceNum;
+    }
+    
+    public Date getLicenceExpiryDate() {
+        return licenceExpiryDate;
+    }
+    
+    public void setLicenceExpiryDate(Date licenceExpiryDate) {
+        this.licenceExpiryDate = licenceExpiryDate;
+    }
+    
+    
+    
+    //Bus Faculty details ends
+    
     public void resetForm(){
         this.id =0l;
         this.pageName=null;
@@ -168,6 +190,8 @@ public class TransportModuleForm extends ActionForm {
         this.mobile=0l;
         this.facultyTypeList=null;
         this.busFacultyList=null;
+        this.licenceNum=null;
+        this.licenceExpiryDate =null;
     }
     
     

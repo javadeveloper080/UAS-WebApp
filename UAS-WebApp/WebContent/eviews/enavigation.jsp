@@ -57,13 +57,13 @@
             
             
              <li class="sub-menu">
-                <a href="javascript:;"  >
+                  <a href="javascript:;" <c:if test="${requestScope.transportModule != null}"> class="active"</c:if>>
                     <i class="fa fa-th"></i>
                     <span>Transport</span>
                 </a>
-                    
+                     
                 <ul class="sub">
-                    <li ><a  href="typeTableAction.do?method=feeTypePage">Transport Type</a></li>
+                    <li <c:if test="${requestScope.busFacultyPage != null}"> class="active"</c:if> ><a  href="transportModuleAction.do?method=busFacultyPage">Bus Faculty</a></li>
                 </ul>
             </li>
             
@@ -73,7 +73,6 @@
                     <i class="fa fa-th"></i>
                     <span>Courses</span>
                 </a>
-                    
                 <ul class="sub">
                     <li <c:if test="${requestScope.degreeTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=degreeTypePage">Degree Type</a></li>
                 </ul>

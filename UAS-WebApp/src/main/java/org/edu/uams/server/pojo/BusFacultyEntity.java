@@ -8,6 +8,7 @@ package org.edu.uams.server.pojo;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import org.edu.uams.server.api.FacultyType;
 
 
@@ -79,6 +81,17 @@ public class BusFacultyEntity  implements Serializable {
     @Basic(optional = false)
     @Column(name = "mobile",unique = true)
     private long mobile;
+    
+    @Basic(optional = false)
+    @Column(name = "licence_num",unique = true)
+    private String licenceNum;
+    
+    
+    @Basic(optional = false)
+    @Column(name = "licence_expiry_date")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date licenceExpiryDate ;
+    
     
     
     @Column(name = "faculty_type", length = 100, nullable = false)
@@ -179,6 +192,22 @@ public class BusFacultyEntity  implements Serializable {
 
     public void setFacultyType(FacultyType facultyType) {
         this.facultyType = facultyType;
+    }
+
+    public String getLicenceNum() {
+        return licenceNum;
+    }
+
+    public void setLicenceNum(String licenceNum) {
+        this.licenceNum = licenceNum;
+    }
+
+    public Date getLicenceExpiryDate() {
+        return licenceExpiryDate;
+    }
+
+    public void setLicenceExpiryDate(Date licenceExpiryDate) {
+        this.licenceExpiryDate = licenceExpiryDate;
     }
     
     

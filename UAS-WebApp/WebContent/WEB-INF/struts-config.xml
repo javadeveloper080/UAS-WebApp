@@ -75,7 +75,7 @@
             <forward name="userTypePage" path="UserTypePage" />
         </action>
         <!--Type table Entry ends-->
-                
+              
                 
         <!--Transport table Entry starts-->
         <action path="/transportModuleAction" name="transportModuleForm" parameter="method"
