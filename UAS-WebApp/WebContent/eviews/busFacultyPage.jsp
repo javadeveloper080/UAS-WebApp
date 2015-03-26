@@ -56,7 +56,7 @@
                                 <html:hidden name="transportModuleForm" property="pageName" styleId="pageName" />
                                 <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
-                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
+                                    <html:button property="resetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
                                 </div> 
                                 
                                 
@@ -65,7 +65,7 @@
                     </div><!-- col-lg-12-->      	
                 </div><!-- /row -->
                 
-            
+                
                 
                 
                 <!-- GRID ELEMENTS -->
@@ -148,8 +148,7 @@
                 return false;
             }
       
-            var id =document.getElementById('id').value;	
-           submitForm();
+            submitForm();
         }
 
 
@@ -157,8 +156,8 @@
             alert('Get Editff Type'+id);
             document.getElementById('id').value =id;	
             document.getElementById('pageName').value ="GetEditTypeForm"	
-            document.typeTableForm.action="transportModuleAction.do?method=busFacultyPage";
-            document.typeTableForm.submit();
+            document.transportModuleForm.action="transportModuleAction.do?method=busFacultyPage";
+            document.transportModuleForm.submit();
         }
     
         function submitForm() {
@@ -169,18 +168,18 @@
             }else{
                 document.getElementById('pageName').value ="SubmitAddType"
             }
-            document.typeTableForm.action="transportModuleAction.do?method=busFacultyPage";
-            document.typeTableForm.submit();
+            document.transportModuleForm.action="transportModuleAction.do?method=busFacultyPage";
+            document.transportModuleForm.submit();
         }
 	
         
-        function rset()
+        function reset()
         {	
             alert('reset');
-//            document.getElementById('code').value="";
-//            document.getElementById('description').value="";
-//            document.getElementById('id').value="0";
-//            document.getElementById('pageName').value="";
+            //            document.getElementById('code').value="";
+            //            document.getElementById('description').value="";
+            //            document.getElementById('id').value="0";
+            //            document.getElementById('pageName').value="";
 		
         }
     </script>
