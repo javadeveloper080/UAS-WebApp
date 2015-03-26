@@ -6,6 +6,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import EPR.ConnectionBean;
+
 
 import com.util.ApplicationUtil;
 
@@ -15,7 +17,7 @@ public class EmpRegister extends HttpServlet
 	 * 
 	 */
 	private static final long serialVersionUID = 9127062361236139275L;
-	
+
 	RequestDispatcher rd;
 	public void service(HttpServletRequest req, HttpServletResponse res)
 	{
@@ -24,9 +26,7 @@ public class EmpRegister extends HttpServlet
 
 		try
 		{
-
 			out= res.getWriter();
-
 			String empid=req.getParameter("empid");
 			String pwd=req.getParameter("pwd");
 			String gen=req.getParameter("gen");
@@ -36,19 +36,18 @@ public class EmpRegister extends HttpServlet
 			String qlfy=req.getParameter("qlfy");
 			String dob=req.getParameter("dob");
 			if (dob!=null && dob.length()==11) {
+
 				dob=ApplicationUtil.getFomatedSQLDate(dob);
 			}
 			String desg=req.getParameter("desg");
 			String dept=req.getParameter("dept");
-			
-			ConnectionBean CBean=new ConnectionBean();
-			
+
+			ConnectionBean CBean= new ConnectionBean();
+
 			int c_id=0;
 			String 	strQry="insert into employee_info values('"+  empid +"','"+pwd+"','"+ename+"','"+gen  +"','" + phno + "' ,'"+address+"','"+qlfy+"','"+dob+"','" + desg + "','" + dept + "')";
-			System.out.println("strQry:"+strQry);	
-			
-	int inserted=CBean.executeUpdate(strQry);
-	inserted=1;
+			System.out.println("strQry:"+strQry);		
+			int inserted=CBean.executeUpdate(strQry);
 			if(inserted==1)
 			{
 				rd.forward(req, res);
@@ -56,9 +55,8 @@ public class EmpRegister extends HttpServlet
 		}
 		catch(Exception ex)
 		{
-			out.println("Error While Processidsdsdsdg" +ex);
+			out.println("Error While Processing" +ex);
 		}
-
 
 	}
 }
