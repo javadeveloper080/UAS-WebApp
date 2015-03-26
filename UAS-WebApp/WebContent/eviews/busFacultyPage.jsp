@@ -34,6 +34,36 @@
         <section id="main-content">
             <section class="wrapper">
                 
+                <!-- BASIC FORM ELEMENTS -->
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h5><Strong>Add/Edit Bus Faculty</Strong> </h5>
+                                    <html:form  styleClass="form-horizontal style-form" action="/transportModuleAction" method="post">
+                                
+                                <table >
+                                    <tr>
+                                        <td class="form-field-control">
+                                            First name <html:text name="transportModuleForm" property="firstName" size="30" styleId="firstName" />
+                                            
+                                        </td>	
+                                        <td class="form-field-control">
+                                            Last name :  <html:text name="transportModuleForm" property="lastName" size="30" styleId="lastName" />
+                                        <td>
+                                    </tr>
+                                </table>
+                                <html:hidden name="transportModuleForm" property="id" styleId="id"/>
+                                <html:hidden name="transportModuleForm" property="pageName" styleId="pageName" />
+                                <div align="center">
+                                    <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
+                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
+                                </div> 
+                                
+                                
+                            </html:form>
+                        </div>
+                    </div><!-- col-lg-12-->      	
+                </div><!-- /row -->
                 
             
                 
@@ -66,7 +96,7 @@
                                                 <td><bean:write name="transportFacultyTable" property="mobile"/></td>
                                                 <td><bean:write name="transportFacultyTable" property="licenceExpiryDate"/></td>
                                                 <td><bean:write name="transportFacultyTable" property="facultyType"/></td>
-                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>
+                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${transportFacultyTable.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>
                                         </logic:iterate>
                                     </logic:notEmpty>
@@ -76,18 +106,8 @@
                     </div><!-- /col-md-12 -->
                 </div><!-- /row -->
                 
-                
-                
-                
-                
             </section><! --/wrapper -->
         </section><!-- /MAIN CONTENT -->
-        
-        
-        
-        
-        
-        
         
         
         <!--main content end-->
@@ -113,46 +133,23 @@
         function validateForm() {
             alert("Validate Form Values");
             // get the form values
-            var code = document.getElementById('code').value;
-            var description = document.getElementById('description').value;
+            var lastName = document.getElementById('lastName').value;
+            var firstName = document.getElementById('firstName').value;
                 
-            if (code== null || code =="") {
-                alert("Please Enter Code");
-                document.getElementById('code').cfocus();
+            if (lastName== null || lastName =="") {
+                alert("Please Last name");
+                document.getElementById('lastName').cfocus();
                 return false;
             }
 				
-            if (description == null || description =="") {
-                alert("Please Enter Description");
-                document.getElementById('description').focus();
+            if (firstName == null || firstName =="") {
+                alert("Please Enter First name");
+                document.getElementById('firstName').focus();
                 return false;
             }
       
             var id =document.getElementById('id').value;	
-            $.ajax({
-                type: "POST",
-                url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
-                data: {
-                    "code": code,
-                    "pageName": "FeeCategoryType",
-                    "id": id
-                },
-                    
-                success: function(response){
-                    if(response=='true'){
-                        alert('Code is '+code+' present');
-                        document.getElementById('code').focus();
-                        return false;
-                    }
-                    else{
-                        submitForm();
-                    }
-                },
-                error: function(e){
-                    alert('Error: ' + e);
-                    return false;
-                }
-            });
+           submitForm();
         }
 
 
@@ -160,7 +157,7 @@
             alert('Get Editff Type'+id);
             document.getElementById('id').value =id;	
             document.getElementById('pageName').value ="GetEditTypeForm"	
-            document.typeTableForm.action="typeTableAction.do?method=feeCategoryTypePage";
+            document.typeTableForm.action="transportModuleAction.do?method=busFacultyPage";
             document.typeTableForm.submit();
         }
     
@@ -172,7 +169,7 @@
             }else{
                 document.getElementById('pageName').value ="SubmitAddType"
             }
-            document.typeTableForm.action="typeTableAction.do?method=feeCategoryTypePage";
+            document.typeTableForm.action="transportModuleAction.do?method=busFacultyPage";
             document.typeTableForm.submit();
         }
 	
@@ -180,10 +177,10 @@
         function rset()
         {	
             alert('reset');
-            document.getElementById('code').value="";
-            document.getElementById('description').value="";
-            document.getElementById('id').value="0";
-            document.getElementById('pageName').value="";
+//            document.getElementById('code').value="";
+//            document.getElementById('description').value="";
+//            document.getElementById('id').value="0";
+//            document.getElementById('pageName').value="";
 		
         }
     </script>
