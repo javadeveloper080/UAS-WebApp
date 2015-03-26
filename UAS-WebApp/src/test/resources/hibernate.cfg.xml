@@ -9,7 +9,7 @@
 
 
 	 <session-factory>
-		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+<!--		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/NGP_DB</property>
 		<property name="hibernate.default_schema">uams</property>
@@ -30,7 +30,7 @@
                 <mapping class="org.edu.uams.server.pojo.UserMasterTypeEntity"/>
                 <mapping class="org.edu.uams.server.pojo.AdminEntity"/>
                 <mapping class="org.edu.uams.server.pojo.QuestionMasterEntity"/>
-                <!-- 		<mapping class="org.edu.uams.server.pojo.ConfigurationMasterEntity"/> -->
+                 		<mapping class="org.edu.uams.server.pojo.ConfigurationMasterEntity"/> 
                 <mapping class="org.edu.uams.server.pojo.ForumMasterEntity"/>
                 <mapping class="org.edu.uams.server.pojo.ForumSubscribersEntity" />
                 <mapping class="org.edu.uams.server.pojo.DocumentEntity" />
@@ -41,7 +41,7 @@
            <mapping class="org.edu.uams.server.pojo.FeeCategoryTypeEntity" />
            <mapping class="org.edu.uams.server.pojo.FeeDetailsEntity" />
            <mapping class="org.edu.uams.server.pojo.FeeMasterEntity" />
-	
+	-->
 
 	</session-factory>
 

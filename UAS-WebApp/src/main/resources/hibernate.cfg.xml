@@ -11,7 +11,7 @@
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/NGP_DB</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/MS</property>
         <property name="hibernate.default_schema">uams</property>
         <property name="hibernate.connection.username">jdbcusr</property>
         <property name="hibernate.connection.password">password</property>
@@ -44,6 +44,7 @@
         <mapping class="org.edu.uams.server.pojo.DegreeTypeEntity" />
         <mapping class="org.edu.uams.server.pojo.CourseTypeEntity" />
         <mapping class="org.edu.uams.server.pojo.BusFacultyEntity"/>
+    
         
         <mapping class="org.edu.uams.server.pojo.StudentCorrAddressDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentCourseEntity"></mapping>

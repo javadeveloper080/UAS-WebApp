@@ -48,6 +48,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setZipCode(busFacultyEntity.getZipCode());
             transportModuleForm.setFacultyType(busFacultyEntity.getFacultyType().name());
             transportModuleForm.setLicenceNum(busFacultyEntity.getLicenceNum());
+             transportModuleForm.setLicenceExpiryDate(busFacultyEntity.getLicenceExpiryDate());
             transportModuleForm.setId(busFacultyEntity.getId());
             List<String> facultyTypeList = getFacultyTypeList();
             transportModuleForm.setFacultyTypeList(facultyTypeList);
@@ -68,6 +69,7 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setZipCode(transportModuleForm.getZipCode());
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
             busFacultyEntity.setLicenceNum(transportModuleForm.getLicenceNum());
+              busFacultyEntity.setLicenceExpiryDate(transportModuleForm.getLicenceExpiryDate());
             busFacultyEntity.setId(transportModuleForm.getId());
             transportModuleForm.resetForm();
         }
@@ -87,6 +89,7 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setZipCode(transportModuleForm.getZipCode());
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
             busFacultyEntity.setLicenceNum(transportModuleForm.getLicenceNum());
+            busFacultyEntity.setLicenceExpiryDate(transportModuleForm.getLicenceExpiryDate());
             busFacultyDao.persist(busFacultyEntity);
             transportModuleForm.resetForm();
         }
