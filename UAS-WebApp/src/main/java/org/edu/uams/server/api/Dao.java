@@ -8,7 +8,7 @@ public interface Dao<T extends Serializable> {
 
 	public void delete(T entity);
 
-	public T findByPrimaryKey(long id);
+	public T findByPrimaryKey(Serializable id);
 
 	public List<T> findAll();
 

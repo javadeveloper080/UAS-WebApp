@@ -57,7 +57,7 @@ public  abstract class AbstractDao<T extends Serializable> implements Dao<T>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T findByPrimaryKey(long id) {
+	public T findByPrimaryKey(Serializable id) {
 		Transaction transaction = this.session.getTransaction();
 		transaction.begin();
 		return (T) session.get(entityClass, id);
