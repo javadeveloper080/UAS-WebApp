@@ -100,5 +100,8 @@
         <put name="body"   value="/eviews/users.jsp" />
     </definition>
     
+    <definition name="studentCorrAddLayout" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/studentCorrAdd.jsp" />
+    </definition>
     
 </tiles-definitions>

@@ -27,6 +27,7 @@
         <form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
         <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
         <form-bean name="studentForm" type="org.edu.uams.client.form.StudentForm" ></form-bean>
+        <form-bean name="studentCorrAddressDetailsForm" type="org.edu.uams.client.form.StudentCorrAddressDetailsForm" ></form-bean>
          
     </form-beans>
 
@@ -162,6 +163,9 @@
         <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
                         scope="request" >
             <forward name="student" path="studentLayout" ></forward>
+        </action>
+        <action name="studentCorrAddressDetailsForm" path="/studentCorrAddressDetails" scope="request" type="org.edu.uams.client.action.StudentCorrAddressDetailsAction">
+            <forward name="studentCorrAdd" path="studentCorrAddLayout" ></forward>
         </action>
                 
 

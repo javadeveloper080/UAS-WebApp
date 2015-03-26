@@ -47,34 +47,44 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                    <html:form  styleClass="form-horizontal style-form" action="/studentAction" method="post" styleId="studentFrom">
+                                    <html:form  styleClass="form-horizontal style-form" action="/studentCorrAddressDetails" method="post" styleId="studentCorrAddressDetails">
                                 
                                 <table >
                                     <tr>
                                         <td class="form-field-control">
-                                            Admin Number : <html:text  property="admnNum" size="30" styleId="admnNum"  maxlength="10"  />
+                                            Roll Number : <html:text  property="rollNum" size="30" styleId="rollNum"  maxlength="10"  />
                                             
                                         </td>	
                                         <td class="form-field-control">
-                                            Roll Number :  <html:text  property="rollNum" size="30" styleId="rollNum"  maxlength="100" />
+                                            D.No :  <html:text  property="doorNum" size="30" styleId="doorNum"  maxlength="100" />
                                         <td>
                                     </tr>
                                      <tr>
                                         <td class="form-field-control">
-                                            Student Name : <html:text  property="studentName" size="30" styleId="studentName"  maxlength="10"  />
+                                            Street Name : <html:text  property="streetName" size="30" styleId="streetName"  maxlength="10"  />
                                             
                                         </td>	
                                         <td class="form-field-control">
-                                            Branch Name :  <html:text  property="branchName" size="30" styleId="branchName"  maxlength="100" />
+                                           Area Name :  <html:text  property="areaName" size="30" styleId="areaName"  maxlength="100" />
                                         <td>
                                     </tr>
                                      <tr>
                                         <td class="form-field-control">
-                                            Semister : <html:text  property="sem" size="30" styleId="sem"  maxlength="10"  />
+                                            District Name : <html:text  property="districtName" size="30" styleId="districtName"  maxlength="10"  />
                                             
                                         </td>	
                                         <td class="form-field-control">
-                                              <!--html:text  property="branchName" size="30" styleId="description"  maxlength="100" /-->
+                                          City  : <html:text  property="city" size="30" styleId="city"  maxlength="100" />
+                                        <td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="form-field-control">
+                                            PIN : <html:text  property="pin" size="30" styleId="pin"  maxlength="10"  />
+                                            
+                                        </td>	
+                                        <td class="form-field-control">
+                                          
                                         <td>
                                     </tr>
                                 </table>
@@ -162,29 +172,43 @@
            
              function validateForm() {
                  // get the form values
-                var admnNum = document.getElementById('admnNum').value;
+                
                 var rollNum = document.getElementById('rollNum').value;
-                var studentName = document.getElementById('studentName').value;
-                var branchName = document.getElementById('branchName').value;
-                if (admnNum=== null || admnNum ==="") {
-                    alert("Please Enter Admin Number");
-                    document.getElementById('admnNum').cfocus();
-                    return false;
-                }
+                var doorNum = document.getElementById('doorNum').value;
+                var streetName = document.getElementById('streetName').value;
+                var areaName = document.getElementById('areaName').value;
+                var pin = document.getElementById('pin').value;
+                var city = document.getElementById('city').value;
+               
 				
-               else if (rollNum === null || rollNum ==="") {
+                if (rollNum === null || rollNum ==="") {
                     alert("Please Enter Roll Number");
                     document.getElementById('rollNum').focus();
                     return false;
                 }
-               else if (studentName === null || studentName ==="") {
-                    alert("Please Enter Student Name");
-                    document.getElementById('studentName').focus();
+               else if (doorNum === null || doorNum ==="") {
+                    alert("Please Enter D.No ");
+                    document.getElementById('doorNum').focus();
                     return false;
                 }
-                if (branchName === null || branchName ==="") {
-                    alert("Please Enter Branch Name");
-                    document.getElementById('rollNum').focus();
+                else if (streetName === null || streetName ==="") {
+                    alert("Please Enter Street  Name");
+                    document.getElementById('streetName').focus();
+                    return false;
+                }
+                else if (areaName=== null || areaName ==="") {
+                    alert("Please Enter Area Name ");
+                    document.getElementById('areaName').cfocus();
+                    return false;
+                }
+                 else if (pin=== null || pin ==="") {
+                    alert("Please Enter PIN ");
+                    document.getElementById('pin').cfocus();
+                    return false;
+                }
+                 else if (city=== null || city ==="") {
+                    alert("Please Enter city Name ");
+                    document.getElementById('city').cfocus();
                     return false;
                 }
       
@@ -201,19 +225,19 @@
             }
     
             function submitForm() {
-                var id =document.getElementById('admnNum').value;	
-                if(id != null && id>0){
+                var id =document.getElementById('rollNum').value;	
+                if(id != null ){
                     document.getElementById('pageName').value ="SubmitEditType"	
                 }else{
                     document.getElementById('pageName').value ="SubmitAddType"
                 }
-                document.studentForm.action="studentAction.do";
-                document.studentForm.submit();
+                document.studentCorrAddressDetailsForm.action="studentCorrAddressDetails.do";
+                document.studentCorrAddressDetailsForm.submit();
             }
 	
         
             function reset(){	
-		document.getElementById("studentFrom").reset();
+		document.getElementById("studentCorrAddressDetailsForm").reset();
             }
         </script>
 

@@ -103,6 +103,9 @@
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do">Student Details</a></li>
                 </ul>
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentCorrAddr != null}"> class="active"</c:if> ><a  href="studentCorrAddressDetails.do">Corresponding Address</a></li>
+                </ul>
             </li>
                 
         </ul>
