@@ -36,7 +36,7 @@ public class StudentAction extends Action {
         studentEntity.setPhoto(studentForm.getPhoto());
         studentEntity.setSem(studentForm.getSem());
         studentEntity.setStudentName(studentForm.getStudentName());
-        studentEntity.setAdmnNum(studentEntity.getAdmnNum());
+        studentEntity.setAdmnNum(studentForm.getAdmnNum());
         
         StudentDao studentDao = new StudentDao();
         studentDao.persist(studentEntity);

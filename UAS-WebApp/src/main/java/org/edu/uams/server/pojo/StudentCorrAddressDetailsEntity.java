@@ -30,6 +30,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "StudentCorrAddressDetailsEntity.findByDistrictName", query = "SELECT s FROM StudentCorrAddressDetailsEntity s WHERE s.districtName = :districtName"),
     @NamedQuery(name = "StudentCorrAddressDetailsEntity.findByPin", query = "SELECT s FROM StudentCorrAddressDetailsEntity s WHERE s.pin = :pin")})
 public class StudentCorrAddressDetailsEntity implements Serializable {
+    
+    public static String FIND_ALL="StudentCorrAddressDetailsEntity.findAll";
+    public static String FIND_BY_ROLLNUM="StudentCorrAddressDetailsEntity.findByRollNum";
+    public static String FIND_BY_DOOR_NUM="StudentCorrAddressDetailsEntity.findByDoorNum";
+    public static String FIND_BY_PIN="StudentCorrAddressDetailsEntity.findByPin";
+    
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -45,6 +52,8 @@ public class StudentCorrAddressDetailsEntity implements Serializable {
     private String districtName;
     @Column(name = "pin")
     private Long pin;
+    @Column(name = "city")
+    private String city;
     @JoinColumn(name = "roll_num", referencedColumnName = "roll_num", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private StudentEntity studentTab;
@@ -112,6 +121,14 @@ public class StudentCorrAddressDetailsEntity implements Serializable {
         this.studentTab = studentTab;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
