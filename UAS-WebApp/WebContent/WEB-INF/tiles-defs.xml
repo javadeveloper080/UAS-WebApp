@@ -73,7 +73,7 @@
     
      <!--Transport Entry starts-->
     <definition name="BusFacultyPage" extends="baseTemplateLayout">
-        <put name="body"   value="/eviews/feeType.jsp" />
+        <put name="body"   value="/eviews/busFacultyPage.jsp" />
     </definition>
    
     <!--Transport table Entry ends-->

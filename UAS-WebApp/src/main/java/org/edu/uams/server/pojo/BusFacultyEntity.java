@@ -225,6 +225,7 @@ public class BusFacultyEntity  implements Serializable {
         }else{
             this.addrLines = addrLines;
         }
+        
     }
     
     
