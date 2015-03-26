@@ -1,17 +1,22 @@
 package org.edu.uams.server.api;
 
 public interface ApplicationConstants {
-	
     
-        //ROLES
-	public static String STUDENT = "STUDENT";
-	public static String ADMIN = "ADMIN";
-	public static String PROFESSOR = "PROFESSOR";
-        public static String CLERK = "CLERK";
-
-        
-        
-	public static String JAVA = "java";
-	public static String NETWORKING = "Networking";
-
+    
+    public static String SUBMIT_EDIT_TYPE="SubmitEditType";
+    public static String GET_EDIT_TYPE_FORM="GetEditTypeForm";
+    public static String SUBMIT_ADD_TYPE="SubmitAddType";
+    
+    
+    //ROLES
+    public static String STUDENT = "STUDENT";
+    public static String ADMIN = "ADMIN";
+    public static String PROFESSOR = "PROFESSOR";
+    public static String CLERK = "CLERK";
+    
+    
+    
+    public static String JAVA = "java";
+    public static String NETWORKING = "Networking";
+    
 }

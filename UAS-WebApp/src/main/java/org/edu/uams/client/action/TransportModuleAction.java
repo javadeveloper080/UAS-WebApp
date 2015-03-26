@@ -3,7 +3,6 @@
   */
 package org.edu.uams.client.action;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +13,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.TransportModuleForm;
-import org.edu.uams.client.form.TypeTableForm;
+import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.FacultyType;
-import org.edu.uams.server.api.Type;
 import org.edu.uams.server.business.BusFacultyDao;
-import org.edu.uams.server.business.CourseTypeDao;
-import org.edu.uams.server.business.DegreeTypeDao;
-import org.edu.uams.server.business.FeeCategoryTypeDao;
-import org.edu.uams.server.business.FeeTypeDao;
 import org.edu.uams.server.pojo.BusFacultyEntity;
 
 
@@ -39,7 +33,7 @@ public class TransportModuleAction extends DispatchAction {
         BusFacultyDao busFacultyDao = new BusFacultyDao();
         
         
-        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals("GetEditTypeForm"))
+        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM))
         {
             BusFacultyEntity busFacultyEntity = busFacultyDao.findByPrimaryKey(transportModuleForm.getId());
             transportModuleForm.resetForm();
@@ -61,7 +55,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setFacultyTypeList(facultyTypeList);
         }
         
-        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals("SubmitEditType"))
+        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
         {
             BusFacultyEntity busFacultyEntity = busFacultyDao.findByPrimaryKey(transportModuleForm.getId());
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
@@ -81,7 +75,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.resetForm();
         }
         
-        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals("SubmitAddType"))
+        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
         {
             BusFacultyEntity busFacultyEntity = new BusFacultyEntity();
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
