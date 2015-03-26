@@ -50,6 +50,43 @@
                                         <td class="form-field-control">
                                             Last name :  <html:text name="transportModuleForm" property="lastName" size="30" styleId="lastName" />
                                         <td>
+                                            
+                                        <td class="form-field-control">
+                                            Address Line1 :  <html:text name="transportModuleForm" property="addrLine1" size="30" styleId="addrLine1" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Address Line2 :  <html:text name="transportModuleForm" property="addrLine2" size="30" styleId="addrLine2" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Address Line3 :  <html:text name="transportModuleForm" property="addrLine3" size="30" styleId="addrLine3" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Address Line4 :  <html:text name="transportModuleForm" property="addrLine4" size="30" styleId="addrLine4" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            City :  <html:text name="transportModuleForm" property="city" size="30" styleId="city" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            State :  <html:text name="transportModuleForm" property="stateName" size="30" styleId="stateName" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Zip code :  <html:text name="transportModuleForm" property="zipCode" size="30" styleId="zipCode" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Mobile :  <html:text name="transportModuleForm" property="zipCode" size="30" styleId="zipCode" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Mobile :  <html:text name="transportModuleForm" property="mobile" size="30" styleId="mobile" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            License  Num :  <html:text name="transportModuleForm" property="licenseNum" size="30" styleId="licenceNum" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            License  expiry date :  <html:text name="transportModuleForm" property="licenseExpiryDate" size="30" styleId="licenceExpiryDate" />
+                                        <td>
+                                        <td class="form-field-control">
+                                            Faculty Type:  <html:text name="transportModuleForm" property="facultyType" size="30" styleId="facultyType" />
+                                        <td>
                                     </tr>
                                 </table>
                                 <html:hidden name="transportModuleForm" property="id" styleId="id"/>

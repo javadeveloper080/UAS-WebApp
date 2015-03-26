@@ -43,8 +43,8 @@ public class TransportModuleForm extends ActionForm {
     private long zipCode;
     private long mobile;
     private String facultyType;
-    private String licenceNum;
-    private Date licenceExpiryDate ;
+    private String licenseNum;
+    private Date licenseExpiryDate ;
     
     private List facultyTypeList;
     private  List busFacultyList;
@@ -155,20 +155,20 @@ public class TransportModuleForm extends ActionForm {
         this.facultyType = facultyType;
     }
     
-    public String getLicenceNum() {
-        return licenceNum;
+    public String getLicenseNum() {
+        return licenseNum;
     }
     
-    public void setLicenceNum(String licenceNum) {
-        this.licenceNum = licenceNum;
+    public void setLicenseNum(String licenseNum) {
+        this.licenseNum = licenseNum;
     }
     
-    public Date getLicenceExpiryDate() {
-        return licenceExpiryDate;
+    public Date getLicenseExpiryDate() {
+        return licenseExpiryDate;
     }
     
-    public void setLicenceExpiryDate(Date licenceExpiryDate) {
-        this.licenceExpiryDate = licenceExpiryDate;
+    public void setLicenseExpiryDate(Date licenseExpiryDate) {
+        this.licenseExpiryDate = licenseExpiryDate;
     }
     
     
@@ -190,8 +190,8 @@ public class TransportModuleForm extends ActionForm {
         this.mobile=0l;
         this.facultyTypeList=null;
         this.busFacultyList=null;
-        this.licenceNum=null;
-        this.licenceExpiryDate =null;
+        this.licenseNum=null;
+        this.licenseExpiryDate =null;
     }
     
     
