@@ -50,44 +50,71 @@
                                         <td class="form-field-control">
                                             Last name :  <html:text name="transportModuleForm" property="lastName" size="30" styleId="lastName" />
                                         <td>
-                                            
+                                    </tr>      
+                                    <tr>     
                                         <td class="form-field-control">
                                             Address Line1 :  <html:text name="transportModuleForm" property="addrLine1" size="30" styleId="addrLine1" />
                                         <td>
                                         <td class="form-field-control">
                                             Address Line2 :  <html:text name="transportModuleForm" property="addrLine2" size="30" styleId="addrLine2" />
                                         <td>
+                                    </tr>    
+                                    <tr>  
                                         <td class="form-field-control">
                                             Address Line3 :  <html:text name="transportModuleForm" property="addrLine3" size="30" styleId="addrLine3" />
                                         <td>
                                         <td class="form-field-control">
                                             Address Line4 :  <html:text name="transportModuleForm" property="addrLine4" size="30" styleId="addrLine4" />
                                         <td>
+                                            
+                                    </tr>  
+                                    
+                                    <tr>  
                                         <td class="form-field-control">
                                             City :  <html:text name="transportModuleForm" property="city" size="30" styleId="city" />
                                         <td>
                                         <td class="form-field-control">
                                             State :  <html:text name="transportModuleForm" property="stateName" size="30" styleId="stateName" />
                                         <td>
+                                    </tr>  
+                                    <tr>  
                                         <td class="form-field-control">
                                             Zip code :  <html:text name="transportModuleForm" property="zipCode" size="30" styleId="zipCode" />
                                         <td>
                                         <td class="form-field-control">
                                             Mobile :  <html:text name="transportModuleForm" property="zipCode" size="30" styleId="zipCode" />
                                         <td>
+                                    </tr>
+                                    
+                                    <tr>  
+                                        <td class="form-field-control">
+                                            License  expiry date :<html:text name="transportModuleForm" property="licenseExpiryDate" size="30" styleId="licenceExpiryDate" />
+                                        <td>
+                                            </tr>
+                                    
+<!--                                    <tr>  
                                         <td class="form-field-control">
                                             Mobile :  <html:text name="transportModuleForm" property="mobile" size="30" styleId="mobile" />
                                         <td>
                                         <td class="form-field-control">
                                             License  Num :  <html:text name="transportModuleForm" property="licenseNum" size="30" styleId="licenceNum" />
                                         <td>
-                                        <td class="form-field-control">
-                                            License  expiry date :  <html:text name="transportModuleForm" property="licenseExpiryDate" size="30" styleId="licenceExpiryDate" />
-                                        <td>
-                                        <td class="form-field-control">
-                                            Faculty Type:  <html:text name="transportModuleForm" property="facultyType" size="30" styleId="facultyType" />
-                                        <td>
-                                    </tr>
+                                    </tr>-->
+                                    
+                                    
+                                        <tr class="form-field-control">
+                                              <td class="form-field-control">
+                                            <html:select property="facultyType" styleId="facultyType">
+                                                <html:option value="">Select a Faculty type</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="transportModuleForm" property="facultyTypeList" label="label" value="value"/> 
+                                            </html:select>
+                                         </td>
+                                        </tr>  
+                                        
+                                        
+                                        
+                                        
+                                    
                                 </table>
                                 <html:hidden name="transportModuleForm" property="id" styleId="id"/>
                                 <html:hidden name="transportModuleForm" property="pageName" styleId="pageName" />
@@ -157,6 +184,11 @@
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     
     
     <!--common script for all pages-->
@@ -219,6 +251,17 @@
             //            document.getElementById('pageName').value="";
 		
         }
+        
+        $(function() {
+            $( "#licenceExpiryDate" ).datepicker({
+                showOn: "button",
+                buttonImage: "images/calendar.gif",
+            });
+        });
+                
+       
+        
+        
     </script>
     
 </body>

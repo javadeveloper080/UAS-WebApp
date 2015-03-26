@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.TransportModuleForm;
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.FacultyType;
@@ -49,10 +50,8 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setZipCode(busFacultyEntity.getZipCode());
             transportModuleForm.setFacultyType(busFacultyEntity.getFacultyType().name());
             transportModuleForm.setLicenseNum(busFacultyEntity.getLicenceNum());
-            transportModuleForm.setLicenseExpiryDate(busFacultyEntity.getLicenceExpiryDate());
+            transportModuleForm.setLicenseExpiryDate(busFacultyEntity.getLicenceExpiryDate()+"");
             transportModuleForm.setId(busFacultyEntity.getId());
-            List<String> facultyTypeList = getFacultyTypeList();
-            transportModuleForm.setFacultyTypeList(facultyTypeList);
         }
         
         if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
@@ -70,7 +69,7 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setZipCode(transportModuleForm.getZipCode());
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
             busFacultyEntity.setLicenceNum(transportModuleForm.getLicenseNum());
-            busFacultyEntity.setLicenceExpiryDate(transportModuleForm.getLicenseExpiryDate());
+            //busFacultyEntity.setLicenceExpiryDate(transportModuleForm.getLicenseExpiryDate());
             busFacultyEntity.setId(transportModuleForm.getId());
             transportModuleForm.resetForm();
         }
@@ -90,12 +89,13 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setZipCode(transportModuleForm.getZipCode());
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
             busFacultyEntity.setLicenceNum(transportModuleForm.getLicenseNum());
-            busFacultyEntity.setLicenceExpiryDate(transportModuleForm.getLicenseExpiryDate());
+            //busFacultyEntity.setLicenceExpiryDate(transportModuleForm.getLicenseExpiryDate()++"");
             busFacultyDao.persist(busFacultyEntity);
             transportModuleForm.resetForm();
         }
         
         List<BusFacultyEntity> busFacultyList = busFacultyDao.findAll();
+        transportModuleForm.setFacultyTypeList(getFacultyTypeList());
         if(!busFacultyList.isEmpty()){
             transportModuleForm.setBusFacultyList(busFacultyList);
         }
@@ -105,10 +105,10 @@ public class TransportModuleAction extends DispatchAction {
     }
     
     
-    private List<String> getFacultyTypeList() {
-        List<String> facultyTypeList = new ArrayList<>();
+    private List<LabelValueBean> getFacultyTypeList() {
+        List<LabelValueBean> facultyTypeList = new ArrayList<>();
         for (FacultyType facultyType : FacultyType.values()) {
-            facultyTypeList.add(facultyType.name());
+            facultyTypeList.add(new LabelValueBean(facultyType.name(), facultyType.name()));
         }
         return facultyTypeList;
     }
