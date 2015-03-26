@@ -8,7 +8,7 @@
 <struts-config>
 
     <form-beans>
-            <form-bean name="StudentForm" type="org.edu.uams.client.form.StudentForm"/>
+        <form-bean name="StudentForm" type="org.edu.uams.client.form.StudentForm"/>
 
         <form-bean name="loginForm" type="org.edu.uams.client.form.LoginForm" />
         <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
@@ -19,39 +19,38 @@
         <form-bean name="courseForm" type="org.edu.uams.client.form.CourseForm" />
         <form-bean name="examForm" type="org.edu.uams.client.form.ExamForm" />
 
-		<form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
-		<form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
-		<form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
         <form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
         <form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
         <form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
-                <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
-                <form-bean name="studentForm" type="org.edu.uams.client.form.StudentForm" ></form-bean>
-	</form-beans>
+        <form-bean name="questionForm" type="org.edu.uams.client.form.QuestionForm" />
+        <form-bean name="resultForm" type="org.edu.uams.client.form.ResultForm" />
+        <form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
+        <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
+        <form-bean name="studentForm" type="org.edu.uams.client.form.StudentForm" ></form-bean>
          
     </form-beans>
 
 
     <global-exceptions>
         <exception key="error.dataBase.mesage" type="java.sql.SQLException"
-                           handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                           path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+                   path="/views/error.jsp" />
 
         <exception key="error.nullError.mesage" type="jjava.lang.NullPointerException"
-                           handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                           path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+                   path="/views/error.jsp" />
 
         <exception key="error.global.mesage" type="java.lang.Exception"
-                           handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                           path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+                   path="/views/error.jsp" />
 
         <exception key="error.dataBase.mesage" type="org.hibernate.HibernateException"
-                           handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                           path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+                   path="/views/error.jsp" />
 			
         <exception key="error.session.mesage" type="org.edu.uams.server.util.SessionTimeException"
-                                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                                   path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
+                   path="/views/error.jsp" />
 
 
     </global-exceptions>
@@ -67,7 +66,7 @@
             
         <!--Type table Entry starts-->
         <action path="/typeTableAction" name="typeTableForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.TypeTableAction">
+                scope="request" type="org.edu.uams.client.action.TypeTableAction">
             <forward name="feeTypePage" path="FeeTypePage" />
             <forward name="feeCategoryTypePage" path="FeeCategoryTypePage" />
             <forward name="degreeTypePage" path="DegreeTypePage" />
@@ -79,13 +78,13 @@
                 
         <!--Transport table Entry starts-->
         <action path="/transportModuleAction" name="transportModuleForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.TransportModuleAction">
+                scope="request" type="org.edu.uams.client.action.TransportModuleAction">
             <forward name="busFacultyPage" path="BusFacultyPage" />
         </action>
         <!--Transport table Entry ends-->
 
         <action path="/adminAction" name="adminForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.AdminAction">
+                scope="request" type="org.edu.uams.client.action.AdminAction">
             <forward name="adminAddPage" path="/views/addNewAdmin.jsp" />
             <forward name="loginErrorPage" path="/views/loginError.jsp"></forward>
             <forward name="registrationSuccess" path="/views/adminHome.jsp" />
@@ -94,7 +93,7 @@
 
 
         <action path="/loginAction" name="loginForm" parameter="method"
-                        scope="session" type="org.edu.uams.client.action.LoginAction">
+                scope="session" type="org.edu.uams.client.action.LoginAction">
             <forward name="loginPage" path="/eviews/login.jsp" />
             <forward name="adminHomePage" path="adminHome" />
             <forward name="loginErrorPage" path="/views/loginError.jsp" />
@@ -108,14 +107,14 @@
         </action>
 
         <action path="/userAction" name="userForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.UserAction">
+                scope="request" type="org.edu.uams.client.action.UserAction">
             <forward name="userRegister" path="/views/userRegistration.jsp" />
             <forward name="registrationSuccess" path="/views/validationMessage.jsp" />
             <forward name="registrationFail" path="/views/validationMessage.jsp"/>
         </action>
 
         <action path="/courseAction" name="courseForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.CourseAction">
+                scope="request" type="org.edu.uams.client.action.CourseAction">
             <forward name="addCoursePage" path="addCourse" />
             <forward name="courseDetails" path="/views/courseDetails.jsp" />
             <forward name="modifyCourse" path="/views/modifyCourse.jsp" />
@@ -132,26 +131,26 @@
 
 
         <action path="/examAction" name="examForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.ExamAction">
+                scope="request" type="org.edu.uams.client.action.ExamAction">
             <forward name="examSelect" path="/views/examSelect.jsp" />
             <forward name="selectedExam" path="/views/exam.jsp" />
             <forward name="exceeded" path="/views/validationMessage.jsp" />
         </action>
 
         <action path="/questionAction" name="questionForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.QuestionAction">
+                scope="request" type="org.edu.uams.client.action.QuestionAction">
             <forward name="addQuestionPage" path="/views/addQuestion.jsp" />
             <forward name="numberOfQuestionValidation" path="/views/validationMessage.jsp" />
         </action>
 
 
         <action path="/resultAction" name="resultForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.ResultAction">
+                scope="request" type="org.edu.uams.client.action.ResultAction">
             <forward name="resultPage" path="/views/resultPage.jsp" />
         </action>
 		
         <action path="/forumMasterAction" name="forumMasterForm" parameter="method"
-                        scope="request" type="org.edu.uams.client.action.ForumMasterAction">
+                scope="request" type="org.edu.uams.client.action.ForumMasterAction">
             <forward name="forumPage" path="/views/forumPage.jsp" />
             <forward name="addForumPage" path="/views/addForum.jsp"/>
             <forward name="enterForumPage" path="/views/forumDiscussionPage.jsp"/>
@@ -160,10 +159,10 @@
         <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
             <forward name="fee" path="MainFeeLayout"></forward>
         </action>
-                <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
-                  scope="request" >
-                    <forward name="student" path="studentLayout" ></forward>
-                </action>
+        <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
+                        scope="request" >
+            <forward name="student" path="studentLayout" ></forward>
+        </action>
                 
 
 
