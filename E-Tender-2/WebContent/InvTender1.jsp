@@ -116,7 +116,8 @@ try {
 	 stmt = con.createStatement();
 	 	 
 	 stmt1 = con.createStatement();
-	 rs = stmt.executeQuery("select to_char(sysdate,'dd-mon-yyyy') from dual");
+	/* rs = stmt.executeQuery("select to_char(sysdate,'dd-mon-yyyy') from dual");*/
+	rs = stmt.executeQuery("select current_date");
 	 rs.next();
 	 String date=rs.getString(1);
 
@@ -126,10 +127,10 @@ try {
 	 
 	 System.out.println("Supplier Id"+ supid);
 
-    	 int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");
+    	 int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where ittldate <'" + date + "' ");
 	
 	 
-	 rs = stmt.executeQuery("select itm.itt_no,to_char(itm.ittdate,'dd-mon-yyyy'),to_char(itm.ittldate,'dd-mon-yyyy'),itm.itt_status from itt_master itm,indent_master ind where itm.ind_no=ind.ind_no and  itm.itt_no in (select itt_no from itt_details where sup_id='" + supid + "') order by itm.ind_no ");
+	 rs = stmt.executeQuery("select itm.itt_no,itm.ittdate,itm.ittldate,itm.itt_status from itt_master itm,indent_master ind where itm.ind_no=ind.ind_no and  itm.itt_no in (select itt_no from itt_details where sup_id='" + supid + "') order by itm.ind_no ");
 	 
 	 
 	 

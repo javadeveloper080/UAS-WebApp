@@ -117,18 +117,23 @@ try {
 	 Statement stmt = null;
 	 
 	 stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	 rs = stmt.executeQuery("select to_char(sysdate,'dd-mon-yyyy') from dual");
+	/* rs = stmt.executeQuery("select to_char(sysdate,'dd-mon-yyyy') from dual");*/
+	
+	rs = stmt.executeQuery("select current_date");
+	
 	 rs.next();
 	 String date=rs.getString(1);
 
 	 rs.close();
 System.out.println("Date Is"+date);
-System.out.println("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");
-	 
-int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");
+/*System.out.println("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");*/
+System.out.println("update itt_master set itt_status='Closed' where ittldate <'" + date + "' ");	 
+/*int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");*/
+int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where ittldate< '" + date + "' ");
+/*rs = stmt.executeQuery("select itt_no,to_char(ittdate,'dd-mon-yyyy'),ind_no,to_char(ittldate,'dd-mon-yyyy'),itt_status from itt_master order by itt_no");*/
+/*rs = stmt.executeQuery("select itt_no,ittdate,,ind_no,to_char(ittldate,'dd-mon-yyyy'),itt_status from itt_master order by itt_no");*/
 
-rs = stmt.executeQuery("select itt_no,to_char(ittdate,'dd-mon-yyyy'),ind_no,to_char(ittldate,'dd-mon-yyyy'),itt_status from itt_master order by itt_no");
-     
+rs = stmt.executeQuery("select itt_no,ittdate,ind_no,ittldate,itt_status from itt_master order by itt_no");
      rs.last();
      noofRows=rs.getRow();
      rs.beforeFirst();

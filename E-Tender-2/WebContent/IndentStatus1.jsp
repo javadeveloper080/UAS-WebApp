@@ -130,17 +130,18 @@ try {
 	 
 	 
 	 
-	 rs = stmt.executeQuery("select to_char(sysdate,'dd-mon-yyyy') from dual");
+	/* rs = stmt.executeQuery("select to_char(sysdate,'dd-mon-yyyy') from dual");*/
+	rs = stmt.executeQuery("select current_date");
 	 rs.next();
 	 String date=rs.getString(1);
 	 rs.close();
 	System.out.println("Date Is"+date);
-	int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");
-	
+	/*int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where to_char(ittldate,'dd-mon-yyyy')<to_date('" + date + "') ");*/
+	int updated= stmt.executeUpdate("update itt_master set itt_status='Closed' where ittldate < '" + date + "' ");
 	
 	updated= stmt2.executeUpdate("update indent_master set status='Closed' where ind_no in(select ind_no from itt_master where itt_status='Closed') ");
-	rs = stmt.executeQuery("select inm.ind_no,to_char(inm.inddate,'dd-mon-yyyy'),to_char(inm.delv_date,'dd-mon-yyyy'),inm.est_rate,inm.status from indent_master inm  order by inm.ind_no");
-  	 
+	/*rs = stmt.executeQuery("select inm.ind_no,to_char(inm.inddate,'dd-mon-yyyy'),to_char(inm.delv_date,'dd-mon-yyyy'),inm.est_rate,inm.status from indent_master inm  order by inm.ind_no");*/
+	rs = stmt.executeQuery("select inm.ind_no,inm.inddate,inm.delv_date,inm.est_rate,inm.status from indent_master inm  order by inm.ind_no"); 
   	 
   	 rs.last();
          
@@ -298,7 +299,7 @@ try {
         
 			} catch(Exception e ) {
 			
-			System.out.println("ok Erro"+e);
+			System.out.println("ok Error"+e);
 			
 			
 			}

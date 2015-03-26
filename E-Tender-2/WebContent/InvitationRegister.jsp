@@ -242,19 +242,21 @@ f1.submit();
 	 }
 	 
 	 stmt = con.createStatement();
-	 rs = stmt.executeQuery("select nvl(max(itt_no),0)+1 from itt_master");
+	 /*select nvl(max(itt_no),0)+1 from itt_master*/
+	 rs = stmt.executeQuery("select coalesce(max(itt_no),0)+1 from itt_master");
          rs.next();
          itno=rs.getString(1);
          rs.close();
          
-         rs = stmt.executeQuery("select to_char(sysdate,'dd-Mon-yyyy') from dual");
+      /*   rs = stmt.executeQuery("select to_char(sysdate,'dd-Mon-yyyy') from dual");*/
+         rs = stmt.executeQuery("select current_date");
 	 rs.next();
 	 dt=rs.getString(1);
          rs.close();
          
 		  stmt1 = con.createStatement();
 		  
-	 rs1=stmt1.executeQuery("select inm.ind_no,to_char(inm.inddate,'dd-mon-yyyy'),to_char(inm.delv_date,'dd-mon-yyyy'),inm.est_rate,inm.status from indent_master inm where inm.ind_no=" + indno + " ");
+	 rs1=stmt1.executeQuery("select inm.ind_no,inm.inddate,inm.delv_date,inm.est_rate,inm.status from indent_master inm where inm.ind_no=" + indno + " ");
 
 
 
