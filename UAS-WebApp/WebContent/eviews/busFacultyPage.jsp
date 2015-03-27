@@ -189,9 +189,7 @@
     
     
     
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <script src="assets/css/bootstrap.min.css"></script>
+ 
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     
@@ -203,6 +201,10 @@
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
     
+    
+       <!-- Bootstrap core CSS -->
+<!--    <link href="assets/css/bootstrap.css" rel="stylesheet">-->
+    <script src="assets/css/bootstrap.min.css"></script>
 
     
     <!--script for this page-->
