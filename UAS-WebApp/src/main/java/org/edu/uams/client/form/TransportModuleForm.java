@@ -3,7 +3,6 @@
  */
 package org.edu.uams.client.form;
 
-import java.util.Date;
 import java.util.List;
 import org.apache.struts.action.ActionForm;
 

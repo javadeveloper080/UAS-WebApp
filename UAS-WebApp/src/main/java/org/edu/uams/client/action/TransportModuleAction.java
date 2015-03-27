@@ -42,7 +42,7 @@ public class TransportModuleAction extends DispatchAction {
             BusFacultyEntity busFacultyEntity = busFacultyDao.findByPrimaryKey(transportModuleForm.getId());
             transportModuleForm.resetForm();
             transportModuleForm.setAddrLine1(busFacultyEntity.getAddrLine1());
-            transportModuleForm.setAddrLine3(busFacultyEntity.getAddrLine2());
+            transportModuleForm.setAddrLine2(busFacultyEntity.getAddrLine2());
             transportModuleForm.setAddrLine3(busFacultyEntity.getAddrLine3());
             transportModuleForm.setAddrLine4(busFacultyEntity.getAddrLine4());
             transportModuleForm.setCity(busFacultyEntity.getCity());
@@ -61,7 +61,7 @@ public class TransportModuleAction extends DispatchAction {
         {
             BusFacultyEntity busFacultyEntity = busFacultyDao.findByPrimaryKey(transportModuleForm.getId());
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
-            busFacultyEntity.setAddrLine3(transportModuleForm.getAddrLine2());
+            busFacultyEntity.setAddrLine2(transportModuleForm.getAddrLine2());
             busFacultyEntity.setAddrLine3(transportModuleForm.getAddrLine3());
             busFacultyEntity.setAddrLine4(transportModuleForm.getAddrLine4());
             busFacultyEntity.setCity(transportModuleForm.getCity());
@@ -86,7 +86,7 @@ public class TransportModuleAction extends DispatchAction {
         {
             BusFacultyEntity busFacultyEntity = new BusFacultyEntity();
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
-            busFacultyEntity.setAddrLine3(transportModuleForm.getAddrLine2());
+            busFacultyEntity.setAddrLine2(transportModuleForm.getAddrLine2());
             busFacultyEntity.setAddrLine3(transportModuleForm.getAddrLine3());
             busFacultyEntity.setAddrLine4(transportModuleForm.getAddrLine4());
             busFacultyEntity.setCity(transportModuleForm.getCity());

@@ -13,14 +13,6 @@
         
         <title>Bus Faculty</title>
         
-        <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
-        <!--external css-->
-        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        
-        <!-- Custom styles for this template -->
-        <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/style-responsive.css" rel="stylesheet">
     </head>
     <body>
         
@@ -39,83 +31,89 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Bus Faculty</Strong> </h5>
-                                    <html:form  styleClass="form-horizontal style-form" action="/transportModuleAction" method="post">
+                                    <html:form  styleClass="form-inline" action="/transportModuleAction" method="post">
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            First name <html:text name="transportModuleForm" property="firstName" size="30" styleId="firstName" />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Last name :  <html:text name="transportModuleForm" property="lastName" size="30" styleId="lastName" />
-                                        <td>
-                                    </tr>      
-                                    <tr>     
-                                        <td class="form-field-control">
-                                            Address Line1 :  <html:text name="transportModuleForm" property="addrLine1" size="30" styleId="addrLine1" />
-                                        <td>
-                                        <td class="form-field-control">
-                                            Address Line2 :  <html:text name="transportModuleForm" property="addrLine2" size="30" styleId="addrLine2" />
-                                        <td>
-                                    </tr>    
-                                    <tr>  
-                                        <td class="form-field-control">
-                                            Address Line3 :  <html:text name="transportModuleForm" property="addrLine3" size="30" styleId="addrLine3" />
-                                        <td>
-                                        <td class="form-field-control">
-                                            Address Line4 :  <html:text name="transportModuleForm" property="addrLine4" size="30" styleId="addrLine4" />
-                                        <td>
-                                            
-                                    </tr>  
-                                    
-                                    <tr>  
-                                        <td class="form-field-control">
-                                            City :  <html:text name="transportModuleForm" property="city" size="30" styleId="city" />
-                                        <td>
-                                        <td class="form-field-control">
-                                            State :  <html:text name="transportModuleForm" property="stateName" size="30" styleId="stateName" />
-                                        <td>
-                                    </tr>  
-                                    <tr>  
-                                        <td class="form-field-control">
-                                            Zip code :  <html:text name="transportModuleForm" property="zipCode" size="30" styleId="zipCode" />
-                                        <td>
-                                        <td class="form-field-control">
-                                            Mobile :  <html:text name="transportModuleForm" property="zipCode" size="30" styleId="zipCode" />
-                                        <td>
-                                    </tr>
-                                    
-                                    <tr>  
-                                        <td class="form-field-control">
-                                            License  expiry date :<html:text name="transportModuleForm" property="licenseExpiryDate" size="30" styleId="licenceExpiryDate" />
-                                        <td>
-                                            </tr>
-                                    
-<!--                                    <tr>  
-                                        <td class="form-field-control">
-                                            Mobile :  <html:text name="transportModuleForm" property="mobile" size="30" styleId="mobile" />
-                                        <td>
-                                        <td class="form-field-control">
-                                            License  Num :  <html:text name="transportModuleForm" property="licenseNum" size="30" styleId="licenceNum" />
-                                        <td>
-                                    </tr>-->
-                                    
-                                    
-                                        <tr class="form-field-control">
-                                              <td class="form-field-control">
-                                            <html:select property="facultyType" styleId="facultyType">
-                                                <html:option value="">Select a Faculty type</html:option>                                                                                                                                                             
-                                                <html:optionsCollection name="transportModuleForm" property="facultyTypeList" label="label" value="value"/> 
-                                            </html:select>
-                                         </td>
-                                        </tr>  
-                                        
-                                        
-                                        
-                                        
-                                    
-                                </table>
+                                <div class="form-group">
+                                    <div ><label for="firstName">First name</label></div >
+                                    <html:text name="transportModuleForm" property="firstName" styleId="firstName" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="lastName">Last name</label></div >
+                                    <html:text name="transportModuleForm" property="lastName" styleId="lastName" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="addrLine1">Address Line1</label></div >
+                                    <html:text name="transportModuleForm" property="addrLine1" styleId="addrLine1" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="addrLine2">Address Line2</label></div >
+                                    <html:text name="transportModuleForm" property="addrLine2" styleId="addrLine2" styleClass="form-control"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div ><label for="addrLine3">Address Line3</label></div >
+                                    <html:text name="transportModuleForm" property="addrLine3" styleId="addrLine3" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="addrLine3">Address Line4</label></div >
+                                    <html:text name="transportModuleForm" property="addrLine4" styleId="addrLine4" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="city">City</label></div >
+                                    <html:text name="transportModuleForm" property="city" styleId="city" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="stateName">State</label></div >
+                                    <html:text name="transportModuleForm" property="stateName" styleId="stateName" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="zipCode">Zip code</label></div >
+                                    <html:text name="transportModuleForm" property="zipCode" styleId="zipCode" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="mobile">Mobile</label></div >
+                                    <html:text name="transportModuleForm" property="mobile" styleId="mobile" styleClass="form-control"/>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="facultyType">Faculty type</label></div >
+                                    <html:select property="facultyType" styleId="facultyType">
+                                        <html:option  styleClass="form-control" value="">Select Faculty Type</html:option>                                                                                                                                                             
+                                        <html:optionsCollection name="transportModuleForm" property="facultyTypeList" label="label" value="value" /> 
+                                    </html:select>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <div ><label for="licenseNum">License Num</label></div >
+                                    <html:text name="transportModuleForm" property="licenseNum" styleId="licenseNum" styleClass="form-control"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div ><label for="licenseExpiryDate">License  expiry date </label></div >
+                                    <html:text name="transportModuleForm" property="licenseExpiryDate" styleId="licenseExpiryDate" styleClass="form-control"/>
+                                </div>
+                                
+                                
                                 <html:hidden name="transportModuleForm" property="id" styleId="id"/>
                                 <html:hidden name="transportModuleForm" property="pageName" styleId="pageName" />
                                 <div align="center">
@@ -127,7 +125,7 @@
                             </html:form>
                         </div>
                     </div><!-- col-lg-12-->      	
-                </div><!-- /row -->
+                </div> <!--  /row -->
                 
                 
                 
@@ -184,14 +182,28 @@
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-   
+    
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     
     
+    
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <script src="assets/css/bootstrap.min.css"></script>
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    
+    
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
+    
+
     
     <!--script for this page-->
     
@@ -252,7 +264,7 @@
         }
         
         $(function() {
-            $( "#licenceExpiryDate" ).datepicker({
+            $( "#licenseExpiryDate" ).datepicker({
                 showOn: "button",
                 buttonImage: "images/calendar.gif",
             });
