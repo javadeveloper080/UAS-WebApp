@@ -6,7 +6,12 @@
 package org.edu.uams.server.util;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletResponse;
+
 import org.edu.uams.server.api.HasId;
 import org.edu.uams.server.api.Type;
 
@@ -27,5 +32,21 @@ public class ApplicationUtil {
         }else{
             response.getWriter().write("false");
         }
+    }
+    
+    
+    public static  Date formatStringToDate(String strDate){
+        
+        Date date = null;
+        if (strDate==null || strDate.isEmpty()) {
+            return date;
+        }
+        try {
+            //02-17-2015
+            date = new SimpleDateFormat("MM-dd-yyyy").parse(strDate);
+        } catch (ParseException e) {
+            throw e;
+        }
+        return date;
     }
 }
