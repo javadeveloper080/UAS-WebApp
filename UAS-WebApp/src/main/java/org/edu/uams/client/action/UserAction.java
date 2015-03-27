@@ -126,7 +126,7 @@ public class UserAction extends DispatchAction {
             userForm.clearFormValues();
         }else if(userForm.getPageName()!=null && userForm.getPageName().equals("SubmitAddType"))
         {
-            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(userForm.getId());
+            UserMasterEntity userMasterEntity = new UserMasterEntity();
             userMasterEntity.setUserName(userForm.getUserName());
             userMasterEntity.setPassword(userForm.getPassword());
             userMasterEntity.setId(userForm.getId());
