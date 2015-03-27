@@ -80,7 +80,7 @@ public class TransportModuleAction extends DispatchAction {
                 busFacultyEntity.setLicenceExpiryDate(expiryDate);
             }
             
-            busFacultyEntity.setId(transportModuleForm.getId());
+            busFacultyDao.update(busFacultyEntity);
             transportModuleForm.resetForm();
         }
         
