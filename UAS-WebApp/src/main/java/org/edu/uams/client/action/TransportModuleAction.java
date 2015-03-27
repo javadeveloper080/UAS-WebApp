@@ -59,7 +59,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setId(busFacultyEntity.getId());
         }
         
-        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
+       else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
         {
             BusFacultyEntity busFacultyEntity = busFacultyDao.findByPrimaryKey(transportModuleForm.getId());
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
@@ -84,7 +84,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.resetForm();
         }
         
-        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
+       else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
         {
             BusFacultyEntity busFacultyEntity = new BusFacultyEntity();
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
