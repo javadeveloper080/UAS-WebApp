@@ -37,7 +37,8 @@
 		     
 			  
 			 <form class="form-login" name="loginForm" action="loginAction.do?method=logInAction" method="post" autocomplete="on"> 
-		        <h2 class="form-login-heading">sign in now</h2>
+                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeFormWindow();">×</button>
+                        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
                         <input type="text"  class="form-control"  id="userName" name="userName" required="required" placeholder=" or mymail@mail.com"
                                      autofocus/>		            <br>
@@ -94,6 +95,10 @@
     </script>
  <script>
 
+    function closeFormWindow(){
+        document.loginForm.action = "loginAction.do?method=logOutAction";
+            document.loginForm.submit();
+    }
 
     function submitForm() {
         alert("Validate Form Values");

@@ -47,7 +47,6 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit User type</Strong> </h5>
-
                             <html:form  styleClass="form-inline" action="/userAction" method="post">
                                 <div class="form-group">
                                     User Name: <html:text name="userForm" property="userName" styleClass="form-control" styleId="userName"  maxlength="50"  />
@@ -80,6 +79,7 @@
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
                                 </div> 
                             </html:form>
+                                
 
                         </div>
                     </div><!-- col-lg-12-->      	
@@ -153,6 +153,7 @@
             var userName = document.getElementById('userName').value;
             var password = document.getElementById('password').value;
             var password1 = document.getElementById('password1').value;
+            var inActiveOn = document.getElementById('inActiveOn').value;
             var id = document.getElementById('id').value;
 
             if (userName == null || userName == "") {
@@ -184,7 +185,7 @@
                 data: {
                     "userName": userName,
                     "pageName": "checkUniqueUserName",
-                    "id":id
+                    "id":id,
                 },
                 success: function (response) {
                     if (response == 'true') {

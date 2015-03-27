@@ -6,6 +6,7 @@
 package org.edu.uams.server.util;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +20,8 @@ import org.edu.uams.server.api.HasId;
  * @author Pandu.Simbohtu
  */
 public class ApplicationUtil {
+    
+    public static final DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     
     public static void checkUniqueCodeHelper(HasId typeEntity, Long key, HttpServletResponse response) throws IOException {
         if (typeEntity!=null) {
@@ -42,10 +45,20 @@ public class ApplicationUtil {
         }
         try {
             //02-17-2015
-            date = new SimpleDateFormat("MM-dd-yyyy").parse(strDate);
+            date = dateFormat.parse(strDate);
         } catch (ParseException e) {
           e.printStackTrace();
         }
         return date;
+    }
+    
+    public static  String formatDateToString(Date date){
+        
+        String strDate = null;
+        if (date==null) {
+            return strDate;
+        }
+        strDate = dateFormat.format(date);
+        return strDate;
     }
 }

@@ -76,7 +76,7 @@ public class LoginAction extends DispatchAction {
             
         }
         loginForm.clearFormValues();
-        return mapping.findForward("loginPage");
+        return mapping.findForward("homePage");
     }
     
     

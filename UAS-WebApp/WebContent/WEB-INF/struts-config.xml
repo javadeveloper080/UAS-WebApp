@@ -96,6 +96,7 @@
         <action path="/loginAction" name="loginForm" parameter="method"
                 scope="session" type="org.edu.uams.client.action.LoginAction">
             <forward name="loginPage" path="/eviews/login.jsp" />
+            <forward name="homePage" path="/views/index.jsp" />
             <forward name="adminHomePage" path="adminHome" />
             <forward name="loginErrorPage" path="/views/loginError.jsp" />
             <forward name="forgotPassWordPage" path="/views/forgotPass.jsp" />

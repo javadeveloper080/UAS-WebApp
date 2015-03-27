@@ -114,6 +114,9 @@ public class UserAction extends DispatchAction {
             userForm.setId(userMasterEntity.getId());
             userForm.setUserType(userMasterEntity.getUserType().getCode());
             userForm.setUserTypeId(userMasterEntity.getUserType().getId());
+            if(userMasterEntity.getInActiveOn()!= null){
+                userForm.setInActiveOn(ApplicationUtil.formatDateToString(userMasterEntity.getInActiveOn()));
+            }
         }else if(userForm.getPageName()!=null && userForm.getPageName().equals("SubmitEditType"))
         {
             UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(userForm.getId());
@@ -121,7 +124,9 @@ public class UserAction extends DispatchAction {
             userMasterEntity.setPassword(userForm.getPassword());
             userMasterEntity.setId(userForm.getId());
             userMasterEntity.setUserType(userMasterTypeDao.findByPrimaryKey(userForm.getUserTypeId()));
-            
+             if(userForm.getInActiveOn()!= null){
+                userMasterEntity.setInActiveOn(ApplicationUtil.formatStringToDate(userForm.getInActiveOn()));
+            }
             userMasterDao.update(userMasterEntity);
             userForm.clearFormValues();
         }else if(userForm.getPageName()!=null && userForm.getPageName().equals("SubmitAddType"))
@@ -130,6 +135,9 @@ public class UserAction extends DispatchAction {
             userMasterEntity.setUserName(userForm.getUserName());
             userMasterEntity.setPassword(userForm.getPassword());
             userMasterEntity.setId(userForm.getId());
+            if(userForm.getInActiveOn()!= null){
+                userMasterEntity.setInActiveOn(ApplicationUtil.formatStringToDate(userForm.getInActiveOn()));
+            }
             userMasterEntity.setUserType(userMasterTypeDao.findByPrimaryKey(userForm.getUserTypeId()));
             
             userMasterDao.persist(userMasterEntity);
