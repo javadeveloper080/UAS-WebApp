@@ -50,19 +50,19 @@ public class BusFacultyEntity  implements Serializable {
     
     
     @Basic(optional = false)
-    @Column(name = "addr_line_3")
+    @Column(name = "addr_line_1")
     private String addrLine1;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "addr_line_2")
     private String addrLine2;
     
-    
-    @Basic(optional = false)
-    @Column(name = "addr_line_1")
+    @Basic(optional = true)
+    @Column(name = "addr_line_3")
     private String addrLine3;
     
-    @Basic(optional = false)
+    
+    @Basic(optional = true)
     @Column(name = "addr_line_4")
     private String addrLine4;
     
@@ -83,18 +83,18 @@ public class BusFacultyEntity  implements Serializable {
     @Column(name = "mobile",unique = true)
     private long mobile;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "licence_num",unique = true)
     private String licenceNum;
     
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "licence_expiry_date")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date licenceExpiryDate ;
     
     
-    
+    @Basic(optional = false)
     @Column(name = "faculty_type", length = 100, nullable = false)
     @Enumerated(EnumType.STRING)
     private FacultyType facultyType;

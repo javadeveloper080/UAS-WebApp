@@ -53,7 +53,9 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setZipCode(busFacultyEntity.getZipCode());
             transportModuleForm.setFacultyType(busFacultyEntity.getFacultyType().name());
             transportModuleForm.setLicenseNum(busFacultyEntity.getLicenceNum());
-            transportModuleForm.setLicenseExpiryDate(busFacultyEntity.getLicenceExpiryDate()+"");
+            if(busFacultyEntity.getLicenceExpiryDate()!= null){
+                transportModuleForm.setLicenseExpiryDate(ApplicationUtil.formatDateToString(busFacultyEntity.getLicenceExpiryDate()));
+            }
             transportModuleForm.setId(busFacultyEntity.getId());
         }
         
@@ -74,9 +76,9 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setLicenceNum(transportModuleForm.getLicenseNum());
             
             if (transportModuleForm.getLicenseExpiryDate()!=null ) {
-            	Date expiryDate = ApplicationUtil.formatStringToDate(transportModuleForm.getLicenseExpiryDate());
-            	busFacultyEntity.setLicenceExpiryDate(expiryDate);
-			}
+                Date expiryDate = ApplicationUtil.formatStringToDate(transportModuleForm.getLicenseExpiryDate());
+                busFacultyEntity.setLicenceExpiryDate(expiryDate);
+            }
             
             busFacultyEntity.setId(transportModuleForm.getId());
             transportModuleForm.resetForm();
@@ -98,9 +100,9 @@ public class TransportModuleAction extends DispatchAction {
             busFacultyEntity.setFacultyType(FacultyType.valueOf(transportModuleForm.getFacultyType()));
             busFacultyEntity.setLicenceNum(transportModuleForm.getLicenseNum());
             if (transportModuleForm.getLicenseExpiryDate()!=null ) {
-            	Date expiryDate = ApplicationUtil.formatStringToDate(transportModuleForm.getLicenseExpiryDate());
-            	busFacultyEntity.setLicenceExpiryDate(expiryDate);
-			}
+                Date expiryDate = ApplicationUtil.formatStringToDate(transportModuleForm.getLicenseExpiryDate());
+                busFacultyEntity.setLicenceExpiryDate(expiryDate);
+            }
             busFacultyDao.persist(busFacultyEntity);
             transportModuleForm.resetForm();
         }
@@ -123,7 +125,7 @@ public class TransportModuleAction extends DispatchAction {
         }
         return facultyTypeList;
     }
-
+    
     
 }
 
