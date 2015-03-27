@@ -44,6 +44,7 @@
         <mapping class="org.edu.uams.server.pojo.DegreeTypeEntity" />
         <mapping class="org.edu.uams.server.pojo.CourseTypeEntity" />
         <mapping class="org.edu.uams.server.pojo.BusFacultyEntity"/>
+        <mapping class="org.edu.uams.server.pojo.BusDetailsEntity"/>
     
         
         <mapping class="org.edu.uams.server.pojo.StudentCorrAddressDetailsEntity"></mapping>

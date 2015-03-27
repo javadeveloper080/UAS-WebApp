@@ -35,7 +35,8 @@ public class BusFacultyEntity  implements Serializable {
     
     public static final  String FIND_ALL = "SELECT b FROM BusFaculty b";
     public static final  String FINDBYFIRSTNAME = "SELECT b FROM BusFaculty b WHERE b.firstName = :firstName";
-    
+    public static final  String FIND_UN_ASSIGNED_FACULTY = "SELECT b FROM BusFaculty b where b.hasBusAssigned=false";
+    public static final  String FIND_ASSIGNED_FACULTY = "SELECT b FROM BusFaculty b where b.hasBusAssigned=false";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -98,6 +99,10 @@ public class BusFacultyEntity  implements Serializable {
     @Column(name = "faculty_type", length = 100, nullable = false)
     @Enumerated(EnumType.STRING)
     private FacultyType facultyType;
+    
+    @Basic(optional = false)
+    @Column(name = "has_bus_assigned",nullable = false)
+    private boolean hasBusAssigned;
     
     @Transient
     private String addrLines;
@@ -213,6 +218,14 @@ public class BusFacultyEntity  implements Serializable {
     
     public void setLicenceExpiryDate(Date licenceExpiryDate) {
         this.licenceExpiryDate = licenceExpiryDate;
+    }
+
+    public boolean isHasBusAssigned() {
+        return hasBusAssigned;
+    }
+
+    public void setHasBusAssigned(boolean hasBusAssigned) {
+        this.hasBusAssigned = hasBusAssigned;
     }
     
     public String getAddrLines() {

@@ -1,6 +1,6 @@
-/**
- *
- */
+ /**
+  *
+  */
 package org.edu.uams.client.form;
 
 import java.util.List;
@@ -29,6 +29,24 @@ public class TransportModuleForm extends ActionForm {
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }
+    
+    //Bus  details Starts
+    
+    private String busNum;
+    private String registrationNum;
+    private long driverId;
+    private long cleanerOrHelperId;
+    private long coordinatorId;
+    private int numOfSeats;
+    private Long travelPerDay;
+    private String chassisNum;
+    private List busDetailsList;
+    private List diverList=null;
+    private List coordinatorList;
+    private List cleanerOrHelperList;
+    
+    //Bus  details Ends
+    
     
     //Bus Faculty details starts
     private String firstName;
@@ -174,6 +192,109 @@ public class TransportModuleForm extends ActionForm {
     
     //Bus Faculty details ends
     
+    
+    //Bus  details Starts
+    
+    public String getBusNum() {
+        return busNum;
+    }
+    
+    public void setBusNum(String busNum) {
+        this.busNum = busNum;
+    }
+    
+    public String getRegistrationNum() {
+        return registrationNum;
+    }
+    
+    public void setRegistrationNum(String registrationNum) {
+        this.registrationNum = registrationNum;
+    }
+    
+    public long getDriverId() {
+        return driverId;
+    }
+    
+    public void setDriverId(long driverId) {
+        this.driverId = driverId;
+    }
+    
+    public long getCleanerOrHelperId() {
+        return cleanerOrHelperId;
+    }
+    
+    public void setCleanerOrHelperId(long cleanerOrHelperId) {
+        this.cleanerOrHelperId = cleanerOrHelperId;
+    }
+    
+    public long getCoordinatorId() {
+        return coordinatorId;
+    }
+    
+    public void setCoordinatorId(long coordinatorId) {
+        this.coordinatorId = coordinatorId;
+    }
+    
+    public int getNumOfSeats() {
+        return numOfSeats;
+    }
+    
+    public void setNumOfSeats(int numOfSeats) {
+        this.numOfSeats = numOfSeats;
+    }
+    
+    public Long getTravelPerDay() {
+        return travelPerDay;
+    }
+    
+    public void setTravelPerDay(Long travelPerDay) {
+        this.travelPerDay = travelPerDay;
+    }
+    
+    public String getChassisNum() {
+        return chassisNum;
+    }
+    
+    public void setChassisNum(String chassisNum) {
+        this.chassisNum = chassisNum;
+    }
+
+    public List getBusDetailsList() {
+        return busDetailsList;
+    }
+
+    public void setBusDetailsList(List busDetailsList) {
+        this.busDetailsList = busDetailsList;
+    }
+
+    public List getDiverList() {
+        return diverList;
+    }
+
+    public void setDiverList(List diverList) {
+        this.diverList = diverList;
+    }
+
+    public List getCoordinatorList() {
+        return coordinatorList;
+    }
+
+    public void setCoordinatorList(List coordinatorList) {
+        this.coordinatorList = coordinatorList;
+    }
+
+    public List getCleanerOrHelperList() {
+        return cleanerOrHelperList;
+    }
+
+    public void setCleanerOrHelperList(List cleanerOrHelperList) {
+        this.cleanerOrHelperList = cleanerOrHelperList;
+    }
+    
+    
+    //Bus  details Ends
+    
+    
     public void resetForm(){
         this.id =0l;
         this.pageName=null;
@@ -191,6 +312,14 @@ public class TransportModuleForm extends ActionForm {
         this.busFacultyList=null;
         this.licenseNum=null;
         this.licenseExpiryDate =null;
+        this.busNum =null;
+        this.registrationNum =null;
+        this.driverId =0L;
+        this.cleanerOrHelperId =0L;
+        this. coordinatorId =0L;
+        this.numOfSeats =0;
+        this.travelPerDay =null;
+        this.chassisNum =null;
     }
     
     

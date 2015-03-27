@@ -18,9 +18,11 @@ import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.TransportModuleForm;
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.FacultyType;
+import org.edu.uams.server.business.BusDetailsDao;
 import org.edu.uams.server.business.BusFacultyDao;
 import org.edu.uams.server.pojo.BusFacultyEntity;
 import org.edu.uams.server.util.ApplicationUtil;
+import org.edu.uams.server.pojo.BusDetailsEntity;
 
 
 public class TransportModuleAction extends DispatchAction {
@@ -59,7 +61,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.setId(busFacultyEntity.getId());
         }
         
-       else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
+        else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
         {
             BusFacultyEntity busFacultyEntity = busFacultyDao.findByPrimaryKey(transportModuleForm.getId());
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
@@ -84,7 +86,7 @@ public class TransportModuleAction extends DispatchAction {
             transportModuleForm.resetForm();
         }
         
-       else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
+        else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
         {
             BusFacultyEntity busFacultyEntity = new BusFacultyEntity();
             busFacultyEntity.setAddrLine1(transportModuleForm.getAddrLine1());
@@ -118,6 +120,105 @@ public class TransportModuleAction extends DispatchAction {
     }
     
     
+    
+    public ActionForward busDetailsPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        
+        TransportModuleForm transportModuleForm = (TransportModuleForm)form;
+        System.out.println("transportModuleForm:"+transportModuleForm.getPageName());
+        BusDetailsDao busDetailsDao = new BusDetailsDao();
+        BusFacultyDao busFacultyDao = new BusFacultyDao();
+        
+        List<BusDetailsEntity> busDetailsList = busDetailsDao.findAll();
+        
+        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM))
+        {
+            BusDetailsEntity busDetailsEntity = busDetailsDao.findByPrimaryKey(transportModuleForm.getId());
+            transportModuleForm.resetForm();
+            transportModuleForm.setChassisNum(busDetailsEntity.getChassisNum());
+            transportModuleForm.setNumOfSeats(busDetailsEntity.getNumOfSeats());
+            transportModuleForm.setRegistrationNum(busDetailsEntity.getRegistrationNum());
+            transportModuleForm.setTravelPerDay(busDetailsEntity.getTravelPerDay());
+            transportModuleForm.setDriverId(busDetailsEntity.getDriver().getId());
+            transportModuleForm.setCoordinatorId(busDetailsEntity.getCoordinator().getId());
+            transportModuleForm.setCleanerOrHelperId(busDetailsEntity.getCleanerOrHelper().getId());
+            transportModuleForm.setId(busDetailsEntity.getId());
+        }
+        
+        else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
+        {
+            BusDetailsEntity busDetailsEntity = busDetailsDao.findByPrimaryKey(transportModuleForm.getId());
+            busDetailsEntity.setChassisNum(transportModuleForm.getChassisNum());
+            busDetailsEntity.setNumOfSeats(transportModuleForm.getNumOfSeats());
+            busDetailsEntity.setRegistrationNum(transportModuleForm.getRegistrationNum());
+            busDetailsEntity.setTravelPerDay(transportModuleForm.getTravelPerDay());
+            
+            if (transportModuleForm.getDriverId()>0) {
+                BusFacultyEntity driver = busFacultyDao.findByPrimaryKey(transportModuleForm.getDriverId());
+                busDetailsEntity.setDriver(driver);
+            }
+            
+            if (transportModuleForm.getCleanerOrHelperId()>0) {
+                BusFacultyEntity cleaner = busFacultyDao.findByPrimaryKey(transportModuleForm.getCleanerOrHelperId());
+                busDetailsEntity.setCleanerOrHelper(cleaner);
+            }
+            
+            if (transportModuleForm.getCoordinatorId()>0) {
+                BusFacultyEntity coordinator = busFacultyDao.findByPrimaryKey(transportModuleForm.getCoordinatorId());
+                busDetailsEntity.setCoordinator(coordinator);
+            }
+            busDetailsDao.update(busDetailsEntity);
+            transportModuleForm.resetForm();
+        }
+        
+        else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
+        {
+            BusDetailsEntity busDetailsEntity = new BusDetailsEntity();
+            
+            if (busDetailsList!=null && busDetailsList.size()> 0) {
+                int busNum=busDetailsList.size()+1;
+                busDetailsEntity.setBusNum("B"+busNum);
+            }else{
+                busDetailsEntity.setBusNum("B"+1);
+            }
+            
+            busDetailsEntity.setChassisNum(transportModuleForm.getChassisNum());
+            busDetailsEntity.setNumOfSeats(transportModuleForm.getNumOfSeats());
+            busDetailsEntity.setRegistrationNum(transportModuleForm.getRegistrationNum());
+            busDetailsEntity.setTravelPerDay(transportModuleForm.getTravelPerDay());
+            
+            if (transportModuleForm.getDriverId()>0) {
+                BusFacultyEntity driver = busFacultyDao.findByPrimaryKey(transportModuleForm.getDriverId());
+                busDetailsEntity.setDriver(driver);
+            }
+            
+            if (transportModuleForm.getCleanerOrHelperId()>0) {
+                BusFacultyEntity cleaner = busFacultyDao.findByPrimaryKey(transportModuleForm.getCleanerOrHelperId());
+                busDetailsEntity.setCleanerOrHelper(cleaner);
+            }
+            
+            if (transportModuleForm.getCoordinatorId()>0) {
+                BusFacultyEntity coordinator = busFacultyDao.findByPrimaryKey(transportModuleForm.getCoordinatorId());
+                busDetailsEntity.setCoordinator(coordinator);
+            }
+            
+            busDetailsDao.persist(busDetailsEntity);
+            transportModuleForm.resetForm();
+        }
+        
+        List<BusFacultyEntity> busFacultyList = busFacultyDao.findAll();
+        setFacultyTypeList(transportModuleForm, busFacultyList);
+        //For Display Grid
+        if(!busDetailsList.isEmpty()){
+            transportModuleForm.setBusDetailsList(busDetailsList);
+        }
+        req.setAttribute("transportModule", "true");
+        req.setAttribute("busDetailsPage", "true");
+        return mapping.findForward("busDetailsPage");
+    }
+    
+    
     private List<LabelValueBean> getFacultyTypeList() {
         List<LabelValueBean> facultyTypeList = new ArrayList<>();
         for (FacultyType facultyType : FacultyType.values()) {
@@ -127,6 +228,29 @@ public class TransportModuleAction extends DispatchAction {
     }
     
     
+    private void setFacultyTypeList(TransportModuleForm transportModuleForm ,List<BusFacultyEntity> facultyList) {
+        
+        List<BusFacultyEntity> busDriverList=new ArrayList<>();
+        List<BusFacultyEntity> busCleanerList=new ArrayList<>();
+        List<BusFacultyEntity> busCoordinatorList=new ArrayList<>();
+        
+        if (facultyList!=null && !facultyList.isEmpty()) {
+            for (BusFacultyEntity busFacultyEntity : facultyList) {
+                if (!busFacultyEntity.isHasBusAssigned() && busFacultyEntity.getFacultyType().equals(FacultyType.DRIVER) ) {
+                    busDriverList.add(busFacultyEntity);
+                }
+                if (!busFacultyEntity.isHasBusAssigned()  && busFacultyEntity.getFacultyType().equals(FacultyType.CLEANER)) {
+                    busCleanerList.add(busFacultyEntity);
+                }
+                if (busFacultyEntity.getFacultyType().equals(FacultyType.COORDINATOR)) {
+                    busCoordinatorList.add(busFacultyEntity);
+                }
+            }
+        }
+        transportModuleForm.setDiverList(busDriverList);
+        transportModuleForm.setCleanerOrHelperList(busCleanerList);
+        transportModuleForm.setCoordinatorList(busCoordinatorList);
+    }
 }
 
 
