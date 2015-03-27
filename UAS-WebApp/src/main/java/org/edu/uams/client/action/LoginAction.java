@@ -48,9 +48,9 @@ public class LoginAction extends DispatchAction {
         UserMasterEntity userMasterEntity =userMasterDao.findByLoginName(loginForm.getUserName(),loginForm.getPassword());
         if (userMasterEntity!=null) {
             populateUserDetails(loginForm, userMasterEntity);
-            UserContext userContext=new UserContext(userMasterEntity.getId(), userMasterEntity.getUserName(),false,loginForm,userMasterEntity.getUserTypeList().getCode());
+            UserContext userContext=new UserContext(userMasterEntity.getId(), userMasterEntity.getUserName(),false,loginForm,userMasterEntity.getUserType().getCode());
             SessionTracker.registerUser(req, userContext);
-            if (userMasterEntity.getUserTypeList().getCode().equals(ApplicationConstants.ADMIN)) {
+            if (userMasterEntity.getUserType().getCode().equals(ApplicationConstants.ADMIN)) {
                 return mapping.findForward("adminHomePage");
             }
             else {
@@ -143,64 +143,6 @@ public class LoginAction extends DispatchAction {
         loginForm.setName("Hard coded name");
         loginForm.setPassword(userMasterEntity.getPassword());
         loginForm.setId(userMasterEntity.getId());
-        loginForm.setUserType(userMasterEntity.getUserTypeList().getDescription());
+        loginForm.setUserType(userMasterEntity.getUserType().getDescription());
     }
-    
-    public ActionForward usersPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
-            HttpServletResponse res)throws Exception
-    {
-        LoginForm loginForm = (LoginForm)form;
-        System.out.println("loginForm:"+loginForm.getPageName());
-        UserMasterTypeDao userMasterTypeDao = new UserMasterTypeDao();
-        UserMasterDao userMasterDao = new UserMasterDao();
-        
-        
-        if(loginForm.getPageName()!=null && loginForm.getPageName().equals("GetEditTypeForm"))
-        {
-            
-            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(loginForm.getId());
-            loginForm.clearFormValues();
-            loginForm.setName(userMasterEntity.getUserName());
-            loginForm.setPassword(userMasterEntity.getPassword());
-            loginForm.setId(userMasterEntity.getId());
-            loginForm.setUserType(userMasterEntity.getUserTypeList().getCode());
-            loginForm.setUserTypeId(userMasterEntity.getUserTypeList().getId());
-            //loginForm.addUserTypeList(userMasterTypeDao.findByCode(loginForm.getUserType()));
-        }
-        
-        if(loginForm.getPageName()!=null && loginForm.getPageName().equals("SubmitEditType"))
-        {
-            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(loginForm.getId());
-            userMasterEntity.setUserName(loginForm.getUserName());
-            userMasterEntity.setPassword(loginForm.getPassword());
-            userMasterEntity.setId(loginForm.getId());
-            userMasterEntity.setUserTypeList(userMasterTypeDao.findByPrimaryKey(loginForm.getUserTypeId()));
-            
-            userMasterDao.update(userMasterEntity);
-            loginForm.clearFormValues();
-        }
-        
-        if(loginForm.getPageName()!=null && loginForm.getPageName().equals("SubmitAddType"))
-        {
-            UserMasterEntity userMasterEntity = userMasterDao.findByPrimaryKey(loginForm.getId());
-            userMasterEntity.setUserName(loginForm.getUserName());
-            userMasterEntity.setPassword(loginForm.getPassword());
-            userMasterEntity.setId(loginForm.getId());
-            userMasterEntity.setUserTypeList(userMasterTypeDao.findByPrimaryKey(loginForm.getUserTypeId()));
-            
-            userMasterDao.persist(userMasterEntity);
-            loginForm.clearFormValues();
-        }
-        
-        List<UserMasterEntity> feeCategoryTypeList = userMasterDao.findAll();
-        loginForm.setUsersList(null);
-        if(!feeCategoryTypeList.isEmpty()){
-            loginForm.setUsersList(feeCategoryTypeList);
-        }
-        loginForm.setUserTypeList(userMasterTypeDao.findAll());
-        req.setAttribute("userModule", "true");
-        req.setAttribute("usersPage", "true");
-        return mapping.findForward("usersPage");
-    }
-    
 }

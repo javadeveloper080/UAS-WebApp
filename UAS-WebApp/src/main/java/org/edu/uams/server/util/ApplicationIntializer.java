@@ -58,7 +58,7 @@ public class ApplicationIntializer {
             admin=new UserMasterEntity();
             admin.setPassword("pwd");
             admin.setUserName(ApplicationConstants.ADMIN);
-            admin.setUserTypeList(userMasterTypeDao.findByCode(ApplicationConstants.ADMIN));
+            admin.setUserType(userMasterTypeDao.findByCode(ApplicationConstants.ADMIN));
             userMasterDao.persist(admin);
         }
     }

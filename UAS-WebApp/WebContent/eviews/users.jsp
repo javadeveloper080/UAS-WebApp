@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta content="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
@@ -21,7 +21,7 @@
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+        
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -48,23 +48,37 @@
                         <div class="form-panel">
                             <h5><Strong>Add/Edit User type</Strong> </h5>
 
-                            <html:form  styleClass="form-inline" action="/loginAction" method="post">
+                            <html:form  styleClass="form-inline" action="/userAction" method="post">
                                 <div class="form-group">
-                                    User Name: <html:text name="loginForm" property="userName" styleClass="form-control" styleId="userName"  maxlength="50"  />
+                                    User Name: <html:text name="userForm" property="userName" styleClass="form-control" styleId="userName"  maxlength="50"  />
                                 </div>
                                 <div class="form-group">
-                                    User Name: <html:password name="loginForm" property="password" styleClass="form-control" styleId="userName"  maxlength="50"  />
+                                    Password: <html:password name="userForm" property="password" styleClass="form-control" styleId="password"  maxlength="50"  />
                                 </div>
-
-                            <html:select styleClass="selectpicker" style="display: none;" property="userTypeId" styleId="userTypeId">
+                                <div class="form-group">
+                                    Re Enter Password: <html:password name="userForm" property="password" styleClass="form-control" styleId="password1"  maxlength="50"  />
+                                </div>
+                                
+                            <div class="form-group">
+                                User Role: &nbsp;&nbsp;
+                                <html:select  styleClass="form-control" property="userTypeId" styleId="userTypeId">
                                 <html:option value="0">Select a user type</html:option>
-                                <html:optionsCollection name="loginForm"
+                                <html:optionsCollection   name="userForm"
                                                         property="userTypeList" label="code" value="id" />
                             </html:select>
-
                             </div>
-                            <html:hidden name="loginForm" property="id" styleId="id"/>
-                            <html:hidden name="loginForm" property="pageName" styleId="pageName" />
+
+                            <div class="form-group">
+                                  In Active
+                                <div class='input-group date' id='datetimepicker1'>
+                                  <html:text name="userForm" property="inActiveOn" styleClass="form-control" styleId="inActiveOn" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                               
+                            <html:hidden name="userForm" property="id" styleId="id"/>
+                            <html:hidden name="userForm" property="pageName" styleId="pageName" />
                             <div align="center">
                                 <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                 <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
@@ -73,7 +87,6 @@
 
                     </div>
                 </div><!-- col-lg-12-->      	
-                </div><!-- /row -->
 
 
                 <!-- GRID ELEMENTS -->
@@ -87,15 +100,17 @@
                                     <tr>
                                         <th><i class="fa fa-bullhorn"></i> User Name</th>
                                         <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
-                                        <th></th>
-                                    </tr>
+                                          <th class="hidden-phone"><i class="fa fa-question-circle"></i> Role</th>
+                                          <th class="hidden-phone"><i class="fa fa-question-circle"></i> In Active</th>
                                 </thead>
                                 <tbody>
-                                    <logic:notEmpty name="loginForm" property="usersList">
-                                        <logic:iterate id="users" name="loginForm" property="usersList" type="org.edu.uams.server.pojo.UserMasterEntity">
+                                    <logic:notEmpty name="userForm" property="usersList">
+                                        <logic:iterate id="users" name="userForm" property="usersList" type="org.edu.uams.server.pojo.UserMasterEntity">
                                             <tr>
                                                 <td><bean:write name="users" property="userName"/></td>
                                                 <td><bean:write name="users" property="password"/></td>
+                                                   <td><bean:write name="users" property="userType.code"/></td>
+                                                   <td><bean:write name="users" property="inActiveOn"/></td>
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${users.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>
                                         </logic:iterate>
@@ -105,21 +120,8 @@
                         </div><!-- /content-panel -->
                     </div><!-- /col-md-12 -->
                 </div><!-- /row -->
-
-
-
-
-
             </section><! --/wrapper -->
         </section><!-- /MAIN CONTENT -->
-
-
-
-
-
-
-
-
         <!--main content end-->
 
     </section>
@@ -134,87 +136,99 @@
 
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
-
+    
     <!--script for this page-->
 
     <script>
 
 
-                                                    function validateForm() {
-                                                        alert("Validate Form Values");
-                                                        // get the form values
-                                                        var code = document.getElementById('code').value;
-                                                        var description = document.getElementById('description').value;
+    function validateForm() {
+        alert("Validate Form Values");
+        // get the form values
+        var userName = document.getElementById('userName').value;
+        var password = document.getElementById('password').value;
+        var password1 = document.getElementById('password1').value;
 
-                                                        if (code == null || code == "") {
-                                                            alert("Please Enter Code");
-                                                            document.getElementById('code').cfocus();
-                                                            return false;
-                                                        }
+        if (userName == null || userName == "") {
+            alert("Please Enter userName");
+            document.getElementById('userName').cfocus();
+            return false;
+        }
 
-                                                        if (description == null || description == "") {
-                                                            alert("Please Enter Description");
-                                                            document.getElementById('description').focus();
-                                                            return false;
-                                                        }
+        if (password == null || password == "") {
+            alert("Please Enter password");
+            document.getElementById('password').focus();
+            return false;
+        }
 
-                                                        var id = document.getElementById('id').value;
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
-                                                            data: {
-                                                                "code": code,
-                                                                "pageName": "FeeCategoryType",
-                                                                "id": id
-                                                            },
-                                                            success: function (response) {
-                                                                if (response == 'true') {
-                                                                    alert('Code is ' + code + ' present');
-                                                                    document.getElementById('code').focus();
-                                                                    return false;
-                                                                }
-                                                                else {
-                                                                    submitForm();
-                                                                }
-                                                            },
-                                                            error: function (e) {
-                                                                alert('Error: ' + e);
-                                                                return false;
-                                                            }
-                                                        });
-                                                    }
+        if (password1 == null || password1 == "") {
+            alert("Please Re Enter password");
+            document.getElementById('password1').focus();
+            return false;
+        }
 
-
-                                                    function getEditTypeForm(id) {
-                                                        alert('Get Editff Type' + id);
-                                                        document.getElementById('id').value = id;
-                                                        document.getElementById('pageName').value = "GetEditTypeForm"
-                                                        document.typeTableForm.action = "typeTableAction.do?method=userTypePage";
-                                                        document.typeTableForm.submit();
-                                                    }
-
-                                                    function submitForm() {
-                                                        alert('Submit Form');
-                                                        var id = document.getElementById('id').value;
-                                                        if (id != null && id > 0) {
-                                                            document.getElementById('pageName').value = "SubmitEditType"
-                                                        } else {
-                                                            document.getElementById('pageName').value = "SubmitAddType"
-                                                        }
-                                                        document.typeTableForm.action = "typeTableAction.do?method=userTypePage";
-                                                        document.typeTableForm.submit();
-                                                    }
+        if (password =! password1) {
+            alert("Password is not matching, Please Re Enter password");
+            document.getElementById('password1').focus();
+            return false;
+        }
+        var id = document.getElementById('id').value;
+        $.ajax({
+            type: "POST",
+            url: "/UAMS-WebApp/userAction.do?method=usersPage",
+            data: {
+                "userName": userName,
+                "pageName": "checkUniqueUserName",
+            },
+            success: function (response) {
+                if (response == 'true') {
+                    alert('Code is ' + userName + ' present');
+                    document.getElementById('userName').focus();
+                    return false;
+                }
+                else {
+                    submitForm();
+                }
+            },
+            error: function (e) {
+                alert('Error: ' + e);
+                return false;
+            }
+        });
+    }
 
 
-                                                    function rset()
-                                                    {
-                                                        alert('reset');
-                                                        document.getElementById('code').value = "";
-                                                        document.getElementById('description').value = "";
-                                                        document.getElementById('id').value = "0";
-                                                        document.getElementById('pageName').value = "";
+    function getEditTypeForm(id) {
+        alert('Get Editff Type' + id);
+        document.getElementById('id').value = id;
+        document.getElementById('pageName').value = "GetEditTypeForm"
+        document.userForm.action = "userAction.do?method=usersPage";
+        document.userForm.submit();
+    }
 
-                                                    }
+    function submitForm() {
+        alert('Submit Form');
+        var id = document.getElementById('id').value;
+        if (id != null && id > 0) {
+            document.getElementById('pageName').value = "SubmitEditType"
+        } else {
+            document.getElementById('pageName').value = "SubmitAddType"
+        }
+        document.userForm.action = "typeTableAction.do?method=usersPage";
+        document.userForm.submit();
+    }
+
+
+    function rset()
+    {
+        alert('reset');
+        document.getElementById('userName').value = "";
+        document.getElementById('password').value = "";
+        document.getElementById('userTypeId').value = 0;
+        document.getElementById('id').value = "0";
+        document.getElementById('pageName').value = "";
+
+    }
     </script>
 
 </body>

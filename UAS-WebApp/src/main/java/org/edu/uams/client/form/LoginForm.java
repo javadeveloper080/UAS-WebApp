@@ -3,8 +3,6 @@
  */
 package org.edu.uams.client.form;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.struts.action.ActionForm;
 
 public class LoginForm extends ActionForm {
@@ -14,29 +12,18 @@ public class LoginForm extends ActionForm {
     private long id;
     private String name;
 
-    private List userTypeList;
-
     private String loginMessage;
 
     private String pageName;
+    
     private String userType;
-    private long userTypeId;
 
-    private List usersList;
-
-    public long getUserTypeId() {
-        return userTypeId;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUserTypeId(long userTypeId) {
-        this.userTypeId = userTypeId;
-    }
-    public List getUsersList() {
-        return usersList;
-    }
-
-    public void setUsersList(List usersList) {
-        this.usersList = usersList;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getPageName() {
@@ -103,42 +90,11 @@ public class LoginForm extends ActionForm {
         this.name = name;
     }
 
-    /**
-     * @return the userType
-     */
-    public List getUserTypeList() {
-        return userTypeList;
-    }
-
-    /**
-     * @param userTypeList the userType to set
-     */
-    public void setUserTypeList(List userTypeList) {
-        this.userTypeList = userTypeList;
-    }
-
-    public void addUserTypeList(Object userType) {
-        if (userTypeList == null) {
-            userTypeList = new ArrayList();
-        }
-        this.userTypeList.add(userType);
-    }
-
     public void clearFormValues() {
         this.userName = null;
         this.password = null;
         this.id = 0l;
         this.name = null;
-        this.userTypeList = null;
-        this.userType = null;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
     }
 
     public String getLoginMessage() {

@@ -6,18 +6,16 @@
 
 package org.edu.uams.server.api;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mohammed.Tauseef
  */
-public interface Type extends HasId{
+public interface HasId extends Serializable{
     
-    public String getCode() ;
+    public long getId();
     
-    public void setCode(String code);
-    
-    public String getDescription();
-    
-    public void setDescription(String description);
+    public void setId(long id);
     
 }

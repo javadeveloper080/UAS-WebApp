@@ -36,21 +36,45 @@
 	  	
 		     
 			  
-			   <form class="form-login" name="loginForm" action="loginAction.do?method=logInAction" method="post" autocomplete="on"> 
+			 <form class="form-login" name="loginForm" action="loginAction.do?method=logInAction" method="post" autocomplete="on"> 
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
- <input type="text"  class="form-control"  id="userName" name="userName" required="required" placeholder=" or mymail@mail.com"
+                        <input type="text"  class="form-control"  id="userName" name="userName" required="required" placeholder=" or mymail@mail.com"
                                      autofocus/>		            <br>
 		                                        <input id="password" name="password" required="required" type="password" class="form-control" placeholder="eg. X8df!90EO" /> 
-		            
-		            <br>
+		            <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+		
+		                </span>
+		            </label>
 		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 		            <hr>
 		           </div>  
 		          
 		
 		       
+		<!-- Modal -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+		              <div class="modal-dialog">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h4 class="modal-title">Forgot Password ?</h4>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Enter your e-mail address below to reset your password.</p>
+		                          <input type="text" id = 'email' name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
 		
+		                      </div>
+		                      <div class="modal-footer">
+		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+		                          <button class="btn btn-theme" type="button">Submit</button>
+		                      </div>
+		                  </div>
+		              </div>
+		          </div>
+		          <!-- modal -->
 		          
 		
 		      </form>	  	
@@ -68,7 +92,28 @@
     <script>
         $.backstretch("assets/img/login-bg.jpg", {speed: 500});
     </script>
+ <script>
 
+
+    function submitForm() {
+        alert("Validate Form Values");
+        // get the form values
+        var email = document.getElementById('email').value;
+        if(isEmail(email))
+        {
+            
+        }else
+        {
+            document.getElementById('email').focus();
+            return;
+        }
+    }
+    
+    function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+ </script>
 
   </body>
 </html>

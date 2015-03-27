@@ -35,7 +35,7 @@
                     
                 <ul class="sub">
                     <li <c:if test="${requestScope.userTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=userTypePage">User Type</a></li>
-                    <li <c:if test="${requestScope.usersPage != null}"> class="active"</c:if>><a  href="loginAction.do?method=usersPage">Users</a></li>
+                    <li <c:if test="${requestScope.usersPage != null}"> class="active"</c:if>><a  href="userAction.do?method=usersPage">Users</a></li>
                 </ul>
             </li>
             
