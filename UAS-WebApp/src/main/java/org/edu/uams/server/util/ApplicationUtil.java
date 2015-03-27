@@ -45,7 +45,7 @@ public class ApplicationUtil {
             //02-17-2015
             date = new SimpleDateFormat("MM-dd-yyyy").parse(strDate);
         } catch (ParseException e) {
-            throw e;
+          e.printStackTrace();
         }
         return date;
     }
