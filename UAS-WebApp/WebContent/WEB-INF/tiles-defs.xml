@@ -75,6 +75,10 @@
     <definition name="BusFacultyPage" extends="baseTemplateLayout">
         <put name="body"   value="/eviews/busFacultyPage.jsp" />
     </definition>
+    
+     <definition name="BusDetailsPage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/busDetailsPage.jsp" />
+    </definition>
    
     <!--Transport table Entry ends-->
     

@@ -81,6 +81,7 @@
         <action path="/transportModuleAction" name="transportModuleForm" parameter="method"
                 scope="request" type="org.edu.uams.client.action.TransportModuleAction">
             <forward name="busFacultyPage" path="BusFacultyPage" />
+            <forward name="busDetailsPage" path="BusDetailsPage" />
         </action>
         <!--Transport table Entry ends-->
 
