@@ -13,7 +13,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletResponse;
 
 import org.edu.uams.server.api.HasId;
-import org.edu.uams.server.api.Type;
 
 /**
  *
