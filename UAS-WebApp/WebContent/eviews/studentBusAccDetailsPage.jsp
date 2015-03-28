@@ -113,12 +113,12 @@
                                 <hr>
                                 <thead class="cf">
                                     <tr>
-                                        <th class="numeric"> Student roll No.</th>
-                                        <th class="numeric"> BusSeat No.</th>
+                                        <th class="numeric">Roll No.</th>
+                                        <th class="numeric">Seat No.</th>
                                         <th class="numeric"> Bus  No. </th>
-                                        <th class="numeric">Area name</th>
-                                        <th class="numeric">Bus reg date</th>
-                                         <th class="numeric">Bus cancel date</th>
+                                        <th class="numeric">Area </th>
+                                        <th class="numeric">Reg date</th>
+                                         <th class="numeric">Cancel date</th>
                                         <th></th>
                                     </tr>
                                 </thead>
