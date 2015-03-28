@@ -130,7 +130,7 @@ public class TransportModuleAction extends DispatchAction {
         BusDetailsDao busDetailsDao = new BusDetailsDao();
         BusFacultyDao busFacultyDao = new BusFacultyDao();
         
-        List<BusDetailsEntity> busDetailsList = busDetailsDao.findAll();
+        
         
         if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM))
         {
@@ -175,9 +175,9 @@ public class TransportModuleAction extends DispatchAction {
         else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
         {
             BusDetailsEntity busDetailsEntity = new BusDetailsEntity();
-            
-            if (busDetailsList!=null && busDetailsList.size()> 0) {
-                int busNum=busDetailsList.size()+1;
+            Long countOfBuses= busDetailsDao.getCountOfBuses();
+            if (countOfBuses!=null && countOfBuses> 0) {
+                Long busNum=countOfBuses+1;
                 busDetailsEntity.setBusNum("B"+busNum);
             }else{
                 busDetailsEntity.setBusNum("B"+1);
@@ -209,7 +209,11 @@ public class TransportModuleAction extends DispatchAction {
         
         List<BusFacultyEntity> busFacultyList = busFacultyDao.findAll();
         setFacultyTypeList(transportModuleForm, busFacultyList);
+        
+        transportModuleForm.setBusDetailsList(null);
         //For Display Grid
+        
+        List<BusDetailsEntity> busDetailsList = busDetailsDao.findAll();
         if(!busDetailsList.isEmpty()){
             transportModuleForm.setBusDetailsList(busDetailsList);
         }

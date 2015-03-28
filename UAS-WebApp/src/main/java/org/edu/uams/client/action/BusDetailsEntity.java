@@ -34,6 +34,7 @@ public class BusDetailsEntity  implements HasId {
     public static final  String FIND_ALL = "SELECT b FROM BusDetails b";
     public static final  String FIND_BY_BUS_NUM = "SELECT b FROM BusDetails b WHERE b.busNum = :busNum";
     public static final  String FIND_BY_NUM_OF_SEATS = "SELECT b FROM BusDetails b WHERE b.numOfSeats = :numOfSeats";
+     public static final  String GET_COUNT_OF_BUSES= "SELECT count(b.id) FROM BusDetails b";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

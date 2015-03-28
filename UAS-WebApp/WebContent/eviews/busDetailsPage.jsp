@@ -30,58 +30,75 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Bus Details</Strong> </h5>
-                                    <html:form  styleClass="form-inline" action="/transportModuleAction" method="post">
+                                    <html:form  styleClass="" action="/transportModuleAction" method="post">
                                 
-                                <div class="form-group">
-                                    <div ><label for="registrationNum">Registration number</label></div >
-                                    <html:text name="transportModuleForm" property="registrationNum" styleId="registrationNum" styleClass="form-control"/>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="registrationNum">Registration number</label>
+                                            <html:text tabindex="1" name="transportModuleForm" property="registrationNum" styleId="registrationNum" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="chassisNum">Chassis number</label>
+                                            <html:text tabindex="1" name="transportModuleForm" property="chassisNum" styleId="chassisNum" styleClass="form-control"/>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 
-                                <div class="form-group">
-                                    <div ><label for="chassisNum">Chassis number</label></div >
-                                    <html:text name="transportModuleForm" property="chassisNum" styleId="chassisNum" styleClass="form-control"/>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="numOfSeats">Number of seats</label>
+                                            <html:text name="transportModuleForm" property="numOfSeats" styleId="numOfSeats" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="travelPerDay">Travel per day</label>
+                                            <html:text name="transportModuleForm" property="travelPerDay" styleId="travelPerDay" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="driverId">Driver</label>
+                                            <html:select property="driverId" styleId="driverId" styleClass="form-control">
+                                                <html:option   value="">Select Driver</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="transportModuleForm" property="diverList" label="firstName" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="cleanerOrHelperId">Cleaner</label>
+                                            <html:select property="cleanerOrHelperId" styleId="cleanerOrHelperId" styleClass="form-control">
+                                                <html:option  value="">Select Cleaner</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="transportModuleForm" property="cleanerOrHelperList" label="firstName" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 
-                                <div class="form-group">
-                                    <div ><label for="numOfSeats">Number of seats</label></div >
-                                    <html:text name="transportModuleForm" property="numOfSeats" styleId="numOfSeats" styleClass="form-control"/>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="driverId">Coordinator</label>
+                                            <html:select property="coordinatorId" styleId="coordinatorId" styleClass="form-control">
+                                                <html:option value="">Select Coordinator</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="transportModuleForm" property="coordinatorList" label="firstName" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 
-                                
-                                <div class="form-group">
-                                    <div ><label for="travelPerDay">Travel per day</label></div >
-                                    <html:text name="transportModuleForm" property="travelPerDay" styleId="travelPerDay" styleClass="form-control"/>
-                                </div>
-                                
-                               
-                                
-                                <div class="form-group">
-                                    <div ><label for="driverId">Driver</label></div >
-                                    <html:select property="driverId" styleId="driverId">
-                                        <html:option  styleClass="form-control" value="">Select Driver</html:option>                                                                                                                                                             
-                                        <html:optionsCollection name="transportModuleForm" property="diverList" label="firstName" value="id" /> 
-                                    </html:select>
-                                </div>
-                                
-                                
-                                  <div class="form-group">
-                                    <div ><label for="cleanerOrHelperId">Cleaner</label></div >
-                                    <html:select property="cleanerOrHelperId" styleId="cleanerOrHelperId">
-                                        <html:option  styleClass="form-control" value="">Select Cleaner</html:option>                                                                                                                                                             
-                                        <html:optionsCollection name="transportModuleForm" property="cleanerOrHelperList" label="firstName" value="id" /> 
-                                    </html:select>
-                                </div>
-                                
-                                
-                                 <div class="form-group">
-                                    <div ><label for="coordinatorId">Coordinator</label></div >
-                                    <html:select property="coordinatorId" styleId="coordinatorId">
-                                        <html:option  styleClass="form-control" value="">Select Coordinator</html:option>                                                                                                                                                             
-                                        <html:optionsCollection name="transportModuleForm" property="coordinatorList" label="firstName" value="id" /> 
-                                    </html:select>
-                                </div>
                                 
                                 <html:hidden name="transportModuleForm" property="id" styleId="id"/>
                                 <html:hidden name="transportModuleForm" property="pageName" styleId="pageName" />
@@ -103,16 +120,18 @@
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
-                            <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Bus Details Table</h4>
+                            
+                            
+                            <table class="table table-bordered table-striped table-condensed cf">
+                                <h4> Bus Details Table</h4>
                                 <hr>
-                                <thead>
+                                <thead class="cf">
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Bus number</th>
-                                        <th><i class="fa fa-bullhorn"></i> Registration number</th>
-                                        <th><i class="fa fa-bullhorn"></i> Chassis Number </th>
-                                        <th><i class="fa fa-bullhorn"></i> Travel per day</th>
-                                          <th><i class="fa fa-bullhorn"></i> Number of seats</th>
+                                        <th class="numeric"> Bus No.</th>
+                                        <th class="numeric"> Registration No.</th>
+                                        <th class="numeric"> Chassis No. </th>
+                                        <th class="numeric">Travel per day</th>
+                                        <th class="numeric"> No. of seats</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -120,11 +139,11 @@
                                     <logic:notEmpty name="transportModuleForm" property="busDetailsList">
                                         <logic:iterate id="transportBusDetailsTable" name="transportModuleForm" property="busDetailsList" type="org.edu.uams.server.pojo.BusDetailsEntity">
                                             <tr>
-                                                <td><bean:write name="transportBusDetailsTable" property="busNum"/></td>
-                                                <td><bean:write name="transportBusDetailsTable" property="registrationNum"/></td>
-                                                <td><bean:write name="transportBusDetailsTable" property="chassisNum"/></td>
-                                                <td><bean:write name="transportBusDetailsTable" property="travelPerDay"/></td>
-                                                <td><bean:write name="transportBusDetailsTable" property="numOfSeats"/></td>
+                                                <td class="numeric"><bean:write name="transportBusDetailsTable" property="busNum"/></td>
+                                                <td class="numeric"><bean:write name="transportBusDetailsTable" property="registrationNum"/></td>
+                                                <td class="numeric"><bean:write name="transportBusDetailsTable" property="chassisNum"/></td>
+                                                <td class="numeric"><bean:write name="transportBusDetailsTable" property="travelPerDay"/></td>
+                                                <td class="numeric"><bean:write name="transportBusDetailsTable" property="numOfSeats"/></td>
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${transportBusDetailsTable.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>
                                         </logic:iterate>
@@ -156,7 +175,7 @@
     
     
     
- 
+    
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     
@@ -169,10 +188,10 @@
     <script src="assets/js/common-scripts.js"></script>
     
     
-       <!-- Bootstrap core CSS -->
-<!--    <link href="assets/css/bootstrap.css" rel="stylesheet">-->
+    <!-- Bootstrap core CSS -->
+    <!--    <link href="assets/css/bootstrap.css" rel="stylesheet">-->
     <script src="assets/css/bootstrap.min.css"></script>
-
+    
     
     <!--script for this page-->
     
