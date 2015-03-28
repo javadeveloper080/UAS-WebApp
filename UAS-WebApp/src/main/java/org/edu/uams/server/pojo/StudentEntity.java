@@ -2,6 +2,7 @@
 package org.edu.uams.server.pojo;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -37,24 +38,32 @@ public class StudentEntity implements Serializable {
     public static final String FIND_ALL="StudentEntity.findAll";
     
     private static final long serialVersionUID = 1L;
+    
     @Column(name = "admn_num")
     private Long admnNum;
+    
     @Id
     @Basic(optional = false)
     @Column(name = "roll_num")
     private String rollNum;
+    
     @Column(name = "student_name")
     private String studentName;
+    
     @Basic(optional = false)
     @Column(name = "branch_name")
     private String branchName;
+    
     @Column(name = "sem")
     private Short sem;
+    
     @Basic(optional = false)
     @Column(name = "photo")
     private long photo;
+    
     @Column(name = "path")
     private String path;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rollNum")
     private Collection<StudentOtherDetailsEntity> studentOtherDetailsTabCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rollNum")
@@ -217,7 +226,7 @@ public class StudentEntity implements Serializable {
     public void setStudentInterqualificationDetailsTab(StudentInterqualificationDetailsEntity studentInterqualificationDetailsTab) {
         this.studentInterqualificationDetailsTab = studentInterqualificationDetailsTab;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
