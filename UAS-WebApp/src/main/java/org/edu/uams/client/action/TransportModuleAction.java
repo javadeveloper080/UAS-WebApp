@@ -19,10 +19,12 @@ import org.edu.uams.client.form.TransportModuleForm;
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.FacultyType;
 import org.edu.uams.server.business.BusDetailsDao;
+import org.edu.uams.server.business.StudentBusAccDetailsDao;
 import org.edu.uams.server.business.BusFacultyDao;
 import org.edu.uams.server.pojo.BusFacultyEntity;
 import org.edu.uams.server.util.ApplicationUtil;
 import org.edu.uams.server.pojo.BusDetailsEntity;
+import org.edu.uams.server.pojo.StudentBusAccDetailsEntity;
 
 
 public class TransportModuleAction extends DispatchAction {
@@ -220,6 +222,95 @@ public class TransportModuleAction extends DispatchAction {
         req.setAttribute("transportModule", "true");
         req.setAttribute("busDetailsPage", "true");
         return mapping.findForward("busDetailsPage");
+    }
+    
+    public ActionForward studentBusAccDetailsPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        
+        TransportModuleForm transportModuleForm = (TransportModuleForm)form;
+        System.out.println("transportModuleForm:"+transportModuleForm.getPageName());
+        BusDetailsDao busDetailsDao = new BusDetailsDao();
+        StudentBusAccDetailsDao studentBusAccDetailsDao=new StudentBusAccDetailsDao();
+        
+        
+        if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM))
+        {
+            StudentBusAccDetailsEntity studentBusAccDetailsEntity = studentBusAccDetailsDao.findByPrimaryKey(transportModuleForm.getId());
+            transportModuleForm.resetForm();
+            transportModuleForm.setAreaName(studentBusAccDetailsEntity.getAreaName());
+            transportModuleForm.setBusNum(studentBusAccDetailsEntity.getBusDetails().getBusNum());
+            transportModuleForm.setBusDetailsId(studentBusAccDetailsEntity.getBusDetails().getId());
+            if(studentBusAccDetailsEntity.getBusRegDate()!= null){
+                transportModuleForm.setBusRegDate(ApplicationUtil.formatDateToString(studentBusAccDetailsEntity.getBusRegDate()));
+            }
+            
+            if(studentBusAccDetailsEntity.getBusCancelDate()!= null){
+                transportModuleForm.setBusCancelDate(ApplicationUtil.formatDateToString(studentBusAccDetailsEntity.getBusCancelDate()));
+            }
+            transportModuleForm.setStudentRollNum(studentBusAccDetailsEntity.getStudentRollNum());
+            transportModuleForm.setBusSeatNum(studentBusAccDetailsEntity.getBusSeatNum());
+            transportModuleForm.setId(studentBusAccDetailsEntity.getId());
+        }
+        
+        else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE))
+        {
+            StudentBusAccDetailsEntity studentBusAccDetailsEntity = studentBusAccDetailsDao.findByPrimaryKey(transportModuleForm.getId());
+            if (transportModuleForm.getBusDetailsId()>0) {
+                BusDetailsEntity busDetailsEntity = busDetailsDao.findByPrimaryKey(transportModuleForm.getBusDetailsId());
+                studentBusAccDetailsEntity.setBusDetails(busDetailsEntity);
+            }
+            
+            studentBusAccDetailsEntity.setAreaName(transportModuleForm.getAreaName());
+            if(transportModuleForm.getBusRegDate()!= null){
+                studentBusAccDetailsEntity.setBusRegDate(ApplicationUtil.formatStringToDate(transportModuleForm.getBusRegDate()));
+            }
+            
+            if(transportModuleForm.getBusCancelDate()!= null){
+                studentBusAccDetailsEntity.setBusCancelDate(ApplicationUtil.formatStringToDate(transportModuleForm.getBusCancelDate()));
+            }
+            studentBusAccDetailsEntity.setStudentRollNum(transportModuleForm.getStudentRollNum());
+            studentBusAccDetailsEntity.setBusSeatNum(transportModuleForm.getBusSeatNum());
+            studentBusAccDetailsDao.update(studentBusAccDetailsEntity);
+            transportModuleForm.resetForm();
+        }
+        
+        else if(transportModuleForm.getPageName()!=null && transportModuleForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
+        {
+            StudentBusAccDetailsEntity studentBusAccDetailsEntity=new StudentBusAccDetailsEntity();
+            if (transportModuleForm.getBusDetailsId()>0) {
+                BusDetailsEntity busDetailsEntity = busDetailsDao.findByPrimaryKey(transportModuleForm.getBusDetailsId());
+                studentBusAccDetailsEntity.setBusDetails(busDetailsEntity);
+            }
+            
+            studentBusAccDetailsEntity.setAreaName(transportModuleForm.getAreaName());
+            if(transportModuleForm.getBusRegDate()!= null){
+                studentBusAccDetailsEntity.setBusRegDate(ApplicationUtil.formatStringToDate(transportModuleForm.getBusRegDate()));
+            }
+            
+            if(transportModuleForm.getBusCancelDate()!= null){
+                studentBusAccDetailsEntity.setBusCancelDate(ApplicationUtil.formatStringToDate(transportModuleForm.getBusCancelDate()));
+            }
+            studentBusAccDetailsEntity.setStudentRollNum(transportModuleForm.getStudentRollNum());
+            studentBusAccDetailsEntity.setBusSeatNum(transportModuleForm.getBusSeatNum());
+            studentBusAccDetailsDao.persist(studentBusAccDetailsEntity);
+            transportModuleForm.resetForm();
+        }
+        
+        
+        transportModuleForm.setBusDetailsList(null);
+        //For Display Grid
+        
+        List<BusDetailsEntity> busDetailsList = busDetailsDao.findAll();
+        transportModuleForm.setBusDetailsList(busDetailsList);
+        List<StudentBusAccDetailsEntity> studentBusAccDetailsList = studentBusAccDetailsDao.findAll();
+        transportModuleForm.setStudentBusAccDetailsList(null);
+        if(!studentBusAccDetailsList.isEmpty()){
+            transportModuleForm.setStudentBusAccDetailsList(studentBusAccDetailsList);
+        }
+        req.setAttribute("transportModule", "true");
+        req.setAttribute("studentBusAccDetailsPage", "true");
+        return mapping.findForward("studentBusAccDetailsPage");
     }
     
     

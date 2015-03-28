@@ -69,6 +69,11 @@
                  <ul class="sub">
                     <li <c:if test="${requestScope.busDetailsPage != null}"> class="active"</c:if> ><a  href="transportModuleAction.do?method=busDetailsPage">Bus Details</a></li>
                 </ul>
+                
+                 <ul class="sub">
+                    <li <c:if test="${requestScope.studentBusAccDetailsPage != null}"> class="active"</c:if> ><a  href="transportModuleAction.do?method=studentBusAccDetailsPage">Student Bus Acc</a></li>
+                </ul>
+                
             </li>
             
             

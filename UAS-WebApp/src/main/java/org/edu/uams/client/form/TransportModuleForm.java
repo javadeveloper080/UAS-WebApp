@@ -1,10 +1,18 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.form;
 
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import org.apache.struts.action.ActionForm;
+import org.edu.uams.server.pojo.BusDetailsEntity;
+import org.edu.uams.server.pojo.FeeDetailsEntity;
 
 
 public class TransportModuleForm extends ActionForm {
@@ -46,6 +54,87 @@ public class TransportModuleForm extends ActionForm {
     private List cleanerOrHelperList;
     
     //Bus  details Ends
+    
+    
+    //StudentBusAccDetails Starts
+    
+    private String busRegDate;
+    private String busCancelDate;
+    private String areaName;
+    private long busDetailsId;
+    private long feeDetailsId;
+    private long busSeatNum;
+    private Long studentRollNum;
+    private List studentBusAccDetailsList;
+    
+    public String getBusRegDate() {
+        return busRegDate;
+    }
+    
+    public void setBusRegDate(String busRegDate) {
+        this.busRegDate = busRegDate;
+    }
+    
+    public String getBusCancelDate() {
+        return busCancelDate;
+    }
+    
+    public void setBusCancelDate(String busCancelDate) {
+        this.busCancelDate = busCancelDate;
+    }
+    
+    public String getAreaName() {
+        return areaName;
+    }
+    
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
+    
+    public long getBusDetailsId() {
+        return busDetailsId;
+    }
+    
+    public void setBusDetailsId(long busDetailsId) {
+        this.busDetailsId = busDetailsId;
+    }
+    
+    public long getFeeDetailsId() {
+        return feeDetailsId;
+    }
+    
+    public void setFeeDetailsId(long feeDetailsId) {
+        this.feeDetailsId = feeDetailsId;
+    }
+    
+    public long getBusSeatNum() {
+        return busSeatNum;
+    }
+    
+    public void setBusSeatNum(long busSeatNum) {
+        this.busSeatNum = busSeatNum;
+    }
+    
+    public Long getStudentRollNum() {
+        return studentRollNum;
+    }
+    
+    public void setStudentRollNum(Long studentRollNum) {
+        this.studentRollNum = studentRollNum;
+    }
+    
+    public List getStudentBusAccDetailsList() {
+        return studentBusAccDetailsList;
+    }
+    
+    public void setStudentBusAccDetailsList(List studentBusAccDetailsList) {
+        this.studentBusAccDetailsList = studentBusAccDetailsList;
+    }
+    
+    
+    
+    
+    //StudentBusAccDetails Ends
     
     
     //Bus Faculty details starts
@@ -258,35 +347,35 @@ public class TransportModuleForm extends ActionForm {
     public void setChassisNum(String chassisNum) {
         this.chassisNum = chassisNum;
     }
-
+    
     public List getBusDetailsList() {
         return busDetailsList;
     }
-
+    
     public void setBusDetailsList(List busDetailsList) {
         this.busDetailsList = busDetailsList;
     }
-
+    
     public List getDiverList() {
         return diverList;
     }
-
+    
     public void setDiverList(List diverList) {
         this.diverList = diverList;
     }
-
+    
     public List getCoordinatorList() {
         return coordinatorList;
     }
-
+    
     public void setCoordinatorList(List coordinatorList) {
         this.coordinatorList = coordinatorList;
     }
-
+    
     public List getCleanerOrHelperList() {
         return cleanerOrHelperList;
     }
-
+    
     public void setCleanerOrHelperList(List cleanerOrHelperList) {
         this.cleanerOrHelperList = cleanerOrHelperList;
     }
@@ -320,6 +409,14 @@ public class TransportModuleForm extends ActionForm {
         this.numOfSeats =0;
         this.travelPerDay =null;
         this.chassisNum =null;
+        this.busRegDate=null;
+        this.busCancelDate=null;
+        this.areaName=null;
+        this.busDetailsId=0l;
+        this.feeDetailsId=0l;
+        this.busSeatNum=0l;
+        this.studentRollNum=null;
+        this.studentBusAccDetailsList=null;
     }
     
     

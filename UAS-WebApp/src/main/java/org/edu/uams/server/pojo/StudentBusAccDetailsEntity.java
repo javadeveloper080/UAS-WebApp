@@ -6,7 +6,6 @@
 
 package org.edu.uams.server.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,20 +15,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.edu.uams.server.api.HasId;
+import org.edu.uams.server.util.ApplicationUtil;
 
 /**
  *
  * @author Mohammed.Tauseef
  */
 @Entity(name = "StudentBusAccDetails")
-@Table(name = "student_bus_acc_details_tab")
+@Table(name = "student_bus_acc_details")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "StudentBusAccDetailsEntity.findAll", query = "SELECT s FROM StudentBusAccDetailsEntity s"),
@@ -43,6 +41,10 @@ public class StudentBusAccDetailsEntity implements HasId {
     
     private static final long serialVersionUID = 1L;
     
+    public static final  String FIND_ALL = "SELECT s FROM StudentBusAccDetails s";
+    public static final  String FIND_BY_ROLL_NUM="SELECT s FROM StudentBusAccDetails s WHERE s.rollNum = :rollNum";
+    public static final  String FIND_BY_BUS_NUM= "SELECT s FROM StudentBusAccDetails s WHERE s.busNum = :busNum";
+    
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +56,18 @@ public class StudentBusAccDetailsEntity implements HasId {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date busRegDate;
     
+    @Basic(optional = true)
+    @Column(name = "bus_cancel_date")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date busCancelDate;
+    
+    
+    @Transient
+    private String busRegDateTxt;
+    
+    @Transient
+    private String busCancelDateTxt;
+    
     @Basic(optional = false)
     @Column(name = "area_name")
     private String areaName;
@@ -63,20 +77,19 @@ public class StudentBusAccDetailsEntity implements HasId {
     @ManyToOne(targetEntity = BusDetailsEntity.class,optional = false)
     private BusDetailsEntity busDetails;
     
-    @Basic(optional = true)
-    @Column(name = "bus_cancel_date")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date busCancelDate;
     
-    @JoinColumn(name = "student_roll_num", referencedColumnName = "roll_num",updatable = false)
-    @OneToOne(optional = false)
-    private StudentEntity studentRollNum;
+    @Basic(optional = false)
+    @Column(name = "bus_seat_num")
+    private Long busSeatNum;
+    
+    @Basic(optional = false)
+    @Column(name = "student_roll_num")
+    private Long studentRollNum;
+    
     
     public StudentBusAccDetailsEntity() {
     }
     
-    
-   
     public String getAreaName() {
         return areaName;
     }
@@ -84,49 +97,69 @@ public class StudentBusAccDetailsEntity implements HasId {
     public void setAreaName(String areaName) {
         this.areaName = areaName;
     }
-
+    
     public long getId() {
         return id;
     }
-
+    
     public void setId(long id) {
         this.id = id;
     }
-
+    
     public Date getBusRegDate() {
         return busRegDate;
     }
-
+    
     public void setBusRegDate(Date busRegDate) {
         this.busRegDate = busRegDate;
     }
-
+    
     public BusDetailsEntity getBusDetails() {
         return busDetails;
     }
-
+    
     public void setBusDetails(BusDetailsEntity busDetails) {
         this.busDetails = busDetails;
     }
-
+    
     public Date getBusCancelDate() {
         return busCancelDate;
     }
-
+    
     public void setBusCancelDate(Date busCancelDate) {
         this.busCancelDate = busCancelDate;
     }
-
-    public StudentEntity getStudentRollNum() {
+    
+    public Long getStudentRollNum() {
         return studentRollNum;
     }
-
-    public void setStudentRollNum(StudentEntity studentRollNum) {
+    
+    public void setStudentRollNum(Long studentRollNum) {
         this.studentRollNum = studentRollNum;
     }
     
-   
+    public Long getBusSeatNum() {
+        return busSeatNum;
+    }
     
-  
+    public void setBusSeatNum(Long busSeatNum) {
+        this.busSeatNum = busSeatNum;
+    }
+
+    public String getBusRegDateTxt() {
+       busRegDateTxt=ApplicationUtil.formatDateToString(busRegDate);
+        return busRegDateTxt;
+    }
+
+    public String getBusCancelDateTxt() {
+        busCancelDateTxt=ApplicationUtil.formatDateToString(busCancelDate);
+        return busCancelDateTxt;
+    }
+
+    
+    
+    
+    
+    
     
 }
