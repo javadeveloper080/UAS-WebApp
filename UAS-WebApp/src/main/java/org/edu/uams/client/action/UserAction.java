@@ -114,6 +114,7 @@ public class UserAction extends DispatchAction {
             userForm.setId(userMasterEntity.getId());
             userForm.setUserType(userMasterEntity.getUserType().getCode());
             userForm.setUserTypeId(userMasterEntity.getUserType().getId());
+            userForm.setEmail(userMasterEntity.getEmail());
             if(userMasterEntity.getInActiveOn()!= null){
                 userForm.setInActiveOn(ApplicationUtil.formatDateToString(userMasterEntity.getInActiveOn()));
             }
@@ -124,6 +125,7 @@ public class UserAction extends DispatchAction {
             userMasterEntity.setPassword(userForm.getPassword());
             userMasterEntity.setId(userForm.getId());
             userMasterEntity.setUserType(userMasterTypeDao.findByPrimaryKey(userForm.getUserTypeId()));
+            userMasterEntity.setEmail(userForm.getEmail());
              if(userForm.getInActiveOn()!= null){
                 userMasterEntity.setInActiveOn(ApplicationUtil.formatStringToDate(userForm.getInActiveOn()));
             }
@@ -135,6 +137,7 @@ public class UserAction extends DispatchAction {
             userMasterEntity.setUserName(userForm.getUserName());
             userMasterEntity.setPassword(userForm.getPassword());
             userMasterEntity.setId(userForm.getId());
+            userMasterEntity.setEmail(userForm.getEmail());
             if(userForm.getInActiveOn()!= null){
                 userMasterEntity.setInActiveOn(ApplicationUtil.formatStringToDate(userForm.getInActiveOn()));
             }

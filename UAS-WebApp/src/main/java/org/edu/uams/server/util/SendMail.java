@@ -30,7 +30,7 @@ public class SendMail {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
  
-		Session session = Session.getDefaultInstance(props,
+		Session session = Session.getInstance(props,
 			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(serverMail,serverMailPassword);
@@ -38,7 +38,6 @@ public class SendMail {
 			});
  
 		try {
- 
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(serverMail));
 			message.setRecipients(Message.RecipientType.TO,

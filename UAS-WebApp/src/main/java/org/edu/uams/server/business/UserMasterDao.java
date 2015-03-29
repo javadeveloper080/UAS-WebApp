@@ -25,6 +25,12 @@ public class UserMasterDao extends AbstractDao<UserMasterEntity> {
         return super.findByQuery(UserMasterEntity.FIND_BY_USERNAME, params);
     }
     
+    public   UserMasterEntity findEmail(String email) {
+        Map<String, Object> params=new LinkedHashMap<String, Object>();
+        params.put("email", email);
+        return super.findByQuery(UserMasterEntity.FIND_BY_EMAIL, params);
+    }
+    
     public boolean checkUserLogin(String userName, String pwd) {
         UserMasterEntity userMasterEntity=findUserName(userName);
         if (userMasterEntity!=null) {

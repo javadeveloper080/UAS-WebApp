@@ -59,6 +59,10 @@
                                 </div>
 
                                 <div class="form-group">
+                                    Email: <html:text name="userForm" property="email" styleClass="form-control" styleId="email"  maxlength="100"  />
+                                </div>
+                                
+                                <div class="form-group">
                                     User Role: &nbsp;&nbsp;
                                     <html:select  styleClass="form-control" property="userTypeId" styleId="userTypeId">
                                         <html:option value="0">Select a user type</html:option>
@@ -96,6 +100,7 @@
                                         <tr>
                                             <th><i class="fa fa-bullhorn"></i> User Name</th>
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
+                                            <th class="hidden-phone"><i class="fa fa-question-circle"></i> Email</th>
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Role</th>
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> In Active</th>
                                     </thead>
@@ -105,6 +110,7 @@
                                                 <tr>
                                                     <td><bean:write name="users" property="userName"/></td>
                                                     <td><bean:write name="users" property="password"/></td>
+                                                    <td><bean:write name="users" property="email"/></td>
                                                     <td><bean:write name="users" property="userType.code"/></td>
                                                     <td><bean:write name="users" property="inActiveOn"/></td>
                                                     <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${users.id});'><i class="fa fa-pencil"></i></button></td>
@@ -140,6 +146,10 @@
 
     <script>
 
+        function isEmail(email) {
+          var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+          return regex.test(email);
+        }
         $(function () {
             $("#inActiveOn").datepicker({
                 showOn: "button",
@@ -154,6 +164,7 @@
             var password = document.getElementById('password').value;
             var password1 = document.getElementById('password1').value;
             var inActiveOn = document.getElementById('inActiveOn').value;
+            var email = document.getElementById('email').value;
             var id = document.getElementById('id').value;
 
             if (userName == null || userName == "") {
@@ -179,6 +190,18 @@
                 document.getElementById('password1').focus();
                 return false;
             }
+            if(email == null || email == "")
+            {
+               alert("Please Enter email");
+                document.getElementById('email').focus();
+                return false; 
+            }else if(!isEmail(email))
+            {
+                alert("Please enter correct email format");
+                document.getElementById('email').focus();
+                return false;  
+            }
+            
             $.ajax({
                 type: "POST",
                 url: "/UAMS-WebApp/userAction.do?method=usersPage",
@@ -186,6 +209,8 @@
                     "userName": userName,
                     "pageName": "checkUniqueUserName",
                     "id":id,
+                    "inActiveOn":inActiveOn,
+                    "email":email
                 },
                 success: function (response) {
                     if (response == 'true') {
@@ -231,6 +256,7 @@
             alert('reset');
             document.getElementById('userName').value = "";
             document.getElementById('password').value = "";
+            document.getElementById('email').value = "";
             document.getElementById('password1').value = "";
             document.getElementById('userTypeId').value = 0;
             document.getElementById('id').value = "0";

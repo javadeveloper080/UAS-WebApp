@@ -68,16 +68,15 @@
 		                          <input type="text" id = 'email' name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
 		
 		                      </div>
+                                      
 		                      <div class="modal-footer">
 		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="button">Submit</button>
+                                          <button class="btn btn-theme" type="button" onclick="submitForgotForm();">Submit</button>
 		                      </div>
 		                  </div>
 		              </div>
 		          </div>
 		          <!-- modal -->
-		          
-		
 		      </form>	  	
 	  	
 	  	</div>
@@ -109,6 +108,22 @@
             
         }else
         {
+            document.getElementById('email').focus();
+            return;
+        }
+    }
+    
+    function submitForgotForm() {
+        var email = document.getElementById('email').value;
+        if(isEmail(email))
+        {
+            document.loginForm.email.value = email;
+            alert("email"+document.loginForm.email.value);
+            document.loginForm.action = "loginAction.do?method=forgotPassWordAction";
+            document.loginForm.submit();
+        }else
+        {
+            alert("Please enter correct email format");
             document.getElementById('email').focus();
             return;
         }

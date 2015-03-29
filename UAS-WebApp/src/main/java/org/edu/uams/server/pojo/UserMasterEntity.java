@@ -14,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 import org.edu.uams.server.api.HasId;
 
 
@@ -24,7 +25,8 @@ import org.edu.uams.server.api.HasId;
     @NamedQuery(name = UserMasterEntity.FIND_ALL, query = "SELECT u FROM UserMaster u left join u.userType ut"),
     @NamedQuery(name = UserMasterEntity.FIND_BY_LOGIN_NAME_PWD, query = "SELECT u FROM UserMaster u")
 })
-@Table(name = "user_master")
+@Table(name = "user_master",uniqueConstraints=
+           @UniqueConstraint(columnNames = {"user_name", "email"}))
 public class UserMasterEntity implements HasId  {
     
     /**
@@ -32,6 +34,7 @@ public class UserMasterEntity implements HasId  {
      */
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_USERNAME = "SELECT u from UserMaster u where u.userName = :userName";
+    public static final String FIND_BY_EMAIL = "SELECT u from UserMaster u where u.email = :email";
     public static final  String  FIND_ALL="SELECT u FROM UserMaster u left join u.userType ut";
     public static final  String  FIND_BY_LOGIN_NAME_PWD="SELECT u FROM UserMaster u where u.userName=:userName and u.password=:passWord";
     
@@ -47,6 +50,9 @@ public class UserMasterEntity implements HasId  {
     @Column(name = "pass_word", nullable = false, length = 10)
     private String password;
     
+    @Column(name = "email", unique = true,nullable = false, length = 100)
+    private String email;
+    
     @Column(name = "in_active_on", nullable = true)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date inActiveOn;
@@ -61,6 +67,14 @@ public class UserMasterEntity implements HasId  {
     
     public void setUserType(UserMasterTypeEntity userType) {
         this.userType = userType;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

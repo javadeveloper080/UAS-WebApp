@@ -17,7 +17,18 @@ public class LoginForm extends ActionForm {
     private String pageName;
     
     private String userType;
+    
+    private String email;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
     public String getUserType() {
         return userType;
     }

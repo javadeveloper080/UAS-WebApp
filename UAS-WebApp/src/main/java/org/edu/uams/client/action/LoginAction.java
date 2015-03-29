@@ -94,17 +94,17 @@ public class LoginAction extends DispatchAction {
         AdminEntity adminEntity =adminDao.findAdminName(loginForm.getUserName());
         
         UserMasterDao userMasterDao = new UserMasterDao();
-        UserMasterEntity userMasterEntity =userMasterDao.findUserName(loginForm.getUserName());
+        UserMasterEntity userMasterEntity =userMasterDao.findEmail(loginForm.getEmail());
         
         
         String toEmailAdress=null;
-        if (adminEntity!=null && adminEntity.getEmail()!=null) {
-            toEmailAdress=adminEntity.getEmail();
-            String name=adminEntity.getAdminName();
-            String passWord=adminEntity.getPassWord();
+        if (userMasterEntity!=null && userMasterEntity.getEmail()!=null) {
+            toEmailAdress=userMasterEntity.getEmail();
+            String name=userMasterEntity.getUserName();
+            String passWord=userMasterEntity.getPassword();
             sendPassWordAction(passWord, toEmailAdress, name);
             loginForm.setLoginMessage("Your Password Details have been mailed to your E-mail Id");
-            return mapping.findForward("userFound");
+            return mapping.findForward("loginPage");
         }
         //   else if (userMasterEntity!=null && userMasterEntity.getEmail()!=null){
         //  toEmailAdress=userMasterEntity.getEmail();
@@ -116,7 +116,7 @@ public class LoginAction extends DispatchAction {
         //  }
         else{
             loginForm.setLoginMessage("No User Found of this User Name:"+loginForm.getUserName());
-            return mapping.findForward("noUserFound");
+            return mapping.findForward("loginPage");
             
         }
     }
