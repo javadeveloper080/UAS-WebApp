@@ -46,34 +46,58 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
+
                             <h5><Strong>Add/Edit User type</Strong> </h5>
-                            <html:form  styleClass="form-inline" action="/userAction" method="post">
-                                <div class="form-group">
-                                    User Name: <html:text name="userForm" property="userName" styleClass="form-control" styleId="userName"  maxlength="50"  />
-                                </div>
-                                <div class="form-group">
-                                    Password: <html:password name="userForm" property="password" styleClass="form-control" styleId="password"  maxlength="50"  />
-                                </div>
-                                <div class="form-group">
-                                    Re Enter Password: <html:password name="userForm" property="password" styleClass="form-control" styleId="password1"  maxlength="50"  />
-                                </div>
-
-                                <div class="form-group">
-                                    Email: <html:text name="userForm" property="email" styleClass="form-control" styleId="email"  maxlength="100"  />
-                                </div>
+                             <html:form  styleClass="" action="/userAction" method="post">
                                 
-                                <div class="form-group">
-                                    User Role: &nbsp;&nbsp;
-                                    <html:select  styleClass="form-control" property="userTypeId" styleId="userTypeId">
-                                        <html:option value="0">Select a user type</html:option>
-                                        <html:optionsCollection   name="userForm"
-                                                                  property="userTypeList" label="code" value="id" />
-                                    </html:select>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="registrationNum">User Name:</label>
+                                            <html:text name="userForm" property="userName" styleClass="form-control" styleId="userName"  maxlength="50"  />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="chassisNum">Password:</label>
+                                            <html:password name="userForm" property="password" styleClass="form-control" styleId="password"  maxlength="50"  />
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    In Active :
-                                    <html:text name="userForm" property="inActiveOn" styleClass="form-control" styleId="inActiveOn" />
+                                        
+                               <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="registrationNum">Re Enter Password:</label>
+                                            <html:password name="userForm" property="password" styleClass="form-control" styleId="password1"  maxlength="50"  />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="chassisNum">Email:</label>
+                                            <html:text name="userForm" property="email" styleClass="form-control" styleId="email"  maxlength="100"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                        
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="registrationNum">User Role:</label>
+                                            <html:select  styleClass="form-control" property="userTypeId" styleId="userTypeId">
+                                                <html:option value="0">Select a user type</html:option>
+                                                <html:optionsCollection   name="userForm"
+                                                                  property="userTypeList" label="code" value="id" />
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="chassisNum">In Active :</label>
+                                            <html:text name="userForm" property="inActiveOn" styleClass="form-control " styleId="inActiveOn" />
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <html:hidden name="userForm" property="id" styleId="id"/>
@@ -83,7 +107,7 @@
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
                                 </div> 
                             </html:form>
-                                
+
 
                         </div>
                     </div><!-- col-lg-12-->      	
@@ -146,124 +170,124 @@
 
     <script>
 
-        function isEmail(email) {
-          var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-          return regex.test(email);
-        }
-        $(function () {
-            $("#inActiveOn").datepicker({
-                showOn: "button",
-                buttonImage: "images/calendar.gif",
-            });
-        });
+                                                        function isEmail(email) {
+                                                            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                                                            return regex.test(email);
+                                                        }
+                                                        $(function () {
+                                                            $("#inActiveOn").datepicker({
+//                                                                showOn: "button",
+//                                                                buttonImage: "images/calendar.gif",
+                                                            });
+                                                        });
 
-        function validateForm() {
-            alert("Validate Form Values");
-            // get the form values
-            var userName = document.getElementById('userName').value;
-            var password = document.getElementById('password').value;
-            var password1 = document.getElementById('password1').value;
-            var inActiveOn = document.getElementById('inActiveOn').value;
-            var email = document.getElementById('email').value;
-            var id = document.getElementById('id').value;
+                                                        function validateForm() {
+                                                            alert("Validate Form Values");
+                                                            // get the form values
+                                                            var userName = document.getElementById('userName').value;
+                                                            var password = document.getElementById('password').value;
+                                                            var password1 = document.getElementById('password1').value;
+                                                            var inActiveOn = document.getElementById('inActiveOn').value;
+                                                            var email = document.getElementById('email').value;
+                                                            var id = document.getElementById('id').value;
 
-            if (userName == null || userName == "") {
-                alert("Please Enter userName");
-                document.getElementById('userName').cfocus();
-                return false;
-            }
+                                                            if (userName == null || userName == "") {
+                                                                alert("Please Enter userName");
+                                                                document.getElementById('userName').cfocus();
+                                                                return false;
+                                                            }
 
-            if (password == null || password == "") {
-                alert("Please Enter password");
-                document.getElementById('password').focus();
-                return false;
-            }
+                                                            if (password == null || password == "") {
+                                                                alert("Please Enter password");
+                                                                document.getElementById('password').focus();
+                                                                return false;
+                                                            }
 
-            if (password1 == null || password1 == "") {
-                alert("Please Re Enter password");
-                document.getElementById('password1').focus();
-                return false;
-            }
+                                                            if (password1 == null || password1 == "") {
+                                                                alert("Please Re Enter password");
+                                                                document.getElementById('password1').focus();
+                                                                return false;
+                                                            }
 
-            if (password != password1) {
-                alert("Password is not matching, Please Re Enter password");
-                document.getElementById('password1').focus();
-                return false;
-            }
-            if(email == null || email == "")
-            {
-               alert("Please Enter email");
-                document.getElementById('email').focus();
-                return false; 
-            }else if(!isEmail(email))
-            {
-                alert("Please enter correct email format");
-                document.getElementById('email').focus();
-                return false;  
-            }
-            
-            $.ajax({
-                type: "POST",
-                url: "/UAMS-WebApp/userAction.do?method=usersPage",
-                data: {
-                    "userName": userName,
-                    "pageName": "checkUniqueUserName",
-                    "id":id,
-                    "inActiveOn":inActiveOn,
-                    "email":email
-                },
-                success: function (response) {
-                    if (response == 'true') {
-                        alert('Code is ' + userName + ' present');
-                        document.getElementById('userName').focus();
-                        return false;
-                    }
-                    else {
-                        submitForm();
-                    }
-                },
-                error: function (e) {
-                    alert('Error: ' + e);
-                    return false;
-                }
-            });
-        }
+                                                            if (password != password1) {
+                                                                alert("Password is not matching, Please Re Enter password");
+                                                                document.getElementById('password1').focus();
+                                                                return false;
+                                                            }
+                                                            if (email == null || email == "")
+                                                            {
+                                                                alert("Please Enter email");
+                                                                document.getElementById('email').focus();
+                                                                return false;
+                                                            } else if (!isEmail(email))
+                                                            {
+                                                                alert("Please enter correct email format");
+                                                                document.getElementById('email').focus();
+                                                                return false;
+                                                            }
 
-
-        function getEditTypeForm(id) {
-            alert('Get Editff Type' + id);
-            document.getElementById('id').value = id;
-            document.getElementById('pageName').value = "GetEditTypeForm"
-            document.userForm.action = "userAction.do?method=usersPage";
-            document.userForm.submit();
-        }
-
-        function submitForm() {
-            alert('Submit Form');
-            var id = document.getElementById('id').value;
-            if (id != null && id > 0) {
-                document.getElementById('pageName').value = "SubmitEditType"
-            } else {
-                document.getElementById('pageName').value = "SubmitAddType"
-            }
-            document.userForm.action = "userAction.do?method=usersPage";
-            document.userForm.submit();
-        }
+                                                            $.ajax({
+                                                                type: "POST",
+                                                                url: "/UAMS-WebApp/userAction.do?method=usersPage",
+                                                                data: {
+                                                                    "userName": userName,
+                                                                    "pageName": "checkUniqueUserName",
+                                                                    "id": id,
+                                                                    "inActiveOn": inActiveOn,
+                                                                    "email": email
+                                                                },
+                                                                success: function (response) {
+                                                                    if (response == 'true') {
+                                                                        alert('Code is ' + userName + ' present');
+                                                                        document.getElementById('userName').focus();
+                                                                        return false;
+                                                                    }
+                                                                    else {
+                                                                        submitForm();
+                                                                    }
+                                                                },
+                                                                error: function (e) {
+                                                                    alert('Error: ' + e);
+                                                                    return false;
+                                                                }
+                                                            });
+                                                        }
 
 
-        function rset()
-        {
-            alert('reset');
-            document.getElementById('userName').value = "";
-            document.getElementById('password').value = "";
-            document.getElementById('email').value = "";
-            document.getElementById('password1').value = "";
-            document.getElementById('userTypeId').value = 0;
-            document.getElementById('id').value = "0";
-            document.getElementById('pageName').value = "";
-            document.getElementById('inActiveOn').value = "";
+                                                        function getEditTypeForm(id) {
+                                                            alert('Get Editff Type' + id);
+                                                            document.getElementById('id').value = id;
+                                                            document.getElementById('pageName').value = "GetEditTypeForm"
+                                                            document.userForm.action = "userAction.do?method=usersPage";
+                                                            document.userForm.submit();
+                                                        }
 
-        }
+                                                        function submitForm() {
+                                                            alert('Submit Form');
+                                                            var id = document.getElementById('id').value;
+                                                            if (id != null && id > 0) {
+                                                                document.getElementById('pageName').value = "SubmitEditType"
+                                                            } else {
+                                                                document.getElementById('pageName').value = "SubmitAddType"
+                                                            }
+                                                            document.userForm.action = "userAction.do?method=usersPage";
+                                                            document.userForm.submit();
+                                                        }
+
+
+                                                        function rset()
+                                                        {
+                                                            alert('reset');
+                                                            document.getElementById('userName').value = "";
+                                                            document.getElementById('password').value = "";
+                                                            document.getElementById('email').value = "";
+                                                            document.getElementById('password1').value = "";
+                                                            document.getElementById('userTypeId').value = 0;
+                                                            document.getElementById('id').value = "0";
+                                                            document.getElementById('pageName').value = "";
+                                                            document.getElementById('inActiveOn').value = "";
+
+                                                        }
     </script>
 
 </body>
