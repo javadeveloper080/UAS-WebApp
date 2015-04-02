@@ -57,6 +57,7 @@ public class ApplicationIntializer {
         if (admin==null) {
             admin=new UserMasterEntity();
             admin.setPassword("pwd");
+            admin.setEmail("admin.@tmail.com");
             admin.setUserName(ApplicationConstants.ADMIN);
             admin.setUserType(userMasterTypeDao.findByCode(ApplicationConstants.ADMIN));
             userMasterDao.persist(admin);
