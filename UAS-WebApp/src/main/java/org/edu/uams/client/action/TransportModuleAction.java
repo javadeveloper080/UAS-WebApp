@@ -1,8 +1,12 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.action;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -345,6 +349,27 @@ public class TransportModuleAction extends DispatchAction {
         transportModuleForm.setDiverList(busDriverList);
         transportModuleForm.setCleanerOrHelperList(busCleanerList);
         transportModuleForm.setCoordinatorList(busCoordinatorList);
+    }
+    
+    
+    
+    public ActionForward getAllbusFacultyPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+            HttpServletResponse res)throws Exception
+    {
+        
+        TransportModuleForm transportModuleForm = (TransportModuleForm)form;
+        System.out.println("transportModuleForm:"+transportModuleForm.getPageName());
+        BusFacultyDao busFacultyDao = new BusFacultyDao();
+        
+        List<BusFacultyEntity> busFacultyList = busFacultyDao.findAll();
+        
+        Gson gson = new Gson();
+        JsonElement element = gson.toJsonTree(busFacultyList, new TypeToken<List<BusFacultyEntity>>() {}.getType());
+        
+        JsonArray jsonArray = element.getAsJsonArray();
+        res.setContentType("application/json");
+        res.getWriter().print(jsonArray);
+        return null;
     }
 }
 
