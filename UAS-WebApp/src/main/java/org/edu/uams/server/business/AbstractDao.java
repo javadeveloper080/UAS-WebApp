@@ -69,13 +69,13 @@ public  abstract class AbstractDao<T extends Serializable> implements Dao<T>{
 	public T findByQuery(String queryText,Map<String,Object> params) {
 		Query query = session.createQuery(queryText);
 
-		if (params!=null && !params.isEmpty()) {
-			Set<String> keys = params.keySet();
-			for (String key : keys) {
-				if (params.get(key)!=null) {
-					query.setParameter(key, params.get(key));
-				}
-			}
+		if (params  !=null && params.size() > 0) {
+                    for (Map.Entry<String, Object> entrySet : params.entrySet()) {
+                        String key = entrySet.getKey();
+                        Object value = entrySet.getValue();
+                        query.setParameter(key, value);
+                        
+                    }
 		}
 
 		List resultlist = query.list();
@@ -94,13 +94,13 @@ public  abstract class AbstractDao<T extends Serializable> implements Dao<T>{
 	public List<T> findListByQuery(String queryText,Map<String,Object> params) {
 		Query query = session.createQuery(queryText);
 
-		if (params!=null && !params.isEmpty()) {
-			Set<String> keys = params.keySet();
-			for (String key : keys) {
-				if (params.get(key)!=null) {
-					query.setParameter(key, params.get(key));
-				}
-			}
+		if (params  !=null && params.size() > 0) {
+                    for (Map.Entry<String, Object> entrySet : params.entrySet()) {
+                        String key = entrySet.getKey();
+                        Object value = entrySet.getValue();
+                        query.setParameter(key, value);
+                        
+                    }
 		}
 		return  query.list();
 	}
