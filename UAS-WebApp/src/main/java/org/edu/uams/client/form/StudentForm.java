@@ -1,8 +1,10 @@
 package org.edu.uams.client.form;
 
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.edu.uams.server.api.GenderType;
 
 /**
  *
@@ -12,11 +14,13 @@ public class StudentForm extends ActionForm {
 
     private Long admnNum;
     private String rollNum;
-    private String studentName;
-    private String branchName;
-    private Short sem;
-    private long photo;
-    private String path;
+    private String firstName;
+    private String lastName;
+    private String fatherName;
+    private String motherName;
+    private Long mobile;
+    private String dob;
+    private String genderType;
     private String pageName;
 
     public Long getAdmnNum() {
@@ -35,44 +39,60 @@ public class StudentForm extends ActionForm {
         this.rollNum = rollNum;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getBranchName() {
-        return branchName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Short getSem() {
-        return sem;
+    public String getFatherName() {
+        return fatherName;
     }
 
-    public void setSem(Short sem) {
-        this.sem = sem;
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
     }
 
-    public long getPhoto() {
-        return photo;
+    public String getMotherName() {
+        return motherName;
     }
 
-    public void setPhoto(long photo) {
-        this.photo = photo;
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
     }
 
-    public String getPath() {
-        return path;
+    public Long getMobile() {
+        return mobile;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setMobile(Long mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getGenderType() {
+        return genderType;
+    }
+
+    public void setGenderType(String genderType) {
+        this.genderType = genderType;
     }
 
     public String getPageName() {
@@ -83,18 +103,19 @@ public class StudentForm extends ActionForm {
         this.pageName = pageName;
     }
 
-    
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
 
         admnNum = null;
         rollNum = null;
-        studentName = null;
-        branchName = null;
-        sem = null;
-        photo = 0L;
-        path = null;
-        pageName =null;
+        firstName = null;
+        lastName = null;
+        fatherName = null;
+        motherName = null;
+        mobile = null;
+        dob = null;
+        genderType = null;
+        pageName = null;
     }
 
 }

@@ -60,6 +60,7 @@ public class ApplicationIntializer {
             admin.setEmail("admin.@tmail.com");
             admin.setUserName(ApplicationConstants.ADMIN);
             admin.setUserType(userMasterTypeDao.findByCode(ApplicationConstants.ADMIN));
+            admin.setEmail("admin@test.com");
             userMasterDao.persist(admin);
         }
     }
