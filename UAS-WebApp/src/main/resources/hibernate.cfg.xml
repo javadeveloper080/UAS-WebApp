@@ -50,12 +50,11 @@
         
         <mapping class="org.edu.uams.server.pojo.StudentEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentAddressEntity"></mapping>
+        <mapping class="org.edu.uams.server.pojo.StudentQualificationEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentCourseEntity"></mapping>
   
         <mapping class="org.edu.uams.server.pojo.StudentFeeEntity"></mapping>
-        <mapping class="org.edu.uams.server.pojo.StudentPersonalDetailsEntity"></mapping>
-        <mapping class="org.edu.uams.server.pojo.StudentQualificationEntity"></mapping>
-        <mapping class="org.edu.uams.server.pojo.StudentOtherDetailsEntity"></mapping>
+        
 
     </session-factory>
 
