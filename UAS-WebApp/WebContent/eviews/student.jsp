@@ -108,6 +108,7 @@
 
                             <!--html:text  property="branchName" size="30" styleId="description"  maxlength="100" /-->
                             <html:hidden property="pageName" styleId="pageName" />
+                            <html:hidden property="id" styleId="id" />
                             <div align="center">
                                 <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                 <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
@@ -121,38 +122,49 @@
 
 
             <!-- GRID ELEMENTS -->
-            <div class="row mt">
-                <div class="col-md-12">
-                    <div class="content-panel">
-                        <table class="table table-striped table-advance table-hover">
-                            <h4><i class="fa fa-angle-right"></i> Fee type table</h4>
-                            <hr>
-                            <thead>
-                                <tr>
-                                    <th><i class="fa fa-bullhorn"></i> Code</th>
-                                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%--<logic:notEmpty name="typeTableForm" property="typeFormList">--%>
-                                <%--<logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">--%>
-                                <tr>
-                                    <td>
-                                        <%--<bean:write name="typeTable" property="code"/>--%>
-                                    </td>
-                                    <td>
-                                        <%--<bean:write name="typeTable" property="description"/>--%>
-                                    </td>
-                                    <!--<td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>-->
-                                </tr>
-                                <%--</logic:iterate>--%>
-                                <%--</logic:notEmpty>--%>
-                            </tbody>
-                        </table>
-                    </div><!-- /content-panel -->
-                </div><!-- /col-md-12 -->
-            </div><!-- /row -->
+           
+               <!-- GRID ELEMENTS -->
+                <div class="row mt">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            
+
+                            <table class="table table-bordered table-striped table-condensed cf">
+                                <h4>Student Details </h4>
+                                <hr>
+                                <thead class="cf">
+                                    <tr>
+                                        <th class="numeric">Roll No.</th>
+                                        <th class="numeric">First Name.</th>
+                                        <th class="numeric">Last Name. </th>
+                                        <th class="numeric">Date Of Birth </th>
+                                        <th class="numeric">Mobile no</th>
+                                         <th class="numeric">Father Name</th>
+                                         <th class="numeric">Mother Name</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+    
+                                
+                                <tbody>
+                                    <logic:notEmpty name="studentForm" property="listOfStudents">
+                                        <logic:iterate id="student" name="studentForm" property="listOfStudents" >
+                                            <tr>
+                                                <td class="numeric"><bean:write name="student" property="rollNum"/></td>
+                                                <td class="numeric"><bean:write name="student" property="firstName"/></td>
+                                                <td class="numeric"><bean:write name="student" property="lastName"/></td>
+                                                <td class="numeric"><bean:write name="student" property="dob"/></td>
+                                                <td class="numeric"><bean:write name="student" property="fatherName"/></td>
+                                                <td class="numeric"><bean:write name="student" property="motherName"/></td>
+                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${student.id});'><i class="fa fa-pencil"></i></button></td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </logic:notEmpty>
+                                </tbody>
+                            </table>
+                        </div><!-- /content-panel -->
+                    </div><!-- /col-md-12 -->
+                </div><!-- /row -->
 
 
 
@@ -273,7 +285,7 @@
         alert('Get Editff Type' + id);
         document.getElementById('id').value = id;
         document.getElementById('pageName').value = "GetEditTypeForm"
-        document.studentForm.action = "typeTableAction.do?method=feeTypePage";
+        document.studentForm.action = "studentAction.do";
         document.studentForm.submit();
     }
 
