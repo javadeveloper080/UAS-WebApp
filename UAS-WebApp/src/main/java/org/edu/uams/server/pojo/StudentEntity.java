@@ -43,16 +43,19 @@ public class StudentEntity implements Serializable {
     @Column(name = "roll_num",unique = true,nullable = false)
     private String rollNum;
     
+    @Basic(optional = false)
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
     
+    @Basic(optional = false)
     @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
     
+    @Basic(optional = false)
     @Column(name = "father_name", nullable = false, length = 100)
     private String fatherName;
     
-    
+    @Basic(optional = false)
     @Column(name = "mother_name", nullable = false, length = 100)
     private String motherName;
     
