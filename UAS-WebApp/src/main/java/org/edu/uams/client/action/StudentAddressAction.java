@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.edu.uams.client.form.StudentCorrAddressDetailsForm;
+import org.edu.uams.client.form.StudentAddressForm;
 import org.edu.uams.server.business.StudentCorrAddressDetailsDAO;
 import org.edu.uams.server.business.StudentDao;
 import org.edu.uams.server.pojo.StudentAddressEntity;
@@ -19,10 +19,10 @@ import org.edu.uams.server.pojo.StudentAddressEntity;
  *
  * @author SARAT
  */
-public class StudentCorrAddressDetailsAction extends org.apache.struts.action.Action {
+public class StudentAddressAction extends org.apache.struts.action.Action {
 
     /* forward name="success" path="" */
-    private static final String SUCCESS = "studentCorrAdd";
+    private static final String SUCCESS = "studentAdd";
 
     /**
      * This is the action called from the Struts framework.
@@ -38,26 +38,26 @@ public class StudentCorrAddressDetailsAction extends org.apache.struts.action.Ac
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        StudentCorrAddressDetailsForm studentCorrAddressDetailsForm = (StudentCorrAddressDetailsForm) form;
+        StudentAddressForm studentCorrAddressDetailsForm = (StudentAddressForm) form;
         StudentCorrAddressDetailsDAO corrAddressDetailsDAO = new StudentCorrAddressDetailsDAO();
         
         StudentDao studentDao =new StudentDao();
 
         if (studentCorrAddressDetailsForm.getPageName() != null) {
             StudentAddressEntity studentCorrAddressDetailsEntity = new StudentAddressEntity();
-            studentCorrAddressDetailsEntity.setAreaName(studentCorrAddressDetailsForm.getAreaName());
-            studentCorrAddressDetailsEntity.setCity(studentCorrAddressDetailsForm.getCity());
-            studentCorrAddressDetailsEntity.setDistrictName(studentCorrAddressDetailsForm.getDistrictName());
-            studentCorrAddressDetailsEntity.setDoorNum(studentCorrAddressDetailsForm.getDoorNum());
-            studentCorrAddressDetailsEntity.setPin(studentCorrAddressDetailsForm.getPin());
-            studentCorrAddressDetailsEntity.setRollNum(studentCorrAddressDetailsForm.getRollNum());
-            studentCorrAddressDetailsEntity.setStreetName(studentCorrAddressDetailsForm.getStreetName());
-            studentCorrAddressDetailsEntity.setStudentTab(studentDao.findByPrimaryKey(studentCorrAddressDetailsForm.getRollNum()));
+//            studentCorrAddressDetailsEntity.setAreaName(studentCorrAddressDetailsForm.getAreaName());
+//            studentCorrAddressDetailsEntity.setCity(studentCorrAddressDetailsForm.getCity());
+//            studentCorrAddressDetailsEntity.setDistrictName(studentCorrAddressDetailsForm.getDistrictName());
+//            studentCorrAddressDetailsEntity.setDoorNum(studentCorrAddressDetailsForm.getDoorNum());
+//            studentCorrAddressDetailsEntity.setPin(studentCorrAddressDetailsForm.getPin());
+//            studentCorrAddressDetailsEntity.setRollNum(studentCorrAddressDetailsForm.getRollNum());
+//            studentCorrAddressDetailsEntity.setStreetName(studentCorrAddressDetailsForm.getStreetName());
+//            studentCorrAddressDetailsEntity.setStudentTab(studentDao.findByPrimaryKey(studentCorrAddressDetailsForm.getRollNum()));
             corrAddressDetailsDAO.persist(studentCorrAddressDetailsEntity);
         }
 
         request.setAttribute("studentModule", "true");
-        request.setAttribute("studentCorrAddr", "true");
+        request.setAttribute("studentAdd", "true");
         return mapping.findForward(SUCCESS);
     }
 }

@@ -27,7 +27,7 @@
         <form-bean name="forumMasterForm" type="org.edu.uams.client.form.ForumMasterForm" />
         <form-bean name="typeTableForm" type="org.edu.uams.client.form.TypeTableForm" />
         <form-bean name="studentForm" type="org.edu.uams.client.form.StudentForm" ></form-bean>
-        <form-bean name="studentCorrAddressDetailsForm" type="org.edu.uams.client.form.StudentCorrAddressDetailsForm" ></form-bean>
+        <form-bean name="studentAddressForm" type="org.edu.uams.client.form.StudentAddressForm" ></form-bean>
         <form-bean name="StudentFeeForm" type="org.edu.uams.client.form.StudentFeeForm"/>
          
     </form-beans>
@@ -168,7 +168,7 @@
                         scope="request" >
             <forward name="student" path="studentLayout" ></forward>
         </action>
-        <action name="studentCorrAddressDetailsForm" path="/studentCorrAddressDetails" scope="request" type="org.edu.uams.client.action.StudentCorrAddressDetailsAction">
+        <action name="studentAddressForm" path="/studentAddress" scope="request" type="org.edu.uams.client.action.StudentAddressAction">
             <forward name="studentCorrAdd" path="studentCorrAddLayout" ></forward>
         </action>
         <action input="/" name="StudentFeeForm" path="/studentFee" scope="request" type="org.edu.uams.client.action.StudentFeeAction"/>

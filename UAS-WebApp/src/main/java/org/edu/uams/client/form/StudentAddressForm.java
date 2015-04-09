@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author Sarat
  */
-public class StudentCorrAddressDetailsForm extends ActionForm {
+public class StudentAddressForm extends ActionForm {
 
     private static final long serialVersionUID = 1L;
     private String rollNum;
