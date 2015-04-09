@@ -13,7 +13,7 @@ import org.apache.struts.action.ActionMapping;
 import org.edu.uams.client.form.StudentCorrAddressDetailsForm;
 import org.edu.uams.server.business.StudentCorrAddressDetailsDAO;
 import org.edu.uams.server.business.StudentDao;
-import org.edu.uams.server.pojo.StudentCorrAddressDetailsEntity;
+import org.edu.uams.server.pojo.StudentAddressEntity;
 
 /**
  *
@@ -44,7 +44,7 @@ public class StudentCorrAddressDetailsAction extends org.apache.struts.action.Ac
         StudentDao studentDao =new StudentDao();
 
         if (studentCorrAddressDetailsForm.getPageName() != null) {
-            StudentCorrAddressDetailsEntity studentCorrAddressDetailsEntity = new StudentCorrAddressDetailsEntity();
+            StudentAddressEntity studentCorrAddressDetailsEntity = new StudentAddressEntity();
             studentCorrAddressDetailsEntity.setAreaName(studentCorrAddressDetailsForm.getAreaName());
             studentCorrAddressDetailsEntity.setCity(studentCorrAddressDetailsForm.getCity());
             studentCorrAddressDetailsEntity.setDistrictName(studentCorrAddressDetailsForm.getDistrictName());

@@ -48,7 +48,7 @@
         <mapping class="org.edu.uams.server.pojo.StudentBusAccDetailsEntity"/>
     
         
-        <mapping class="org.edu.uams.server.pojo.StudentCorrAddressDetailsEntity"></mapping>
+        <mapping class="org.edu.uams.server.pojo.StudentAddressEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentCourseEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentDegreequalificationDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentEntity"></mapping>
@@ -56,7 +56,6 @@
         <mapping class="org.edu.uams.server.pojo.StudentFeeEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentPersonalDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentSscqualificationDetailsEntity"></mapping>
-        <mapping class="org.edu.uams.server.pojo.StudentPermAddressDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentDiplomaqualificationDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentInterqualificationDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentOtherDetailsEntity"></mapping>

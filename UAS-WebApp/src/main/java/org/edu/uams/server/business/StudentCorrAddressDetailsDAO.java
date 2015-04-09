@@ -6,20 +6,20 @@
 package org.edu.uams.server.business;
 
 import java.util.List;
-import org.edu.uams.server.pojo.StudentCorrAddressDetailsEntity;
+import org.edu.uams.server.pojo.StudentAddressEntity;
 
 /**
  *
  * @author SARAT
  */
-public class StudentCorrAddressDetailsDAO extends AbstractDao<StudentCorrAddressDetailsEntity> {
+public class StudentCorrAddressDetailsDAO extends AbstractDao<StudentAddressEntity> {
 
      public StudentCorrAddressDetailsDAO() {
-        super(StudentCorrAddressDetailsEntity.class);
+        super(StudentAddressEntity.class);
     }
     @Override
-    public List<StudentCorrAddressDetailsEntity> findAll() {
-         return super.findListByQuery(StudentCorrAddressDetailsEntity.FIND_ALL, null);
+    public List<StudentAddressEntity> findAll() {
+         return super.findListByQuery(StudentAddressEntity.FIND_ALL, null);
     }
     
 }
