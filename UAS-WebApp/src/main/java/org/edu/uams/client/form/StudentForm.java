@@ -1,10 +1,12 @@
 package org.edu.uams.client.form;
 
 import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.edu.uams.server.api.GenderType;
+import org.edu.uams.server.pojo.StudentEntity;
 
 /**
  *
@@ -12,6 +14,7 @@ import org.edu.uams.server.api.GenderType;
  */
 public class StudentForm extends ActionForm {
 
+    private Long id;
     private Long admnNum;
     private String rollNum;
     private String firstName;
@@ -22,6 +25,7 @@ public class StudentForm extends ActionForm {
     private String dob;
     private String genderType;
     private String pageName;
+    private List<StudentEntity> listOfStudents;
 
     public Long getAdmnNum() {
         return admnNum;
@@ -103,6 +107,22 @@ public class StudentForm extends ActionForm {
         this.pageName = pageName;
     }
 
+    public List<StudentEntity> getListOfStudents() {
+        return listOfStudents;
+    }
+
+    public void setListOfStudents(List<StudentEntity> listOfStudents) {
+        this.listOfStudents = listOfStudents;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+   
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
 

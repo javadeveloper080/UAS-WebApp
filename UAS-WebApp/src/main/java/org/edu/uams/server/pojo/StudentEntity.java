@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.edu.uams.server.api.GenderType;
@@ -25,7 +27,7 @@ import org.edu.uams.server.api.SeatCategoryType;
 @Table(name = "student")
 public class StudentEntity implements Serializable {
     
-    public static final String FIND_ALL="StudentEntity.findAll";
+    public static final String FIND_ALL="SELECT a FROM Student a";
     
     private static final long serialVersionUID = 1L;
     
