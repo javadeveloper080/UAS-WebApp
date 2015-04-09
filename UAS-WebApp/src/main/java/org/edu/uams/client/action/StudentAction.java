@@ -35,7 +35,7 @@ public class StudentAction extends Action {
             studentEntity.setAdmnNum(studentForm.getAdmnNum());
             studentEntity.setDob(ApplicationUtil.formatStringToDate(studentForm.getDob()));
             studentEntity.setFatherName(studentForm.getFatherName());
-            studentEntity.setMobile(studentForm.getMobile());
+            studentEntity.setStudentMob(studentForm.getMobile());
             studentEntity.setGenderType(GenderType.valueOf(studentForm.getGenderType()));
             studentEntity.setMotherName(studentForm.getMotherName());
             studentEntity.setFirstName(studentForm.getFirstName());

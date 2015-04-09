@@ -12,9 +12,9 @@ import org.edu.uams.server.pojo.StudentAddressEntity;
  *
  * @author SARAT
  */
-public class StudentCorrAddressDetailsDAO extends AbstractDao<StudentAddressEntity> {
+public class StudentAddressDAO extends AbstractDao<StudentAddressEntity> {
 
-     public StudentCorrAddressDetailsDAO() {
+     public StudentAddressDAO() {
         super(StudentAddressEntity.class);
     }
     @Override
