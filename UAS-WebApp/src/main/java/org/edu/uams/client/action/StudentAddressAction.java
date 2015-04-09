@@ -25,7 +25,7 @@ import org.edu.uams.server.pojo.StudentAddressEntity;
 public class StudentAddressAction  extends DispatchAction {
     
     /* forward name="success" path="" */
-    private static final String SUCCESS = "studentAdd";
+    private static final String STUDENT_ADDRESS_PAGE = "studentAddressPage";
     
     
     public ActionForward studentAdressPage(ActionMapping mapping, ActionForm form,
@@ -93,7 +93,7 @@ public class StudentAddressAction  extends DispatchAction {
         
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentAdd", "true");
-        return mapping.findForward(SUCCESS);
+        return mapping.findForward(STUDENT_ADDRESS_PAGE);
     }
     
     private List<LabelValueBean> getAddressTypeList() {
