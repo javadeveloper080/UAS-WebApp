@@ -19,6 +19,7 @@ public class StudentAddressForm extends ActionForm {
     private String addrLine4;
     private String city;
     private String stateName;
+    private String country;
     private long zipCode;
     private Long studentId;
     private String addressType;
@@ -113,21 +114,29 @@ public class StudentAddressForm extends ActionForm {
     public void setAddressType(String addressType) {
         this.addressType = addressType;
     }
-
+    
     public List getAddressTypeList() {
         return addressTypeList;
     }
-
+    
     public void setAddressTypeList(List addressTypeList) {
         this.addressTypeList = addressTypeList;
     }
-
+    
     public List getStudentAddressList() {
         return studentAddressList;
     }
-
+    
     public void setStudentAddressList(List studentAddressList) {
         this.studentAddressList = studentAddressList;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
     
     public void resetForm(){

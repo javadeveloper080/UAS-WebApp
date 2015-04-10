@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
         
-        <title>Fee Type</title>
+        <title>Student Address</title>
         
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -46,50 +46,81 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                    <html:form  styleClass="form-horizontal style-form" action="/studentCorrAddressDetails" method="post" styleId="studentCorrAddressDetails">
+                            <h5><Strong>Add/Edit Student Address</Strong> </h5>
+                                    <html:form  styleClass="form-horizontal style-form" action="/studentAddressAction" method="post" styleId="studentAddressForm">
+                               
+                                <div class="form-group">
+                                    <div ><label for="addressType">Address type</label></div >
+                                    <html:select property="addressType" styleId="addressType">
+                                        <html:option  styleClass="form-control" value="">Select Address Type</html:option>                                                                                                                                                             
+                                        <html:optionsCollection name="studentAddressForm" property="addressTypeList" label="label" value="value" /> 
+                                    </html:select>
+                                </div>
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Roll Number : <html:text  property="rollNum" size="30" styleId="rollNum"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            D.No :  <html:text  property="doorNum" size="30" styleId="doorNum"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                     <tr>
-                                        <td class="form-field-control">
-                                            Street Name : <html:text  property="streetName" size="30" styleId="streetName"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                           Area Name :  <html:text  property="areaName" size="30" styleId="areaName"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                     <tr>
-                                        <td class="form-field-control">
-                                            District Name : <html:text  property="districtName" size="30" styleId="districtName"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                          City  : <html:text  property="city" size="30" styleId="city"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td class="form-field-control">
-                                            PIN : <html:text  property="pin" size="30" styleId="pin"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                          
-                                        <td>
-                                    </tr>
-                                </table>
-                                <%--<html:hidden name="typeTableForm" property="id" styleId="id"/>--%>
-                                <html:hidden property="pageName" styleId="pageName" />
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addrLine1">Address Line1.</label>
+                                            <html:text name="studentAddressForm" property="addrLine1" styleId="addrLine1" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addrLine2">Address Line2.</label>
+                                            <html:text  name="studentAddressForm" property="addrLine2" styleId="addrLine2" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addrLine3">Address Line3.</label>
+                                            <html:text name="studentAddressForm" property="addrLine3" styleId="addrLine3" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addrLine4">Address Line4.</label>
+                                            <html:text  name="studentAddressForm" property="addrLine4" styleId="addrLine4" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="city">City.</label>
+                                            <html:text name="studentAddressForm" property="city" styleId="city" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="stateName">State name.</label>
+                                            <html:text  name="studentAddressForm" property="stateName" styleId="stateName" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="country">Country.</label>
+                                            <html:text name="studentAddressForm" property="country" styleId="country" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="zipCode">Zip code.</label>
+                                            <html:text  name="studentAddressForm" property="zipCode" styleId="zipCode" styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <html:hidden name="studentAddressForm" property="id" styleId="id"/>
+                                <html:hidden name="studentAddressForm" property="studentId" styleId="studentId"/>
+                                <html:hidden name="studentAddressForm" property="pageName" styleId="pageName" />
                                 <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
@@ -107,7 +138,7 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Fee type table</h4>
+                                <h4><i class="fa fa-angle-right"></i>Student address table</h4>
                                 <hr>
                                 <thead>
                                     <tr>
@@ -118,17 +149,17 @@
                                 </thead>
                                 <tbody>
                                     <%--<logic:notEmpty name="typeTableForm" property="typeFormList">--%>
-                                        <%--<logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">--%>
-                                            <tr>
-                                                <td>
-                                                    <%--<bean:write name="typeTable" property="code"/>--%>
-                                                </td>
-                                                <td>
-                                                    <%--<bean:write name="typeTable" property="description"/>--%>
-                                                </td>
-                                                <!--<td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>-->
-                                            </tr>
-                                        <%--</logic:iterate>--%>
+                                    <%--<logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">--%>
+                                    <tr>
+                                        <td>
+                                            <%--<bean:write name="typeTable" property="code"/>--%>
+                                        </td>
+                                        <td>
+                                            <%--<bean:write name="typeTable" property="description"/>--%>
+                                        </td>
+                                        <!--<td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>-->
+                                    </tr>
+                                    <%--</logic:iterate>--%>
                                     <%--</logic:notEmpty>--%>
                                 </tbody>
                             </table>
@@ -170,77 +201,81 @@
     <script>
             
            
-             function validateForm() {
-                 // get the form values
+        function validateForm() {
+            // get the form values
                 
-                var rollNum = document.getElementById('rollNum').value;
-                var doorNum = document.getElementById('doorNum').value;
-                var streetName = document.getElementById('streetName').value;
-                var areaName = document.getElementById('areaName').value;
-                var pin = document.getElementById('pin').value;
-                var city = document.getElementById('city').value;
+            var addressType = document.getElementById('addressType').value;
+            var addrLine1 = document.getElementById('addrLine1').value;
+            var city = document.getElementById('city').value;
+            var zipCode = document.getElementById('zipCode').value;
+            var country = document.getElementById('country').value;
+            
+            if (addressType === null || addressType ==="") {
+                alert("Please select a AddressType");
+                document.getElementById('addressType').focus();
+                return false;
+            }
+             if (addrLine1 === null || addrLine1 ==="") {
+                alert("Please Enter  Address Line1");
+                document.getElementById('addrLine1').focus();
+                return false;
+            }
+            
+             if (zipCode === null || zipCode ==="") {
+                alert("Please Enter zipCode ");
+                document.getElementById('zipCode').focus();
+                return false;
+            }
+            
+             if (country === null || country ==="") {
+                alert("Please Enter country ");
+                document.getElementById('country').focus();
+                return false;
+            }
                
 				
-                if (rollNum === null || rollNum ==="") {
-                    alert("Please Enter Roll Number");
-                    document.getElementById('rollNum').focus();
-                    return false;
-                }
-               else if (doorNum === null || doorNum ==="") {
-                    alert("Please Enter D.No ");
-                    document.getElementById('doorNum').focus();
-                    return false;
-                }
-                else if (streetName === null || streetName ==="") {
-                    alert("Please Enter Street  Name");
-                    document.getElementById('streetName').focus();
-                    return false;
-                }
-                else if (areaName=== null || areaName ==="") {
-                    alert("Please Enter Area Name ");
-                    document.getElementById('areaName').cfocus();
-                    return false;
-                }
-                 else if (pin=== null || pin ==="") {
-                    alert("Please Enter PIN ");
-                    document.getElementById('pin').cfocus();
-                    return false;
-                }
-                 else if (city=== null || city ==="") {
-                    alert("Please Enter city Name ");
-                    document.getElementById('city').cfocus();
-                    return false;
-                }
+            if (rollNum === null || rollNum ==="") {
+                alert("Please Enter Roll Number");
+                document.getElementById('rollNum').focus();
+                return false;
+            }
+            
+           if (city=== null || city ==="") {
+                alert("Please Enter city Name ");
+                document.getElementById('city').cfocus();
+                return false;
+            }
       
-                submitForm();
+            submitForm();
                      
-             }
+        }
 
-            function getEditTypeForm(id) {
-                alert('Get Editff Type'+id);
-                document.getElementById('id').value =id;	
-                document.getElementById('pageName').value ="GetEditTypeForm"	
-                document.studentForm.action="typeTableAction.do?method=feeTypePage";
-                document.studentForm.submit();
-            }
+        function getEditTypeForm(id) {
+            alert('Get Editff Type'+id);
+            document.getElementById('id').value =id;	
+            document.getElementById('pageName').value ="GetEditTypeForm"	
+            document.studentAddressForm.action="studentAddressAction.do?method=studentAdressPage";
+            document.studentAddressForm.submit();
+        }
     
-            function submitForm() {
-                var id =document.getElementById('rollNum').value;	
-                if(id != null ){
-                    document.getElementById('pageName').value ="SubmitEditType"	
-                }else{
-                    document.getElementById('pageName').value ="SubmitAddType"
-                }
-                document.studentCorrAddressDetailsForm.action="studentCorrAddressDetails.do";
-                document.studentCorrAddressDetailsForm.submit();
+        function submitForm() {
+            var id =document.getElementById('rollNum').value;	
+            if(id != null ){
+                document.getElementById('pageName').value ="SubmitEditType"	
+            }else{
+                document.getElementById('pageName').value ="SubmitAddType"
             }
+          
+            document.studentAddressForm.action="studentAddressAction.do?method=studentAdressPage";
+            document.studentAddressForm.submit();
+        }
 	
         
-            function reset(){	
-		document.getElementById("studentCorrAddressDetailsForm").reset();
-            }
-        </script>
-
+        function reset(){	
+            document.getElementById("studentAddressForm").reset();
+        }
+    </script>
+    
     
 </body>
 </html>
