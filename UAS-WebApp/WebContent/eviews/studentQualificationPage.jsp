@@ -26,7 +26,7 @@
                 <div class="col-lg-12">
                     <div class="form-panel">
                         <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                <html:form  styleClass="form-horizontal style-form" action="/studentAction.do?method=studentPage" method="post" styleId="studentFrom">
+                                <html:form  styleClass="form-horizontal style-form" action="/studentAction?method=studentQualificationPage" method="post" styleId="studentFrom">
 
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -147,8 +147,8 @@
     
                                 
                                 <tbody>
-                                    <logic:notEmpty name="studentForm" property="listOfStudents">
-                                        <logic:iterate id="student" name="studentForm" property="listOfStudents" >
+                                    <logic:notEmpty name="studentQlfForm" property="listOfStudents">
+                                        <logic:iterate id="student" name="studentQlfForm" property="listOfStudents" >
                                             <tr>
                                                 <td class="numeric"><bean:write name="student" property="rollNum"/></td>
                                                 <td class="numeric"><bean:write name="student" property="firstName"/></td>
@@ -285,8 +285,8 @@
         alert('Get Editff Type' + id);
         document.getElementById('id').value = id;
         document.getElementById('pageName').value = "GetEditTypeForm"
-        document.studentForm.action = "studentAction.do?method=studentPage";
-        document.studentForm.submit();
+        document.studentQlfForm.action = "studentQlfAction.do?method=studentQualificationPage";
+        document.studentQlfForm.submit();
     }
 
     function submitForm() {
@@ -296,8 +296,8 @@
         } else {
             document.getElementById('pageName').value = "SubmitAddType"
         }
-        document.studentForm.action = "studentAction.do?method=studentPage";
-        document.studentForm.submit();
+        document.studentQlfForm.action = "studentQlfAction.do?method=studentQualificationPage";
+        document.studentQlfForm.submit();
     }
 
 

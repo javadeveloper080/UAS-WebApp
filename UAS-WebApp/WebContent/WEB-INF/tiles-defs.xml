@@ -113,4 +113,9 @@
         <put name="body"   value="/eviews/studentAddressPage.jsp" />
     </definition>
     
+    <definition name="studentQualificationLayout" extends="baseTemplateLayout">
+        <put name="title" value="Student Qualification" />
+        <put name="body" value="/eviews/studentQualificationPage.jsp" />
+    </definition>
+    
 </tiles-definitions>

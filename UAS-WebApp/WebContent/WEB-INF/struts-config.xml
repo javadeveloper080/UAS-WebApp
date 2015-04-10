@@ -29,6 +29,7 @@
         <form-bean name="studentForm" type="org.edu.uams.client.form.StudentForm" ></form-bean>
         <form-bean name="studentAddressForm" type="org.edu.uams.client.form.StudentAddressForm" ></form-bean>
         <form-bean name="StudentFeeForm" type="org.edu.uams.client.form.StudentFeeForm"/>
+        <form-bean name="studentQlfForm" type="org.edu.uams.client.form.StudentQualificationForm"/>
          
     </form-beans>
 
@@ -83,7 +84,7 @@
                 scope="request" type="org.edu.uams.client.action.TransportModuleAction">
             <forward name="busFacultyPage" path="BusFacultyPage" />
             <forward name="busDetailsPage" path="BusDetailsPage" />
-              <forward name="studentBusAccDetailsPage" path="StudentBusAccDetailsPage" />
+            <forward name="studentBusAccDetailsPage" path="StudentBusAccDetailsPage" />
         </action>
         <!--Transport table Entry ends-->
 
@@ -165,9 +166,15 @@
             <forward name="fee" path="MainFeeLayout"></forward>
         </action>
         <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
-                        scope="request" >
+                parameter="method" scope="request" >
             <forward name="student" path="studentLayout" ></forward>
         </action>
+        
+        <action path="/studentQlfAction" name="studentQlfForm" type="org.edu.uams.client.action.StudentAction" 
+                parameter="method" scope="request" >
+            <forward name="studentQualification" path="studentQualificationLayout" ></forward>
+        </action>
+        
         <action name="studentAddressForm" path="/studentAddress" scope="request" type="org.edu.uams.client.action.StudentAddressAction">
             <forward name="studentAddressPage" path="StudentAddLayout" ></forward>
         </action>

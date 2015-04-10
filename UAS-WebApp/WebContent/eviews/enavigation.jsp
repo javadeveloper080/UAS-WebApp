@@ -110,13 +110,16 @@
                 </a>
 
                 <ul class="sub">
-                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do">Student Details</a></li>
+                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do?method=studentPage">Student Details</a></li>
                 </ul>
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentCorrAddr != null}"> class="active"</c:if> ><a  href="studentCorrAddressDetails.do">Corresponding Address</a></li>
                 </ul>
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentFee != null}"> class="active"</c:if> ><a  href="studentFee.do">Student Fee</a></li>
+                </ul>
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentQlfDetails != null}"> class="active"</c:if> ><a  href="studentQlfAction.do?method=studentQualificationPage">Student Qualification</a></li>
                 </ul>
             </li>
                 
