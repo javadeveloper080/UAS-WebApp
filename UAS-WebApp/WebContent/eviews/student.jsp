@@ -78,13 +78,34 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Mobile No : <html:text  property="mobile"  styleId="mobile"  styleClass="form-control" />
+                                        Mobile No : <html:text  property="studentMob"  styleId="studentMob"  styleClass="form-control" />
                                     </div>
 
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
+                                        E-Mail : <html:text  property="email"  styleId="email"  styleClass="form-control" />
+                                    </div>
 
+                                </div>
+
+                            </div>
+                                    
+                               <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Nationality : <html:text  property="nationality"  styleId="nationality"  styleClass="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Seat Category Type : <html:select  property="seatCategoryType"  styleId="seatCategoryType"  styleClass="form-control" >
+                                                                    <html:option value="MANAGEMENT">Management</html:option>
+                                                                    <html:option value="NRI">NRI</html:option>
+                                                                    <html:option value="SPORTS">Sports</html:option>
+                                                                    <html:option value="GENERAL">General</html:option>
+                                                             </html:select>
                                     </div>
 
                                 </div>
@@ -101,6 +122,21 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Mother : <html:text  property="motherName"  styleId="motherName"   styleClass="form-control" />
+                                    </div>
+
+                                </div>
+                            </div>
+                                    
+                              <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Father occupation  : <html:text  property="fatherOccup"  styleId="fatherOccup"   styleClass="form-control"/>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Mother occupation: <html:text  property="motherOccup"  styleId="motherOccup"   styleClass="form-control" />
                                     </div>
 
                                 </div>
@@ -227,7 +263,7 @@
         var lastName = document.getElementById('lastName').value;
         var motherName = document.getElementById('motherName').value;
         var fatherName = document.getElementById('fatherName').value;
-        var mobile = document.getElementById('mobile').value;
+        var mobile = document.getElementById('studentMob').value;
         var dob = document.getElementById('dob').value;
         var genderType = document.getElementById('genderType').value;
         if (admnNum === null || admnNum === "") {
@@ -263,7 +299,7 @@
         }
          if (mobile === null || mobile === "") {
             alert("Please Enter Mobile");
-            document.getElementById('mobile').focus();
+            document.getElementById('studentMob').focus();
             return false;
         }
         if (dob === null || dob === "") {
@@ -282,7 +318,6 @@
     }
 
     function getEditTypeForm(id) {
-        alert('Get Editff Type' + id);
         document.getElementById('id').value = id;
         document.getElementById('pageName').value = "GetEditTypeForm"
         document.studentForm.action = "studentAction.do?method=studentPage";
@@ -290,7 +325,7 @@
     }
 
     function submitForm() {
-        var id = document.getElementById('admnNum').value;
+        var id = document.getElementById('id').value;
         if (id != null && id > 0) {
             document.getElementById('pageName').value = "SubmitEditType"
         } else {

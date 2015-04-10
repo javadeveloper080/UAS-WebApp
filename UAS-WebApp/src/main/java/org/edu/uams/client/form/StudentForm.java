@@ -21,10 +21,16 @@ public class StudentForm extends ActionForm {
     private String lastName;
     private String fatherName;
     private String motherName;
-    private Long mobile;
     private String dob;
     private String genderType;
     private String pageName;
+    private String seatCategoryType;
+    private String email;
+    private String nationality;
+    private String fatherOccup;
+    private String motherOccup;
+    private String parentMob;
+    private Long studentMob;
     private List<StudentEntity> listOfStudents;
 
     public Long getAdmnNum() {
@@ -74,15 +80,6 @@ public class StudentForm extends ActionForm {
     public void setMotherName(String motherName) {
         this.motherName = motherName;
     }
-
-    public Long getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(Long mobile) {
-        this.mobile = mobile;
-    }
-
     public String getDob() {
         return dob;
     }
@@ -122,7 +119,64 @@ public class StudentForm extends ActionForm {
     public void setId(Long id) {
         this.id = id;
     }
-   
+
+    public String getSeatCategoryType() {
+        return seatCategoryType;
+    }
+
+    public void setSeatCategoryType(String seatCategoryType) {
+        this.seatCategoryType = seatCategoryType;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getFatherOccup() {
+        return fatherOccup;
+    }
+
+    public void setFatherOccup(String fatherOccup) {
+        this.fatherOccup = fatherOccup;
+    }
+
+    public String getMotherOccup() {
+        return motherOccup;
+    }
+
+    public void setMotherOccup(String motherOccup) {
+        this.motherOccup = motherOccup;
+    }
+
+    public String getParentMob() {
+        return parentMob;
+    }
+
+    public void setParentMob(String parentMob) {
+        this.parentMob = parentMob;
+    }
+
+    public Long getStudentMob() {
+        return studentMob;
+    }
+
+    public void setStudentMob(Long studentMob) {
+        this.studentMob = studentMob;
+    }
+
+    
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
 
@@ -132,10 +186,16 @@ public class StudentForm extends ActionForm {
         lastName = null;
         fatherName = null;
         motherName = null;
-        mobile = null;
+        studentMob = null;
         dob = null;
         genderType = null;
         pageName = null;
+        seatCategoryType = null;
+        email = null;
+        nationality = null;
+        fatherOccup = null;
+        motherOccup = null;
+        parentMob = null;
     }
 
 }
