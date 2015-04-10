@@ -30,8 +30,8 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Search</Strong> </h5>
-                            <input type="button" value="Show Table" id="showTable"/>
+                            <input type="text" id="search" name="search" class="search" />
+                            <input type="button" value="Seach" id="showTable"/>
                         </div>
                     </div><!-- col-lg-12-->      	
                 </div> <!--  /row -->
@@ -105,7 +105,8 @@
         $(document).ready(function() {
             $("#tablediv").hide();
             $("#showTable").click(function(event){
-                $.get( "/UAMS-WebApp/transportModuleAction.do?method=getAllbusFacultyPage", { firstName: "John"} )
+                var name = document.getElementById("search").value;
+                $.get( "/UAMS-WebApp/transportModuleAction.do?method=getAllbusFacultyPage", { busNum: name,registrationNum:1} )
                         .done(function( responseJson ) {
                             if(responseJson!=null){
                         $("#searchResTable").find("tr:gt(0)").remove();
