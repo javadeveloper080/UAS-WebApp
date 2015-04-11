@@ -3,7 +3,6 @@ package org.edu.uams.client.action;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.struts.action.Action;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -16,7 +15,6 @@ import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.api.SeatCategoryType;
 import org.edu.uams.server.business.StudentDao;
 import org.edu.uams.server.business.StudentQualificationDao;
-import org.edu.uams.server.pojo.BusFacultyEntity;
 import org.edu.uams.server.pojo.StudentEntity;
 import org.edu.uams.server.pojo.StudentQualificationEntity;
 import org.edu.uams.server.util.ApplicationUtil;
@@ -135,7 +133,7 @@ public class StudentAction extends DispatchAction {
 
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentQlfDetails", "true");
-        return mapping.findForward(SUCCESS);
+        return mapping.findForward("studentQualification");
     }
      private void copyDataFromSQFormToSQEntity(StudentQualificationForm studentQlfForm , StudentQualificationEntity studentQlfEntity,boolean isEntity){
          if(isEntity)

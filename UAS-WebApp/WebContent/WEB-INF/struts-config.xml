@@ -165,10 +165,10 @@
         <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
             <forward name="fee" path="MainFeeLayout"></forward>
         </action>
-        <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
-                parameter="method" scope="request" >
-            <forward name="student" path="studentLayout" ></forward>
-        </action>
+<!--        <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" -->
+<!--                parameter="method" scope="request" >-->
+<!--            <forward name="student" path="studentLayout" ></forward>-->
+<!--        </action>-->
 
         
         <action path="/studentQlfAction" name="studentQlfForm" type="org.edu.uams.client.action.StudentAction" 

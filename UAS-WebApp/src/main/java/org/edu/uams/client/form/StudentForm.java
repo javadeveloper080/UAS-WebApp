@@ -32,6 +32,7 @@ public class StudentForm extends ActionForm {
     private String parentMob;
     private Long studentMob;
     private List<StudentEntity> listOfStudents;
+    private String fullName;
 
     public Long getAdmnNum() {
         return admnNum;
@@ -176,6 +177,9 @@ public class StudentForm extends ActionForm {
         this.studentMob = studentMob;
     }
 
+    public String getFullName() {
+        return firstName + "" + lastName;
+    }
     
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
@@ -196,6 +200,7 @@ public class StudentForm extends ActionForm {
         fatherOccup = null;
         motherOccup = null;
         parentMob = null;
+        fullName = null;
     }
 
 }

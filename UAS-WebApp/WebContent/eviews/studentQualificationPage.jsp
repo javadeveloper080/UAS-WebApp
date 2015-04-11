@@ -25,19 +25,74 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
-                        <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                <html:form  styleClass="form-horizontal style-form" action="/studentAction?method=studentQualificationPage" method="post" styleId="studentFrom">
+                        <h5><Strong>Add/Edit Student Qualification</Strong> </h5>
+                                <html:form  styleClass="form-horizontal style-form" action="/studentAction?method=studentQualificationPage" method="post" styleId="studentQlfForm">
 
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Admin Number : <html:text  property="admnNum"  styleId="admnNum"   styleClass="form-control" />
+                                        Degree Name Institution  : <html:text  property="degNameInstitution"  styleId="degNameInstitution"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                              <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Degree Medium  : <html:text  property="degMedium"  styleId="degMedium"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                                    
+                                    <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Degree Division  : <html:text  property="degDivision"  styleId="degDivision"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                                    
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Degree Percentage : <html:text  property="degPercentage"  styleId="degPercentage"   styleClass="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Roll Number :  <html:text  property="rollNum"  styleId="rollNum"   styleClass="form-control"/>
+                                        Degree Year Of Pass :  <html:text  property="degYearOfPass"  styleId="degYearOfPass"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                                    
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Diploma Name Institution  : <html:text  property="dipNameInstitution"  styleId="dipNameInstitution"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                              <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Diploma Medium  : <html:text  property="dipMedium"  styleId="dipMedium"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                                    
+                                    <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Diploma Division  : <html:text  property="dipDivision"  styleId="dipDivision"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                                    
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Diploma Percentage : <html:text  property="dipPercentage"  styleId="dipPercentage"   styleClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Diploma Year Of Pass :  <html:text  property="dipYearOfPass"  styleId="dipYearOfPass"   styleClass="form-control"/>
                                     </div>
                                 </div>
 
@@ -46,47 +101,34 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        First Name  : <html:text  property="firstName"  styleId="firstName"   styleClass="form-control"/>
+                                        Inter Name Institution  : <html:text  property="intrInstitutionName"  styleId="intrInstitutionName"   styleClass="form-control"/>
                                     </div>
                                 </div>
-
+                              <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Last Name :  <html:text  property="lastName"  styleId="lastName"  styleClass="form-control"/>
+                                        Inter Medium  : <html:text  property="intrMedium"  styleId="intrMedium"   styleClass="form-control"/>
                                     </div>
                                 </div>
-                            </div>
-
+                                    
+                                    <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Inter Division  : <html:text  property="intrDivision"  styleId="intrDivision"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                                    
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Date Of Birth : <html:text  property="dob"  styleId="dob"   styleClass="form-control"/>
+                                        Inter Percentage : <html:text  property="intrPercentage"  styleId="intrPercentage"   styleClass="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Sex : <html:select  property="genderType" styleId="genderType" styleClass="form-control" >
-                                            <html:option value="MALE">Male</html:option>
-                                            <html:option value="FEMALE">Female</html:option>
-                                        </html:select>
+                                        Inter Year Of Pass :  <html:text  property="intrYearOfPass"  styleId="intrYearOfPass"   styleClass="form-control"/>
                                     </div>
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        Mobile No : <html:text  property="mobile"  styleId="mobile"  styleClass="form-control" />
-                                    </div>
-
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-
-                                    </div>
-
                                 </div>
 
                             </div>
@@ -94,18 +136,53 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Father Name : <html:text  property="fatherName"  styleId="fatherName"   styleClass="form-control"/>
+                                        Secondary Name Institution  : <html:text  property="secondaryInstitutionName"  styleId="secondaryInstitutionName"   styleClass="form-control"/>
                                     </div>
-
                                 </div>
+                              <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Mother : <html:text  property="motherName"  styleId="motherName"   styleClass="form-control" />
+                                        Secondary Medium  : <html:text  property="sMedium"  styleId="sMedium"   styleClass="form-control"/>
                                     </div>
-
                                 </div>
+                                    
+                                    <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Secondary Division  : <html:text  property="sdivision"  styleId="sdivision"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+                                    
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Secondary Percentage : <html:text  property="spercentage"  styleId="spercentage"   styleClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Secondary Year Of Pass :  <html:text  property="syearOfPass"  styleId="syearOfPass"   styleClass="form-control"/>
+                                    </div>
+                                </div>
+
                             </div>
 
+                            <div class="row">
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="registrationNum">Student :</label>
+                                            <html:select  styleClass="form-control" property="studentId" styleId="studentId">
+                                                <html:option value="0">Select a user</html:option>
+                                                <html:optionsCollection   name="studentQlfForm"
+                                                                  property="listOfStudents" label="fullName" value="id" />
+                                            </html:select>
+                                        </div>
+                                    </div>
+                            </div>        
+
+                            
                             <!--html:text  property="branchName" size="30" styleId="description"  maxlength="100" /-->
                             <html:hidden property="pageName" styleId="pageName" />
                             <html:hidden property="id" styleId="id" />
@@ -134,28 +211,54 @@
                                 <hr>
                                 <thead class="cf">
                                     <tr>
-                                        <th class="numeric">Roll No.</th>
-                                        <th class="numeric">First Name.</th>
-                                        <th class="numeric">Last Name. </th>
-                                        <th class="numeric">Date Of Birth </th>
-                                        <th class="numeric">Mobile no</th>
-                                         <th class="numeric">Father Name</th>
-                                         <th class="numeric">Mother Name</th>
-                                        <th></th>
+                                        <th class="numeric">Degree Name Institution</th>
+                                        <th class="numeric">Degree Medium</th>
+                                        <th class="numeric">Degree Division </th>
+                                        <th class="numeric">Degree Percentage </th>
+                                        <th class="numeric">Degree Year Of Pass</th>
+                                        <th class="numeric">Diploma Name Institution</th>
+                                        <th class="numeric">Diploma Medium</th>
+                                        <th class="numeric">Diploma Division</th>
+                                        <th class="numeric">Diploma Percentage</th>
+                                        <th class="numeric">Diploma Year Of Pass</th>
+                                        <th class="numeric">Inter Institution Name</th>
+                                        <th class="numeric">Inter Medium</th>
+                                        <th class="numeric">Inter Division</th>
+                                        <th class="numeric">Inter Percentage</th>
+                                        <th class="numeric">Inter Year Of Pass</th>
+                                        <th class="numeric">Secondary Institution Name</th>
+                                        <th class="numeric">Secondary Medium</th>
+                                        <th class="numeric">Secondary Division</th>
+                                        <th class="numeric">Secondary Percentage</th>
+                                        <th class="numeric">Secondary Year Of Pass</th>
                                     </tr>
                                 </thead>
     
                                 
                                 <tbody>
-                                    <logic:notEmpty name="studentQlfForm" property="listOfStudents">
-                                        <logic:iterate id="student" name="studentQlfForm" property="listOfStudents" >
+                                    <logic:notEmpty name="studentQlfForm" property="listOfStudentQlfs">
+                                        <logic:iterate id="student" name="studentQlfForm" property="listOfStudentQlfs" >
                                             <tr>
-                                                <td class="numeric"><bean:write name="student" property="rollNum"/></td>
-                                                <td class="numeric"><bean:write name="student" property="firstName"/></td>
-                                                <td class="numeric"><bean:write name="student" property="lastName"/></td>
-                                                <td class="numeric"><bean:write name="student" property="dob"/></td>
-                                                <td class="numeric"><bean:write name="student" property="fatherName"/></td>
-                                                <td class="numeric"><bean:write name="student" property="motherName"/></td>
+                                                <td class="numeric"><bean:write name="student" property="degNameInstitution"/></td>
+                                                <td class="numeric"><bean:write name="student" property="degMedium"/></td>
+                                                <td class="numeric"><bean:write name="student" property="degDivision"/></td>
+                                                <td class="numeric"><bean:write name="student" property="degPercentage"/></td>
+                                                <td class="numeric"><bean:write name="student" property="degYearOfPass"/></td>
+                                                <td class="numeric"><bean:write name="student" property="dipNameInstitution"/></td>
+                                                <td class="numeric"><bean:write name="student" property="dipMedium"/></td>
+                                                <td class="numeric"><bean:write name="student" property="dipDivision"/></td>
+                                                <td class="numeric"><bean:write name="student" property="dipPercentage"/></td>
+                                                <td class="numeric"><bean:write name="student" property="dipYearOfPass"/></td>
+                                                <td class="numeric"><bean:write name="student" property="intrInstitutionName"/></td>
+                                                <td class="numeric"><bean:write name="student" property="intrMedium"/></td>
+                                                <td class="numeric"><bean:write name="student" property="intrDivision"/></td>
+                                                <td class="numeric"><bean:write name="student" property="intrPercentage"/></td>
+                                                <td class="numeric"><bean:write name="student" property="intrYearOfPass"/></td>
+                                                <td class="numeric"><bean:write name="student" property="secondaryInstitutionName"/></td>
+                                                <td class="numeric"><bean:write name="student" property="sMedium"/></td>
+                                                <td class="numeric"><bean:write name="student" property="sdivision"/></td>
+                                                <td class="numeric"><bean:write name="student" property="syearOfPass"/></td>
+                                                
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${student.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>
                                         </logic:iterate>
@@ -221,34 +324,34 @@
 
     function validateForm() {
         // get the form values
-        var admnNum = document.getElementById('admnNum').value;
-        var rollNum = document.getElementById('rollNum').value;
-        var firstName = document.getElementById('firstName').value;
-        var lastName = document.getElementById('lastName').value;
-        var motherName = document.getElementById('motherName').value;
+        var intrInstitutionName = document.getElementById('intrInstitutionName').value;
+        var intrMedium = document.getElementById('intrMedium').value;
+        var intrDivision = document.getElementById('intrDivision').value;
+        var intrPercentage = document.getElementById('intrPercentage').value;
+        var intrYearOfPass = document.getElementById('intrYearOfPass').value;
         var fatherName = document.getElementById('fatherName').value;
-        var mobile = document.getElementById('mobile').value;
-        var dob = document.getElementById('dob').value;
-        var genderType = document.getElementById('genderType').value;
-        if (admnNum === null || admnNum === "") {
-            alert("Please Enter Admin Number");
-            document.getElementById('admnNum').cfocus();
+        var secondaryInstitutionName = document.getElementById('secondaryInstitutionName').value;
+        var sMedium = document.getElementById('sMedium').value;
+        var sdivision = document.getElementById('sdivision').value;
+        if (intrInstitutionName === null || intrInstitutionName === "") {
+            alert("Please Enter Inter Institution Name");
+            document.getElementById('intrInstitutionName').cfocus();
             return false;
         }
 
-        else if (rollNum === null || rollNum === "") {
-            alert("Please Enter Roll Number");
-            document.getElementById('rollNum').focus();
+        else if (intrMedium === null || intrMedium === "") {
+            alert("Please Enter Inter Medium");
+            document.getElementById('intrMedium').focus();
             return false;
         }
-        else if (firstName === null || firstName === "") {
-            alert("Please Enter Student First Name");
-            document.getElementById('firstName').focus();
+        else if (intrDivision === null || intrDivision === "") {
+            alert("Please Enter Inter Division");
+            document.getElementById('intrDivision').focus();
             return false;
         }
-        if (lastName === null || lastName === "") {
-            alert("Please Enter Student Last Name");
-            document.getElementById('lastName').focus();
+        if (intrPercentage === null || intrPercentage === "") {
+            alert("Please Enter Inter Percentage");
+            document.getElementById('intrPercentage').focus();
             return false;
         }
          if (fatherName === null || fatherName === "") {
@@ -256,24 +359,24 @@
             document.getElementById('fatherName').focus();
             return false;
         }
-        if (motherName === null || motherName === "") {
-            alert("Please Enter Mother");
-            document.getElementById('motherName').focus();
+        if (intrYearOfPass === null || intrYearOfPass === "") {
+            alert("Please Enter Inter Year Of Pass");
+            document.getElementById('intrYearOfPass').focus();
             return false;
         }
-         if (mobile === null || mobile === "") {
-            alert("Please Enter Mobile");
-            document.getElementById('mobile').focus();
+         if (secondaryInstitutionName === null || secondaryInstitutionName === "") {
+            alert("Please Enter Secondary Institution Name");
+            document.getElementById('secondaryInstitutionName').focus();
             return false;
         }
-        if (dob === null || dob === "") {
-            alert("Please Enter Date Of Birth");
-            document.getElementById('dob').focus();
+        if (sMedium === null || sMedium === "") {
+            alert("Please Enter Second Medium");
+            document.getElementById('sMedium').focus();
             return false;
         }
-        if (genderType === null || genderType === "") {
+        if (sdivision === null || sdivision === "") {
             alert("Please Select gender type");
-            document.getElementById('genderType').focus();
+            document.getElementById('sdivision').focus();
             return false;
         }
 
@@ -290,7 +393,7 @@
     }
 
     function submitForm() {
-        var id = document.getElementById('admnNum').value;
+        var id = document.getElementById('id').value;
         if (id != null && id > 0) {
             document.getElementById('pageName').value = "SubmitEditType"
         } else {
@@ -302,13 +405,7 @@
 
 
     function reset() {
-        document.getElementById("studentFrom").reset();
+        document.getElementById("studentQlfForm").reset();
     }
-    $(function () {
-        $("#dob").datepicker({
-            showOn: "button",
-            buttonImage: "images/calendar.gif",
-        });
-    });
 </script>
 
