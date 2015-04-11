@@ -24,7 +24,7 @@ import org.edu.uams.server.api.AddressType;
 @Table(name = "student_address")
 public class StudentAddressEntity implements Serializable {
     
-    public static String FIND_ALL="StudentCorrAddressDetailsEntity.findAll";
+    public static String FIND_ALL="SELECT s FROM StudentAddress s";
     
     private static final long serialVersionUID = 1L;
     

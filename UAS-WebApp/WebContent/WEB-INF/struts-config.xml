@@ -176,7 +176,8 @@
             <forward name="studentQualification" path="studentQualificationLayout" ></forward>
         </action>
         
-        <action name="studentAddressForm" path="/studentAddressAction" scope="request" type="org.edu.uams.client.action.StudentAddressAction">
+        <action path="/studentAddressAction" name="studentAddressForm"  parameter="method" type="org.edu.uams.client.action.StudentAddressAction"
+             scope="request" >
             <forward name="studentAddressPage" path="StudentAddLayout" ></forward>
         </action>
         

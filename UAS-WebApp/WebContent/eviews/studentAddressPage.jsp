@@ -47,69 +47,83 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Student Address</Strong> </h5>
-                                    <html:form  styleClass="form-horizontal style-form" action="/studentAddressAction" method="post" styleId="studentAddressForm">
-                               
-                                <div class="form-group">
-                                    <div ><label for="addressType">Address type</label></div >
-                                    <html:select property="addressType" styleId="addressType">
-                                        <html:option  styleClass="form-control" value="">Select Address Type</html:option>                                                                                                                                                             
-                                        <html:optionsCollection name="studentAddressForm" property="addressTypeList" label="label" value="value" /> 
-                                    </html:select>
-                                </div>
+                                    <html:form  styleClass="" action="/studentAddressAction" method="post" styleId="studentAddressForm">
                                 
                                 <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addrLine1">Address Line1.</label>
+                                            <html:select property="addressType" styleId="addressType" styleClass="form-control">
+                                                <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="studentAddressForm" property="addressTypeList" label="label" value="value" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="addrLine1">Address Line1.</label>
                                             <html:text name="studentAddressForm" property="addrLine1" styleId="addrLine1" styleClass="form-control"/>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="addrLine2">Address Line2.</label>
                                             <html:text  name="studentAddressForm" property="addrLine2" styleId="addrLine2" styleClass="form-control"/>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="addrLine3">Address Line3.</label>
                                             <html:text name="studentAddressForm" property="addrLine3" styleId="addrLine3" styleClass="form-control"/>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="addrLine4">Address Line4.</label>
                                             <html:text  name="studentAddressForm" property="addrLine4" styleId="addrLine4" styleClass="form-control"/>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="city">City.</label>
                                             <html:text name="studentAddressForm" property="city" styleId="city" styleClass="form-control"/>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="stateName">State name.</label>
                                             <html:text  name="studentAddressForm" property="stateName" styleId="stateName" styleClass="form-control"/>
                                         </div>
                                     </div>
-                                </div>
-                              
-                                
-                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="country">Country.</label>
                                             <html:text name="studentAddressForm" property="country" styleId="country" styleClass="form-control"/>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                
+                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="zipCode">Zip code.</label>
@@ -215,19 +229,19 @@
                 document.getElementById('addressType').focus();
                 return false;
             }
-             if (addrLine1 === null || addrLine1 ==="") {
+            if (addrLine1 === null || addrLine1 ==="") {
                 alert("Please Enter  Address Line1");
                 document.getElementById('addrLine1').focus();
                 return false;
             }
             
-             if (zipCode === null || zipCode ==="") {
+            if (zipCode === null || zipCode ==="") {
                 alert("Please Enter zipCode ");
                 document.getElementById('zipCode').focus();
                 return false;
             }
             
-             if (country === null || country ==="") {
+            if (country === null || country ==="") {
                 alert("Please Enter country ");
                 document.getElementById('country').focus();
                 return false;
@@ -240,7 +254,7 @@
                 return false;
             }
             
-           if (city=== null || city ==="") {
+            if (city=== null || city ==="") {
                 alert("Please Enter city Name ");
                 document.getElementById('city').cfocus();
                 return false;

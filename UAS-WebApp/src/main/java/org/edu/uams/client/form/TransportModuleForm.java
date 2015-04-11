@@ -3,16 +3,8 @@
  */
 package org.edu.uams.client.form;
 
-import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
 import org.apache.struts.action.ActionForm;
-import org.edu.uams.server.pojo.BusDetailsEntity;
-import org.edu.uams.server.pojo.FeeDetailsEntity;
 
 
 public class TransportModuleForm extends ActionForm {
