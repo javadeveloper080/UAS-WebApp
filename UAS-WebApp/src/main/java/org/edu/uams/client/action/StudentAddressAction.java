@@ -20,6 +20,7 @@ import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.business.StudentAddressDAO;
 import org.edu.uams.server.business.StudentDao;
 import org.edu.uams.server.pojo.StudentAddressEntity;
+import org.edu.uams.server.pojo.StudentEntity;
 
 
 public class StudentAddressAction  extends DispatchAction {
@@ -33,9 +34,17 @@ public class StudentAddressAction  extends DispatchAction {
             throws Exception {
         
         StudentAddressForm studentAddressForm = (StudentAddressForm) form;
-        StudentAddressDAO studentAddressDAO = new StudentAddressDAO();
         
+        
+        StudentAddressDAO studentAddressDAO = new StudentAddressDAO();
         StudentDao studentDao =new StudentDao();
+        
+        StudentEntity studentEntity =null;
+        
+        if (studentAddressForm.getSearchText()!=null) {
+            studentEntity = studentDao.findByStudentRollNumber(studentAddressForm.getSearchText());
+        }
+        
         
         if(studentAddressForm.getPageName()!=null && studentAddressForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM))
         {
@@ -50,6 +59,7 @@ public class StudentAddressAction  extends DispatchAction {
             studentAddressForm.setZipCode(studentAddressEntity.getZipCode());
             studentAddressForm.setAddressType(studentAddressEntity.getAddressType().name());
             studentAddressForm.setStudentId(studentAddressEntity.getStudent().getId());
+            studentAddressForm.setCountry(studentAddressEntity.getCountry());
             studentAddressForm.setId(studentAddressEntity.getId());
         }
         
@@ -65,6 +75,7 @@ public class StudentAddressAction  extends DispatchAction {
             studentAddressEntity.setZipCode(studentAddressForm.getZipCode());
             studentAddressEntity.setAddressType(AddressType.valueOf(studentAddressForm.getAddressType()));
             studentAddressEntity.setStudent(studentDao.findByPrimaryKey(studentAddressForm.getStudentId()));
+            studentAddressEntity.setCountry(studentAddressForm.getCountry());
             studentAddressDAO.update(studentAddressEntity);
             studentAddressForm.resetForm();
         }
@@ -81,20 +92,26 @@ public class StudentAddressAction  extends DispatchAction {
             studentAddressEntity.setZipCode(studentAddressForm.getZipCode());
             studentAddressEntity.setAddressType(AddressType.valueOf(studentAddressForm.getAddressType()));
             studentAddressEntity.setStudent(studentDao.findByPrimaryKey(studentAddressForm.getStudentId()));
+            studentAddressEntity.setCountry(studentAddressForm.getCountry());
             studentAddressDAO.persist(studentAddressEntity);
             studentAddressForm.resetForm();
         }
         
-        List<StudentAddressEntity> studentAddressList = studentAddressDAO.findAll();
-        studentAddressForm.setAddressTypeList(getAddressTypeList());
-        if(!studentAddressList.isEmpty()){
-            studentAddressForm.setStudentAddressList(studentAddressList);
+        if (studentEntity!=null) {
+            studentAddressForm.setRollNum(studentEntity.getRollNum());
+            studentAddressForm.setStudentFullName(studentEntity.getStudentFullName());
+            studentAddressForm.setStudentId(studentEntity.getId());
+            List<StudentAddressEntity> studentAddressList = studentAddressDAO.findByStudentId(studentEntity.getId());
+            if(!studentAddressList.isEmpty()){
+                studentAddressForm.setStudentAddressList(studentAddressList);
+            }
         }
-        
+        studentAddressForm.setAddressTypeList(getAddressTypeList());
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentAdd", "true");
         return mapping.findForward(STUDENT_ADDRESS_PAGE);
     }
+    
     
     private List<LabelValueBean> getAddressTypeList() {
         List<LabelValueBean> facultyTypeList = new ArrayList<>();

@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.api.SeatCategoryType;
 
@@ -26,8 +27,11 @@ import org.edu.uams.server.api.SeatCategoryType;
 public class StudentEntity implements Serializable {
     
     public static final String FIND_ALL="SELECT a FROM Student a";
-    
+    public static String FIND_BY_STUDENT_ROLL_NUMBER="SELECT s FROM Student s  where s.rollNum = :rollNumber";
+        
     private static final long serialVersionUID = 1L;
+    
+
     
     
     @Id
@@ -103,6 +107,9 @@ public class StudentEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private GenderType genderType;
     
+    @Transient
+    private String studentFullName;
+    
     public long getId() {
         return id;
     }
@@ -175,62 +182,69 @@ public class StudentEntity implements Serializable {
     public void setGenderType(GenderType genderType) {
         this.genderType = genderType;
     }
-
+    
     public long getStudentMob() {
         return studentMob;
     }
-
+    
     public void setStudentMob(long studentMob) {
         this.studentMob = studentMob;
     }
-
+    
     public String getNationality() {
         return nationality;
     }
-
+    
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-
+    
     public String getFatherOccup() {
         return fatherOccup;
     }
-
+    
     public void setFatherOccup(String fatherOccup) {
         this.fatherOccup = fatherOccup;
     }
-
+    
     public String getMotherOccup() {
         return motherOccup;
     }
-
+    
     public void setMotherOccup(String motherOccup) {
         this.motherOccup = motherOccup;
     }
-
+    
     public String getParentMob() {
         return parentMob;
     }
-
+    
     public void setParentMob(String parentMob) {
         this.parentMob = parentMob;
     }
-
+    
     public String getEmail() {
         return email;
     }
-
+    
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     public SeatCategoryType getSeatCategoryType() {
         return seatCategoryType;
     }
-
+    
     public void setSeatCategoryType(SeatCategoryType seatCategoryType) {
         this.seatCategoryType = seatCategoryType;
     }
+    
+    public String getStudentFullName() {
+        studentFullName= getLastName()+","+getFirstName();
+        return studentFullName;
+    }
+    
+    
     
     
 }

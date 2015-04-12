@@ -20,12 +20,14 @@ public class StudentAddressForm extends ActionForm {
     private String city;
     private String stateName;
     private String country;
-    private long zipCode;
+    private String zipCode;
     private Long studentId;
     private String addressType;
-    
+    private String rollNum;
+    private String  searchText;
     private List addressTypeList;
     private  List studentAddressList;
+    private String studentFullName;
     
     public long getId() {
         return id;
@@ -91,11 +93,11 @@ public class StudentAddressForm extends ActionForm {
         this.stateName = stateName;
     }
     
-    public long getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
     
-    public void setZipCode(long zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
     
@@ -130,13 +132,37 @@ public class StudentAddressForm extends ActionForm {
     public void setStudentAddressList(List studentAddressList) {
         this.studentAddressList = studentAddressList;
     }
-
+    
     public String getCountry() {
         return country;
     }
-
+    
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public String getRollNum() {
+        return rollNum;
+    }
+    
+    public void setRollNum(String rollNum) {
+        this.rollNum = rollNum;
+    }
+    
+    public String getSearchText() {
+        return searchText;
+    }
+    
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+
+    public String getStudentFullName() {
+        return studentFullName;
+    }
+
+    public void setStudentFullName(String studentFullName) {
+        this.studentFullName = studentFullName;
     }
     
     public void resetForm(){
@@ -148,11 +174,15 @@ public class StudentAddressForm extends ActionForm {
         this.addrLine4 =null;
         this.city =null;
         this.stateName =null;
-        this.zipCode =0l;
+        this.zipCode =null;
         this.studentId = 0l;
         this.addressTypeList=null;
         this.studentAddressList=null;
-        
+        this.addressType=null;
+        this.rollNum=null;
+        this.searchText=null;
+        this.studentFullName=null;
+        this.country=null;
     }
     
     

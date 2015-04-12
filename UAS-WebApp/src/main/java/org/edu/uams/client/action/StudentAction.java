@@ -24,24 +24,24 @@ import org.edu.uams.server.util.ApplicationUtil;
  * @author SARAT
  */
 public class StudentAction extends DispatchAction {
-
+    
     /* forward name="success" path="" */
     private final static String SUCCESS = "student";
-
+    
     public ActionForward studentPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+        
         StudentForm studentForm = (StudentForm) form;
-
+        
         StudentEntity studentEntity = null;
-
-         StudentDao studentDao = new StudentDao();
+        
+        StudentDao studentDao = new StudentDao();
         if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentEntity =new StudentEntity();
             copyDataFromFormToEntity(studentForm, studentEntity);
             studentDao.persist(studentEntity);
-
+            
         }
-         if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
+        if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
             studentEntity =studentDao.findByPrimaryKey(studentForm.getId());
             copyDataFromFormToEntity(studentForm, studentEntity);
             studentDao.update(studentEntity);
@@ -67,50 +67,50 @@ public class StudentAction extends DispatchAction {
             studentForm.setNationality(studentEntity.getNationality());
             studentForm.setSeatCategoryType((studentEntity.getSeatCategoryType().name()));
         }
-
-         List<StudentEntity> studentList = studentDao.findAll();
-         if(!studentList.isEmpty()){
+        
+        List<StudentEntity> studentList = studentDao.findAll();
+        if(!studentList.isEmpty()){
             studentForm.setListOfStudents(studentList);
         }
-
+        
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentDetails", "true");
         return mapping.findForward(SUCCESS);
     }
-     private void copyDataFromFormToEntity(StudentForm studentForm,StudentEntity studentEntity){
-            studentEntity.setRollNum(studentForm.getRollNum());
-            studentEntity.setAdmnNum(studentForm.getAdmnNum());
-            studentEntity.setDob(ApplicationUtil.formatStringToDate(studentForm.getDob()));
-            studentEntity.setFatherName(studentForm.getFatherName());
-            studentEntity.setGenderType(GenderType.valueOf(studentForm.getGenderType()));
-            studentEntity.setMotherName(studentForm.getMotherName());
-            studentEntity.setFirstName(studentForm.getFirstName());
-            studentEntity.setLastName(studentForm.getLastName());
-            studentEntity.setAdmnNum(studentForm.getAdmnNum());
-            studentEntity.setStudentMob(studentForm.getStudentMob());
-            studentEntity.setEmail(studentForm.getEmail());
-            studentEntity.setParentMob(studentForm.getParentMob());
-            studentEntity.setMotherOccup(studentForm.getMotherOccup());
-            studentEntity.setFatherOccup(studentForm.getFatherOccup());
-            studentEntity.setNationality(studentForm.getNationality());
-            studentEntity.setSeatCategoryType(SeatCategoryType.valueOf(studentForm.getSeatCategoryType()));
-     }
-
-     public ActionForward studentQualificationPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-         final StudentQualificationForm studentQlfForm = (StudentQualificationForm) form;
-
-         StudentQualificationEntity studentQlfEntity = null;
-
-         StudentQualificationDao studentQlfDao = new StudentQualificationDao();
+    private void copyDataFromFormToEntity(StudentForm studentForm,StudentEntity studentEntity){
+        studentEntity.setRollNum(studentForm.getRollNum());
+        studentEntity.setAdmnNum(studentForm.getAdmnNum());
+        studentEntity.setDob(ApplicationUtil.formatStringToDate(studentForm.getDob()));
+        studentEntity.setFatherName(studentForm.getFatherName());
+        studentEntity.setGenderType(GenderType.valueOf(studentForm.getGenderType()));
+        studentEntity.setMotherName(studentForm.getMotherName());
+        studentEntity.setFirstName(studentForm.getFirstName());
+        studentEntity.setLastName(studentForm.getLastName());
+        studentEntity.setAdmnNum(studentForm.getAdmnNum());
+        studentEntity.setStudentMob(studentForm.getStudentMob());
+        studentEntity.setEmail(studentForm.getEmail());
+        studentEntity.setParentMob(studentForm.getParentMob());
+        studentEntity.setMotherOccup(studentForm.getMotherOccup());
+        studentEntity.setFatherOccup(studentForm.getFatherOccup());
+        studentEntity.setNationality(studentForm.getNationality());
+        studentEntity.setSeatCategoryType(SeatCategoryType.valueOf(studentForm.getSeatCategoryType()));
+    }
+    
+    public ActionForward studentQualificationPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        final StudentQualificationForm studentQlfForm = (StudentQualificationForm) form;
+        
+        StudentQualificationEntity studentQlfEntity = null;
+        
+        StudentQualificationDao studentQlfDao = new StudentQualificationDao();
         if (studentQlfForm.getPageName() != null && studentQlfForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentQlfEntity =new StudentQualificationEntity();
             copyDataFromSQFormToSQEntity(studentQlfForm, studentQlfEntity,true);
             studentQlfDao.persist(studentQlfEntity);
-
+            
         }
-         if (studentQlfForm.getPageName() != null && studentQlfForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
-
+        if (studentQlfForm.getPageName() != null && studentQlfForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
+            
             studentQlfEntity =studentQlfDao.findByPrimaryKey(studentQlfForm.getId());
             copyDataFromSQFormToSQEntity(studentQlfForm, studentQlfEntity,true);
             studentQlfDao.update(studentQlfEntity);
@@ -119,25 +119,25 @@ public class StudentAction extends DispatchAction {
             studentQlfEntity =studentQlfDao.findByPrimaryKey(studentQlfForm.getId());
             copyDataFromSQFormToSQEntity(studentQlfForm, studentQlfEntity,false);
         }
-         
+        
         StudentDao studentDao = new StudentDao();
-         List<StudentEntity> studentList = studentDao.findAll();
-         if(!studentList.isEmpty()){
+        List<StudentEntity> studentList = studentDao.findAll();
+        if(!studentList.isEmpty()){
             studentQlfForm.setListOfStudents(studentList);
         }
-         
-         List<StudentQualificationEntity> studentQlfList = studentQlfDao.findAll();
-         if(!studentQlfList.isEmpty()){
+        
+        List<StudentQualificationEntity> studentQlfList = studentQlfDao.findAll();
+        if(!studentQlfList.isEmpty()){
             studentQlfForm.setListOfStudentQlfs(studentQlfList);
         }
-
+        
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentQlfDetails", "true");
         return mapping.findForward("studentQualification");
     }
-     private void copyDataFromSQFormToSQEntity(StudentQualificationForm studentQlfForm , StudentQualificationEntity studentQlfEntity,boolean isEntity){
-         if(isEntity)
-         {
+    private void copyDataFromSQFormToSQEntity(StudentQualificationForm studentQlfForm , StudentQualificationEntity studentQlfEntity,boolean isEntity){
+        if(isEntity)
+        {
             studentQlfEntity.setId(studentQlfForm.getId());
             studentQlfEntity.setDegDivision(studentQlfForm.getDegDivision());
             studentQlfEntity.setDegMedium(studentQlfForm.getDegMedium());//ApplicationUtil.formatStringToDate(studentQlfForm.getDob()));
@@ -148,26 +148,26 @@ public class StudentAction extends DispatchAction {
             studentQlfEntity.setDipMedium(studentQlfForm.getDipMedium());
             studentQlfEntity.setDipNameInstitution(studentQlfForm.getDipNameInstitution());
             studentQlfEntity.setDipPercentage(studentQlfForm.getDipPercentage());
-
+            
             studentQlfEntity.setDipYearOfPass(studentQlfForm.getDipYearOfPass());
             studentQlfEntity.setIntrDivision(studentQlfForm.getIntrDivision());
             studentQlfEntity.setIntrInstitutionName(studentQlfForm.getIntrInstitutionName());
             studentQlfEntity.setIntrMedium(studentQlfForm.getIntrMedium());
             studentQlfEntity.setIntrPercentage(studentQlfForm.getIntrPercentage());
             studentQlfEntity.setIntrYearOfPass(studentQlfForm.getIntrYearOfPass());
-
+            
             studentQlfEntity.setSdivision(studentQlfForm.getSdivision());
             studentQlfEntity.setSecondaryInstitutionName(studentQlfForm.getSecondaryInstitutionName());
             studentQlfEntity.setSpercentage(studentQlfForm.getSpercentage());
-
+            
             final StudentDao studentDao = new StudentDao();
             if(studentQlfForm.getStudentId() != 0l){
-            studentQlfEntity.setStudent(studentDao.findByPrimaryKey(studentQlfForm.getStudentId()));}
+                studentQlfEntity.setStudent(studentDao.findByPrimaryKey(studentQlfForm.getStudentId()));}
             studentQlfEntity.setsMedium(studentQlfForm.getsMedium());
-            studentQlfEntity.setSyearOfPass(studentQlfForm.getSyearOfPass());  
-         }else
-         {
-             studentQlfForm.setId(studentQlfEntity.getId());
+            studentQlfEntity.setSyearOfPass(studentQlfForm.getSyearOfPass());
+        }else
+        {
+            studentQlfForm.setId(studentQlfEntity.getId());
             studentQlfForm.setDegDivision(studentQlfEntity.getDegDivision());
             studentQlfForm.setDegMedium(studentQlfEntity.getDegMedium());//ApplicationUtil.formatStringToDate(studentQlfForm.getDob()));
             studentQlfForm.setDegNameInstitution(studentQlfEntity.getDegNameInstitution());
@@ -177,21 +177,39 @@ public class StudentAction extends DispatchAction {
             studentQlfForm.setDipMedium(studentQlfEntity.getDipMedium());
             studentQlfForm.setDipNameInstitution(studentQlfEntity.getDipNameInstitution());
             studentQlfForm.setDipPercentage(studentQlfEntity.getDipPercentage());
-
+            
             studentQlfForm.setDipYearOfPass(studentQlfEntity.getDipYearOfPass());
             studentQlfForm.setIntrDivision(studentQlfEntity.getIntrDivision());
             studentQlfForm.setIntrInstitutionName(studentQlfEntity.getIntrInstitutionName());
             studentQlfForm.setIntrMedium(studentQlfEntity.getIntrMedium());
             studentQlfForm.setIntrPercentage(studentQlfEntity.getIntrPercentage());
             studentQlfForm.setIntrYearOfPass(studentQlfEntity.getIntrYearOfPass());
-
+            
             studentQlfForm.setSdivision(studentQlfEntity.getSdivision());
             studentQlfForm.setSecondaryInstitutionName(studentQlfEntity.getSecondaryInstitutionName());
             studentQlfForm.setSpercentage(studentQlfEntity.getSpercentage());
-
-            studentQlfForm.setStudentId(studentQlfEntity.getStudent().getId());}
-            studentQlfForm.setsMedium(studentQlfForm.getsMedium());
-            studentQlfForm.setSyearOfPass(studentQlfForm.getSyearOfPass());
             
-     }
+            studentQlfForm.setStudentId(studentQlfEntity.getStudent().getId());}
+        studentQlfForm.setsMedium(studentQlfForm.getsMedium());
+        studentQlfForm.setSyearOfPass(studentQlfForm.getSyearOfPass());
+        
+    }
+    
+    //Check valid student exists for this StudentRollNumber
+    public ActionForward findByStudentRollNumber(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        
+        StudentForm studentForm = (StudentForm) form;
+        StudentDao studentDao = new StudentDao();
+        
+        StudentEntity studentEntity= studentDao.findByStudentRollNumber(studentForm.getRollNum());
+        
+        if (studentEntity!=null) {
+            response.getWriter().write("true");
+        }else{
+            response.getWriter().write("false");
+        }
+        return null;
+    }
 }

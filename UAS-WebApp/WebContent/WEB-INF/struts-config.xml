@@ -67,7 +67,7 @@
     <action-mappings>
             
             
-        <!--Type table Entry starts-->
+        <!--TYPE TABLE ENTRY STARTS-->
         <action path="/typeTableAction" name="typeTableForm" parameter="method"
                 scope="request" type="org.edu.uams.client.action.TypeTableAction">
             <forward name="feeTypePage" path="FeeTypePage" />
@@ -76,17 +76,42 @@
             <forward name="courseTypePage" path="CourseTypePage" />
             <forward name="userTypePage" path="UserTypePage" />
         </action>
-        <!--Type table Entry ends-->
+        <!--TYPE TABLE ENTRY ENDS-->
               
                 
-        <!--Transport table Entry starts-->
+        <!--TRANSPORT TABLE ENTRY STARTS-->
         <action path="/transportModuleAction" name="transportModuleForm" parameter="method"
                 scope="request" type="org.edu.uams.client.action.TransportModuleAction">
             <forward name="busFacultyPage" path="BusFacultyPage" />
             <forward name="busDetailsPage" path="BusDetailsPage" />
             <forward name="studentBusAccDetailsPage" path="StudentBusAccDetailsPage" />
         </action>
-        <!--Transport table Entry ends-->
+        <!--TRANSPORT TABLE ENTRY ENDS-->
+        
+        
+          <!--  STUDENT ACTION ENTRIES STARTS HERE  -->
+        
+        <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
+                parameter="method" scope="request" >
+            <forward name="student" path="studentLayout" ></forward>
+        </action>
+
+        
+        <action path="/studentQlfAction" name="studentQlfForm" type="org.edu.uams.client.action.StudentAction" 
+                parameter="method" scope="request" >
+            <forward name="studentQualification" path="studentQualificationLayout" ></forward>
+        </action>
+        
+        <action path="/studentAddressAction" name="studentAddressForm"  parameter="method" type="org.edu.uams.client.action.StudentAddressAction"
+                scope="request" >
+            <forward name="studentAddressPage" path="StudentAddLayout" ></forward>
+        </action>
+        
+        <action input="/" name="StudentFeeForm" path="/studentFee" scope="request" type="org.edu.uams.client.action.StudentFeeAction"/>
+                
+        <!--  STUDENT ACTION ENTRIES ENDS HERE  -->
+        
+        
 
         <action path="/adminAction" name="adminForm" parameter="method"
                 scope="request" type="org.edu.uams.client.action.AdminAction">
@@ -165,25 +190,8 @@
         <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
             <forward name="fee" path="MainFeeLayout"></forward>
         </action>
-<!--        <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" -->
-<!--                parameter="method" scope="request" >-->
-<!--            <forward name="student" path="studentLayout" ></forward>-->
-<!--        </action>-->
-
         
-        <action path="/studentQlfAction" name="studentQlfForm" type="org.edu.uams.client.action.StudentAction" 
-                parameter="method" scope="request" >
-            <forward name="studentQualification" path="studentQualificationLayout" ></forward>
-        </action>
-        
-        <action path="/studentAddressAction" name="studentAddressForm"  parameter="method" type="org.edu.uams.client.action.StudentAddressAction"
-             scope="request" >
-            <forward name="studentAddressPage" path="StudentAddLayout" ></forward>
-        </action>
-        
-        <action input="/" name="StudentFeeForm" path="/studentFee" scope="request" type="org.edu.uams.client.action.StudentFeeAction"/>
-                
-
+      
 
     </action-mappings>
 

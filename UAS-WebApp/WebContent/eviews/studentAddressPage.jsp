@@ -49,10 +49,29 @@
                             <h5><Strong>Add/Edit Student Address</Strong> </h5>
                                     <html:form  styleClass="" action="/studentAddressAction" method="post" styleId="studentAddressForm">
                                 
+                                
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="addrLine1">Address Line1.</label>
+                                            <html:text name="studentAddressForm" property="searchText" styleId="searchText" styleClass="form-control"/>
+                                            <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addrLine1">Student Roll Number & Full Name.</label>
+                                            <html:text name="studentAddressForm" property="rollNum" styleId="rollNum"  readonly="true"/>
+                                            <html:text name="studentAddressForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
+                                        </div>
+                                    </div>         
+                                    
+                                    
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="addressType">Address Type.</label>
                                             <html:select property="addressType" styleId="addressType" styleClass="form-control">
                                                 <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
                                                 <html:optionsCollection name="studentAddressForm" property="addressTypeList" label="label" value="value" /> 
@@ -127,10 +146,11 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="zipCode">Zip code.</label>
-                                            <html:text  name="studentAddressForm" property="zipCode" styleId="zipCode" styleClass="form-control"/>
+                                            <html:text  name="studentAddressForm" property="zipCode" styleId="zipCode" styleClass="form-control" />
                                         </div>
                                     </div>
                                 </div>
+                                
                                 
                                 <html:hidden name="studentAddressForm" property="id" styleId="id"/>
                                 <html:hidden name="studentAddressForm" property="studentId" styleId="studentId"/>
@@ -151,30 +171,46 @@
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
-                            <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i>Student address table</h4>
+                            <table class="table table-striped table-advance table-hover" id="searchResTable">
+                                <h4>Student address table</h4>
                                 <hr>
+                                
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Code</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
-                                        <th></th>
+                                        <th scope="col"><i class="fa fa-bullhorn"></i>Student Roll Number</th>
+                                        <th scope="col"><i class="fa fa-bullhorn"></i>Student Full Name</th>
+                                        <th scope="col"><i class="fa fa-bullhorn"></i>Address Type</th>
+                                        <th scope="col"><i class="fa fa-bullhorn"></i>Address Line1</th>
+                                        <th scope="col"><i class="fa fa-bullhorn"></i>Zip Code</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
-                                    <%--<logic:notEmpty name="typeTableForm" property="typeFormList">--%>
-                                    <%--<logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">--%>
-                                    <tr>
-                                        <td>
-                                            <%--<bean:write name="typeTable" property="code"/>--%>
-                                        </td>
-                                        <td>
-                                            <%--<bean:write name="typeTable" property="description"/>--%>
-                                        </td>
-                                        <!--<td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>-->
-                                    </tr>
-                                    <%--</logic:iterate>--%>
-                                    <%--</logic:notEmpty>--%>
+                                    <logic:notEmpty name="studentAddressForm" property="studentAddressList">
+                                        <logic:iterate id="studentAddressTable" name="studentAddressForm" property="studentAddressList" type="org.edu.uams.server.pojo.StudentAddressEntity">
+                                            <tr>
+                                                <td>
+                                                    <bean:write name="studentAddressTable" property="student.rollNum"/>
+                                                </td>
+                                                
+                                                <td>
+                                                    <bean:write name="studentAddressTable" property="student.studentFullName"/>
+                                                </td>
+                                                
+                                                <td>
+                                                    <bean:write name="studentAddressTable" property="addressType"/>
+                                                </td>
+                                                <td>
+                                                    <bean:write name="studentAddressTable" property="addrLine1"/>
+                                                </td>
+                                                <td>
+                                                    <bean:write name="studentAddressTable" property="zipCode"/>
+                                                </td>
+                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${studentAddressTable.id});'><i class="fa fa-pencil"></i></button></td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </logic:notEmpty>
                                 </tbody>
                             </table>
                         </div><!-- /content-panel -->
@@ -273,13 +309,15 @@
         }
     
         function submitForm() {
-            var id =document.getElementById('rollNum').value;	
-            if(id != null ){
+            
+            
+            var id =document.getElementById('id').value;	
+            if(id != null && id>0){
                 document.getElementById('pageName').value ="SubmitEditType"	
             }else{
                 document.getElementById('pageName').value ="SubmitAddType"
             }
-          
+            document.getElementById('searchText').value =document.getElementById('rollNum').value ;
             document.studentAddressForm.action="studentAddressAction.do?method=studentAdressPage";
             document.studentAddressForm.submit();
         }
@@ -288,6 +326,43 @@
         function reset(){	
             document.getElementById("studentAddressForm").reset();
         }
+        
+        
+        function checkValidStudentRollNumber() {
+            var   searchText= document.getElementById('searchText').value;
+            alert('Search with value : '+searchText);
+                 
+            if (searchText== null || searchText =="") {
+                alert("Please Enter Roll Number in Search Box");
+                document.getElementById('searchText').cfocus();
+                return false;
+            }
+				
+            $.ajax({
+                type: "POST",
+                url: "/UAMS-WebApp/studentAction.do?method=findByStudentRollNumber",
+                data: {
+                    "rollNum": searchText
+                },
+                    
+                success: function(response){
+                    if(response=='false'){
+                        alert('There is No Student found with this RollNumber :'+rollNum);
+                        document.getElementById('rollNum').focus();
+                        return false;
+                    }
+                    else{
+                        searchForm();
+                    }
+                }
+            });
+        }
+            
+        function searchForm(){	
+            document.studentAddressForm.action="studentAddressAction.do?method=studentAdressPage";
+            document.studentAddressForm.submit();
+        }
+       
     </script>
     
     

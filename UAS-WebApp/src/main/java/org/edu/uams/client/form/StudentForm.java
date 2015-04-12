@@ -1,11 +1,9 @@
 package org.edu.uams.client.form;
 
-import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
-import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.pojo.StudentEntity;
 
 /**

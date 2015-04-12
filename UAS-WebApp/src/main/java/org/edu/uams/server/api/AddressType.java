@@ -13,7 +13,7 @@ package org.edu.uams.server.api;
 public enum AddressType {
     
     
-    PERM_ADDRESS,
-    CORR_ADDRESS
+    PERMADDRESS,
+    CORRADDRESS
     
 }

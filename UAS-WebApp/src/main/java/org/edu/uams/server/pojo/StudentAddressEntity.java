@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.edu.uams.server.api.AddressType;
 
@@ -25,6 +25,7 @@ import org.edu.uams.server.api.AddressType;
 public class StudentAddressEntity implements Serializable {
     
     public static String FIND_ALL="SELECT s FROM StudentAddress s";
+    public static String FIND_BY_STUDENT_ID="SELECT sa FROM StudentAddress sa JOIN sa.student s  where s.id = :studentId";
     
     private static final long serialVersionUID = 1L;
     
@@ -62,13 +63,17 @@ public class StudentAddressEntity implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "zip_code")
-    private long zipCode;
+    private String zipCode;
+    
     
     @Basic(optional = false)
-    @JoinColumn(name = "student_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private StudentEntity student;
+    @Column(name = "country")
+    private String country;
     
+    @Basic(optional = false)
+    @ManyToOne(optional = false, targetEntity = StudentEntity.class)
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false )
+    private StudentEntity student;
     
     @Basic(optional = false)
     @Column(name = "address_type", length = 100, nullable = false)
@@ -77,93 +82,94 @@ public class StudentAddressEntity implements Serializable {
     
     public StudentAddressEntity() {
     }
-
-    public static String getFIND_ALL() {
-        return FIND_ALL;
-    }
-
-    public static void setFIND_ALL(String FIND_ALL) {
-        StudentAddressEntity.FIND_ALL = FIND_ALL;
-    }
-
+    
+    
     public long getId() {
         return id;
     }
-
+    
     public void setId(long id) {
         this.id = id;
     }
-
+    
     public String getAddrLine1() {
         return addrLine1;
     }
-
+    
     public void setAddrLine1(String addrLine1) {
         this.addrLine1 = addrLine1;
     }
-
+    
     public String getAddrLine2() {
         return addrLine2;
     }
-
+    
     public void setAddrLine2(String addrLine2) {
         this.addrLine2 = addrLine2;
     }
-
+    
     public String getAddrLine3() {
         return addrLine3;
     }
-
+    
     public void setAddrLine3(String addrLine3) {
         this.addrLine3 = addrLine3;
     }
-
+    
     public String getAddrLine4() {
         return addrLine4;
     }
-
+    
     public void setAddrLine4(String addrLine4) {
         this.addrLine4 = addrLine4;
     }
-
+    
     public String getCity() {
         return city;
     }
-
+    
     public void setCity(String city) {
         this.city = city;
     }
-
+    
     public String getStateName() {
         return stateName;
     }
-
+    
     public void setStateName(String stateName) {
         this.stateName = stateName;
     }
-
-    public long getZipCode() {
+    
+    public String getZipCode() {
         return zipCode;
     }
-
-    public void setZipCode(long zipCode) {
+    
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-
+    
     public StudentEntity getStudent() {
         return student;
     }
-
+    
     public void setStudent(StudentEntity student) {
         this.student = student;
     }
-
+    
     public AddressType getAddressType() {
         return addressType;
     }
-
+    
     public void setAddressType(AddressType addressType) {
         this.addressType = addressType;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
     
 }
