@@ -26,7 +26,8 @@ public class StudentAddressEntity implements Serializable {
     
     public static String FIND_ALL="SELECT s FROM StudentAddress s";
     public static String FIND_BY_STUDENT_ID="SELECT sa FROM StudentAddress sa JOIN sa.student s  where s.id = :studentId";
-    
+    public static String FIND_BY_STUDENT_ADDRESSTYPE="SELECT sa FROM StudentAddress sa JOIN sa.student s  where s.id = :studentId and sa.addressType=:addressType";
+        
     private static final long serialVersionUID = 1L;
     
     

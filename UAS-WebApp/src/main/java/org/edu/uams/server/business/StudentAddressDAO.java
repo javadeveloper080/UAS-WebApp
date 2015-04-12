@@ -8,6 +8,7 @@ package org.edu.uams.server.business;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import org.edu.uams.server.api.AddressType;
 import org.edu.uams.server.pojo.StudentAddressEntity;
 
 /**
@@ -29,6 +30,14 @@ public class StudentAddressDAO extends AbstractDao<StudentAddressEntity> {
         Map<String, Object> params=new LinkedHashMap<>();
         params.put("studentId", studentId);
         return super.findListByQuery(StudentAddressEntity.FIND_BY_STUDENT_ID, params);      
+    }
+    
+    
+    public StudentAddressEntity findByStudentIdAddressType(Long studentId,String addressType) {
+        Map<String, Object> params=new LinkedHashMap<>();
+        params.put("studentId", studentId);
+        params.put("addressType",AddressType.valueOf(addressType));
+        return super.findByQuery(StudentAddressEntity.FIND_BY_STUDENT_ADDRESSTYPE, params);      
     }
     
 }

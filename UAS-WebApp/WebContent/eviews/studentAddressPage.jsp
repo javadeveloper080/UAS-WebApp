@@ -53,7 +53,7 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <html:text name="studentAddressForm" property="searchText" styleId="searchText" styleClass="form-control"/>
+                                            <html:text name="studentAddressForm" property="searchText" styleId="searchText" styleClass="form-control" />
                                             <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
                                         </div>
                                     </div>
@@ -330,13 +330,13 @@
         
         function checkValidStudentRollNumber() {
             var   searchText= document.getElementById('searchText').value;
-            alert('Search with value : '+searchText);
-                 
             if (searchText== null || searchText =="") {
                 alert("Please Enter Roll Number in Search Box");
-                document.getElementById('searchText').cfocus();
+                document.getElementById('searchText').focus();
                 return false;
             }
+            
+            alert('Search with RollNum : '+searchText);
 				
             $.ajax({
                 type: "POST",
@@ -347,7 +347,7 @@
                     
                 success: function(response){
                     if(response=='false'){
-                        alert('There is No Student found with this RollNumber :'+rollNum);
+                        alert('There is No Student found with this RollNumber :'+searchText);
                         document.getElementById('rollNum').focus();
                         return false;
                     }

@@ -82,7 +82,11 @@ public class StudentAddressAction  extends DispatchAction {
         
         else if(studentAddressForm.getPageName()!=null && studentAddressForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE))
         {
-            StudentAddressEntity studentAddressEntity = new StudentAddressEntity();
+            StudentAddressEntity studentAddressEntity = null;
+            studentAddressEntity =studentAddressDAO.findByStudentIdAddressType(studentAddressForm.getStudentId(), studentAddressForm.getAddressType());
+            if (studentAddressEntity==null) {
+                studentAddressEntity = new StudentAddressEntity();
+            }
             studentAddressEntity.setAddrLine1(studentAddressForm.getAddrLine1());
             studentAddressEntity.setAddrLine2(studentAddressForm.getAddrLine2());
             studentAddressEntity.setAddrLine3(studentAddressForm.getAddrLine3());
@@ -93,7 +97,12 @@ public class StudentAddressAction  extends DispatchAction {
             studentAddressEntity.setAddressType(AddressType.valueOf(studentAddressForm.getAddressType()));
             studentAddressEntity.setStudent(studentDao.findByPrimaryKey(studentAddressForm.getStudentId()));
             studentAddressEntity.setCountry(studentAddressForm.getCountry());
-            studentAddressDAO.persist(studentAddressEntity);
+            if (studentAddressEntity.getId()>0) {
+                studentAddressDAO.update(studentAddressEntity);
+            }else{
+                studentAddressDAO.persist(studentAddressEntity);
+            }
+            
             studentAddressForm.resetForm();
         }
         
