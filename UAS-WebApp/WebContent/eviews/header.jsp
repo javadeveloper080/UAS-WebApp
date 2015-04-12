@@ -1,4 +1,7 @@
   <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+<div class="fa fa-bars tooltips" data-original-title="Toggle Navigation" data-placement="right"></div>
+</div>
             <!--logo start-->
             <a href="index.html" class="logo"><b>UMAS</b></a>
             <!--logo end-->
