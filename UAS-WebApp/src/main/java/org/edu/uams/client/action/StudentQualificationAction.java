@@ -55,7 +55,7 @@ public class StudentQualificationAction  extends DispatchAction {
             studentQlfForm.setRollNum(studentEntity.getRollNum());
             studentQlfForm.setStudentFullName(studentEntity.getStudentFullName());
             studentQlfForm.setStudentId(studentEntity.getId());
-            studentQualificationEntity =studentQlfDao.findByPrimaryKey(studentQlfForm.getId());
+            studentQualificationEntity =studentQlfDao.findByStudentId(studentEntity.getId());
             if (studentQualificationEntity!=null) {
                 copyDataFromSQFormToSQEntity(studentQlfForm, studentQualificationEntity,false);
             }

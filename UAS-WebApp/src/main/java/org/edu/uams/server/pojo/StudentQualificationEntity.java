@@ -5,10 +5,12 @@ package org.edu.uams.server.pojo;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.edu.uams.server.api.HasId;
@@ -41,16 +43,16 @@ public class StudentQualificationEntity implements HasId {
     @Column(name = "deg_medium",nullable = true)
     private String degMedium;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "deg_division")
     private String degDivision;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "deg_percentage")
     private Double degPercentage;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "deg_year_of_pass")
     private Integer degYearOfPass;
     //Degree Ends
@@ -64,69 +66,74 @@ public class StudentQualificationEntity implements HasId {
     @Column(name = "dip_medium",nullable = true)
     private String dipMedium;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "dip_division")
     private String dipDivision;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "dip_percentage")
     private Double dipPercentage;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "dip_year_of_pass")
     private Integer dipYearOfPass;
     //Diploma Ends
     
     //HSC means Intermediate/12 class Starts
-    @Basic(optional = false)
-    @Column(name = "intr_name_institution",nullable = false)
+    @Basic(optional = true)
+    @Column(name = "intr_name_institution",nullable = true)
     private String intrInstitutionName;
     
-    @Basic(optional = false)
-    @Column(name = "intr_medium",nullable = false)
+    @Basic(optional = true)
+    @Column(name = "intr_medium",nullable = true)
     private String intrMedium;
     
-    @Basic(optional = false)
-    @Column(name = "intr_division",nullable = false)
+    @Basic(optional = true)
+    @Column(name = "intr_division",nullable = true)
     private String intrDivision;
     
     
 // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "intr_percentage",nullable = false)
+    @Column(name = "intr_percentage",nullable = true)
     private Double intrPercentage;
     
     @Basic(optional = false)
-    @Column(name = "intr_year_of_pass",nullable = false)
+    @Column(name = "intr_year_of_pass",nullable = true)
     private Integer intrYearOfPass;
     //HSC means Intermediate/12 class Ends.
     
     //SSC = X th = Secondary School Certificate  Starts
-    @Basic(optional = false)
-    @Column(name = "s_inst_name",length = 200,nullable = false)
+    @Basic(optional = true)
+    @Column(name = "s_inst_name",length = 200,nullable = true)
     private String secondaryInstitutionName;
     
-    @Basic(optional = false)
-    @Column(name = "smedium",nullable = false)
+    @Basic(optional = true)
+    @Column(name = "smedium",nullable = true)
     private String sMedium;
     
-    @Basic(optional = false)
-    @Column(name = "sdivision",nullable = false)
+    @Basic(optional = true)
+    @Column(name = "sdivision",nullable = true)
     private String sdivision;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "spercentage")
     private Double spercentage;
     
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "syear_of_pass")
     private Integer syearOfPass;
     // SSC = X th = Secondary School Certificate Ends
     
+//    @Basic(optional = true)
+//    @JoinColumn(name = "student_id", referencedColumnName = "id")
+//    @OneToOne(fetch = FetchType.EAGER)
+//    private StudentEntity student;
     
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    @OneToOne(optional = false)
+    @Basic(optional = false)
+    @ManyToOne(optional = false, targetEntity = StudentEntity.class)
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false )
     private StudentEntity student;
     
     public StudentQualificationEntity() {
