@@ -156,8 +156,19 @@
                 </div><!-- col-lg-12-->      	
             </div><!-- /row -->
 
-
-            <!-- GRID ELEMENTS -->
+               
+            
+            <!-- Search functionalities  -->
+            
+             <!-- BASIC FORM ELEMENTS -->
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <input type="text" id="search" name="search" class="search" />
+                            <input type="button" value="Seach" id="showTable"/>
+                        </div>
+                    </div><!-- col-lg-12-->      	
+                </div> <!--  /row -->
            
                <!-- GRID ELEMENTS -->
                 <div class="row mt">
