@@ -97,7 +97,7 @@
         </action>
 
         
-        <action path="/studentQlfAction" name="studentQlfForm" type="org.edu.uams.client.action.StudentAction" 
+        <action path="/studentQlfAction" name="studentQlfForm" type="org.edu.uams.client.action.StudentQualificationAction" 
                 parameter="method" scope="request" >
             <forward name="studentQualification" path="studentQualificationLayout" ></forward>
         </action>

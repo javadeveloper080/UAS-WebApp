@@ -24,6 +24,7 @@ public class StudentQualificationEntity implements HasId {
     
     private static final long serialVersionUID = 1L;
     public static final  String  FIND_ALL ="SELECT sq FROM StudentQualification sq";
+    public static final  String FIND_BY_STUDENT_ID="SELECT sq FROM StudentQualification sq JOIN sq.student s  where s.id = :studentId";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -124,9 +125,7 @@ public class StudentQualificationEntity implements HasId {
     // SSC = X th = Secondary School Certificate Ends
     
     
-    
-    
-    @JoinColumn(name = "roll_num", referencedColumnName = "roll_num", insertable = false, updatable = false)
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
     @OneToOne(optional = false)
     private StudentEntity student;
     
