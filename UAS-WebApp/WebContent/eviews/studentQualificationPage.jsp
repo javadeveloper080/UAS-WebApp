@@ -31,15 +31,15 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <html:text name="studentForm" property="searchText" styleId="searchText" styleClass="form-control" />
+                                        <html:text name="studentQlfForm" property="searchText" styleId="searchText" styleClass="form-control" />
                                         <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <label for="addrLine1">Student Roll Number & Full Name.</label>
-                                        <html:text name="studentForm" property="rollNum" styleId="rollNum"  readonly="true"/>
-                                        <html:text name="studentForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
+                                        <label for="rollNum">Student Roll Number & Full Name.</label>
+                                        <html:text name="studentQlfForm" property="rollNum" styleId="rollNum"  readonly="true"/>
+                                        <html:text name="studentQlfForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
                                     </div>
                                 </div>         
                             </div>

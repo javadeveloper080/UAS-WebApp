@@ -66,9 +66,6 @@ public class StudentQualificationForm extends ActionForm{
     
     private String rollNum;
     
-    
-    private List<StudentQualificationEntity> listOfStudentQlfs;
-    
     public StudentQualificationForm() {
     }
     
@@ -256,13 +253,6 @@ public class StudentQualificationForm extends ActionForm{
         this.syearOfPass = syearOfPass;
     }
     
-    public List<StudentQualificationEntity> getListOfStudentQlfs() {
-        return listOfStudentQlfs;
-    }
-    
-    public void setListOfStudentQlfs(List<StudentQualificationEntity> listOfStudentQlfs) {
-        this.listOfStudentQlfs = listOfStudentQlfs;
-    }
 
     public String getSearchText() {
         return searchText;

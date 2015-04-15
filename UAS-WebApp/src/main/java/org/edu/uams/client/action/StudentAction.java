@@ -11,15 +11,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.StudentForm;
-import org.edu.uams.client.form.StudentQualificationForm;
-import org.edu.uams.server.api.AddressType;
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.api.SeatCategoryType;
 import org.edu.uams.server.business.StudentDao;
-import org.edu.uams.server.business.StudentQualificationDao;
 import org.edu.uams.server.pojo.StudentEntity;
-import org.edu.uams.server.pojo.StudentQualificationEntity;
 import org.edu.uams.server.util.ApplicationUtil;
 
 /**
