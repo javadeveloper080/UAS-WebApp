@@ -31,6 +31,7 @@ public class StudentForm extends ActionForm {
     private long  studentId;
     private String  searchText;
     private String studentFullName;
+    private String statusMessage;
     private List genderTypeList;
     private List seatCategoryTypeList;
 
@@ -209,6 +210,14 @@ public class StudentForm extends ActionForm {
     public void setSeatCategoryTypeList(List seatCategoryTypeList) {
         this.seatCategoryTypeList = seatCategoryTypeList;
     }
+
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
+    }
     
     
     
@@ -235,6 +244,7 @@ public class StudentForm extends ActionForm {
         studentId= 0l;
         searchText= null;
         studentFullName= null;
+        statusMessage=null;
     }
     
 }

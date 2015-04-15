@@ -66,6 +66,7 @@
                                 </div>         
                             </div>
                                 <hr />
+                                <h5><p ><em><strong style="color:blue"><bean:write name="studentForm" property="statusMessage" /></strong></em></p></h5>
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">

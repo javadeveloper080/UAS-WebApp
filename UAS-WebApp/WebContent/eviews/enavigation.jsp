@@ -10,7 +10,7 @@
             <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                 
                 
-              <h5 class="centered"><bean:write name="loginForm" property="name" /></h5>   
+<!--              <h5 class="centered"><bean:write name="loginForm" property="name" /></h5>   -->
                 
                 
                 
@@ -110,7 +110,7 @@
                 </a>
 
                 <ul class="sub">
-                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do?method=studentPage">Student Details</a></li>
+                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do?method=studentPage">Student Profile</a></li>
                 </ul>
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentAdd != null}"> class="active"</c:if> ><a  href="studentAddressAction.do?method=studentAdressPage">Student Address</a></li>

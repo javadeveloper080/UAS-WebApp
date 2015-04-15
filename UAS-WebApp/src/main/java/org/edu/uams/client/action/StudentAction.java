@@ -38,6 +38,7 @@ public class StudentAction extends DispatchAction {
          StudentDao studentDao =new StudentDao();
         
         StudentEntity studentEntity =null;
+        String statusMessage="";
         
         if (studentForm.getSearchText()!=null) {
             studentEntity = studentDao.findByStudentRollNumber(studentForm.getSearchText());
@@ -47,14 +48,22 @@ public class StudentAction extends DispatchAction {
         if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentEntity =new StudentEntity();
             copyDataFromFormToEntity(studentForm, studentEntity);
-            studentDao.persist(studentEntity);
+           StudentEntity persisted= studentDao.persist(studentEntity);
+            if (persisted!=null) {
+                statusMessage="Profile added sucessfully !";
+            }
             
         }
         if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
             studentEntity =studentDao.findByPrimaryKey(studentForm.getId());
             copyDataFromFormToEntity(studentForm, studentEntity);
-            studentDao.update(studentEntity);
+            StudentEntity updated = studentDao.update(studentEntity);
+            if (updated!=null) {
+                statusMessage="Profile updated sucessfully !";
+            }
+            
         }
+        
          if(studentEntity!=null){
             studentEntity =studentDao.findByPrimaryKey(studentEntity.getId());
             studentForm.resetForm();
@@ -75,6 +84,7 @@ public class StudentAction extends DispatchAction {
             studentForm.setFatherOccup(studentEntity.getFatherOccup());
             studentForm.setNationality(studentEntity.getNationality());
             studentForm.setSeatCategoryType((studentEntity.getSeatCategoryType().name()));
+            studentForm.setStatusMessage(statusMessage);
         }
         
         studentForm.setGenderTypeList(getGenderTypeList());
