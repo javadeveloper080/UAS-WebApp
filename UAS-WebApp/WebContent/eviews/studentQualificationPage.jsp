@@ -203,10 +203,6 @@
                             
                             <!--Degree Education Ends-->
                             
-                            
-                            
-                            
-                            
                             <!--html:text  property="branchName" size="30" styleId="description"  maxlength="100" /-->
                             <html:hidden name="studentQlfForm" property="id" styleId="id"/>
                             <html:hidden name="studentQlfForm" property="studentId" styleId="studentId"/>

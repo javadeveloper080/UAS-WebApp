@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
 
 
 public class TypeTableForm extends ActionForm {
@@ -18,6 +19,25 @@ public class TypeTableForm extends ActionForm {
     private String pageName;
     
     private List typeFormList;
+    
+    private Long feeCatId;
+    private List<FeeCategoryTypeEntity> feeCatTypeEntitys;
+
+    public Long getFeeCatId() {
+        return feeCatId;
+    }
+
+    public void setFeeCatId(Long feeCatId) {
+        this.feeCatId = feeCatId;
+    }
+
+    public List<FeeCategoryTypeEntity> getFeeCatTypeEntitys() {
+        return feeCatTypeEntitys;
+    }
+
+    public void setFeeCatTypeEntitys(List<FeeCategoryTypeEntity> feeCatTypeEntitys) {
+        this.feeCatTypeEntitys = feeCatTypeEntitys;
+    }
     
     public String getDescription() {
         return description;

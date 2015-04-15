@@ -39,16 +39,16 @@ public class TypeTableAction extends DispatchAction {
         TypeTableForm typeTableForm = (TypeTableForm)form;
         System.out.println("typeTableForm:"+typeTableForm.getPageName());
         FeeTypeDao feeTypeDao = new FeeTypeDao();
-        
+        FeeCategoryTypeDao feeCategoryTypeDao = new FeeCategoryTypeDao();
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
         {
-            
             FeeTypeEntity feeTypeEntity = feeTypeDao.findByPrimaryKey(typeTableForm.getId());
             typeTableForm.resetForm();
             typeTableForm.setCode(feeTypeEntity.getCode());
             typeTableForm.setDescription(feeTypeEntity.getDescription());
             typeTableForm.setId(feeTypeEntity.getId());
+            typeTableForm.setFeeCatId(feeTypeEntity.getFeeCategoryTypeEntity().getId());
         }
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitEditType"))
@@ -56,6 +56,7 @@ public class TypeTableAction extends DispatchAction {
             FeeTypeEntity feeTypeEntity = feeTypeDao.findByPrimaryKey(typeTableForm.getId());
             feeTypeEntity.setCode(typeTableForm.getCode());
             feeTypeEntity.setDescription(typeTableForm.getDescription());
+            feeTypeEntity.setFeeCategoryTypeEntity(feeCategoryTypeDao.findByPrimaryKey(typeTableForm.getFeeCatId()));
             feeTypeDao.update(feeTypeEntity);
             typeTableForm.resetForm();
             
@@ -66,10 +67,15 @@ public class TypeTableAction extends DispatchAction {
             FeeTypeEntity feeTypeEntity = new FeeTypeEntity();
             feeTypeEntity.setCode(typeTableForm.getCode());
             feeTypeEntity.setDescription(typeTableForm.getDescription());
+            feeTypeEntity.setFeeCategoryTypeEntity(feeCategoryTypeDao.findByPrimaryKey(typeTableForm.getFeeCatId()));
             feeTypeDao.persist(feeTypeEntity);
             typeTableForm.resetForm();
         }
-        
+        List<FeeCategoryTypeEntity> categoryEntitys = feeCategoryTypeDao.findAll();
+        if(categoryEntitys != null)
+        {
+           typeTableForm.setFeeCatTypeEntitys(categoryEntitys);
+        }
         List<FeeTypeEntity> feeTypeList = feeTypeDao.findAll();
         if(!feeTypeList.isEmpty()){
             typeTableForm.setTypeFormList(feeTypeList);

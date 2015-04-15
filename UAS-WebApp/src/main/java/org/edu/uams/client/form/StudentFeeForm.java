@@ -6,11 +6,13 @@
 package org.edu.uams.client.form;
 
 import java.math.BigDecimal;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
+import org.edu.uams.server.pojo.FeeTypeEntity;
+import org.edu.uams.server.pojo.StudentEntity;
+import org.edu.uams.server.pojo.StudentFeeEntity;
 
 /**
  *
@@ -18,13 +20,20 @@ import org.apache.struts.action.ActionMessage;
  */
 public class StudentFeeForm extends org.apache.struts.action.ActionForm {
 
+    private Long id;
     private String serial;
     private BigDecimal totalAmount;
     private String feePaymentDate;
     private String feeName;
     private String discountType;
     private String rollNum;
-
+    private String pageName;
+    private List<StudentFeeEntity> studentFeeEntitys;
+    private List<StudentEntity> studentEntitys;
+    private List<FeeTypeEntity> feeTypeEntitys;
+    private Long studentId;
+    private Long feeTypeId;
+    
     /**
      *
      */
@@ -33,6 +42,63 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         // TODO Auto-generated constructor stub
     }
 
+    public List<StudentFeeEntity> getStudentFeeEntitys() {
+        return studentFeeEntitys;
+    }
+
+    public void setStudentFeeEntitys(List<StudentFeeEntity> studentFeeEntitys) {
+        this.studentFeeEntitys = studentFeeEntitys;
+    }
+
+    public List<StudentEntity> getStudentEntitys() {
+        return studentEntitys;
+    }
+
+    public void setStudentEntitys(List<StudentEntity> studentEntitys) {
+        this.studentEntitys = studentEntitys;
+    }
+
+    public List<FeeTypeEntity> getFeeTypeEntitys() {
+        return feeTypeEntitys;
+    }
+
+    public void setFeeTypeEntitys(List<FeeTypeEntity> feeTypeEntitys) {
+        this.feeTypeEntitys = feeTypeEntitys;
+    }
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
+    public Long getFeeTypeId() {
+        return feeTypeId;
+    }
+
+    public void setFeeTypeId(Long feeTypeId) {
+        this.feeTypeId = feeTypeId;
+    }
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
+    public String getPageName() {
+        return pageName;
+    }
+
+    public void setPageName(String pageName) {
+        this.pageName = pageName;
+    }
+    
     public String getSerial() {
         return serial;
     }

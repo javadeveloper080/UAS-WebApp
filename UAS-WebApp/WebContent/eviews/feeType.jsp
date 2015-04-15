@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
         
-        <title>Fee Type</title>
+        <title>Fee Category Type</title>
         
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -28,7 +28,7 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         
-        
+       
     </head>
     <body>
         
@@ -42,24 +42,42 @@
         <section id="main-content">
             <section class="wrapper">
                 
+                
                 <!-- BASIC FORM ELEMENTS -->
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                  <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                            <h5><Strong>Add/Edit Fee Category type</Strong> </h5>
+                                   <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                </table>
+                                <div class="row">
+                                     <div class="col-xs-6 col-sm-6 col-md-6">
+                                         <div class="form-group">
+                                             Code: <html:text  property="code"  styleId="code"   styleClass="form-control" />
+                                         </div>
+                                     </div>
+
+                                     <div class="col-xs-6 col-sm-6 col-md-6">
+                                         <div class="form-group">
+                                             Description:  <html:text  property="description"  styleId="description"   styleClass="form-control"/>
+                                         </div>
+                                     </div>
+
+                                   </div>
+                                   <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="feeCatId">User Role:</label>
+                                            <html:select  styleClass="form-control" property="feeCatId" styleId="feeCatId">
+                                                <html:option value="0">Select a user type</html:option>
+                                                <html:optionsCollection   name="typeTableForm"
+                                                                  property="feeCatTypeEntitys" label="code" value="id" />
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                         
                                 <html:hidden name="typeTableForm" property="id" styleId="id"/>
                                 <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                 <div align="center">
@@ -79,7 +97,7 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Fee type table</h4>
+                                <h4><i class="fa fa-angle-right"></i> Fee category type Table</h4>
                                 <hr>
                                 <thead>
                                     <tr>
@@ -90,7 +108,7 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">
+                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
                                             <tr>
                                                 <td><bean:write name="typeTable" property="code"/></td>
                                                 <td><bean:write name="typeTable" property="description"/></td>
@@ -135,10 +153,10 @@
     
     <!--script for this page-->
     
-    <script>
+     <script>
             
-           
-             function validateForm() {
+            
+            function validateForm() {
                 alert("Validate Form Values");
                  // get the form values
                 var code = document.getElementById('code').value;
@@ -155,6 +173,11 @@
                     document.getElementById('description').focus();
                     return false;
                 }
+                if (feeCatId == null || feeCatId =="") {
+                    alert("Please Select a Fee Category");
+                    document.getElementById('feeCatId').focus();
+                    return false;
+                }
       
                 var id =document.getElementById('id').value;	
                 $.ajax({
@@ -162,7 +185,7 @@
                     url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                     data: {
                         "code": code,
-                        "pageName": "FeeType",
+                        "pageName": "FeeCategoryType",
                         "id": id
                     },
                     
@@ -210,10 +233,11 @@
                 alert('reset');
                 document.getElementById('code').value="";
                 document.getElementById('description').value="";
+                document.getElementById('id').value="0";
+                document.getElementById('pageName').value="";
 		
             }
         </script>
-
     
 </body>
 </html>

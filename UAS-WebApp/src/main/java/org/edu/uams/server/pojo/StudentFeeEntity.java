@@ -30,11 +30,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "StudentFeeEntity.findBySerial", query = "SELECT s FROM StudentFeeEntity s WHERE s.serial = :serial")})
 public class StudentFeeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+    public static final  String  FIND_ALL ="SELECT sf FROM StudentFeeEntity sf";
       @Id
     @Basic(optional = false)
-    @Column(name = "serial")
-    private String serial;
+    @Column(name = "id")
+    private Long id;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
@@ -45,42 +45,47 @@ public class StudentFeeEntity implements Serializable {
     @Column(name = "fee_payment_date")
     private String feePaymentDate;
     
-    
     @Basic(optional = false)
     @Column(name = "fee_name")
     private String feeName;
-    
     
     @Basic(optional = false)
     @Column(name = "discount_type")
     private String discountType;
     
-    
-    
   
-    @JoinColumn(name = "fee_category_type_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private FeeCategoryTypeEntity FeeCategoryTypeEntity;
     
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private StudentEntity rollNum;
+    private StudentEntity student;
+    
+    @JoinColumn(name = "fee_type_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private FeeTypeEntity feeTypeEntity;
 
     public StudentFeeEntity() {
     }
 
-    public StudentFeeEntity(String serial) {
-        this.serial = serial;
+    public StudentFeeEntity(Long id) {
+        this.id = id;
     }
 
-    public StudentFeeEntity(String serial, BigDecimal totalAmount, String feePaymentDate, String feeName, String discountType) {
-        this.serial = serial;
+    public StudentFeeEntity(Long id, BigDecimal totalAmount, String feePaymentDate, String feeName, String discountType) {
+        this.id = id;
         this.totalAmount = totalAmount;
         this.feePaymentDate = feePaymentDate;
         this.feeName = feeName;
         this.discountType = discountType;
     }
 
+    public FeeTypeEntity getFeeTypeEntity() {
+        return feeTypeEntity;
+    }
+
+    public void setFeeTypeEntity(FeeTypeEntity feeTypeEntity) {
+        this.feeTypeEntity = feeTypeEntity;
+    }
+    
     public BigDecimal getTotalAmount() {
         return totalAmount;
     }
@@ -113,26 +118,26 @@ public class StudentFeeEntity implements Serializable {
         this.discountType = discountType;
     }
 
-    public String getSerial() {
-        return serial;
+    public Long getId() {
+        return id;
     }
 
-    public void setSerial(String serial) {
-        this.serial = serial;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public StudentEntity getRollNum() {
-        return rollNum;
+    public StudentEntity getStudent() {
+        return student;
     }
 
-    public void setRollNum(StudentEntity rollNum) {
-        this.rollNum = rollNum;
+    public void setStudent(StudentEntity student) {
+        this.student = student;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (serial != null ? serial.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -143,7 +148,7 @@ public class StudentFeeEntity implements Serializable {
             return false;
         }
         StudentFeeEntity other = (StudentFeeEntity) object;
-        if ((this.serial == null && other.serial != null) || (this.serial != null && !this.serial.equals(other.serial))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -151,7 +156,7 @@ public class StudentFeeEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "org.edu.uams.pojo.StudentFeeEntity[ serial=" + serial + " ]";
+        return "org.edu.uams.pojo.StudentFeeEntity[ serial=" + id + " ]";
     }
     
 }

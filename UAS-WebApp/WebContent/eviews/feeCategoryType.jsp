@@ -50,23 +50,28 @@
                             <h5><Strong>Add/Edit Fee Category type</Strong> </h5>
                                    <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                </table>
-                                <html:hidden name="typeTableForm" property="id" styleId="id"/>
-                                <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
-                                <div align="center">
+                               
+                                        
+                                    <div class="row">
+                                     <div class="col-xs-6 col-sm-6 col-md-6">
+                                         <div class="form-group">
+                                             Code: <html:text  property="code"  styleId="code"   styleClass="form-control" />
+                                         </div>
+                                     </div>
+
+                                     <div class="col-xs-6 col-sm-6 col-md-6">
+                                         <div class="form-group">
+                                             Description:  <html:text  property="description"  styleId="description"   styleClass="form-control"/>
+                                         </div>
+                                     </div>
+
+                                   </div>
+                                  <html:hidden name="typeTableForm" property="id" styleId="id"/>
+                                  <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
+                                  <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
-                                </div> 
+                                  </div> 
                                 
                                 
                             </html:form>
