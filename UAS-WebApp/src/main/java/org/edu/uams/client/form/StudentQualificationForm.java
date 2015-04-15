@@ -66,6 +66,8 @@ public class StudentQualificationForm extends ActionForm{
     
     private String rollNum;
     
+    private String statusMessage;
+    
     public StudentQualificationForm() {
     }
     
@@ -276,6 +278,14 @@ public class StudentQualificationForm extends ActionForm{
 
     public void setStudentFullName(String studentFullName) {
         this.studentFullName = studentFullName;
+    }
+
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
     }
     
     

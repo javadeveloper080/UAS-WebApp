@@ -19,4 +19,8 @@ public interface ApplicationConstants {
     public static String JAVA = "java";
     public static String NETWORKING = "Networking";
     
+    //Messages
+    public static String PROFILE_ADDED_SUCESSFULLY="Profile added sucessfully !";
+    public static String PROFILE_UDPATED_SUCESSFULLY ="Profile updated sucessfully !";
+    
 }

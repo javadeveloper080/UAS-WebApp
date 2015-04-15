@@ -70,7 +70,7 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Admin Number : <html:text  property="admnNum"  styleId="admnNum"   styleClass="form-control" />
+                                        Admission Number : <html:text  property="admnNum"  styleId="admnNum"   styleClass="form-control" />
                                     </div>
                                 </div>
                                 

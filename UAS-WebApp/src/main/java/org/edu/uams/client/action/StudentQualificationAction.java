@@ -33,6 +33,7 @@ public class StudentQualificationAction  extends DispatchAction {
         
         StudentEntity studentEntity =null;
         StudentQualificationEntity studentQualificationEntity = null;
+        String statusMessage="";
         
         if (studentQlfForm.getSearchText()!=null) {
             studentEntity = studentDao.findByStudentRollNumber(studentQlfForm.getSearchText());
@@ -42,13 +43,20 @@ public class StudentQualificationAction  extends DispatchAction {
         if (studentQlfForm.getPageName() != null && studentQlfForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentQualificationEntity =new StudentQualificationEntity();
             copyDataFromSQFormToSQEntity(studentQlfForm, studentQualificationEntity,true);
-            studentQlfDao.persist(studentQualificationEntity);
+             StudentQualificationEntity persisted= studentQlfDao.persist(studentQualificationEntity);
+            if (persisted!=null) {
+                statusMessage=ApplicationConstants.PROFILE_ADDED_SUCESSFULLY;
+                
+            }
         }
         
         else if (studentQlfForm.getPageName() != null && studentQlfForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
             studentQualificationEntity =studentQlfDao.findByPrimaryKey(studentQlfForm.getId());
             copyDataFromSQFormToSQEntity(studentQlfForm, studentQualificationEntity,true);
-            studentQlfDao.update(studentQualificationEntity);
+             StudentQualificationEntity updated=  studentQlfDao.update(studentQualificationEntity);
+            if (updated!=null) {
+                statusMessage=ApplicationConstants.PROFILE_UDPATED_SUCESSFULLY;
+            }
         }
         
         if (studentEntity!=null) {
@@ -59,6 +67,7 @@ public class StudentQualificationAction  extends DispatchAction {
             if (studentQualificationEntity!=null) {
                 copyDataFromSQFormToSQEntity(studentQlfForm, studentQualificationEntity,false);
             }
+           studentQlfForm.setStatusMessage(statusMessage);
         }
         
         request.setAttribute("studentModule", "true");

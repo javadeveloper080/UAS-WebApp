@@ -31,7 +31,7 @@ public class StudentAction extends DispatchAction {
         
         StudentForm studentForm = (StudentForm) form;
         
-         StudentDao studentDao =new StudentDao();
+        StudentDao studentDao =new StudentDao();
         
         StudentEntity studentEntity =null;
         String statusMessage="";
@@ -44,9 +44,9 @@ public class StudentAction extends DispatchAction {
         if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentEntity =new StudentEntity();
             copyDataFromFormToEntity(studentForm, studentEntity);
-           StudentEntity persisted= studentDao.persist(studentEntity);
+            StudentEntity persisted= studentDao.persist(studentEntity);
             if (persisted!=null) {
-                statusMessage="Profile added sucessfully !";
+                statusMessage=ApplicationConstants.PROFILE_ADDED_SUCESSFULLY;
             }
             
         }
@@ -55,12 +55,12 @@ public class StudentAction extends DispatchAction {
             copyDataFromFormToEntity(studentForm, studentEntity);
             StudentEntity updated = studentDao.update(studentEntity);
             if (updated!=null) {
-                statusMessage="Profile updated sucessfully !";
+                statusMessage=ApplicationConstants.PROFILE_UDPATED_SUCESSFULLY;
             }
             
         }
         
-         if(studentEntity!=null){
+        if(studentEntity!=null){
             studentEntity =studentDao.findByPrimaryKey(studentEntity.getId());
             studentForm.resetForm();
             studentForm.setRollNum(studentEntity.getRollNum());
@@ -108,7 +108,7 @@ public class StudentAction extends DispatchAction {
         studentEntity.setNationality(studentForm.getNationality());
         studentEntity.setSeatCategoryType(SeatCategoryType.valueOf(studentForm.getSeatCategoryType()));
     }
-
+    
     
     //Check valid student exists for this StudentRollNumber
     public ActionForward findByStudentRollNumber(ActionMapping mapping, ActionForm form,
@@ -128,15 +128,15 @@ public class StudentAction extends DispatchAction {
         return null;
     }
     
-     private List<LabelValueBean> getGenderTypeList() {
+    private List<LabelValueBean> getGenderTypeList() {
         List<LabelValueBean> genderTypeList = new ArrayList<>();
         for (GenderType genderType : GenderType.values()) {
             genderTypeList.add(new LabelValueBean(genderType.name(), genderType.name()));
         }
         return genderTypeList;
     }
-     
-       private List<LabelValueBean> getSeatCategoryTypeList() {
+    
+    private List<LabelValueBean> getSeatCategoryTypeList() {
         List<LabelValueBean> facultyTypeList = new ArrayList<>();
         for (SeatCategoryType seatCategoryType : SeatCategoryType.values()) {
             facultyTypeList.add(new LabelValueBean(seatCategoryType.name(), seatCategoryType.name()));
