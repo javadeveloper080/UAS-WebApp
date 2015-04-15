@@ -46,7 +46,7 @@
                             
                             <hr />
                             <!--Secondary Education starts-->
-                             <h5><p ><em><strong style="color:blue"><bean:write name="studentQlfForm" property="statusMessage" /></strong></em></p></h5>
+                              <h5><p ><em><strong style="color:blue"><bean:write name="studentQlfForm" property="statusMessage" /></strong></em></p></h5>
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
