@@ -1,269 +1,212 @@
 <%@taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
 <%@taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic"%>
 <%@taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
-
-<!-- Bootstrap core CSS -->
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<!--external css-->
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
-<!-- Custom styles for this template -->
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
-
-<section id="container" >
-
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        
+        <title>Student Profile</title>
+        
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <!--external css-->
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+        <!-- Custom styles for this template -->
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/style-responsive.css" rel="stylesheet">
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        
+        
+    </head>
+    <body>
+        
+    <section id="container" >
+        
+    
     <!-- **********************************************************************************************************************************************************
     MAIN CONTENT
     *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
-
+            
             <!-- BASIC FORM ELEMENTS -->
-            <div class="row mt">
+               <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
-                        <h5><Strong>Add/Edit Fee type</Strong> </h5>
-                                <html:form  styleClass="form-horizontal style-form" action="/studentAction.do?method=studentPage" method="post" styleId="studentFrom">
-
+                        <h5><Strong>Manage Student Profile</Strong> </h5>
+                                <html:form  styleClass="" action="/studentAction.do?method=studentPage" method="post" styleId="studentForm">
+                             <p><em>To Edit/Update Student Profile,Search By Roll Number.</em></p>
+                            <!-- Search functionalities  -->
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <html:text name="studentForm" property="searchText" styleId="searchText" styleClass="form-control" />
+                                        <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="rollNum">Student Roll Number & Full Name.</label>
+                                        <html:text name="studentForm" property="rollNum" styleId="rollNum"  readonly="true"/>
+                                        <html:text name="studentForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
+                                    </div>
+                                </div>         
+                            </div>
+                                <hr />
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Admin Number : <html:text  property="admnNum"  styleId="admnNum"   styleClass="form-control" />
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Roll Number :  <html:text  property="rollNum"  styleId="rollNum"   styleClass="form-control"/>
                                     </div>
                                 </div>
-
                             </div>
-
+                            
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         First Name  : <html:text  property="firstName"  styleId="firstName"   styleClass="form-control"/>
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Last Name :  <html:text  property="lastName"  styleId="lastName"  styleClass="form-control"/>
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Date Of Birth : <html:text  property="dob"  styleId="dob"   styleClass="form-control"/>
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Sex : <html:select  property="genderType" styleId="genderType" styleClass="form-control" >
-                                            <html:option value="MALE">Male</html:option>
-                                            <html:option value="FEMALE">Female</html:option>
+                                        <label for="genderType">Gender.</label>
+                                        <html:select property="genderType" styleId="genderType" styleClass="form-control">
+                                            <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
+                                            <html:optionsCollection name="studentForm" property="genderTypeList" label="label" value="value" /> 
                                         </html:select>
                                     </div>
-
                                 </div>
                             </div>
-
+                            
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Mobile No : <html:text  property="studentMob"  styleId="studentMob"  styleClass="form-control" />
                                     </div>
-
                                 </div>
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         E-Mail : <html:text  property="email"  styleId="email"  styleClass="form-control" />
                                     </div>
-
                                 </div>
-
                             </div>
-                                    
-                               <div class="row">
+                            
+                            <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Nationality : <html:text  property="nationality"  styleId="nationality"  styleClass="form-control" />
                                     </div>
-
                                 </div>
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        Seat Category Type : <html:select  property="seatCategoryType"  styleId="seatCategoryType"  styleClass="form-control" >
-                                                                    <html:option value="MANAGEMENT">Management</html:option>
-                                                                    <html:option value="NRI">NRI</html:option>
-                                                                    <html:option value="SPORTS">Sports</html:option>
-                                                                    <html:option value="GENERAL">General</html:option>
-                                                             </html:select>
+                                        <label for="seatCategoryType">Seat Category Type.</label>
+                                        <html:select property="seatCategoryType" styleId="seatCategoryType" styleClass="form-control">
+                                            <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
+                                            <html:optionsCollection name="studentForm" property="seatCategoryTypeList" label="label" value="value" /> 
+                                        </html:select>
                                     </div>
-
                                 </div>
-
                             </div>
-
+                            
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         Father Name : <html:text  property="fatherName"  styleId="fatherName"   styleClass="form-control"/>
                                     </div>
-
                                 </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        Mother : <html:text  property="motherName"  styleId="motherName"   styleClass="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-                                    
-                              <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        Father occupation  : <html:text  property="fatherOccup"  styleId="fatherOccup"   styleClass="form-control"/>
-                                    </div>
-
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        Mother occupation: <html:text  property="motherOccup"  styleId="motherOccup"   styleClass="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!--html:text  property="branchName" size="30" styleId="description"  maxlength="100" /-->
-                            <html:hidden property="pageName" styleId="pageName" />
-                            <html:hidden property="id" styleId="id" />
-                            <div align="center">
-                                <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
-                                <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
-                            </div> 
-
-
-                        </html:form>
-                    </div>
-                </div><!-- col-lg-12-->      	
-            </div><!-- /row -->
-
-               
-            
-            <!-- Search functionalities  -->
-            
-             <!-- BASIC FORM ELEMENTS -->
-                <div class="row mt">
-                    <div class="col-lg-12">
-                        <div class="form-panel">
-                            <input type="text" id="search" name="search" class="search" />
-                            <input type="button" value="Seach" id="showTable"/>
-                        </div>
-                    </div><!-- col-lg-12-->      	
-                </div> <!--  /row -->
-           
-               <!-- GRID ELEMENTS -->
-                <div class="row mt">
-                    <div class="col-md-12">
-                        <div class="content-panel">
-                            
-
-                            <table class="table table-bordered table-striped table-condensed cf">
-                                <h4>Student Details </h4>
-                                <hr>
-                                <thead class="cf">
-                                    <tr>
-                                        <th class="numeric">Roll No.</th>
-                                        <th class="numeric">First Name.</th>
-                                        <th class="numeric">Last Name. </th>
-                                        <th class="numeric">Date Of Birth </th>
-                                        <th class="numeric">Mobile no</th>
-                                         <th class="numeric">Father Name</th>
-                                         <th class="numeric">Mother Name</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-    
                                 
-                                <tbody>
-                                    <logic:notEmpty name="studentForm" property="listOfStudents">
-                                        <logic:iterate id="student" name="studentForm" property="listOfStudents" >
-                                            <tr>
-                                                <td class="numeric"><bean:write name="student" property="rollNum"/></td>
-                                                <td class="numeric"><bean:write name="student" property="firstName"/></td>
-                                                <td class="numeric"><bean:write name="student" property="lastName"/></td>
-                                                <td class="numeric"><bean:write name="student" property="dob"/></td>
-                                                <td class="numeric"><bean:write name="student" property="fatherName"/></td>
-                                                <td class="numeric"><bean:write name="student" property="motherName"/></td>
-                                                <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${student.id});'><i class="fa fa-pencil"></i></button></td>
-                                            </tr>
-                                        </logic:iterate>
-                                    </logic:notEmpty>
-                                </tbody>
-                            </table>
-                        </div><!-- /content-panel -->
-                    </div><!-- /col-md-12 -->
-                </div><!-- /row -->
-
-
-
-
-
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        Mother Name: <html:text  property="motherName"  styleId="motherName"   styleClass="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    Father occupation  : <html:text  property="fatherOccup"  styleId="fatherOccup"   styleClass="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    Mother occupation: <html:text  property="motherOccup"  styleId="motherOccup"   styleClass="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <html:hidden name="studentForm" property="id" styleId="id"/>
+                        <html:hidden name="studentForm" property="studentId" styleId="studentId"/>
+                        <html:hidden name="studentForm" property="pageName" styleId="pageName" />
+                        
+                        <div align="center">
+                            <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
+                            <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
+                        </div> 
+                        
+                        
+                    </html:form>
+                </div>
+            </div><!-- col-lg-12-->      	
+            </div><!-- /row -->
+            
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
-
-
-
-
-
-
-
-
     <!--main content end-->
-
-</section>
-
- <!-- js placed at the end of the document so the pages load faster -->
+    
+    </section>
+    
+    <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     
-    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    
-    
-    
-    
-    <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    
-    <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
-    
     
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
     
+    <!--script for this page-->
     
-    <!-- Bootstrap core CSS -->
-    <!--    <link href="assets/css/bootstrap.css" rel="stylesheet">-->
-    <script src="assets/css/bootstrap.min.css"></script>
-
-<!--script for this page-->
-
-<script>
+    <script>
 
 
     function validateForm() {
@@ -298,7 +241,7 @@
             document.getElementById('lastName').focus();
             return false;
         }
-         if (fatherName === null || fatherName === "") {
+        if (fatherName === null || fatherName === "") {
             alert("Please Enter Father Name");
             document.getElementById('fatherName').focus();
             return false;
@@ -308,7 +251,7 @@
             document.getElementById('motherName').focus();
             return false;
         }
-         if (mobile === null || mobile === "") {
+        if (mobile === null || mobile === "") {
             alert("Please Enter Mobile");
             document.getElementById('studentMob').focus();
             return false;
@@ -328,13 +271,6 @@
 
     }
 
-    function getEditTypeForm(id) {
-        document.getElementById('id').value = id;
-        document.getElementById('pageName').value = "GetEditTypeForm"
-        document.studentForm.action = "studentAction.do?method=studentPage";
-        document.studentForm.submit();
-    }
-
     function submitForm() {
         var id = document.getElementById('id').value;
         if (id != null && id > 0) {
@@ -348,8 +284,44 @@
 
 
     function reset() {
-        document.getElementById("studentFrom").reset();
+        document.getElementById("studentForm").reset();
     }
+    
+    function checkValidStudentRollNumber() {
+        var   searchText= document.getElementById('searchText').value;
+        if (searchText== null || searchText =="") {
+            alert("Please Enter Roll Number in Search Box");
+            document.getElementById('searchText').focus();
+            return false;
+        }
+            
+        alert('Search with RollNum : '+searchText);
+				
+        $.ajax({
+            type: "POST",
+            url: "/UAMS-WebApp/studentAction.do?method=findByStudentRollNumber",
+            data: {
+                "rollNum": searchText
+            },
+                    
+            success: function(response){
+                if(response=='false'){
+                    alert('There is No Student found with this RollNumber :'+searchText);
+                    document.getElementById('rollNum').focus();
+                    return false;
+                }
+                else{
+                    searchForm();
+                }
+            }
+        });
+    }
+    
+    function searchForm(){	
+        document.studentForm.action="studentAction.do?method=studentPage";
+        document.studentForm.submit();
+    }
+    
     $(function () {
         $("#dob").datepicker({
             showOn: "button",

@@ -1,5 +1,6 @@
 package org.edu.uams.client.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +9,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.actions.DispatchAction;
+import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.StudentForm;
 import org.edu.uams.client.form.StudentQualificationForm;
+import org.edu.uams.server.api.AddressType;
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.api.SeatCategoryType;
@@ -32,9 +35,15 @@ public class StudentAction extends DispatchAction {
         
         StudentForm studentForm = (StudentForm) form;
         
-        StudentEntity studentEntity = null;
+         StudentDao studentDao =new StudentDao();
         
-        StudentDao studentDao = new StudentDao();
+        StudentEntity studentEntity =null;
+        
+        if (studentForm.getSearchText()!=null) {
+            studentEntity = studentDao.findByStudentRollNumber(studentForm.getSearchText());
+        }
+        
+        
         if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentEntity =new StudentEntity();
             copyDataFromFormToEntity(studentForm, studentEntity);
@@ -46,9 +55,9 @@ public class StudentAction extends DispatchAction {
             copyDataFromFormToEntity(studentForm, studentEntity);
             studentDao.update(studentEntity);
         }
-        else if(studentForm.getPageName()!=null && studentForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM)){
-            studentEntity =studentDao.findByPrimaryKey(studentForm.getId());
-            studentForm.reset(mapping, request);
+         if(studentEntity!=null){
+            studentEntity =studentDao.findByPrimaryKey(studentEntity.getId());
+            studentForm.resetForm();
             studentForm.setRollNum(studentEntity.getRollNum());
             studentForm.setAdmnNum(studentEntity.getAdmnNum());
             studentForm.setDob(ApplicationUtil.formatDateToString(studentEntity.getDob()));
@@ -68,10 +77,8 @@ public class StudentAction extends DispatchAction {
             studentForm.setSeatCategoryType((studentEntity.getSeatCategoryType().name()));
         }
         
-        List<StudentEntity> studentList = studentDao.findAll();
-        if(!studentList.isEmpty()){
-            studentForm.setListOfStudents(studentList);
-        }
+        studentForm.setGenderTypeList(getGenderTypeList());
+        studentForm.setSeatCategoryTypeList(getSeatCategoryTypeList());
         
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentDetails", "true");
@@ -113,5 +120,21 @@ public class StudentAction extends DispatchAction {
             response.getWriter().write("false");
         }
         return null;
+    }
+    
+     private List<LabelValueBean> getGenderTypeList() {
+        List<LabelValueBean> genderTypeList = new ArrayList<>();
+        for (GenderType genderType : GenderType.values()) {
+            genderTypeList.add(new LabelValueBean(genderType.name(), genderType.name()));
+        }
+        return genderTypeList;
+    }
+     
+       private List<LabelValueBean> getSeatCategoryTypeList() {
+        List<LabelValueBean> facultyTypeList = new ArrayList<>();
+        for (SeatCategoryType seatCategoryType : SeatCategoryType.values()) {
+            facultyTypeList.add(new LabelValueBean(seatCategoryType.name(), seatCategoryType.name()));
+        }
+        return facultyTypeList;
     }
 }

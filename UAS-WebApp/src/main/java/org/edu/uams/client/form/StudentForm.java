@@ -4,14 +4,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
-import org.edu.uams.server.pojo.StudentEntity;
 
 /**
  *
  * @author SARAT
  */
 public class StudentForm extends ActionForm {
-
+    
     private Long id;
     private Long admnNum;
     private String rollNum;
@@ -29,8 +28,19 @@ public class StudentForm extends ActionForm {
     private String motherOccup;
     private String parentMob;
     private Long studentMob;
-    private List<StudentEntity> listOfStudents;
-    private String fullName;
+    private long  studentId;
+    private String  searchText;
+    private String studentFullName;
+    private List genderTypeList;
+    private List seatCategoryTypeList;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getAdmnNum() {
         return admnNum;
@@ -79,6 +89,7 @@ public class StudentForm extends ActionForm {
     public void setMotherName(String motherName) {
         this.motherName = motherName;
     }
+
     public String getDob() {
         return dob;
     }
@@ -101,22 +112,6 @@ public class StudentForm extends ActionForm {
 
     public void setPageName(String pageName) {
         this.pageName = pageName;
-    }
-
-    public List<StudentEntity> getListOfStudents() {
-        return listOfStudents;
-    }
-
-    public void setListOfStudents(List<StudentEntity> listOfStudents) {
-        this.listOfStudents = listOfStudents;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getSeatCategoryType() {
@@ -175,13 +170,52 @@ public class StudentForm extends ActionForm {
         this.studentMob = studentMob;
     }
 
-    public String getFullName() {
-        return firstName + "" + lastName;
+    public long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+
+    public String getStudentFullName() {
+        return studentFullName;
+    }
+
+    public void setStudentFullName(String studentFullName) {
+        this.studentFullName = studentFullName;
+    }
+
+    public List getGenderTypeList() {
+        return genderTypeList;
+    }
+
+    public void setGenderTypeList(List genderTypeList) {
+        this.genderTypeList = genderTypeList;
+    }
+
+    public List getSeatCategoryTypeList() {
+        return seatCategoryTypeList;
+    }
+
+    public void setSeatCategoryTypeList(List seatCategoryTypeList) {
+        this.seatCategoryTypeList = seatCategoryTypeList;
     }
     
-    @Override
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
-
+    
+    
+    
+    
+    public void resetForm() {
+        
         admnNum = null;
         rollNum = null;
         firstName = null;
@@ -198,7 +232,9 @@ public class StudentForm extends ActionForm {
         fatherOccup = null;
         motherOccup = null;
         parentMob = null;
-        fullName = null;
+        studentId= 0l;
+        searchText= null;
+        studentFullName= null;
     }
-
+    
 }
