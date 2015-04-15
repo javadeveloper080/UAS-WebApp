@@ -40,19 +40,29 @@ public class StudentFeeEntity implements Serializable {
     @Basic(optional = false)
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
+    
     @Basic(optional = false)
     @Column(name = "fee_payment_date")
     private String feePaymentDate;
+    
+    
     @Basic(optional = false)
     @Column(name = "fee_name")
     private String feeName;
+    
+    
     @Basic(optional = false)
     @Column(name = "discount_type")
     private String discountType;
     
-  
     
-    @JoinColumn(name = "roll_num", referencedColumnName = "roll_num")
+    
+  
+    @JoinColumn(name = "fee_category_type_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private FeeCategoryTypeEntity FeeCategoryTypeEntity;
+    
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StudentEntity rollNum;
 

@@ -21,7 +21,7 @@ public class FeeCategoryTypeEntity implements Type {
     public static final  String  FIND_ALL="SELECT f FROM FeeCategoryType f";
     public static final  String  FIND_BY_CODE="SELECT f FROM FeeCategoryType f where f.code = :code";
     
-    
+    //FeeCategoryType :Transport/Hostel/Others/Semester/Yearly/Examination
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
