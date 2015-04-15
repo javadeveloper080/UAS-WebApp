@@ -32,14 +32,24 @@
                             <h5><Strong>Add/Edit Student Bus Account Details</Strong> </h5>
                                     <html:form  styleClass="" action="/transportModuleAction" method="post">
                                 
-                                
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="studentRollNum">Student Roll No.</label>
-                                            <html:text name="transportModuleForm" property="studentRollNum" styleId="studentRollNum" styleClass="form-control"/>
+                                            <html:text name="transportModuleForm" property="searchText" styleId="searchText" styleClass="form-control" />
+                                            <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
                                         </div>
                                     </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="rollNum">Student Roll Number & Full Name.</label>
+                                            <html:text name="transportModuleForm" property="rollNum" styleId="rollNum"  readonly="true"/>
+                                            <html:text name="transportModuleForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
+                                        </div>
+                                    </div>         
+                                </div>
+                                <hr/>
+                                <h5><p ><em><strong style="color:blue"><bean:write name="transportModuleForm" property="statusMessage" /></strong></em></p></h5>
+                                <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="busSeatNum">Bus seat No.</label>
@@ -63,7 +73,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                        
+                                
                                 
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -76,7 +86,7 @@
                                         </div>
                                     </div>
                                     
-                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label for="areaName">Area name</label>
                                             <html:text name="transportModuleForm" property="areaName" styleId="areaName" styleClass="form-control"/>
@@ -84,10 +94,11 @@
                                     </div>
                                 </div>
                                 
-
                                 
                                 <html:hidden name="transportModuleForm" property="id" styleId="id"/>
+                                <html:hidden name="transportModuleForm" property="studentId" styleId="studentId"/>
                                 <html:hidden name="transportModuleForm" property="pageName" styleId="pageName" />
+                                <html:hidden name="transportModuleForm" property="searchStudent" styleId="searchStudent"/>
                                 <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                     <html:button property="resetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
@@ -102,7 +113,7 @@
                 
                 
                 
-                <!-- GRID ELEMENTS -->
+               <!-- GRID ELEMENTS -->
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
@@ -128,7 +139,7 @@
                                     <logic:notEmpty name="transportModuleForm" property="studentBusAccDetailsList">
                                         <logic:iterate id="transportStudentBusAccTable" name="transportModuleForm" property="studentBusAccDetailsList" type="org.edu.uams.server.pojo.StudentBusAccDetailsEntity">
                                             <tr>
-                                                <td class="numeric"><bean:write name="transportStudentBusAccTable" property="studentRollNum"/></td>
+                                                <td class="numeric"><bean:write name="transportStudentBusAccTable" property="student.rollNum"/></td>
                                                 <td class="numeric"><bean:write name="transportStudentBusAccTable" property="busSeatNum"/></td>
                                                 <td class="numeric"><bean:write name="transportStudentBusAccTable" property="busDetails.busNum"/></td>
                                                 <td class="numeric"><bean:write name="transportStudentBusAccTable" property="areaName"/></td>
@@ -199,6 +210,7 @@
         function getEditTypeForm(id) {
             alert('Get Editff Type'+id);
             document.getElementById('id').value =id;	
+            document.getElementById('searchStudent').value ="False"
             document.getElementById('pageName').value ="GetEditTypeForm"	
             document.transportModuleForm.action="transportModuleAction.do?method=studentBusAccDetailsPage";
             document.transportModuleForm.submit();
@@ -212,6 +224,7 @@
             }else{
                 document.getElementById('pageName').value ="SubmitAddType"
             }
+            document.getElementById('searchStudent').value ="False"
             document.transportModuleForm.action="transportModuleAction.do?method=studentBusAccDetailsPage";
             document.transportModuleForm.submit();
         }
@@ -219,29 +232,58 @@
         
         function reset()
         {	
-            alert('reset');
-            //            document.getElementById('code').value="";
-            //            document.getElementById('description').value="";
-            //            document.getElementById('id').value="0";
-            //            document.getElementById('pageName').value="";
 		
         }
+    
+        function checkValidStudentRollNumber() {
+            var   searchText= document.getElementById('searchText').value;
+            if (searchText== null || searchText =="") {
+                alert("Please Enter Roll Number in Search Box");
+                document.getElementById('searchText').focus();
+                return false;
+            }
+            
+            alert('Search with RollNum : '+searchText);
+				
+            $.ajax({
+                type: "POST",
+                url: "/UAMS-WebApp/studentAction.do?method=findByStudentRollNumber",
+                data: {
+                    "rollNum": searchText
+                },
+                    
+                success: function(response){
+                    if(response=='false'){
+                        alert('There is No Student found with this RollNumber :'+searchText);
+                        document.getElementById('rollNum').focus();
+                        return false;
+                    }
+                    else{
+                        searchForm();
+                    }
+                }
+            });
+        }
         
-        
-         $(function() {
+        $(function() {
             $( "#busRegDate" ).datepicker({
                 showOn: "button",
                 buttonImage: "images/calendar.gif",
             });
         });
         
-         $(function() {
+        $(function() {
             $( "#busCancelDate" ).datepicker({
                 showOn: "button",
                 buttonImage: "images/calendar.gif",
             });
         });
         
+       function searchForm(){	
+        document.getElementById('searchStudent').value ="True"
+        document.transportModuleForm.action="transportModuleAction.do?method=studentBusAccDetailsPage";
+        document.transportModuleForm.submit();
+        }
         
     </script>
     

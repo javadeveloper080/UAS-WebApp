@@ -22,5 +22,6 @@ public interface ApplicationConstants {
     //Messages
     public static String PROFILE_ADDED_SUCESSFULLY="Profile added sucessfully !";
     public static String PROFILE_UDPATED_SUCESSFULLY ="Profile updated sucessfully !";
+    public static String NO_RECORD_FOUND="No Record Found !";
     
 }

@@ -28,21 +28,13 @@ import org.edu.uams.server.util.ApplicationUtil;
  */
 @Entity(name = "StudentBusAccDetails")
 @Table(name = "student_bus_acc_details")
-@XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "StudentBusAccDetailsEntity.findAll", query = "SELECT s FROM StudentBusAccDetailsEntity s"),
-//    @NamedQuery(name = "StudentBusAccDetailsEntity.findByRollNum", query = "SELECT s FROM StudentBusAccDetailsEntity s WHERE s.rollNum = :rollNum"),
-//    @NamedQuery(name = "StudentBusAccDetailsEntity.findByBusRegDate", query = "SELECT s FROM StudentBusAccDetailsEntity s WHERE s.busRegDate = :busRegDate"),
-//    @NamedQuery(name = "StudentBusAccDetailsEntity.findByAreaName", query = "SELECT s FROM StudentBusAccDetailsEntity s WHERE s.areaName = :areaName"),
-//    @NamedQuery(name = "StudentBusAccDetailsEntity.findByBusNum", query = "SELECT s FROM StudentBusAccDetailsEntity s WHERE s.busNum = :busNum"),
-//    @NamedQuery(name = "StudentBusAccDetailsEntity.findByBusCancelDate", query = "SELECT s FROM StudentBusAccDetailsEntity s WHERE s.busCancelDate = :busCancelDate")})
 public class StudentBusAccDetailsEntity implements HasId {
     
     
     private static final long serialVersionUID = 1L;
     
     public static final  String FIND_ALL = "SELECT s FROM StudentBusAccDetails s";
-    public static final  String FIND_BY_ROLL_NUM="SELECT s FROM StudentBusAccDetails s WHERE s.rollNum = :rollNum";
+      public static String FIND_BY_STUDENT_ID="SELECT sa FROM StudentBusAccDetails sa JOIN sa.student s  where s.id = :studentId";
     public static final  String FIND_BY_BUS_NUM= "SELECT s FROM StudentBusAccDetails s WHERE s.busNum = :busNum";
     
     
@@ -83,8 +75,9 @@ public class StudentBusAccDetailsEntity implements HasId {
     private Long busSeatNum;
     
     @Basic(optional = false)
-    @Column(name = "student_roll_num")
-    private Long studentRollNum;
+    @ManyToOne(optional = false, targetEntity = StudentEntity.class)
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false )
+    private StudentEntity student;
     
     
     public StudentBusAccDetailsEntity() {
@@ -130,13 +123,6 @@ public class StudentBusAccDetailsEntity implements HasId {
         this.busCancelDate = busCancelDate;
     }
     
-    public Long getStudentRollNum() {
-        return studentRollNum;
-    }
-    
-    public void setStudentRollNum(Long studentRollNum) {
-        this.studentRollNum = studentRollNum;
-    }
     
     public Long getBusSeatNum() {
         return busSeatNum;
@@ -154,6 +140,14 @@ public class StudentBusAccDetailsEntity implements HasId {
     public String getBusCancelDateTxt() {
         busCancelDateTxt=ApplicationUtil.formatDateToString(busCancelDate);
         return busCancelDateTxt;
+    }
+
+    public StudentEntity getStudent() {
+        return student;
+    }
+
+    public void setStudent(StudentEntity student) {
+        this.student = student;
     }
 
     

@@ -1,6 +1,6 @@
-/**
- *
- */
+ /**
+  *
+  */
 package org.edu.uams.client.form;
 
 import java.util.List;
@@ -13,6 +13,7 @@ public class TransportModuleForm extends ActionForm {
     
     private long id;
     private String pageName;
+    private String statusMessage;
     
     public long getId() {
         return id;
@@ -29,6 +30,15 @@ public class TransportModuleForm extends ActionForm {
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }
+    
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+    
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
+    }
+    
     
     //Bus  details Starts
     
@@ -56,7 +66,15 @@ public class TransportModuleForm extends ActionForm {
     private long busDetailsId;
     private long feeDetailsId;
     private long busSeatNum;
-    private Long studentRollNum;
+    private long studentId;
+    private String searchStudent;
+    
+    private String  searchText;
+    
+    private String studentFullName;
+    
+    private String rollNum;
+    
     private List studentBusAccDetailsList;
     
     public String getBusRegDate() {
@@ -107,13 +125,6 @@ public class TransportModuleForm extends ActionForm {
         this.busSeatNum = busSeatNum;
     }
     
-    public Long getStudentRollNum() {
-        return studentRollNum;
-    }
-    
-    public void setStudentRollNum(Long studentRollNum) {
-        this.studentRollNum = studentRollNum;
-    }
     
     public List getStudentBusAccDetailsList() {
         return studentBusAccDetailsList;
@@ -121,6 +132,38 @@ public class TransportModuleForm extends ActionForm {
     
     public void setStudentBusAccDetailsList(List studentBusAccDetailsList) {
         this.studentBusAccDetailsList = studentBusAccDetailsList;
+    }
+    
+    public long getStudentId() {
+        return studentId;
+    }
+    
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
+    }
+    
+    public String getSearchText() {
+        return searchText;
+    }
+    
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+    
+    public String getStudentFullName() {
+        return studentFullName;
+    }
+    
+    public void setStudentFullName(String studentFullName) {
+        this.studentFullName = studentFullName;
+    }
+    
+    public String getRollNum() {
+        return rollNum;
+    }
+    
+    public void setRollNum(String rollNum) {
+        this.rollNum = rollNum;
     }
     
     
@@ -407,9 +450,30 @@ public class TransportModuleForm extends ActionForm {
         this.busDetailsId=0l;
         this.feeDetailsId=0l;
         this.busSeatNum=0l;
-        this.studentRollNum=null;
         this.studentBusAccDetailsList=null;
+        this.studentId=0l;
+        this.searchStudent=null;
+        
+        this.searchText=null;
+        
+        this.studentFullName=null;
+        
+        this.rollNum=null;
     }
+    
+    public String getSearchStudent() {
+        return searchStudent;
+    }
+    
+    public void setSearchStudent(String searchStudent) {
+        this.searchStudent = searchStudent;
+    }
+    
+    
+    
+    
+    
+    
     
     
     
