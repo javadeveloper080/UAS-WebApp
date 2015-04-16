@@ -53,18 +53,20 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            Roll Number : <html:text  property="rollNum"  styleId="rollNum"   styleClass="form-control" />
+                                            <html:text name="studentFeeForm" property="searchText" styleId="searchText" styleClass="form-control" />
+                                            <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
                                         </div>
                                     </div>
-
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            Fee Name:  <html:text  property="feeName"  styleId="feeName"   styleClass="form-control"/>
+                                            <label for="addrLine1">Student Roll Number & Full Name.</label>
+                                            <html:text name="studentFeeForm" property="rollNum" styleId="rollNum"  readonly="true"/>
+                                            <html:text name="studentFeeForm" property="studentName" styleId="studentName"  readonly="true"/>
                                         </div>
-                                    </div>
-
+                                    </div>         
                                 </div>
 
+                              
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
@@ -86,9 +88,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                   <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            Student Name:  <html:text  property="studentName"  styleId="studentName"   styleClass="form-control"/>
+                                            Fee Name:  <html:text  property="feeName"  styleId="feeName"   styleClass="form-control"/>
                                         </div>
                                     </div>
 
@@ -97,11 +99,11 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="feeCatId">User Role:</label>
+                                            <label for="feeCatId">Fee Type:</label>
                                             <html:select  styleClass="form-control" property="feeCatId" styleId="feeCatId">
-                                                <html:option value="0">Select a user type</html:option>
-                                                <html:optionsCollection   name="typeTableForm"
-                                                                          property="feeCatTypeEntitys" label="code" value="id" />
+                                                <html:option value="0">Select fee type</html:option>
+                                                <html:optionsCollection   name="studentFeeForm"
+                                                                          property="feeTypeEntitys" label="code" value="id" />
                                             </html:select>
                                         </div>
                                     </div>
@@ -217,54 +219,11 @@
                                                             document.getElementById('feeCatId').focus();
                                                             return false;
                                                         }
-
-                                                        var id = document.getElementById('id').value;
-
-                                                        alert('Search with RollNum : ' + searchText);
-
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: "/UAMS-WebApp/studentAction.do?method=findByStudentRollNumber",
-                                                            data: {
-                                                                "rollNum": searchText
-                                                            },
-                                                            success: function (response) {
-                                                                if (response == 'false') {
-                                                                    alert('There is No Student found with this RollNumber :' + searchText);
-                                                                    document.getElementById('rollNum').focus();
-                                                                    return false;
-                                                                }
-                                                                else {
-                                                                    searchForm();
-                                                                }
-                                                            }});
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: "/UAMS-WebApp/studentFeeAction.do?method=checkUniqueCode",
-                                                            data: {
-                                                                "code": code,
-                                                                "pageName": "FeeCategoryType",
-                                                                "id": id
-                                                            },
-                                                            success: function (response) {
-                                                                if (response == 'true') {
-                                                                    alert('Code is ' + code + ' present');
-                                                                    document.getElementById('code').focus();
-                                                                    return false;
-                                                                }
-                                                                else {
-                                                                    submitForm();
-                                                                }
-                                                            },
-                                                            error: function (e) {
-                                                                alert('Error: ' + e);
-                                                                return false;
-                                                            }
-                                                        });
+                                                        submitForm();
                                                     }
 
-                                                function searchForm(){	
-                                                        document.studentFeeForm.action="studentFeeAction.do?method=studentFeePage";
+                                                    function searchForm() {
+                                                        document.studentFeeForm.action = "studentFeeAction.do?method=studentFeePage";
                                                         document.studentFeeForm.submit();
                                                     }
                                                     function getEditTypeForm(id) {
@@ -303,6 +262,35 @@
                                                             buttonImage: "images/calendar.gif",
                                                         });
                                                     });
+
+                                                    function checkValidStudentRollNumber() {
+                                                        var searchText = document.getElementById('searchText').value;
+                                                        if (searchText == null || searchText == "") {
+                                                            alert("Please Enter Roll Number in Search Box");
+                                                            document.getElementById('searchText').focus();
+                                                            return false;
+                                                        }
+
+                                                        alert('Search with RollNum : ' + searchText);
+
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: "/UAMS-WebApp/studentAction.do?method=findByStudentRollNumber",
+                                                            data: {
+                                                                "rollNum": searchText
+                                                            },
+                                                            success: function (response) {
+                                                                if (response == 'false') {
+                                                                    alert('There is No Student found with this RollNumber :' + searchText);
+                                                                    document.getElementById('rollNum').focus();
+                                                                    return false;
+                                                                }
+                                                                else {
+                                                                    searchForm();
+                                                                }
+                                                            }
+                                                        });
+                                                    }
     </script>
 
 </body>

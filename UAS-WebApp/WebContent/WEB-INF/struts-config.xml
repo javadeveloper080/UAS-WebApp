@@ -106,7 +106,7 @@
             <forward name="studentAddressPage" path="StudentAddLayout" ></forward>
         </action>
         
-        <action path="/studentFeeAction" name="studentFeeForm"  scope="request" type="org.edu.uams.client.action.StudentFeeAction">
+        <action path="/studentFeeAction" name="studentFeeForm"  scope="request" type="org.edu.uams.client.action.StudentFeeAction" parameter="method">
             <forward name="studentFeePage" path="studentFeeLayout" ></forward>
         </action>
                 

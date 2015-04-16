@@ -114,8 +114,9 @@
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentAdd != null}"> class="active"</c:if> ><a  href="studentAddressAction.do?method=studentAdressPage">Student Address</a></li>
                 </ul>
+               
                 <ul class="sub">
-                    <li  <c:if test="${requestScope.studentFee != null}"> class="active"</c:if> ><a  href="studentFee.do">Student Fee</a></li>
+                    <li  <c:if test="${requestScope.studentFee != null}"> class="active"</c:if> ><a  href="studentFeeAction.do?method=studentFeePage">Student Fee</a></li>
                 </ul>
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentQlfDetails != null}"> class="active"</c:if> ><a  href="studentQlfAction.do?method=studentQualificationPage">Student Qualification</a></li>

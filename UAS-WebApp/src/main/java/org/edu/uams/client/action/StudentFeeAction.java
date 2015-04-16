@@ -108,6 +108,7 @@ public class StudentFeeAction extends DispatchAction {
 
             studentFeeForm.setStudentId(studentFeeEntity.getStudent().getId());
             studentFeeForm.setStudentName(studentFeeEntity.getStudent().getStudentFullName());
+            studentFeeForm.setRollNum(studentFeeEntity.getStudent().getRollNum());
             studentFeeForm.setTotalAmount(studentFeeEntity.getTotalAmount());
 
         }

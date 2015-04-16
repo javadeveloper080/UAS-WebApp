@@ -86,6 +86,7 @@ public class TypeTableForm extends ActionForm {
         this.description = null;
         this.typeFormList = null;
         this.id = 0l;
+        feeCatTypeEntitys = null;
     }
     
 //    @Override

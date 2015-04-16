@@ -35,6 +35,7 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
     private Long feeTypeId;
     private String studentName;
     private String  searchText;
+    private Long feeCatId;
     
     /**
      *
@@ -44,6 +45,14 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         // TODO Auto-generated constructor stub
     }
 
+    public Long getFeeCatId() {
+        return feeCatId;
+    }
+
+    public void setFeeCatId(Long feeCatId) {
+        this.feeCatId = feeCatId;
+    }
+    
     public String getSearchText() {
         return searchText;
     }
@@ -167,7 +176,7 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
 
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
-        this.id = null;
+        this.id = 0l;
         this.serial = null;
         this.feePaymentDate = null;
         this.feeName = null;
@@ -181,6 +190,7 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         this.feeTypeId = null;
         this.studentName = null;
         this.searchText = null;
+        this.feeCatId = 0l;
     }
 
 }

@@ -259,6 +259,7 @@
             var city = document.getElementById('city').value;
             var zipCode = document.getElementById('zipCode').value;
             var country = document.getElementById('country').value;
+            var rollNum = document.getElementById('rollNum').value;
             
             if (addressType === null || addressType ==="") {
                 alert("Please select a AddressType");
