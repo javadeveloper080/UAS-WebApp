@@ -122,5 +122,10 @@
         <put name="title" value="Student Fee" />
         <put name="body" value="/eviews/studentFeePage.jsp" />
     </definition>
+    <definition name="studentEnrollmentLayout" extends="baseTemplateLayout">
+        <put name="title" value="Student Enrollment" />
+        <put name="body" value="/eviews/studentEnrollment.jsp" />
+    </definition>
+    
     
 </tiles-definitions>

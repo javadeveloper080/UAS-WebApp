@@ -30,6 +30,7 @@
         <form-bean name="studentAddressForm" type="org.edu.uams.client.form.StudentAddressForm" ></form-bean>
         <form-bean name="studentFeeForm" type="org.edu.uams.client.form.StudentFeeForm"/>
         <form-bean name="studentQlfForm" type="org.edu.uams.client.form.StudentQualificationForm"/>
+        <form-bean name="studentEnrollmentForm" type="org.edu.uams.client.form.StudentEnrollmentForm" />
          
     </form-beans>
 
@@ -190,6 +191,9 @@
         </action>
         <action path="/Fee" type="main.java.org.edu.uams.client.action.FeeAction">
             <forward name="fee" path="MainFeeLayout"></forward>
+        </action>
+        <action name="studentEnrollmentForm" path="/studentEnrollment" type="org.edu.uams.client.action.StudentEnrollmentAction">
+            <forward name="success" path="studentEnrollmentLayout" ></forward>
         </action>
         
       

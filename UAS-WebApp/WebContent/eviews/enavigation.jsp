@@ -121,6 +121,10 @@
                 <ul class="sub">
                     <li  <c:if test="${requestScope.studentQlfDetails != null}"> class="active"</c:if> ><a  href="studentQlfAction.do?method=studentQualificationPage">Student Qualification</a></li>
                 </ul>
+                
+                 <ul class="sub">
+                    <li  <c:if test="${requestScope.studentEnrollment != null}"> class="active"</c:if> ><a  href="studentEnrollment.do">Student Enrollment</a></li>
+                </ul>
             </li>
                 
         </ul>
