@@ -138,7 +138,7 @@
             
             
         function validateForm() {
-            alert("Validate Form Values");
+//            alert("Validate Form Values");
             // get the form values
             var code = document.getElementById('code').value;
             var description = document.getElementById('description').value;

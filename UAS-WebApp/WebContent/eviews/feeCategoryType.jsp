@@ -48,7 +48,7 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Fee Category type</Strong> </h5>
-                                   <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                                   <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
                                
                                         
@@ -70,7 +70,7 @@
                                   <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                   <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
-                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
+                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
                                   </div> 
                                 
                                 
@@ -145,14 +145,14 @@
             
             
             function validateForm() {
-                alert("Validate Form Values");
+//                alert("Validate Form Values");
                  // get the form values
                 var code = document.getElementById('code').value;
                 var description = document.getElementById('description').value;
                 
                 if (code== null || code =="") {
                     alert("Please Enter Code");
-                    document.getElementById('code').cfocus();
+                    document.getElementById('code').focus();
                     return false;
                 }
 				
@@ -191,7 +191,7 @@
 
 
             function getEditTypeForm(id) {
-                alert('Get Editff Type'+id);
+//                alert('Get Editff Type'+id);
                 document.getElementById('id').value =id;	
                 document.getElementById('pageName').value ="GetEditTypeForm"	
                 document.typeTableForm.action="typeTableAction.do?method=feeCategoryTypePage";
@@ -211,9 +211,8 @@
             }
 	
         
-            function rset()
+            function reset()
             {	
-                alert('reset');
                 document.getElementById('code').value="";
                 document.getElementById('description').value="";
                 document.getElementById('id').value="0";

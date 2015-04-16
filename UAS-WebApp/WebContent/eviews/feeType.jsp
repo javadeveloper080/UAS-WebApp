@@ -48,7 +48,7 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Fee Category type</Strong> </h5>
-                                   <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                                   <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
                                 <div class="row">
                                      <div class="col-xs-6 col-sm-6 col-md-6">
@@ -67,9 +67,9 @@
                                    <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="feeCatId">User Role:</label>
+                                            <label for="feeCatId">Fee Category Type:</label>
                                             <html:select  styleClass="form-control" property="feeCatId" styleId="feeCatId">
-                                                <html:option value="0">Select a user type</html:option>
+                                                <html:option value="0">Select</html:option>
                                                 <html:optionsCollection   name="typeTableForm"
                                                                   property="feeCatTypeEntitys" label="code" value="id" />
                                             </html:select>
@@ -82,7 +82,7 @@
                                 <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                 <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
-                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="rset();" />
+                                    <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
                                 </div> 
                                 
                                 
@@ -97,7 +97,7 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Fee category type Table</h4>
+                                <h4><i class="fa fa-angle-right"></i> Fee Type Table</h4>
                                 <hr>
                                 <thead>
                                     <tr>
@@ -157,14 +157,14 @@
             
             
             function validateForm() {
-                alert("Validate Form Values");
+//                alert("Validate Form Values");
                  // get the form values
                 var code = document.getElementById('code').value;
                 var description = document.getElementById('description').value;
                 
                 if (code== null || code =="") {
                     alert("Please Enter Code");
-                    document.getElementById('code').cfocus();
+                    document.getElementById('code').focus();
                     return false;
                 }
 				
@@ -185,7 +185,7 @@
                     url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                     data: {
                         "code": code,
-                        "pageName": "FeeCategoryType",
+                        "pageName": "FeeType",
                         "id": id
                     },
                     
@@ -228,9 +228,8 @@
             }
 	
         
-            function rset()
+            function reset()
             {	
-                alert('reset');
                 document.getElementById('code').value="";
                 document.getElementById('description').value="";
                 document.getElementById('id').value="0";
