@@ -43,19 +43,21 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Course type</Strong> </h5>
-                                   <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                                   <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                </table>
+                                  <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Code: <html:text  property="code"  styleId="code"   styleClass="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Description:  <html:text  property="description"  styleId="description"   styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <html:hidden name="typeTableForm" property="id" styleId="id"/>
                                 <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                 <div align="center">
@@ -75,7 +77,7 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> >Course type table</h4>
+                                <h4><i class="fa fa-angle-right"></i>Course type table</h4>
                                 <hr>
                                 <thead>
                                     <tr>
@@ -86,7 +88,7 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
+                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.CourseTypeEntity">
                                             <tr>
                                                 <td><bean:write name="typeTable" property="code"/></td>
                                                 <td><bean:write name="typeTable" property="description"/></td>
@@ -142,7 +144,7 @@
                 
                 if (code== null || code =="") {
                     alert("Please Enter Code");
-                    document.getElementById('code').cfocus();
+                    document.getElementById('code').focus();
                     return false;
                 }
 				
@@ -181,7 +183,7 @@
 
 
             function getEditTypeForm(id) {
-                alert('Get Editff Type'+id);
+//                alert('Get Editff Type'+id);
                 document.getElementById('id').value =id;	
                 document.getElementById('pageName').value ="GetEditTypeForm"	
                 document.typeTableForm.action="typeTableAction.do?method=courseTypePage";
@@ -203,7 +205,6 @@
         
             function reset()
             {	
-                alert('reset');
                 document.getElementById('code').value="";
                 document.getElementById('description').value="";
                 document.getElementById('id').value="0";

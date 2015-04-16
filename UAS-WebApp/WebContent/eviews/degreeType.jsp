@@ -22,7 +22,7 @@
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
         
-     
+        
         
     </head>
     <body>
@@ -43,27 +43,30 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit Degree type</Strong> </h5>
-                                   <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                                    <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                </table>
+                                
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Code: <html:text  property="code"  styleId="code"   styleClass="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Description:  <html:text  property="description"  styleId="description"   styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <html:hidden name="typeTableForm" property="id" styleId="id"/>
                                 <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                 <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
                                 </div> 
-                                
-                                
                             </html:form>
                         </div>
                     </div><!-- col-lg-12-->      	
@@ -86,7 +89,7 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
+                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.DegreeTypeEntity">
                                             <tr>
                                                 <td><bean:write name="typeTable" property="code"/></td>
                                                 <td><bean:write name="typeTable" property="description"/></td>
@@ -134,85 +137,84 @@
     <script>
             
             
-            function validateForm() {
-                alert("Validate Form Values");
-                 // get the form values
-                var code = document.getElementById('code').value;
-                var description = document.getElementById('description').value;
+        function validateForm() {
+            alert("Validate Form Values");
+            // get the form values
+            var code = document.getElementById('code').value;
+            var description = document.getElementById('description').value;
                 
-                if (code== null || code =="") {
-                    alert("Please Enter Code");
-                    document.getElementById('code').cfocus();
-                    return false;
-                }
+            if (code== null || code =="") {
+                alert("Please Enter Code");
+                document.getElementById('code').focus();
+                return false;
+            }
 				
-                if (description == null || description =="") {
-                    alert("Please Enter Description");
-                    document.getElementById('description').focus();
-                    return false;
-                }
+            if (description == null || description =="") {
+                alert("Please Enter Description");
+                document.getElementById('description').focus();
+                return false;
+            }
       
-                var id =document.getElementById('id').value;	
-                $.ajax({
-                    type: "POST",
-                    url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
-                    data: {
-                        "code": code,
-                        "pageName": "DegreeType",
-                        "id": id
-                    },
+            var id =document.getElementById('id').value;	
+            $.ajax({
+                type: "POST",
+                url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
+                data: {
+                    "code": code,
+                    "pageName": "DegreeType",
+                    "id": id
+                },
                     
-                    success: function(response){
-                        if(response=='true'){
-                            alert('Code is '+code+' present');
-                            document.getElementById('code').focus();
-                            return false;
-                        }
-                        else{
-                            submitForm();
-                        }
-                    },
-                    error: function(e){
-                        alert('Error: ' + e);
+                success: function(response){
+                    if(response=='true'){
+                        alert('Code is '+code+' present');
+                        document.getElementById('code').focus();
                         return false;
                     }
-                });
-            }
-
-
-            function getEditTypeForm(id) {
-                alert('Get Editff Type'+id);
-                document.getElementById('id').value =id;	
-                document.getElementById('pageName').value ="GetEditTypeForm"	
-                document.typeTableForm.action="typeTableAction.do?method=degreeTypePage";
-                document.typeTableForm.submit();
-            }
-    
-            function submitForm() {
-                alert('Submit Form');
-                var id =document.getElementById('id').value;	
-                if(id != null && id>0){
-                    document.getElementById('pageName').value ="SubmitEditType"	
-                }else{
-                    document.getElementById('pageName').value ="SubmitAddType"
+                    else{
+                        submitForm();
+                    }
+                },
+                error: function(e){
+                    alert('Error: ' + e);
+                    return false;
                 }
-                document.typeTableForm.action="typeTableAction.do?method=degreeTypePage";
-                document.typeTableForm.submit();
+            });
+        }
+
+
+        function getEditTypeForm(id) {
+//            alert('Get Editff Type'+id);
+            document.getElementById('id').value =id;	
+            document.getElementById('pageName').value ="GetEditTypeForm"	
+            document.typeTableForm.action="typeTableAction.do?method=degreeTypePage";
+            document.typeTableForm.submit();
+        }
+    
+        function submitForm() {
+            alert('Submit Form');
+            var id =document.getElementById('id').value;	
+            if(id != null && id>0){
+                document.getElementById('pageName').value ="SubmitEditType"	
+            }else{
+                document.getElementById('pageName').value ="SubmitAddType"
             }
+            document.typeTableForm.action="typeTableAction.do?method=degreeTypePage";
+            document.typeTableForm.submit();
+        }
 	
         
-            function reset()
-            {	
-                alert('reset');
-                document.getElementById('code').value="";
-                document.getElementById('description').value="";
-                document.getElementById('id').value="0";
-                document.getElementById('pageName').value="";
+        function reset()
+        {	
+            document.getElementById('code').value="";
+            document.getElementById('description').value="";
+            document.getElementById('id').value="0";
+            document.getElementById('pageName').value="";
 		
-            }
-        </script>
+        }
+    </script>
     
-
+    
     
 </body>
 </html>
