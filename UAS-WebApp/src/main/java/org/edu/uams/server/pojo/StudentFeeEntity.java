@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,23 +20,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Mohammed.Tauseef
  */
-@Entity
+@Entity(name = "StudentFee")
 @Table(name = "student_fee")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "StudentFeeEntity.findAll", query = "SELECT s FROM StudentFeeEntity s"),
-    @NamedQuery(name = "StudentFeeEntity.findByTotalAmount", query = "SELECT s FROM StudentFeeEntity s WHERE s.totalAmount = :totalAmount"),
-    @NamedQuery(name = "StudentFeeEntity.findByFeePaymentDate", query = "SELECT s FROM StudentFeeEntity s WHERE s.feePaymentDate = :feePaymentDate"),
-    @NamedQuery(name = "StudentFeeEntity.findByFeeName", query = "SELECT s FROM StudentFeeEntity s WHERE s.feeName = :feeName"),
-    @NamedQuery(name = "StudentFeeEntity.findByDiscountType", query = "SELECT s FROM StudentFeeEntity s WHERE s.discountType = :discountType"),
-    @NamedQuery(name = "StudentFeeEntity.findBySerial", query = "SELECT s FROM StudentFeeEntity s WHERE s.serial = :serial")})
 public class StudentFeeEntity implements Serializable {
+    
     private static final long serialVersionUID = 1L;
-    public static final  String  FIND_ALL ="SELECT sf FROM StudentFeeEntity sf";
-      @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
+    
+    public static final  String  FIND_ALL ="SELECT sf FROM StudentFee sf";
+     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
     
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
@@ -134,29 +131,4 @@ public class StudentFeeEntity implements Serializable {
         this.student = student;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof StudentFeeEntity)) {
-            return false;
-        }
-        StudentFeeEntity other = (StudentFeeEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "org.edu.uams.pojo.StudentFeeEntity[ serial=" + id + " ]";
-    }
-    
 }
