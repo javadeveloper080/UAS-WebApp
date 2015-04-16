@@ -55,14 +55,19 @@
                     <hr>
                     <div class="row mt">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-                            <div class="project-wrapper">
+                         
+                           <div class="project-wrapper">
                                 <div class="project">
-                                    <div class="photo-wrapper">
-                                        <div class="photo">
-                                            <a class="fancybox" href="assets/img/portfolio/school.png"><img class="img-responsive" src="assets/img/portfolio/school.png" alt=""></a>
-                                        </div>
-                                        <div class="overlay"></div>
-                                    </div>
+                                        <img class="img-responsive" src="assets/img/portfolio/school.png" alt="">
+                                </div>
+                            </div>
+                        </div><!-- col-lg-4 -->
+                        
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+                            
+                              <div class="project-wrapper">
+                                <div class="project">
+                                       <img class="img-responsive"  src="assets/img/portfolio/student_profile.png" alt="">
                                 </div>
                             </div>
                         </div><!-- col-lg-4 -->
@@ -70,25 +75,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
                             <div class="project-wrapper">
                                 <div class="project">
-                                    <div class="photo-wrapper">
-                                        <div class="photo">
-                                            <a class="fancybox" href="assets/img/portfolio/student_profile.png"><img class="img-responsive" src="assets/img/portfolio/student_profile.png" alt=""></a>
-                                        </div>
-                                        <div class="overlay"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- col-lg-4 -->
-                        
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-                            <div class="project-wrapper">
-                                <div class="project">
-                                    <div class="photo-wrapper">
-                                        <div class="photo">
-                                            <a class="fancybox" href="assets/img/portfolio/transport_module.png"><img class="img-responsive" src="assets/img/portfolio/transport_module.png" alt=""></a>
-                                        </div>
-                                        <div class="overlay"></div>
-                                    </div>
+                                       <img class="img-responsive" src="assets/img/portfolio/transport_module.png" alt="">
                                 </div>
                             </div>
                         </div><!-- col-lg-4 -->
@@ -98,12 +85,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
                             <div class="project-wrapper">
                                 <div class="project">
-                                    <div class="photo-wrapper">
-                                        <div class="photo">
-                                            <a class="fancybox" href="assets/img/portfolio/fee-management.png"><img class="img-responsive" src="assets/img/portfolio/fee-management.png" alt=""></a>
-                                        </div>
-                                        <div class="overlay"></div>
-                                    </div>
+                                        <img class="img-responsive" src="assets/img/portfolio/fee-management.png" alt="">
                                 </div>
                             </div>
                         </div><!-- col-lg-4 -->
