@@ -35,7 +35,7 @@ public class StudentFeeAction extends DispatchAction {
      * @throws java.lang.Exception
      * @return
      */
-    public ActionForward studentQualificationPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ActionForward studentFeePage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         final StudentFeeForm studentFeeForm = (StudentFeeForm) form;
 
@@ -46,7 +46,11 @@ public class StudentFeeAction extends DispatchAction {
         StudentEntity studentEntity = null;
         StudentFeeEntity studentFeeEntity = null;
         FeeTypeEntity feeTypeEntity = null;
-
+        
+        if (studentFeeForm.getSearchText()!=null) {
+            studentEntity = studentDao.findByStudentRollNumber(studentFeeForm.getSearchText());
+        }
+        
         if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentFeeEntity = new StudentFeeEntity();
             copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, true, studentDao, feeTypeDao);
@@ -57,6 +61,11 @@ public class StudentFeeAction extends DispatchAction {
             studentFeeDao.update(studentFeeEntity);
         } else if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM)) {
             studentFeeEntity = studentFeeDao.findByPrimaryKey(studentFeeForm.getId());
+            if (studentFeeEntity != null) {
+                copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, false, studentDao, feeTypeDao);
+            }
+        }else
+        {
             if (studentFeeEntity != null) {
                 copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, false, studentDao, feeTypeDao);
             }
@@ -73,7 +82,7 @@ public class StudentFeeAction extends DispatchAction {
 
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentFee", "true");
-        return mapping.findForward("studentFeeType");
+        return mapping.findForward("studentFeePage");
     }
 
     private void copyDataFromSQFormToSQEntity(StudentFeeForm studentFeeForm, StudentFeeEntity studentFeeEntity, boolean isEntity, StudentDao studentDao, FeeTypeDao feeTypeDao) {
@@ -98,6 +107,7 @@ public class StudentFeeAction extends DispatchAction {
             studentFeeForm.setId(studentFeeEntity.getId());
 
             studentFeeForm.setStudentId(studentFeeEntity.getStudent().getId());
+            studentFeeForm.setStudentName(studentFeeEntity.getStudent().getStudentFullName());
             studentFeeForm.setTotalAmount(studentFeeEntity.getTotalAmount());
 
         }
