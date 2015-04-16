@@ -286,7 +286,7 @@ public class TransportModuleAction extends DispatchAction {
                 transportModuleForm.setBusCancelDate(ApplicationUtil.formatDateToString(studentBusAccDetailsEntity.getBusCancelDate()));
             }
             transportModuleForm.setRollNum(studentBusAccDetailsEntity.getStudent().getRollNum());
-            transportModuleForm.setStudentId(studentEntity.getId());
+            transportModuleForm.setStudentId(studentBusAccDetailsEntity.getStudent().getId());
             transportModuleForm.setBusSeatNum(studentBusAccDetailsEntity.getBusSeatNum());
             transportModuleForm.setId(studentBusAccDetailsEntity.getId());
             transportModuleForm.setStudentFullName(studentEntity.getStudentFullName());

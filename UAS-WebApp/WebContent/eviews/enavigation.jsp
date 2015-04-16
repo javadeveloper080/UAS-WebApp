@@ -9,10 +9,9 @@
             
             <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                 
-                
-<!--              <h5 class="centered"><bean:write name="loginForm" property="name" /></h5>   -->
-                
-                
+                             <html:form action="/loginAction" >
+                                <h5 class="centered"><bean:write name="loginForm" property="name" /></h5>  
+                            </html:form>
                 
                 
             <li class="sub-menu">

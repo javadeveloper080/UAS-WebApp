@@ -12,9 +12,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ExceptionHandler;
 import org.apache.struts.config.ExceptionConfig;
 
-public class VlearningCustomExceptionHandler extends ExceptionHandler{
+public class ApplicationExceptionHandler extends ExceptionHandler{
 	 
-		private static final Logger logger = Logger.getLogger(VlearningCustomExceptionHandler.class.getName());
+		private static final Logger logger = Logger.getLogger(ApplicationExceptionHandler.class.getName());
 		
 		@Override
 		public ActionForward execute(Exception ex, ExceptionConfig ae,

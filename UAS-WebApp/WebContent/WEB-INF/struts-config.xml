@@ -36,25 +36,24 @@
 
     <global-exceptions>
         <exception key="error.dataBase.mesage" type="java.sql.SQLException"
-                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                   path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.ApplicationExceptionHandler"
+                   path="/eviews/error.jsp" />
 
         <exception key="error.nullError.mesage" type="jjava.lang.NullPointerException"
-                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                   path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.ApplicationExceptionHandler"
+                   path="/eviews/error.jsp" />
 
         <exception key="error.global.mesage" type="java.lang.Exception"
-                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                   path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.ApplicationExceptionHandler"
+                   path="/eviews/error.jsp" />
 
         <exception key="error.dataBase.mesage" type="org.hibernate.HibernateException"
-                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                   path="/views/error.jsp" />
+                   handler="org.edu.uams.server.api.ApplicationExceptionHandler"
+                   path="/eviews/error.jsp" />
 			
         <exception key="error.session.mesage" type="org.edu.uams.server.util.SessionTimeException"
-                   handler="org.edu.uams.server.api.VlearningCustomExceptionHandler"
-                   path="/views/error.jsp" />
-
+                   handler="org.edu.uams.server.api.ApplicationExceptionHandler"
+                   path="/eviews/error.jsp" />
 
     </global-exceptions>
 
