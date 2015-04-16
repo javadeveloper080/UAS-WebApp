@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.edu.uams.server.api.HasId;
 import org.edu.uams.server.util.ApplicationUtil;
 
@@ -34,7 +33,7 @@ public class StudentBusAccDetailsEntity implements HasId {
     private static final long serialVersionUID = 1L;
     
     public static final  String FIND_ALL = "SELECT s FROM StudentBusAccDetails s";
-      public static String FIND_BY_STUDENT_ID="SELECT sa FROM StudentBusAccDetails sa JOIN sa.student s  where s.id = :studentId";
+    public static String FIND_BY_STUDENT_ID="SELECT sa FROM StudentBusAccDetails sa JOIN sa.student s  where s.id = :studentId";
     public static final  String FIND_BY_BUS_NUM= "SELECT s FROM StudentBusAccDetails s WHERE s.busNum = :busNum";
     
     

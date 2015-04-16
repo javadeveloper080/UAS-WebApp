@@ -246,8 +246,8 @@ public class TransportModuleAction extends DispatchAction {
             studentEntity = studentDao.findByStudentRollNumber(transportModuleForm.getSearchText());
         }
         if (studentEntity!=null && Boolean.valueOf(transportModuleForm.getSearchStudent())) {
+            studentBusAccDetailsEntity = studentBusAccDetailsDao.findByStudentId(studentEntity.getId());
             if (studentBusAccDetailsEntity!=null) {
-                studentBusAccDetailsEntity = studentBusAccDetailsDao.findByStudentId(studentEntity.getId());
             transportModuleForm.resetForm();
             transportModuleForm.setAreaName(studentBusAccDetailsEntity.getAreaName());
             transportModuleForm.setBusNum(studentBusAccDetailsEntity.getBusDetails().getBusNum());
