@@ -313,6 +313,13 @@ public class TypeTableAction extends DispatchAction {
             ApplicationUtil.checkUniqueCodeHelper(typeEntity, key, response);
         }
         
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("UserType"))
+        {
+            UserMasterTypeDao userMasterTypeDao = new UserMasterTypeDao();
+            Type typeEntity =userMasterTypeDao.findByCode(typeTableForm.getCode());
+            ApplicationUtil.checkUniqueCodeHelper(typeEntity, key, response);
+        }
+        
         
         
         return null;

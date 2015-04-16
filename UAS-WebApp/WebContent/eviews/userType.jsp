@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
         
-        <title>Fee Category Type</title>
+        <title>User Type</title>
         
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -48,19 +48,22 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h5><Strong>Add/Edit User type</Strong> </h5>
-                                   <html:form  styleClass="form-horizontal style-form" action="/typeTableAction" method="post">
+                                   <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
-                                <table >
-                                    <tr>
-                                        <td class="form-field-control">
-                                            Code: <html:text name="typeTableForm" property="code" size="30" styleId="code"  maxlength="10"  />
-                                            
-                                        </td>	
-                                        <td class="form-field-control">
-                                            Description:  <html:text name="typeTableForm" property="description" size="30" styleId="description"  maxlength="100" />
-                                        <td>
-                                    </tr>
-                                </table>
+                                
+                                  <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Code: <html:text  property="code"  styleId="code"   styleClass="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Description:  <html:text  property="description"  styleId="description"   styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <html:hidden name="typeTableForm" property="id" styleId="id"/>
                                 <html:hidden name="typeTableForm" property="pageName" styleId="pageName" />
                                 <div align="center">
@@ -140,14 +143,14 @@
             
             
             function validateForm() {
-                alert("Validate Form Values");
+//                alert("Validate Form Values");
                  // get the form values
                 var code = document.getElementById('code').value;
                 var description = document.getElementById('description').value;
                 
                 if (code== null || code =="") {
                     alert("Please Enter Code");
-                    document.getElementById('code').cfocus();
+                    document.getElementById('code').focus();
                     return false;
                 }
 				
@@ -163,7 +166,7 @@
                     url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                     data: {
                         "code": code,
-                        "pageName": "FeeCategoryType",
+                        "pageName": "UserType",
                         "id": id
                     },
                     
@@ -186,7 +189,7 @@
 
 
             function getEditTypeForm(id) {
-                alert('Get Editff Type'+id);
+//                alert('Get Editff Type'+id);
                 document.getElementById('id').value =id;	
                 document.getElementById('pageName').value ="GetEditTypeForm"	
                 document.typeTableForm.action="typeTableAction.do?method=userTypePage";
@@ -206,9 +209,8 @@
             }
 	
         
-            function rset()
+            function reset()
             {	
-                alert('reset');
                 document.getElementById('code').value="";
                 document.getElementById('description').value="";
                 document.getElementById('id').value="0";
