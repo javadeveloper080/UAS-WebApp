@@ -2245,4 +2245,6 @@ label {
     min-height: 900px;
 }
 
-
+.base-min-height {
+    min-height: 645px;
+}

@@ -114,12 +114,12 @@
         <action path="/loginAction" name="loginForm" parameter="method"
                 scope="session" type="org.edu.uams.client.action.LoginAction">
             <forward name="loginPage" path="/eviews/login.jsp" />
-            <forward name="homePage" path="/views/index.jsp" />
+            <forward name="homePage" path="/eviews/index.jsp" />
             <forward name="adminHomePage" path="adminHome" />
-            <forward name="loginErrorPage" path="/views/loginError.jsp" />
-            <forward name="forgotPassWordPage" path="/views/forgotPass.jsp" />
-            <forward name="userFound" path="/views/loginError.jsp" />
-            <forward name="noUserFound" path="/views/loginError.jsp" />
+            <forward name="loginErrorPage" path="/eviews/loginError.jsp" />
+            <forward name="forgotPassWordPage" path="/eviews/forgotPass.jsp" />
+            <forward name="userFound" path="/eviews/loginError.jsp" />
+            <forward name="noUserFound" path="/eviews/loginError.jsp" />
             <!--			<forward name="userLoginPage" path="/views/userLoginPage.jsp" />
             <forward name="studentPage" path="/views/studentHome.jsp" />
             <forward name="professorPage" path="/views/professorHome.jsp" />-->

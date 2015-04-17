@@ -10,15 +10,7 @@
 -->
 
 <tiles-definitions>
-
-
-    <definition name="baseLayout" path="/views/baseLayout.jsp">
-        <put name="title"  value="Tiles Example" />
-        <put name="header" value="/views/header.jsp" />
-        <put name="menu"   value="/views/menu.jsp" />
-        <put name="body"   value="/views/body.jsp" />
-        <put name="footer" value="/views/footer.jsp" />        
-    </definition>
+    
     
     
     <definition name="baseTemplateLayout" path="/eviews/Template.jsp">
@@ -29,21 +21,10 @@
         <put name="footer" value="/eviews/footer.jsp" />            
     </definition>
     
-    <definition name="login" extends="baseLayout">
-        <put name="title" value="Login" />
-        <put name="body" value="/views/login.jsp" />
+ 
+     <definition name="adminHome" extends="baseTemplateLayout">
     </definition>
     
-    <definition name="adminHome" extends="baseTemplateLayout">
-    </definition>
-    
-    <definition name="MainFeeLayout" path="/eviews/Template.jsp">
-        <put name="title"  value="Tiles Example" />
-        <put name="header" value="/eviews/header.jsp" />
-        <put name="menu"   value="/eviews/enavigation.jsp" />
-        <put name="body"   value="/eviews/body.jsp" />
-        <put name="footer" value="/eviews/footer.jsp" />        
-    </definition>
     
     
     <!--Type table Entry starts-->
@@ -88,17 +69,9 @@
     <!--Transport table Entry ends-->
     
     
-    <definition name="addCourse" extends="MainFeeLayout">
-        <put name="title" value="Fee" />
-        <!--<put name="body" value="/views/fee.jsp" />-->
-        <put name="body" value="/eviews/addCourse.jsp" />
-    </definition>
+   
     
-    <definition name="gridExample" extends="MainFeeLayout">
-        <put name="title" value="Grid Example" />
-        <!--<put name="body" value="/views/fee.jsp" />-->
-        <put name="body" value="/eviews/grid.jsp" />
-    </definition>
+    
     
      <definition name="studentLayout" extends="baseTemplateLayout">
         <put name="title" value="Student" />
