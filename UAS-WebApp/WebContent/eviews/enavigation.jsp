@@ -7,7 +7,8 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             
-            <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+            
+              <p class="centered"><img src="assets/img/menu_pic.png" class="img-rounded" width="60"></p>
                 
                              <html:form action="/loginAction" >
                                 <h5 class="centered"><bean:write name="loginForm" property="name" /></h5>  
