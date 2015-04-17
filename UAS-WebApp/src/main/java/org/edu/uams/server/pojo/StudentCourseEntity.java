@@ -1,6 +1,8 @@
 package org.edu.uams.server.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,69 +12,103 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 
 @Entity(name = "StudentCourse")
 @Table(name = "student_course")
 public class StudentCourseEntity implements Serializable {
+    
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
+    
+    public static final  String  FIND_ALL="SELECT s FROM StudentCourse s";
+    public static final  String FIND_BY_STUDENT_ID="SELECT r FROM StudentCourse r JOIN r.student s  where s.id = :studentId";
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+    
+    @ManyToOne(optional=false,targetEntity=DegreeTypeEntity.class)
+    @JoinColumn(name = "degree_type_id", referencedColumnName="id", nullable = false)
+    private DegreeTypeEntity degreeType;
+    
+    @ManyToOne(optional=false,targetEntity=CourseTypeEntity.class)
+    @JoinColumn(name = "course_id", referencedColumnName="id", nullable = false)
+    private CourseTypeEntity courseType;
+    
+    @Basic(optional = false)
+    @ManyToOne(optional = false, targetEntity = StudentEntity.class)
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false )
+    private StudentEntity student;
+    
+    @Basic(optional = true)
+    @Column(name = "starts_on")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date startsOn ;
+    
+    @Basic(optional = true)
+    @Column(name = "ends_on")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date endsOn ;
+    
+    public long getId() {
+        return id;
+    }
+    
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    public DegreeTypeEntity getDegreeType() {
+        return degreeType;
+    }
+    
+    public void setDegreeType(DegreeTypeEntity degreeType) {
+        this.degreeType = degreeType;
+    }
+    
+    public CourseTypeEntity getCourseType() {
+        return courseType;
+    }
+    
+    public void setCourseType(CourseTypeEntity courseType) {
+        this.courseType = courseType;
+    }
+    
+    public StudentEntity getStudent() {
+        return student;
+    }
+    
+    public void setStudent(StudentEntity student) {
+        this.student = student;
+    }
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4781688245002267614L;
+    public Date getStartsOn() {
+        return startsOn;
+    }
 
+    public void setStartsOn(Date startsOn) {
+        this.startsOn = startsOn;
+    }
 
-	public static final  String  STUDENTCOURSE_FIND_ALL="SELECT s FROM StudentCourse s";
+    public Date getEndsOn() {
+        return endsOn;
+    }
 
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private long id;
-
-//	@ManyToOne(optional=false,targetEntity=UserMasterEntity.class) 
-//	@JoinColumn(name = "user_master_id", referencedColumnName="id",nullable=false, updatable=false)
-//	private UserMasterEntity userMaster;
-
-	@ManyToOne(optional=false,targetEntity=CourseMasterEntity.class) 
-	@JoinColumn(name = "course_id", referencedColumnName="id",nullable=false, updatable=false)
-	private CourseMasterEntity courseId;
-	
-	@Column(name = "current_session", nullable = true, length =2)
-	private long currentSession;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-//	public UserMasterEntity getUserMaster() {
-//		return userMaster;
-//	}
-//
-//	public void setUserName(UserMasterEntity userMaster) {
-//		this.userMaster = userMaster;
-//	}
-
-	public CourseMasterEntity getCourseId() {
-		return courseId;
-	}
-
-	public void setCourse_id(CourseMasterEntity courseId) {
-		this.courseId = courseId;
-	}
-
-	public long getCurrentSession() {
-		return currentSession;
-	}
-
-	public void setCurrentSession(long currentSession) {
-		this.currentSession = currentSession;
-	}
-
-
-
+    public void setEndsOn(Date endsOn) {
+        this.endsOn = endsOn;
+    }
+    
+    
+    
+    
+    
+    
+    
 }

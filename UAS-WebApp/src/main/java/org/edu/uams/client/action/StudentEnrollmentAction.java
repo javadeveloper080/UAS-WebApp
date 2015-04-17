@@ -9,10 +9,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.edu.uams.client.form.StudentEnrollmentForm;
 import org.edu.uams.server.api.ApplicationConstants;
-import org.edu.uams.server.business.CourseMasterDao;
+import org.edu.uams.server.business.CourseTypeDao;
 import org.edu.uams.server.business.StudentDao;
 import org.edu.uams.server.business.StudentEnrollmentDAO;
-import org.edu.uams.server.pojo.CourseMasterEntity;
+import org.edu.uams.server.pojo.CourseTypeEntity;
 import org.edu.uams.server.pojo.StudentEnrollmentEntity;
 import org.edu.uams.server.pojo.StudentEntity;
 import org.edu.uams.server.util.ApplicationUtil;
@@ -45,8 +45,8 @@ public class StudentEnrollmentAction extends org.apache.struts.action.Action {
 
         StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
         StudentDao studentDao = new StudentDao();
-        CourseMasterDao courseMasterDao = new CourseMasterDao();
-        List<CourseMasterEntity> listOfCourses = courseMasterDao.findAll();
+        CourseTypeDao courseTypeDao = new CourseTypeDao();
+        List<CourseTypeEntity> listOfCourses = courseTypeDao.findAll();
         studentEnrollmentForm.setListOfCourses(listOfCourses);
         
         if (studentEnrollmentForm.getSearchText()!=null) {
@@ -60,13 +60,13 @@ public class StudentEnrollmentAction extends org.apache.struts.action.Action {
         
         if (studentEnrollmentForm.getPageName() != null && studentEnrollmentForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             enrollmentEntity = new StudentEnrollmentEntity();
-            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,studentDao,courseMasterDao);
+            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,studentDao,courseTypeDao);
             studentEnrollmentDAO.persist(enrollmentEntity);
             studentEnrollmentForm.setId(enrollmentEntity.getId());
         }
         if (studentEnrollmentForm.getPageName() != null && studentEnrollmentForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
             enrollmentEntity = studentEnrollmentDAO.findByPrimaryKey(studentEnrollmentForm.getId());
-            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,studentDao, courseMasterDao);
+            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,studentDao, courseTypeDao);
             studentEnrollmentDAO.update(enrollmentEntity);
             studentEnrollmentForm.setId(enrollmentEntity.getId());
         }
@@ -77,8 +77,8 @@ public class StudentEnrollmentAction extends org.apache.struts.action.Action {
     }
 
     private void copyFormDataToEntity(StudentEnrollmentForm studentEnrollmentForm, StudentEnrollmentEntity enrollmentEntity,
-        StudentDao studentDao, CourseMasterDao courseMasterDao) {
-        enrollmentEntity.setCourseId(courseMasterDao.findByPrimaryKey(studentEnrollmentForm.getCourseId()));
+        StudentDao studentDao, CourseTypeDao courseTypeDao) {
+        enrollmentEntity.setCourseType(courseTypeDao.findByPrimaryKey(studentEnrollmentForm.getCourseId()));
         enrollmentEntity.setDateEnrolled(ApplicationUtil.formatStringToDate(studentEnrollmentForm.getDateEnrolled()));
         enrollmentEntity.setGrade(studentEnrollmentForm.getGrade());
         enrollmentEntity.setStudentId(studentDao.findByPrimaryKey(studentEnrollmentForm.getStudentId()));

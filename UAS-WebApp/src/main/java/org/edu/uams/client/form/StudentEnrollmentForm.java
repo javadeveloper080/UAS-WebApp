@@ -1,10 +1,7 @@
 package org.edu.uams.client.form;
 
-import java.util.Date;
 import java.util.List;
 import org.apache.struts.action.ActionForm;
-import org.edu.uams.server.pojo.CourseMasterEntity;
-import org.edu.uams.server.pojo.StudentEntity;
 
 /**
  *
@@ -21,7 +18,7 @@ public class StudentEnrollmentForm extends ActionForm {
     private String searchText;
     private String rollNum;
     private String studentFullName;
-    private List<CourseMasterEntity> listOfCourses;
+    private List listOfCourses;
 
     public Long getStudentId() {
         return studentId;
@@ -95,11 +92,11 @@ public class StudentEnrollmentForm extends ActionForm {
         this.studentFullName = studentFullName;
     }
 
-    public List<CourseMasterEntity> getListOfCourses() {
+    public List getListOfCourses() {
         return listOfCourses;
     }
 
-    public void setListOfCourses(List<CourseMasterEntity> listOfCourses) {
+    public void setListOfCourses(List listOfCourses) {
         this.listOfCourses = listOfCourses;
     }
       

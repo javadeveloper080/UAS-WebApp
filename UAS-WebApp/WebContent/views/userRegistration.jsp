@@ -65,6 +65,31 @@ function userRegistrationAction()
 		return false;
 
 	}
+        
+        function checkEmail() {
+		email = document.getElementById('email');
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if (!filter.test(email.value)) {
+		alert('Please provide a valid email address');
+		email.focus;
+		return false;
+		} else {
+			   emailValue=email.value;
+			  hp=createObject();
+			   hp.open("GET",url,false);
+			   hp.onreadystatechange=callMe;
+			   hp.send(null);
+		}
+	}
+	function isNumberKey(evt)
+	{
+	   var charCode = (evt.which) ? evt.which : event.keyCode;
+	   if (charCode != 46 && charCode > 31 
+	     && (charCode < 48 || charCode > 57))
+	      return false;
+	
+	   return true;
+	}
 
 	else{
 	

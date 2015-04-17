@@ -52,9 +52,15 @@ public class StudentEnrollmentEntity implements Serializable {
     @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private StudentEntity studentId;
-    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
-    private CourseMasterEntity courseId;
+    
+    
+    @ManyToOne(optional = false, targetEntity = CourseTypeEntity.class)
+    @JoinColumn(name = "course_type_id", referencedColumnName = "id", nullable = false)
+    private CourseTypeEntity courseType;
+    
+    @ManyToOne(optional = false, targetEntity = DegreeTypeEntity.class)
+    @JoinColumn(name = "degree_type_id", referencedColumnName = "id", nullable = false)
+    private DegreeTypeEntity degreeType;
 
     public StudentEnrollmentEntity() {
     }
@@ -100,37 +106,24 @@ public class StudentEnrollmentEntity implements Serializable {
         this.studentId = studentId;
     }
 
-    public CourseMasterEntity getCourseId() {
-        return courseId;
+    public CourseTypeEntity getCourseType() {
+        return courseType;
     }
 
-    public void setCourseId(CourseMasterEntity courseId) {
-        this.courseId = courseId;
+    public void setCourseType(CourseTypeEntity courseType) {
+        this.courseType = courseType;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public DegreeTypeEntity getDegreeType() {
+        return degreeType;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof StudentEnrollmentEntity)) {
-            return false;
-        }
-        StudentEnrollmentEntity other = (StudentEnrollmentEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setDegreeType(DegreeTypeEntity degreeType) {
+        this.degreeType = degreeType;
     }
 
-    @Override
-    public String toString() {
-        return "org.edu.uams.server.pojo.StudentEnrollment[ id=" + id + " ]";
-    }
+  
+
+   
     
 }

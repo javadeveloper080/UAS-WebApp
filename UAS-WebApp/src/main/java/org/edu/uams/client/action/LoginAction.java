@@ -3,7 +3,6 @@
   */
 package org.edu.uams.client.action;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,10 +14,7 @@ import org.edu.uams.client.form.LoginForm;
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.EmailDTO;
 import org.edu.uams.server.api.UserContext;
-import org.edu.uams.server.business.AdminDao;
 import org.edu.uams.server.business.UserMasterDao;
-import org.edu.uams.server.business.UserMasterTypeDao;
-import org.edu.uams.server.pojo.AdminEntity;
 import org.edu.uams.server.pojo.UserMasterEntity;
 import org.edu.uams.server.util.SendMail;
 import org.edu.uams.server.util.SessionTracker;
@@ -32,8 +28,6 @@ public class LoginAction extends DispatchAction {
             HttpServletResponse res)throws Exception
     {
         return mapping.findForward("loginPage");
-        
-        
     }
     
     
@@ -44,6 +38,7 @@ public class LoginAction extends DispatchAction {
         
         LoginForm loginForm = (LoginForm)form;
         UserMasterDao userMasterDao = new UserMasterDao();
+        String forwardPath="noUserFound";
         
         UserMasterEntity userMasterEntity =userMasterDao.findByLoginName(loginForm.getUserName(),loginForm.getPassword());
         if (userMasterEntity!=null) {
@@ -51,18 +46,16 @@ public class LoginAction extends DispatchAction {
             UserContext userContext=new UserContext(userMasterEntity.getId(), userMasterEntity.getUserName(),false,loginForm,userMasterEntity.getUserType().getCode());
             SessionTracker.registerUser(req, userContext);
             if (userMasterEntity.getUserType().getCode().equals(ApplicationConstants.ADMIN)) {
-                return mapping.findForward("adminHomePage");
-            }
-            else {
-                //TODO
-                return mapping.findForward("PROFESSOR");
+                forwardPath="adminHomePage";
             }
         }
         else{
             loginForm.setLoginMessage("No User Found of this User Name:"+loginForm.getUserName()+
                     "\n Please Check your User Name and Password");
-            return mapping.findForward("noUserFound");
+            forwardPath="noUserFound";
         }
+        
+         return mapping.findForward(forwardPath);
     }
     
     
@@ -73,7 +66,6 @@ public class LoginAction extends DispatchAction {
         LoginForm loginForm = (LoginForm)form;
         if (SessionTracker.checkLoginContext(req)!=null) {
             SessionTracker.logOut(req);
-            
         }
         loginForm.clearFormValues();
         return mapping.findForward("homePage");
@@ -89,13 +81,8 @@ public class LoginAction extends DispatchAction {
         
         LoginForm loginForm = (LoginForm)form;
         
-        
-        AdminDao adminDao = new AdminDao();
-        AdminEntity adminEntity =adminDao.findAdminName(loginForm.getUserName());
-        
         UserMasterDao userMasterDao = new UserMasterDao();
         UserMasterEntity userMasterEntity =userMasterDao.findEmail(loginForm.getEmail());
-        
         
         String toEmailAdress=null;
         if (userMasterEntity!=null && userMasterEntity.getEmail()!=null) {
@@ -106,18 +93,9 @@ public class LoginAction extends DispatchAction {
             loginForm.setLoginMessage("Your Password Details have been mailed to your E-mail Id");
             return mapping.findForward("loginPage");
         }
-        //   else if (userMasterEntity!=null && userMasterEntity.getEmail()!=null){
-        //  toEmailAdress=userMasterEntity.getEmail();
-        //  String name=userMasterEntity.getFirstName()+ "  " +userMasterEntity.getLastName();
-        //String passWord=userMasterEntity.getPassWord();
-        //sendPassWordAction(passWord, toEmailAdress, name);
-        //loginForm.setLoginMessage("Your Password Details have been mailed to your E-mail Id");
-        //return mapping.findForward("userFound");
-        //  }
         else{
             loginForm.setLoginMessage("No User Found of this User Name:"+loginForm.getUserName());
             return mapping.findForward("loginPage");
-            
         }
     }
     
