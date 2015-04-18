@@ -99,8 +99,8 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="feeCatId">Fee Type:</label>
-                                            <html:select  styleClass="form-control" property="feeCatId" styleId="feeCatId">
+                                            <label for="feeTypeId">Fee Type:</label>
+                                            <html:select  styleClass="form-control" property="feeTypeId" styleId="feeTypeId">
                                                 <html:option value="0">Select fee type</html:option>
                                                 <html:optionsCollection   name="studentFeeForm"
                                                                           property="feeTypeEntitys" label="code" value="id" />
@@ -145,7 +145,7 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="studentFeeForm" property="studentFeeEntitys">
-                                        <logic:iterate id="studentFee" name="studentFeeForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
+                                        <logic:iterate id="studentFee" name="studentFeeForm" property="studentFeeEntitys" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
                                             <tr>
                                                 <td><bean:write name="studentFee" property="rollNum"/></td>
                                                 <td><bean:write name="studentFee" property="feeName"/></td>
@@ -188,6 +188,19 @@
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    
+    
+    
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
@@ -198,27 +211,7 @@
 
 
                                                     function validateForm() {
-                                                        alert("Validate Form Values");
-                                                        // get the form values
-                                                        var code = document.getElementById('code').value;
-                                                        var description = document.getElementById('description').value;
-
-                                                        if (code == null || code == "") {
-                                                            alert("Please Enter Code");
-                                                            document.getElementById('code').cfocus();
-                                                            return false;
-                                                        }
-
-                                                        if (description == null || description == "") {
-                                                            alert("Please Enter Description");
-                                                            document.getElementById('description').focus();
-                                                            return false;
-                                                        }
-                                                        if (feeCatId == null || feeCatId == "") {
-                                                            alert("Please Select a Fee Category");
-                                                            document.getElementById('feeCatId').focus();
-                                                            return false;
-                                                        }
+                                                        
                                                         submitForm();
                                                     }
 
@@ -250,14 +243,20 @@
                                                     function rset()
                                                     {
                                                         alert('reset');
-                                                        document.getElementById('code').value = "";
-                                                        document.getElementById('description').value = "";
+                                                        document.getElementById('searchText').value = "";
+                                                        document.getElementById('rollNum').value = "";
+                                                        document.getElementById('feeName').value = "";
+                                                        document.getElementById('totalAmount').value = "0.0";
+                                                        document.getElementById('feePaymentDate').value = "";
+                                                        document.getElementById('discountType').value = "";
+                                                        document.getElementById('studentName').value = "";
+                                                        document.getElementById('feeTypeId').value = "0";
                                                         document.getElementById('id').value = "0";
                                                         document.getElementById('pageName').value = "";
 
                                                     }
                                                     $(function () {
-                                                        $("#dob").datepicker({
+                                                        $("#feePaymentDate").datepicker({
                                                             showOn: "button",
                                                             buttonImage: "images/calendar.gif",
                                                         });
@@ -275,9 +274,9 @@
 
                                                         $.ajax({
                                                             type: "POST",
-                                                            url: "/UAMS-WebApp/studentAction.do?method=findByStudentRollNumber",
+                                                            url: "/UAMS-WebApp/studentFeeAction.do?method=studentFeePage",
                                                             data: {
-                                                                "rollNum": searchText
+                                                                "searchText": searchText
                                                             },
                                                             success: function (response) {
                                                                 if (response == 'false') {

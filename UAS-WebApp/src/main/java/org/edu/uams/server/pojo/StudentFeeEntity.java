@@ -2,7 +2,6 @@
 package org.edu.uams.server.pojo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Transient;
 
 /**
  *
@@ -36,7 +33,7 @@ public class StudentFeeEntity implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "total_amount")
-    private BigDecimal totalAmount;
+    private Double totalAmount;
     
     @Basic(optional = false)
     @Column(name = "fee_payment_date")
@@ -50,7 +47,11 @@ public class StudentFeeEntity implements Serializable {
     @Column(name = "discount_type")
     private String discountType;
     
+    @Transient
+    private String studentName;
   
+    @Transient
+    private String rollNum;
     
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -67,13 +68,31 @@ public class StudentFeeEntity implements Serializable {
         this.id = id;
     }
 
-    public StudentFeeEntity(Long id, BigDecimal totalAmount, String feePaymentDate, String feeName, String discountType) {
+    public StudentFeeEntity(Long id, Double totalAmount, String feePaymentDate, String feeName, String discountType) {
         this.id = id;
         this.totalAmount = totalAmount;
         this.feePaymentDate = feePaymentDate;
         this.feeName = feeName;
         this.discountType = discountType;
     }
+
+    public String getRollNum() {
+        if(student != null)
+        {
+            return student.getRollNum();
+        }
+        return rollNum;
+    }
+
+    public String getStudentName() {
+         if(student != null)
+        {
+            return student.getStudentFullName();
+        }
+        return studentName;
+    }
+
+    
 
     public FeeTypeEntity getFeeTypeEntity() {
         return feeTypeEntity;
@@ -83,11 +102,11 @@ public class StudentFeeEntity implements Serializable {
         this.feeTypeEntity = feeTypeEntity;
     }
     
-    public BigDecimal getTotalAmount() {
+    public Double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -115,11 +134,11 @@ public class StudentFeeEntity implements Serializable {
         this.discountType = discountType;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -20,9 +20,9 @@ import org.edu.uams.server.pojo.StudentFeeEntity;
  */
 public class StudentFeeForm extends org.apache.struts.action.ActionForm {
 
-    private Long id;
+    private Long id = 0l;
     private String serial;
-    private BigDecimal totalAmount;
+    private Double totalAmount;
     private String feePaymentDate;
     private String feeName;
     private String discountType;
@@ -35,7 +35,6 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
     private Long feeTypeId;
     private String studentName;
     private String  searchText;
-    private Long feeCatId;
     
     /**
      *
@@ -45,14 +44,6 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         // TODO Auto-generated constructor stub
     }
 
-    public Long getFeeCatId() {
-        return feeCatId;
-    }
-
-    public void setFeeCatId(Long feeCatId) {
-        this.feeCatId = feeCatId;
-    }
-    
     public String getSearchText() {
         return searchText;
     }
@@ -134,11 +125,12 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         this.serial = serial;
     }
 
-    public BigDecimal getTotalAmount() {
+
+    public Double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -186,11 +178,11 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         this.studentFeeEntitys = null;
         this.studentEntitys = null;
         this.feeTypeEntitys = null;
-        this.studentId = null;
-        this.feeTypeId = null;
+        this.studentId = 0l;
+        this.feeTypeId = 0l;
         this.studentName = null;
         this.searchText = null;
-        this.feeCatId = 0l;
+        this.totalAmount = 0.0;
     }
 
 }

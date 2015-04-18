@@ -49,6 +49,12 @@ public class StudentFeeAction extends DispatchAction {
         
         if (studentFeeForm.getSearchText()!=null) {
             studentEntity = studentDao.findByStudentRollNumber(studentFeeForm.getSearchText());
+            if(studentEntity != null)
+            {
+                studentFeeForm.setRollNum(studentEntity.getRollNum());
+              studentFeeForm.setStudentName(studentEntity.getStudentFullName());
+              studentFeeForm.setStudentId(studentEntity.getId());
+            }
         }
         
         if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
@@ -92,8 +98,8 @@ public class StudentFeeAction extends DispatchAction {
             studentFeeEntity.setFeeName(studentFeeForm.getFeeName());
             studentFeeEntity.setFeePaymentDate(studentFeeForm.getFeePaymentDate());
 
-            studentFeeEntity.setFeeTypeEntity(feeTypeDao.findByPrimaryKey(studentFeeForm.getStudentId()));
-            studentFeeEntity.setId(studentFeeForm.getId());
+            studentFeeEntity.setFeeTypeEntity(feeTypeDao.findByPrimaryKey(studentFeeForm.getFeeTypeId()));
+//            studentFeeEntity.setId(studentFeeForm.getId());
 
             studentFeeEntity.setStudent(studentDao.findByPrimaryKey(studentFeeForm.getStudentId()));
             studentFeeEntity.setTotalAmount(studentFeeForm.getTotalAmount());
