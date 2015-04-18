@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Fee Category Type</title>
+        <title>Users</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -176,8 +176,8 @@
                                                         }
                                                         $(function () {
                                                             $("#inActiveOn").datepicker({
-//                                                                showOn: "button",
-//                                                                buttonImage: "images/calendar.gif",
+                                                                showOn: "button",
+                                                                buttonImage: "images/calendar.gif",
                                                             });
                                                         });
 

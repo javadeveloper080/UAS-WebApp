@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
         
-        <title>Degree Type</title>
+        <title>Program Level Type</title>
         
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Add/Edit Degree type</Strong> </h5>
+                            <h5><Strong>Add/Edit Program Level type</Strong> </h5>
                                     <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
                                 
@@ -78,7 +78,7 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Degree type table</h4>
+                                <h4><i class="fa fa-angle-right"></i> Program Level type table</h4>
                                 <hr>
                                 <thead>
                                     <tr>
@@ -89,7 +89,7 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.DegreeTypeEntity">
+                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.ProgramLevelTypeEntity">
                                             <tr>
                                                 <td><bean:write name="typeTable" property="code"/></td>
                                                 <td><bean:write name="typeTable" property="description"/></td>
@@ -161,7 +161,7 @@
                 url: "/UAMS-WebApp/typeTableAction.do?method=checkUniqueCode",
                 data: {
                     "code": code,
-                    "pageName": "DegreeType",
+                    "pageName": "ProgramLevelType",
                     "id": id
                 },
                     
@@ -187,7 +187,7 @@
 //            alert('Get Editff Type'+id);
             document.getElementById('id').value =id;	
             document.getElementById('pageName').value ="GetEditTypeForm"	
-            document.typeTableForm.action="typeTableAction.do?method=degreeTypePage";
+            document.typeTableForm.action="typeTableAction.do?method=programLevelTypePage";
             document.typeTableForm.submit();
         }
     
@@ -199,7 +199,7 @@
             }else{
                 document.getElementById('pageName').value ="SubmitAddType"
             }
-            document.typeTableForm.action="typeTableAction.do?method=degreeTypePage";
+            document.typeTableForm.action="typeTableAction.do?method=programLevelTypePage";
             document.typeTableForm.submit();
         }
 	

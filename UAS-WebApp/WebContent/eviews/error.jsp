@@ -11,7 +11,7 @@
         <meta name="author" content="UMAS">
         
         
-        <title>UMAS</title>
+        <title>UAMS</title>
         
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">

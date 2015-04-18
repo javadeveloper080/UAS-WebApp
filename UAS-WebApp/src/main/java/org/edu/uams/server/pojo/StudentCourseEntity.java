@@ -34,9 +34,9 @@ public class StudentCourseEntity implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
     
-    @ManyToOne(optional=false,targetEntity=DegreeTypeEntity.class)
-    @JoinColumn(name = "degree_type_id", referencedColumnName="id", nullable = false)
-    private DegreeTypeEntity degreeType;
+    @ManyToOne(optional=false,targetEntity=ProgramLevelTypeEntity.class)
+    @JoinColumn(name = "program_level_type_id", referencedColumnName="id", nullable = false)
+    private ProgramLevelTypeEntity programLevelType;
     
     @ManyToOne(optional=false,targetEntity=CourseTypeEntity.class)
     @JoinColumn(name = "course_id", referencedColumnName="id", nullable = false)
@@ -65,13 +65,7 @@ public class StudentCourseEntity implements Serializable {
         this.id = id;
     }
     
-    public DegreeTypeEntity getDegreeType() {
-        return degreeType;
-    }
     
-    public void setDegreeType(DegreeTypeEntity degreeType) {
-        this.degreeType = degreeType;
-    }
     
     public CourseTypeEntity getCourseType() {
         return courseType;
@@ -103,6 +97,14 @@ public class StudentCourseEntity implements Serializable {
 
     public void setEndsOn(Date endsOn) {
         this.endsOn = endsOn;
+    }
+
+    public ProgramLevelTypeEntity getProgramLevelType() {
+        return programLevelType;
+    }
+
+    public void setProgramLevelType(ProgramLevelTypeEntity programLevelType) {
+        this.programLevelType = programLevelType;
     }
     
     

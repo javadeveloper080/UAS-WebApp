@@ -15,12 +15,12 @@ import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.form.TypeTableForm;
 import org.edu.uams.server.api.Type;
 import org.edu.uams.server.business.CourseTypeDao;
-import org.edu.uams.server.business.DegreeTypeDao;
+import org.edu.uams.server.business.ProgramLevelTypeDao;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
 import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.CourseTypeEntity;
-import org.edu.uams.server.pojo.DegreeTypeEntity;
+import org.edu.uams.server.pojo.ProgramLevelTypeEntity;
 import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
 import org.edu.uams.server.pojo.FeeTypeEntity;
 import org.edu.uams.server.pojo.UserMasterTypeEntity;
@@ -180,51 +180,51 @@ public class TypeTableAction extends DispatchAction {
 
     
     
-    public ActionForward degreeTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+    public ActionForward programLevelTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
             HttpServletResponse res)throws Exception
     {
         
         TypeTableForm typeTableForm = (TypeTableForm)form;
         System.out.println("typeTableForm:"+typeTableForm.getPageName());
-        DegreeTypeDao degreeTypeDao = new DegreeTypeDao();
+        ProgramLevelTypeDao programLevelTypeDao = new ProgramLevelTypeDao();
         
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("GetEditTypeForm"))
         {
             
-            DegreeTypeEntity degreeTypeEntity = degreeTypeDao.findByPrimaryKey(typeTableForm.getId());
+            ProgramLevelTypeEntity programLevelTypeEntity = programLevelTypeDao.findByPrimaryKey(typeTableForm.getId());
             typeTableForm.resetForm();
-            typeTableForm.setCode(degreeTypeEntity.getCode());
-            typeTableForm.setDescription(degreeTypeEntity.getDescription());
-            typeTableForm.setId(degreeTypeEntity.getId());
+            typeTableForm.setCode(programLevelTypeEntity.getCode());
+            typeTableForm.setDescription(programLevelTypeEntity.getDescription());
+            typeTableForm.setId(programLevelTypeEntity.getId());
         }
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitEditType"))
         {
-            DegreeTypeEntity degreeTypeEntity = degreeTypeDao.findByPrimaryKey(typeTableForm.getId());
-            degreeTypeEntity.setCode(typeTableForm.getCode());
-            degreeTypeEntity.setDescription(typeTableForm.getDescription());
-            degreeTypeDao.update(degreeTypeEntity);
+            ProgramLevelTypeEntity programLevelTypeEntity = programLevelTypeDao.findByPrimaryKey(typeTableForm.getId());
+            programLevelTypeEntity.setCode(typeTableForm.getCode());
+            programLevelTypeEntity.setDescription(typeTableForm.getDescription());
+            programLevelTypeDao.update(programLevelTypeEntity);
             typeTableForm.resetForm();
             
         }
         
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("SubmitAddType"))
         {
-            DegreeTypeEntity degreeTypeEntity = new DegreeTypeEntity();
-            degreeTypeEntity.setCode(typeTableForm.getCode());
-            degreeTypeEntity.setDescription(typeTableForm.getDescription());
-            degreeTypeDao.persist(degreeTypeEntity);
+            ProgramLevelTypeEntity programLevelTypeEntity = new ProgramLevelTypeEntity();
+            programLevelTypeEntity.setCode(typeTableForm.getCode());
+            programLevelTypeEntity.setDescription(typeTableForm.getDescription());
+            programLevelTypeDao.persist(programLevelTypeEntity);
             typeTableForm.resetForm();
         }
         
-        List<DegreeTypeEntity> degreeTypeList = degreeTypeDao.findAll();
-        if(!degreeTypeList.isEmpty()){
-            typeTableForm.setTypeFormList(degreeTypeList);
+        List<ProgramLevelTypeEntity> programLevelTypeList = programLevelTypeDao.findAll();
+        if(!programLevelTypeList.isEmpty()){
+            typeTableForm.setTypeFormList(programLevelTypeList);
         }
         req.setAttribute("courseModule", "true");
-        req.setAttribute("degreeTypePage", "true");
-        return mapping.findForward("degreeTypePage");
+        req.setAttribute("programLevelTypePage", "true");
+        return mapping.findForward("programLevelTypePage");
     }
     
     
@@ -300,10 +300,10 @@ public class TypeTableAction extends DispatchAction {
         }
         
         
-        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("DegreeType"))
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("ProgramLevelType"))
         {
-            DegreeTypeDao degreeTypeDao = new DegreeTypeDao();
-            Type typeEntity =degreeTypeDao.findByCode(typeTableForm.getCode());
+            ProgramLevelTypeDao programLevelTypeDao = new ProgramLevelTypeDao();
+            Type typeEntity =programLevelTypeDao.findByCode(typeTableForm.getCode());
             ApplicationUtil.checkUniqueCodeHelper(typeEntity, key, response);
         }
         if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("CourseType"))

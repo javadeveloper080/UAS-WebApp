@@ -10,9 +10,9 @@ import javax.persistence.Table;
 import org.edu.uams.server.api.Type;
 
 
-@Entity(name = "DegreeType")
-@Table(name = "degree_type")
-public class DegreeTypeEntity implements Type {
+@Entity(name = "ProgramLevelType")
+@Table(name = "program_level_type")
+public class ProgramLevelTypeEntity implements Type {
     
     /**
      *
@@ -20,8 +20,8 @@ public class DegreeTypeEntity implements Type {
     private static final long serialVersionUID = 1L;
     
     
-    public static final  String  FIND_ALL="SELECT f FROM DegreeType f";
-    public static final  String  FIND_BY_CODE="SELECT f FROM DegreeType f where f.code = :code";
+    public static final  String  FIND_ALL="SELECT f FROM ProgramLevelType f";
+    public static final  String  FIND_BY_CODE="SELECT f FROM ProgramLevelType f where f.code = :code";
     
     
     @Id
@@ -34,6 +34,14 @@ public class DegreeTypeEntity implements Type {
     
     @Column(name = "description", nullable = false, length =100)
     private String description;
+
+    public ProgramLevelTypeEntity() {
+    }
+
+    public ProgramLevelTypeEntity(String code, String description) {
+      this.description=description;
+       this.code=code;
+    }
     
     @Override
     public long getId() {

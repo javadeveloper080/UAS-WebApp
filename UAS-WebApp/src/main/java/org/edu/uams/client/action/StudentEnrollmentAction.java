@@ -1,31 +1,32 @@
 
 package org.edu.uams.client.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.DispatchAction;
+import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.StudentEnrollmentForm;
 import org.edu.uams.server.api.ApplicationConstants;
+import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.business.CourseTypeDao;
-import org.edu.uams.server.business.StudentDao;
+import org.edu.uams.server.business.ProgramLevelTypeDao;
 import org.edu.uams.server.business.StudentEnrollmentDAO;
 import org.edu.uams.server.pojo.CourseTypeEntity;
+import org.edu.uams.server.pojo.ProgramLevelTypeEntity;
 import org.edu.uams.server.pojo.StudentEnrollmentEntity;
-import org.edu.uams.server.pojo.StudentEntity;
 import org.edu.uams.server.util.ApplicationUtil;
 
-/**
- *
- * @author SARAT
- */
-public class StudentEnrollmentAction extends org.apache.struts.action.Action {
 
+public class StudentEnrollmentAction extends DispatchAction {
+    
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
-
+    
     /**
      * This is the action called from the Struts framework.
      *
@@ -36,51 +37,69 @@ public class StudentEnrollmentAction extends org.apache.struts.action.Action {
      * @throws java.lang.Exception
      * @return
      */
-    @Override
-    public ActionForward execute(ActionMapping mapping, ActionForm form,
+    public ActionForward studentEnrollmentPage(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        
         StudentEnrollmentForm studentEnrollmentForm = (StudentEnrollmentForm) form;
         StudentEnrollmentEntity enrollmentEntity = null;
-
-        StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
-        StudentDao studentDao = new StudentDao();
-        CourseTypeDao courseTypeDao = new CourseTypeDao();
-        List<CourseTypeEntity> listOfCourses = courseTypeDao.findAll();
-        studentEnrollmentForm.setListOfCourses(listOfCourses);
         
-        if (studentEnrollmentForm.getSearchText()!=null) {
-            StudentEntity    studentEntity = studentDao.findByStudentRollNumber(studentEnrollmentForm.getSearchText());
-            if(studentEntity!=null){
-                studentEnrollmentForm.setRollNum(studentEntity.getRollNum());
-                studentEnrollmentForm.setStudentFullName(studentEntity.getStudentFullName());
-                studentEnrollmentForm.setStudentId(studentEntity.getId());
-            }
-        }
+        StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
+        
+        Long nextId=studentEnrollmentDAO.getLastestId()+1;
+        
+        ProgramLevelTypeDao programLevelTypeDao = new ProgramLevelTypeDao();
+        CourseTypeDao courseTypeDao = new CourseTypeDao();
         
         if (studentEnrollmentForm.getPageName() != null && studentEnrollmentForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             enrollmentEntity = new StudentEnrollmentEntity();
-            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,studentDao,courseTypeDao);
-            studentEnrollmentDAO.persist(enrollmentEntity);
-            studentEnrollmentForm.setId(enrollmentEntity.getId());
+            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,courseTypeDao, programLevelTypeDao,nextId);
+            StudentEnrollmentEntity persited=studentEnrollmentDAO.persist(enrollmentEntity);
+            if (persited!=null ) {
+                studentEnrollmentForm.setStatusMessage("You have Sucessfull enrolled for the selected course, Your Enrollemnt number is :"+persited.getEnrollmentNumber());
+            }
         }
-        if (studentEnrollmentForm.getPageName() != null && studentEnrollmentForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
-            enrollmentEntity = studentEnrollmentDAO.findByPrimaryKey(studentEnrollmentForm.getId());
-            copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,studentDao, courseTypeDao);
-            studentEnrollmentDAO.update(enrollmentEntity);
-            studentEnrollmentForm.setId(enrollmentEntity.getId());
-        }
-
-        request.setAttribute("studentModule", "true");
-        request.setAttribute("studentEnrollment", "true");
+        
+        List<CourseTypeEntity> listOfCourses = courseTypeDao.findAll();
+        studentEnrollmentForm.setListOfCourses(listOfCourses);
+        studentEnrollmentForm.setGenderTypeList(getGenderTypeList());
+        studentEnrollmentForm.setListOfProgamLevelTypes(programLevelTypeDao.findAll());
+        
         return mapping.findForward(SUCCESS);
     }
-
-    private void copyFormDataToEntity(StudentEnrollmentForm studentEnrollmentForm, StudentEnrollmentEntity enrollmentEntity,
-        StudentDao studentDao, CourseTypeDao courseTypeDao) {
-        enrollmentEntity.setCourseType(courseTypeDao.findByPrimaryKey(studentEnrollmentForm.getCourseId()));
+    
+    private void copyFormDataToEntity(StudentEnrollmentForm studentEnrollmentForm, StudentEnrollmentEntity enrollmentEntity,CourseTypeDao courseTypeDao,
+            ProgramLevelTypeDao programLevelTypeDao,Long nextId) {
+        CourseTypeEntity appliedCourse = courseTypeDao.findByPrimaryKey(studentEnrollmentForm.getApplyCourseId());
+        
+        ProgramLevelTypeEntity appliedDProgramLevelType=programLevelTypeDao.findByPrimaryKey(studentEnrollmentForm.getAppliedProgramLevelTypeId());
+        
+        enrollmentEntity.setAppliedCourseType(appliedCourse);
+        enrollmentEntity.setAppliedProgramLevelType(appliedDProgramLevelType);
         enrollmentEntity.setDateEnrolled(ApplicationUtil.formatStringToDate(studentEnrollmentForm.getDateEnrolled()));
+        enrollmentEntity.setDob(ApplicationUtil.formatStringToDate(studentEnrollmentForm.getDob()));
+        enrollmentEntity.setEmail(studentEnrollmentForm.getEmail());
+        enrollmentEntity.setFirstName(studentEnrollmentForm.getFirstName());
+        enrollmentEntity.setGenderType(GenderType.valueOf(studentEnrollmentForm.getGenderType()));
         enrollmentEntity.setGrade(studentEnrollmentForm.getGrade());
-        enrollmentEntity.setStudentId(studentDao.findByPrimaryKey(studentEnrollmentForm.getStudentId()));
+        enrollmentEntity.setLastGraduatedCourseType(courseTypeDao.findByPrimaryKey(studentEnrollmentForm.getLastGraduatedCourseId()));
+        if (studentEnrollmentForm.getGraduatedProgramLevelTypeId()!=null) {
+            enrollmentEntity.setLastGraduatedProgramLevelType(programLevelTypeDao.findByPrimaryKey(studentEnrollmentForm.getGraduatedProgramLevelTypeId()));
+        }
+        enrollmentEntity.setLastName(studentEnrollmentForm.getLastName());
+        enrollmentEntity.setStudentMob(studentEnrollmentForm.getStudentMob());
+        
+        String enrollmentNumber=appliedDProgramLevelType.getCode()+"-"+appliedCourse.getCode()+ "-"+nextId;
+        enrollmentEntity.setEnrollmentNumber(enrollmentNumber);
+        
+    }
+    
+    
+     private List<LabelValueBean> getGenderTypeList() {
+        List<LabelValueBean> genderTypeList = new ArrayList<>();
+        for (GenderType genderType : GenderType.values()) {
+            genderTypeList.add(new LabelValueBean(genderType.name(), genderType.name()));
+        }
+        return genderTypeList;
     }
 }

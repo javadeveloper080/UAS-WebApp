@@ -8,104 +8,196 @@ import org.apache.struts.action.ActionForm;
  * @author SARAT
  */
 public class StudentEnrollmentForm extends ActionForm {
-
-    private Long studentId;
-    private Long courseId;
+    
+    private long id;
+    private String firstName;
+    private String lastName;
+    private String dob;
+    private String genderType;
+    private String email;
+    private Long studentMob;
+    private String pageName;
+    
+    private Long applyCourseId;
+    private Long lastGraduatedCourseId;
+    
+    private Long appliedProgramLevelTypeId;
+    private Long graduatedProgramLevelTypeId;
+    
     private String dateEnrolled;
     private Double grade;
-    private Long id;
-    private String pageName;
-    private String searchText;
-    private String rollNum;
-    private String studentFullName;
+    private String enrollmentNumber;
+    
     private List listOfCourses;
-
-    public Long getStudentId() {
-        return studentId;
+    private List listOfProgamLevelTypes;
+    
+     private List  genderTypeList;
+     
+    private String statusMessage;
+    
+    
+    public Long getApplyCourseId() {
+        return applyCourseId;
     }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    
+    public void setApplyCourseId(Long applyCourseId) {
+        this.applyCourseId = applyCourseId;
     }
-
-    public Long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
+    
+    
+    
     public String getDateEnrolled() {
         return dateEnrolled;
     }
-
+    
     public void setDateEnrolled(String dateEnrolled) {
         this.dateEnrolled = dateEnrolled;
     }
-
+    
     public Double getGrade() {
         return grade;
     }
-
+    
     public void setGrade(Double grade) {
         this.grade = grade;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPageName() {
-        return pageName;
-    }
-
-    public void setPageName(String pageName) {
-        this.pageName = pageName;
-    }
-
-    public String getSearchText() {
-        return searchText;
-    }
-
-    public void setSearchText(String searchText) {
-        this.searchText = searchText;
-    }
-
-    public String getRollNum() {
-        return rollNum;
-    }
-
-    public void setRollNum(String rollNum) {
-        this.rollNum = rollNum;
-    }
-
-    public String getStudentFullName() {
-        return studentFullName;
-    }
-
-    public void setStudentFullName(String studentFullName) {
-        this.studentFullName = studentFullName;
-    }
-
+    
     public List getListOfCourses() {
         return listOfCourses;
     }
-
+    
     public void setListOfCourses(List listOfCourses) {
         this.listOfCourses = listOfCourses;
     }
-      
+    
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+    public long getId() {
+        return id;
+    }
+    
+    public String getDob() {
+        return dob;
+    }
+    
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+    
+    public String getGenderType() {
+        return genderType;
+    }
+    
+    public void setGenderType(String genderType) {
+        this.genderType = genderType;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public Long getStudentMob() {
+        return studentMob;
+    }
+    
+    public void setStudentMob(Long studentMob) {
+        this.studentMob = studentMob;
+    }
+    
+    public Long getLastGraduatedCourseId() {
+        return lastGraduatedCourseId;
+    }
+    
+    public void setLastGraduatedCourseId(Long lastGraduatedCourseId) {
+        this.lastGraduatedCourseId = lastGraduatedCourseId;
+    }
+    
+    public String getEnrollmentNumber() {
+        return enrollmentNumber;
+    }
+    
+    public void setEnrollmentNumber(String enrollmentNumber) {
+        this.enrollmentNumber = enrollmentNumber;
+    }
+
+    public List getListOfProgamLevelTypes() {
+        return listOfProgamLevelTypes;
+    }
+
+    public void setListOfProgamLevelTypes(List listOfProgamLevelTypes) {
+        this.listOfProgamLevelTypes = listOfProgamLevelTypes;
+    }
+    
+   
+    
+    public Long getAppliedProgramLevelTypeId() {
+        return appliedProgramLevelTypeId;
+    }
+    
+    public void setAppliedProgramLevelTypeId(Long appliedProgramLevelTypeId) {
+        this.appliedProgramLevelTypeId = appliedProgramLevelTypeId;
+    }
+
+    public Long getGraduatedProgramLevelTypeId() {
+        return graduatedProgramLevelTypeId;
+    }
+
+    public void setGraduatedProgramLevelTypeId(Long graduatedProgramLevelTypeId) {
+        this.graduatedProgramLevelTypeId = graduatedProgramLevelTypeId;
+    }
+    
+   
+    
+    public String getPageName() {
+        return pageName;
+    }
+    
+    public void setPageName(String pageName) {
+        this.pageName = pageName;
+    }
+    
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+    
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
+    }
+
+    public List getGenderTypeList() {
+        return genderTypeList;
+    }
+
+    public void setGenderTypeList(List genderTypeList) {
+        this.genderTypeList = genderTypeList;
+    }
+    
     
     public void resetForm() {
-        studentId = null;
-        courseId = null;
         dateEnrolled = null;
         grade = null;
-        id = null;
+        id = 0l;
     }
 }

@@ -35,7 +35,7 @@ public class FeeTypeEntity implements Type {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
     
-    @Column(name = "code", unique = true, nullable = false, length = 10)
+    @Column(name = "code", unique = true, nullable = false, length = 20)
     private String code;
     
     @Column(name = "description", nullable = false, length =100)
@@ -45,7 +45,16 @@ public class FeeTypeEntity implements Type {
     @JoinColumn(name = "fee_category_type_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private FeeCategoryTypeEntity feeCategoryTypeEntity;
-
+    
+    public FeeTypeEntity() {
+    }
+    
+    public FeeTypeEntity(String code, String description,FeeCategoryTypeEntity feeCategoryTypeEntity) {
+        this.description=description;
+        this.code=code;
+        this.feeCategoryTypeEntity=feeCategoryTypeEntity;
+    }
+    
     @Basic(optional = true)
     @Column(name = "start_date")
     @Temporal(TemporalType.DATE)
@@ -55,15 +64,15 @@ public class FeeTypeEntity implements Type {
     @Column(name = "end_date")
     @Temporal(TemporalType.DATE)
     private Date endDate;
-
+    
     @Basic(optional = true)
     @Column(name = "amount")
     private Double amount;
-
+    
     public Double getAmount() {
         return amount;
     }
-
+    
     public void setAmount(Double amount) {
         this.amount = amount;
     }
@@ -71,15 +80,15 @@ public class FeeTypeEntity implements Type {
     public Date getStartDate() {
         return startDate;
     }
-
+    
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
-
+    
     public Date getEndDate() {
         return endDate;
     }
-
+    
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
@@ -87,11 +96,11 @@ public class FeeTypeEntity implements Type {
     public FeeCategoryTypeEntity getFeeCategoryTypeEntity() {
         return feeCategoryTypeEntity;
     }
-
+    
     public void setFeeCategoryTypeEntity(FeeCategoryTypeEntity feeCategoryTypeEntity) {
         this.feeCategoryTypeEntity = feeCategoryTypeEntity;
     }
-
+    
     @Override
     public long getId() {
         return id;

@@ -57,16 +57,9 @@
                         </li>
                         
                         <li class="mt">
-                            <a href="loginAction.do?method=loginPage">
+                            <a href="studentEnrollment.do?method=studentEnrollmentPage">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Student Enrollment</span>
-                            </a>
-                        </li>
-                        
-                        <li class="mt">
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i>
-                                <span>For Future</span>
                             </a>
                         </li>
                         

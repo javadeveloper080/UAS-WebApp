@@ -18,7 +18,7 @@ public class FeeCategoryTypeDao extends AbstractDao<FeeCategoryTypeEntity> {
     }
     
     public FeeCategoryTypeEntity findByCode(String code) {
-        Map<String, Object> parmas=new LinkedHashMap<String, Object>();
+        Map<String, Object> parmas=new LinkedHashMap<>();
         parmas.put("code", code);
         return super.findByQuery(FeeCategoryTypeEntity.FIND_BY_CODE, parmas);
     }

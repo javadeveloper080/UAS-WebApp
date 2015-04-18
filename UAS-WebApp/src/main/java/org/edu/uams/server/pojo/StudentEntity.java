@@ -68,10 +68,21 @@ public class StudentEntity implements Serializable {
     @Column(name = "student_mob",nullable = true)
     private long studentMob;
     
+    
+      @Basic(optional = false)
+    @Column(name = "email")
+    private String email;
+    
     @Basic(optional = false)
     @Column(name = "dob")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dob;
+    
+    
+      @Basic(optional = false)
+    @Column(name = "gender_type", length = 100, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private GenderType genderType;
     
     @Basic(optional = false)
     @Column(name = "nationality" ,nullable = false)
@@ -90,22 +101,10 @@ public class StudentEntity implements Serializable {
     @Column(name = "parent_mob")
     private String parentMob;
     
-    
-    @Basic(optional = false)
-    @Column(name = "email")
-    private String email;
-    
-    
     @Basic(optional = false)
     @Column(name = "seat_category_type", length = 100, nullable = false)
     @Enumerated(EnumType.STRING)
     private SeatCategoryType seatCategoryType;
-    
-    
-    @Basic(optional = false)
-    @Column(name = "gender_type", length = 100, nullable = false)
-    @Enumerated(EnumType.STRING)
-    private GenderType genderType;
     
     @Transient
     private String studentFullName;

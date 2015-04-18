@@ -34,6 +34,14 @@ public class CourseTypeEntity implements Type {
     
     @Column(name = "description", nullable = false, length =100)
     private String description;
+
+    public CourseTypeEntity() {
+    }
+    
+    public CourseTypeEntity(String code, String description) {
+      this.description=description;
+       this.code=code;
+    }
     
     @Override
     public long getId() {

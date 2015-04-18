@@ -36,8 +36,8 @@
         <put name="body"   value="/eviews/feeCategoryType.jsp" />
     </definition>
     
-    <definition name="DegreeTypePage" extends="baseTemplateLayout">
-        <put name="body"   value="/eviews/degreeType.jsp" />
+    <definition name="ProgramLevelTypePage" extends="baseTemplateLayout">
+        <put name="body"   value="/eviews/programLevelType.jsp" />
     </definition>
     
     
@@ -95,10 +95,7 @@
         <put name="title" value="Student Fee" />
         <put name="body" value="/eviews/studentFeePage.jsp" />
     </definition>
-    <definition name="studentEnrollmentLayout" extends="baseTemplateLayout">
-        <put name="title" value="Student Enrollment" />
-        <put name="body" value="/eviews/studentEnrollment.jsp" />
-    </definition>
+
     
     
 </tiles-definitions>

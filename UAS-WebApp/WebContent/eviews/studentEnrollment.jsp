@@ -1,160 +1,309 @@
 <%@taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
 <%@taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic"%>
 <%@taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
+        
         <title>Student Enrollment</title>
-
+        
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
+        <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+        
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style-responsive.css" rel="stylesheet">
-        <!-- js placed at the end of the document so the pages load faster -->
-       
-        <script  type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
+        
+        <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
     <body>
-
+        
     <section id="container" >
-
-
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <!--logo start-->
+            <a href="" class="logo"><b>University Admission & Maintenance System</b></a>
+            <!--logo end-->
+        </header>
+        <!--header end-->
+        
+        
+        <!-- **********************************************************************************************************************************************************
+     MAIN SIDEBAR MENU
+     *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar"  class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    
+                    <p class="centered"><img src="assets/img/menu_pic.png" class="img-responsive" width="200"></p>
+                    <h2 class="centered">UAMS</h2>
+                    
+                    <li class="mt">
+                        <a href="loginAction.do?method=loginPage">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        
+        
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
         <!--main content start-->
         <section id="main-content">
-            <section class="wrapper">
-
+            
+            <section class="wrapper base-min-height">
+                
                 <!-- BASIC FORM ELEMENTS -->
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Manage Student Enrollment</Strong> </h5>
+                            <h1><Strong>Student Enrollment</Strong> </h1>
                                     <html:form  styleClass="" action="/studentEnrollment" method="post" styleId="studentEnrollmentForm">
-                                <p><em>To Edit/Update Student Enrollment,Search By Roll Number.</em></p>
-                                <!-- Search functionalities  -->
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <html:text name="studentEnrollmentForm" property="searchText" styleId="searchText" styleClass="form-control" />
-                                            <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="rollNum">Student Roll Number & Full Name.</label>
-                                            <html:text name="studentEnrollmentForm" property="rollNum" styleId="rollNum"  readonly="true"/>
-                                            <html:text name="studentEnrollmentForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
-                                        </div>
-                                    </div>         
-                                </div>
+                                <h3><em>Student enrollment helps a student apply for a course in university</em></h3>
                                 <hr />
+                                
+                                <h5><p ><em><strong style="color:blue"><bean:write name="studentEnrollmentForm" property="statusMessage" /></strong></em></p></h5>
+                                
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <html:hidden  property="studentId"  styleId="studentId"  />
-                                            Course :  <html:select  property="courseId"  styleId="courseId"   styleClass="form-control">
-                                                
-                                                            <html:option value="0">Select Course</html:option>
-                                                            <logic:notEmpty name="studentEnrollmentForm" property="listOfCourses">
-                                                                
-                                                                    <logic:iterate id="course" name="studentEnrollmentForm" property="listOfCourses" type="org.edu.uams.server.pojo.CourseMasterEntity">
-                                                                      <html:option value="${course.id}"><bean:write name="course" property="courseName"/></html:option>
-                                                                    </logic:iterate>
-                                                                
-                                                            </logic:notEmpty>
-                                                      </html:select>
+                                            First Name  : <html:text  property="firstName"  styleId="firstName"   styleClass="form-control"/>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                             Enrolled Date  : <html:text  property="dateEnrolled"  styleId="dateEnrolled"   styleClass="form-control"/>
+                                            Last Name :  <html:text  property="lastName"  styleId="lastName"  styleClass="form-control"/>
                                         </div>
                                     </div>
                                 </div>
-
+                                
+                                
                                 <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Date Of Birth : <html:text  property="dob"  styleId="dob"   styleClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="genderType">Gender.</label>
+                                            <html:select property="genderType" styleId="genderType" styleClass="form-control">
+                                                <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="studentEnrollmentForm" property="genderTypeList" label="label" value="value" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Mobile No : <html:text  property="studentMob"  styleId="studentMob"  styleClass="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            E-Mail : <html:text  property="email"  styleId="email"  styleClass="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                <div class="row">
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Last Graduated Program Level Type :  <html:select  property="graduatedProgramLevelTypeId"  styleId="graduatedProgramLevelTypeId"   styleClass="form-control">
+                                                <html:option   value="">Select Degree</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="studentEnrollmentForm" property="listOfProgamLevelTypes" label="description" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>       
+                                
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Last Graduated Course :  <html:select  property="lastGraduatedCourseId"  styleId="lastGraduatedCourseId"   styleClass="form-control">
+                                                <html:option   value="">Select Course</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="studentEnrollmentForm" property="listOfCourses" label="description" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             Grade :  <html:text  property="grade"  styleId="grade"  styleClass="form-control"/>
                                         </div>
                                     </div>
-
+                                    
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="row">
+                                    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                           <c:if test="${studentEnrollmentForm.id != null}">
-                                               <c:if test="${studentEnrollmentForm.id > 0}">
-                                               Your Enrollment Id is <h1>${studentEnrollmentForm.id} </h1>
-                                               </c:if>
-                                           </c:if>
+                                            Applying Degree :  <html:select  property="appliedProgramLevelTypeId"  styleId="appliedProgramLevelTypeId"   styleClass="form-control">
+                                                <html:option   value="">Select Degree</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="studentEnrollmentForm" property="listOfProgamLevelTypes" label="description" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>       
+                                
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            
+                                            Applying Course :  <html:select  property="applyCourseId"  styleId="applyCourseId"   styleClass="form-control">
+                                                <html:option   value="">Select Course</html:option>                                                                                                                                                             
+                                                <html:optionsCollection name="studentEnrollmentForm" property="listOfCourses" label="description" value="id" /> 
+                                            </html:select>
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            Enrolled Date  : <html:text  property="dateEnrolled"  styleId="dateEnrolled"   styleClass="form-control"/>
                                         </div>
                                     </div>
                                 </div>
-
-
+                                
                                 <html:hidden name="studentEnrollmentForm" property="id" styleId="id"/>
-                                <%--<html:hidden name="studentForm" property="studentId" styleId="studentId"/>--%>
                                 <html:hidden name="studentEnrollmentForm" property="pageName" styleId="pageName" />
-
+                                
                                 <div align="center">
                                     <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
                                     <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
                                 </div> 
-
-
+                                
+                                
                             </html:form>
                         </div>
                     </div><!-- col-lg-12-->      	
                 </div><!-- /row -->
-
+                
             </section><! --/wrapper -->
         </section><!-- /MAIN CONTENT -->
         <!--main content end-->
-
+        
+        
+        <!--footer start-->
+        
+        
+        <footer class="site-footer">
+            <div class="text-center">
+                2015 - UMAS
+            </div>
+        </footer>
+        <!--footer end-->
+        
     </section>
-
-
-
+    
+    
+    
     <!--script for this page-->
-
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jjquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    
+    
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <!--script for this page-->
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <!--script for this page-->
+    
     <script>
 
 
         function validateForm() {
             // get the form values
-            var studentId = document.getElementById('studentId').value;
-            var courseId = document.getElementById('courseId').value;
             var dateEnrolled = document.getElementById('dateEnrolled').value;
             var grade = document.getElementById('grade').value;
+            var mobile = document.getElementById('studentMob').value;
+            var email = document.getElementById('email');
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            var genderType = document.getElementById('genderType').value;
             
-            if (studentId === null || studentId === "") {
-                alert("Please Enter Student ID");
-                document.getElementById('studentId').cfocus();
+                    var applyCourseId = document.getElementById('applyCourseId').value;
+            var appliedProgramLevelTypeId = document.getElementById('appliedProgramLevelTypeId').value;
+            var lastGraduatedCourseId = document.getElementById('lastGraduatedCourseId').value;
+            var graduatedProgramLevelTypeId = document.getElementById('graduatedProgramLevelTypeId').value;
+              
+              
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            
+          
+            if (firstName === null || firstName === "") {
+                alert("Please Enter Student First Name");
+                document.getElementById('firstName').focus();
                 return false;
             }
-
-            else if (courseId === null || courseId === "") {
-                alert("Please Enter Course");
-                document.getElementById('courseId').focus();
+            if (lastName === null || lastName === "") {
+                alert("Please Enter Student Last Name");
+                document.getElementById('lastName').focus();
                 return false;
             }
-            else if (dateEnrolled === null || dateEnrolled === "") {
+        
+            if (dob === null || dob === "") {
+                alert("Please Enter Date Of Birth");
+                document.getElementById('dob').focus();
+                return false;
+            }
+          
+            if (dateEnrolled === null || dateEnrolled === "") {
                 alert("Please Enter Date Enrolled");
                 document.getElementById('dateEnrolled').focus();
                 return false;
@@ -165,18 +314,63 @@
                 return false;
             }
             
+            if(isNaN(mobile)){
+                alert('Please Enter Numeric value for Mobile');
+                document.getElementById('studentMob').focus;
+                return false;
+
+            }
+            
+            if (email === null || email === "") {
+                alert("Please Email grade");
+                document.getElementById('email').focus();
+                return false;
+            }
+        
+        
+      
+            if (!filter.test(email.value)) {
+                alert('Please provide a valid email address');
+                document.getElementById('email').focus;
+                return false;
+            } 
+            
+            if (genderType === null || genderType === "") {
+                alert("Please Select gender type");
+                document.getElementById('genderType').focus();
+                return false;
+            }
+      
+            if (applyCourseId === null || applyCourseId === "") {
+                alert("Please Select Applying Course");
+                document.getElementById('applyCourseId').focus();
+                return false;
+            }
+            
+             if (appliedProgramLevelTypeId === null || appliedProgramLevelTypeId === "") {
+                alert("Please Select Applying Program Level Type");
+                document.getElementById('appliedProgramLevelTypeId').focus();
+                return false;
+            }
+            
+            if (graduatedProgramLevelTypeId === null || graduatedProgramLevelTypeId === "") {
+                alert("Please Select Last Attended Program Level Type");
+                document.getElementById('graduatedProgramLevelTypeId').focus();
+                return false;
+            }
+            
+            if (lastGraduatedCourseId === null || lastGraduatedCourseId === "") {
+                alert("Please Select Last Graduated Course");
+                document.getElementById('lastGraduatedCourseId').focus();
+                return false;
+            }
             submitForm();
 
         }
 
         function submitForm() {
-            var id = document.getElementById('id').value;
-            if (id != null && id > 0) {
-                document.getElementById('pageName').value = "SubmitEditType"
-            } else {
-                document.getElementById('pageName').value = "SubmitAddType"
-            }
-            document.studentEnrollmentForm.action = "studentEnrollment.do";
+            document.getElementById('pageName').value = "SubmitAddType"
+            document.studentEnrollmentForm.action = "studentEnrollment.do?method=studentEnrollmentPage";
             document.studentEnrollmentForm.submit();
         }
 
@@ -185,39 +379,6 @@
             document.getElementById("studentEnrollmentForm").reset();
         }
 
-        function checkValidStudentRollNumber() {
-            var searchText = document.getElementById('searchText').value;
-            if (searchText == null || searchText == "") {
-                alert("Please Enter Roll Number in Search Box");
-                document.getElementById('searchText').focus();
-                return false;
-            }
-
-            alert('Search with RollNum : ' + searchText);
-
-            $.ajax({
-                type: "POST",
-                url: "/UAMS-WebApp/studentEnrollment.do",
-                data: {
-                    "rollNum": searchText
-                },
-                success: function (response) {
-                    if (response == 'false') {
-                        alert('There is No Student found with this RollNumber :' + searchText);
-                        document.getElementById('rollNum').focus();
-                        return false;
-                    }
-                    else {
-                        searchForm();
-                    }
-                }
-            });
-        }
-
-        function searchForm() {
-            document.studentEnrollmentForm.action = "studentEnrollment.do";
-            document.studentEnrollmentForm.submit();
-        }
 
         $(function () {
             $("#dateEnrolled").datepicker({
@@ -226,5 +387,14 @@
             });
         });
         
+        $(function () {
+            $("#dob").datepicker({
+                showOn: "button",
+                buttonImage: "images/calendar.gif",
+            });
+        });
+        
+        
+        
     </script>
-
+    

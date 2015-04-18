@@ -33,6 +33,14 @@ public class FeeCategoryTypeEntity implements Type {
     
     @Column(name = "description", nullable = false, length = 100)
     private String description;
+
+    public FeeCategoryTypeEntity() {
+    }
+    
+    public FeeCategoryTypeEntity(String code, String description) {
+        this.description=description;
+        this.code=code;
+    }
     
     @Override
     public long getId() {
