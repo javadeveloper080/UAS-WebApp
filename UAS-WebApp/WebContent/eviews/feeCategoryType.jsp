@@ -85,12 +85,12 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Fee category type Table</h4>
+                                <h4><i>Fee category type Table</i> </h4>
                                 <hr>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Code</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
+                                        <th><i>Code</i> </th>
+                                        <th><i>Description</i> </th>
                                         <th></th>
                                     </tr>
                                 </thead>

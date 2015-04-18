@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
         
-        <title>Fee Category Type</title>
+        <title>Fee Type</title>
         
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -47,7 +47,7 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Add/Edit Fee Category type</Strong> </h5>
+                            <h5><Strong>Add/Edit Fee type</Strong> </h5>
                                    <html:form  styleClass="" action="/typeTableAction" method="post">
                                 
                                 <div class="row">
@@ -97,19 +97,21 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Fee Type Table</h4>
+                                <h4> Fee Type Table</h4>
                                 <hr>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Code</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
+                                        <th><i>Fee Category Type</i></th>
+                                        <th><i> Code </i></th>
+                                        <th><i> Description</i></th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="typeTableForm" property="typeFormList">
-                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeCategoryTypeEntity">
+                                        <logic:iterate id="typeTable" name="typeTableForm" property="typeFormList" type="org.edu.uams.server.pojo.FeeTypeEntity">
                                             <tr>
+                                                  <td><bean:write name="typeTable" property="feeCategoryTypeEntity.code"/></td>
                                                 <td><bean:write name="typeTable" property="code"/></td>
                                                 <td><bean:write name="typeTable" property="description"/></td>
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${typeTable.id});'><i class="fa fa-pencil"></i></button></td>
@@ -208,7 +210,7 @@
 
 
             function getEditTypeForm(id) {
-                alert('Get Editff Type'+id);
+//                alert('Get Editff Type'+id);
                 document.getElementById('id').value =id;	
                 document.getElementById('pageName').value ="GetEditTypeForm"	
                 document.typeTableForm.action="typeTableAction.do?method=feeTypePage";
