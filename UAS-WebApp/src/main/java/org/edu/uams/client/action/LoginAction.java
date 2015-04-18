@@ -118,7 +118,7 @@ public class LoginAction extends DispatchAction {
     
     
     private void populateUserDetails(LoginForm loginForm,UserMasterEntity userMasterEntity) {
-        loginForm.setName("Hard coded name");
+        loginForm.setName(userMasterEntity.getUserName());
         loginForm.setPassword(userMasterEntity.getPassword());
         loginForm.setId(userMasterEntity.getId());
         loginForm.setUserType(userMasterEntity.getUserType().getDescription());
