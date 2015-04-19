@@ -51,6 +51,8 @@ public class StudentAction extends DispatchAction {
             studentEntity =studentDao.findByPrimaryKey(studentEntity.getId());
             studentForm.resetForm();
             studentForm.setRollNum(studentEntity.getRollNum());
+            studentForm.setStudentRollNum(studentEntity.getRollNum());
+            studentForm.setStudentFullName(studentEntity.getStudentFullName());
             studentForm.setEnrollmentNumber(studentEntity.getStudentEnrollment().getEnrollmentNumber());
             studentForm.setDob(ApplicationUtil.formatDateToString(studentEntity.getDob()));
             studentForm.setFatherName(studentEntity.getFatherName());

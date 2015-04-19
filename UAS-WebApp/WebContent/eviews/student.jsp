@@ -283,7 +283,7 @@
         } else {
             document.getElementById('pageName').value = "SubmitAddType"
         }
-         document.getElementById('enrollmentNumSearch').value = "";
+        document.getElementById('enrollmentNumSearch').value = "";
         document.studentForm.action = "studentAction.do?method=studentPage";
         document.studentForm.submit();
     }
@@ -294,10 +294,11 @@
     }
     
     function checkValidStudentRollNumber() {
+        document.getElementById('enrollmentNumSearch').value = "";
         var   searchText= document.getElementById('studentRollNumSearch').value;
         if (searchText== null || searchText =="") {
             alert("Please Enter Roll Number in Search Box");
-            document.getElementById('searchText').focus();
+            document.getElementById('studentRollNumSearch').focus();
             return false;
         }
             
@@ -349,7 +350,7 @@
                      searchNewForm();
                 }
                 else if(response!=null){
-                    alert('There is No Student found with this Enrollment Number :'+response);
+                    alert('The Enrollment number  already has a student profile with this Rollnumber:'+response);
                     document.getElementById('enrollmentNumSearch').focus();
                     return false;
                 }
