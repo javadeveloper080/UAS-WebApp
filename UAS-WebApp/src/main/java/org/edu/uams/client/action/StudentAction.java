@@ -75,7 +75,7 @@ public class StudentAction extends DispatchAction {
             studentEntity.setStudentEnrollment(studentEnrollmentEntity);
             int year = Calendar.getInstance().get(Calendar.YEAR);
             copyDataFromFormToEntity(studentForm, studentEntity);
-            studentEntity.setRollNum(studentEnrollmentEntity.getEnrollmentNumber()+year);
+            studentEntity.setRollNum(studentEnrollmentEntity.getEnrollmentNumber()+"-"+year);
             StudentEntity persisted= studentDao.persist(studentEntity);
             if (persisted!=null) {
                 statusMessage=ApplicationConstants.PROFILE_ADDED_SUCESSFULLY +" For the Roll Number :"+persisted.getRollNum();
