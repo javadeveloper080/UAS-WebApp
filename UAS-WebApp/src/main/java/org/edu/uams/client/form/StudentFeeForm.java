@@ -1,40 +1,35 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package org.edu.uams.client.form;
 
-import java.math.BigDecimal;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionMapping;
-import org.edu.uams.server.pojo.FeeTypeEntity;
-import org.edu.uams.server.pojo.StudentEntity;
-import org.edu.uams.server.pojo.StudentFeeEntity;
 
-/**
- *
- * @author SARAT
- */
+
 public class StudentFeeForm extends org.apache.struts.action.ActionForm {
-
+    
     private Long id = 0l;
     private String serial;
-    private Double totalAmount;
     private String feePaymentDate;
-    private String feeName;
     private String discountType;
     private String rollNum;
     private String pageName;
-    private List<StudentFeeEntity> studentFeeEntitys;
-    private List<StudentEntity> studentEntitys;
-    private List<FeeTypeEntity> feeTypeEntitys;
+    private List studentFeeList;
+    private List feeTypeList;
     private Long studentId;
     private Long feeTypeId;
     private String studentName;
     private String  searchText;
+    
+    private Double paidAmount;
+    private Double balanceAmount;
+    
+    
+    private String paymentType;
+    private List paymentTypeList;
     
     /**
      *
@@ -43,59 +38,36 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
     public String getSearchText() {
         return searchText;
     }
-
+    
     public void setSearchText(String searchText) {
         this.searchText = searchText;
     }
-
+    
     public String getStudentName() {
         return studentName;
     }
-
+    
     public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
     
-    public List<StudentFeeEntity> getStudentFeeEntitys() {
-        return studentFeeEntitys;
-    }
-
-    public void setStudentFeeEntitys(List<StudentFeeEntity> studentFeeEntitys) {
-        this.studentFeeEntitys = studentFeeEntitys;
-    }
-
-    public List<StudentEntity> getStudentEntitys() {
-        return studentEntitys;
-    }
-
-    public void setStudentEntitys(List<StudentEntity> studentEntitys) {
-        this.studentEntitys = studentEntitys;
-    }
-
-    public List<FeeTypeEntity> getFeeTypeEntitys() {
-        return feeTypeEntitys;
-    }
-
-    public void setFeeTypeEntitys(List<FeeTypeEntity> feeTypeEntitys) {
-        this.feeTypeEntitys = feeTypeEntitys;
-    }
-
+    
     public Long getStudentId() {
         return studentId;
     }
-
+    
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
-
+    
     public Long getFeeTypeId() {
         return feeTypeId;
     }
-
+    
     public void setFeeTypeId(Long feeTypeId) {
         this.feeTypeId = feeTypeId;
     }
@@ -103,16 +75,16 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     
     public String getPageName() {
         return pageName;
     }
-
+    
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }
@@ -120,69 +92,107 @@ public class StudentFeeForm extends org.apache.struts.action.ActionForm {
     public String getSerial() {
         return serial;
     }
-
+    
     public void setSerial(String serial) {
         this.serial = serial;
     }
-
-
-    public Double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(Double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
+    
+    
+    
     public String getFeePaymentDate() {
         return feePaymentDate;
     }
-
+    
     public void setFeePaymentDate(String feePaymentDate) {
         this.feePaymentDate = feePaymentDate;
     }
-
-    public String getFeeName() {
-        return feeName;
-    }
-
-    public void setFeeName(String feeName) {
-        this.feeName = feeName;
-    }
-
+    
+    
     public String getDiscountType() {
         return discountType;
     }
-
+    
     public void setDiscountType(String discountType) {
         this.discountType = discountType;
     }
-
+    
     public String getRollNum() {
         return rollNum;
     }
-
+    
     public void setRollNum(String rollNum) {
         this.rollNum = rollNum;
     }
+    
+    public List getStudentFeeList() {
+        return studentFeeList;
+    }
+    
+    public void setStudentFeeList(List studentFeeList) {
+        this.studentFeeList = studentFeeList;
+    }
+    
+    public List getFeeTypeList() {
+        return feeTypeList;
+    }
+    
+    public void setFeeTypeList(List feeTypeList) {
+        this.feeTypeList = feeTypeList;
+    }
+    
+    public Double getPaidAmount() {
+        return paidAmount;
+    }
+    
+    public void setPaidAmount(Double paidAmount) {
+        this.paidAmount = paidAmount;
+    }
+    
+    public Double getBalanceAmount() {
+        return balanceAmount;
+    }
+    
+    public void setBalanceAmount(Double balanceAmount) {
+        this.balanceAmount = balanceAmount;
+    }
 
-    @Override
-    public void reset(ActionMapping mapping, HttpServletRequest request) {
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public List getPaymentTypeList() {
+        return paymentTypeList;
+    }
+
+    public void setPaymentTypeList(List paymentTypeList) {
+        this.paymentTypeList = paymentTypeList;
+    }
+    
+    public void resetform() {
         this.id = 0l;
         this.serial = null;
         this.feePaymentDate = null;
-        this.feeName = null;
         this.discountType = null;
         this.rollNum = null;
         this.pageName = null;
-        this.studentFeeEntitys = null;
-        this.studentEntitys = null;
-        this.feeTypeEntitys = null;
+        this.feeTypeList = null;
         this.studentId = 0l;
         this.feeTypeId = 0l;
         this.studentName = null;
         this.searchText = null;
-        this.totalAmount = 0.0;
+        this.paidAmount = 0.0;
+        this.studentFeeList = null;
+        this.balanceAmount = 0.0;
+        
+        this.paymentType= null;
+        this.paymentTypeList= null;
+        
     }
-
+    
+    
+    
 }

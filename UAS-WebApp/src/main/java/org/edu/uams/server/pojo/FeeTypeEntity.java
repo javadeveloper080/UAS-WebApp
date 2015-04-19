@@ -41,6 +41,10 @@ public class FeeTypeEntity implements Type {
     @Column(name = "description", nullable = false, length =100)
     private String description;
     
+    @Basic(optional = false)
+    @Column(name = "fee_amount")
+    private Double feeAmount;
+    
     
     @JoinColumn(name = "fee_category_type_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -129,6 +133,14 @@ public class FeeTypeEntity implements Type {
     @Override
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getFeeAmount() {
+        return feeAmount;
+    }
+
+    public void setFeeAmount(Double feeAmount) {
+        this.feeAmount = feeAmount;
     }
     
 }

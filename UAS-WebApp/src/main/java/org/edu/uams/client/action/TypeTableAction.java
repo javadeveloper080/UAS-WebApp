@@ -1,6 +1,6 @@
- /**
-  *
-  */
+/**
+ *
+ */
 package org.edu.uams.client.action;
 
 import java.io.IOException;
@@ -74,7 +74,7 @@ public class TypeTableAction extends DispatchAction {
         List<FeeCategoryTypeEntity> categoryEntitys = feeCategoryTypeDao.findAll();
         if(categoryEntitys != null)
         {
-           typeTableForm.setFeeCatTypeEntitys(categoryEntitys);
+            typeTableForm.setFeeCatTypeEntitys(categoryEntitys);
         }
         List<FeeTypeEntity> feeTypeList = feeTypeDao.findAll();
         if(!feeTypeList.isEmpty()){
@@ -131,7 +131,7 @@ public class TypeTableAction extends DispatchAction {
         req.setAttribute("feeCategoryTypePage", "true");
         return mapping.findForward("feeCategoryTypePage");
     }
-
+    
     public ActionForward userTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
             HttpServletResponse res)throws Exception
     {
@@ -177,7 +177,7 @@ public class TypeTableAction extends DispatchAction {
         req.setAttribute("userTypePage", "true");
         return mapping.findForward("userTypePage");
     }
-
+    
     
     
     public ActionForward programLevelTypePage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
@@ -321,6 +321,23 @@ public class TypeTableAction extends DispatchAction {
         }
         
         
+        
+        return null;
+    }
+    
+    
+    public ActionForward getFeeTypeAmount(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TypeTableForm typeTableForm = (TypeTableForm)form;
+        response.setContentType("text/text;charset=utf-8");
+        response.setHeader("cache-control", "no-cache");
+        
+        Long key = typeTableForm.getId();
+        
+        FeeTypeDao feeTypeDao = new FeeTypeDao();
+        FeeTypeEntity typeEntity =feeTypeDao.findByPrimaryKey(key);
+        response.getWriter().write(typeEntity.getFeeAmount()+"");
         
         return null;
     }
