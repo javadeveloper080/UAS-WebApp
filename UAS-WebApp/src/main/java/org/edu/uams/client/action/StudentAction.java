@@ -78,7 +78,7 @@ public class StudentAction extends DispatchAction {
             studentEntity.setRollNum(studentEnrollmentEntity.getEnrollmentNumber()+year);
             StudentEntity persisted= studentDao.persist(studentEntity);
             if (persisted!=null) {
-                statusMessage=ApplicationConstants.PROFILE_ADDED_SUCESSFULLY;
+                statusMessage=ApplicationConstants.PROFILE_ADDED_SUCESSFULLY +" For the Roll Number :"+persisted.getRollNum();
             }
              studentForm.resetForm();
         }else if (studentForm.getPageName() != null && studentForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
@@ -86,7 +86,7 @@ public class StudentAction extends DispatchAction {
             copyDataFromFormToEntity(studentForm, studentEntity);
             StudentEntity updated = studentDao.update(studentEntity);
             if (updated!=null) {
-                statusMessage=ApplicationConstants.PROFILE_UDPATED_SUCESSFULLY;
+                statusMessage=ApplicationConstants.PROFILE_UDPATED_SUCESSFULLY +" For the Roll Number :"+updated.getRollNum();
             }
              studentForm.resetForm();
         }

@@ -322,7 +322,7 @@
             }
             
             if (email === null || email === "") {
-                alert("Please Email grade");
+                alert("Please Enter Email");
                 document.getElementById('email').focus();
                 return false;
             }
