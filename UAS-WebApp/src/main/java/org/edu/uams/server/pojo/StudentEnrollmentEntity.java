@@ -22,16 +22,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.edu.uams.server.api.GenderType;
 
-/**
- *
- * @author SARAT
- */
+
 @Entity(name = "StudentEnrollment")
 @Table(name = "student_enrollment")
 public class StudentEnrollmentEntity implements Serializable {
     
     public static final String FIND_ALL="SELECT s FROM StudentEnrollment s";
     public static final String GET_LASTEST_ID="SELECT s.id FROM StudentEnrollment s order by id desc";
+    public static String FIND_BY_STUDENT_ENROLLMENT_NUMBER="SELECT s FROM StudentEnrollment s where s.enrollmentNumber = :enrollmentNumber";
     
     private static final long serialVersionUID = 1L;
     

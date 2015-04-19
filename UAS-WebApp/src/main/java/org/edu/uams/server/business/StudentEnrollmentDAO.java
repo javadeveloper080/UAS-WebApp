@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.edu.uams.server.pojo.StudentEnrollmentEntity;
+import org.edu.uams.server.pojo.StudentEntity;
 import org.edu.uams.server.pojo.StudentQualificationEntity;
 import org.hibernate.Query;
 
@@ -39,6 +40,13 @@ public class StudentEnrollmentDAO  extends AbstractDao<StudentEnrollmentEntity> 
         else{
             return 0L;
         }
+    }
+    
+     public StudentEnrollmentEntity findByStudentEnrollmentNumber(String enrollmentNumber) {
+         Map<String, Object> params=new LinkedHashMap<>();
+        params.put("enrollmentNumber", enrollmentNumber);
+        return super.findByQuery(StudentEnrollmentEntity.FIND_BY_STUDENT_ENROLLMENT_NUMBER, params);
+      
     }
     
 }

@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -28,8 +30,10 @@ public class StudentEntity implements Serializable {
     
     public static final String FIND_ALL="SELECT a FROM Student a";
     public static String FIND_BY_STUDENT_ROLL_NUMBER="SELECT s FROM Student s  where s.rollNum = :rollNumber";
-        
+    public static String FIND_BY_STUDENT_ENROLLMENT_NUMBER="SELECT s FROM Student s join  s.studentEnrollment se where se.enrollmentNumber = :enrollmentNumber";
+       
     private static final long serialVersionUID = 1L;
+ 
     
 
     
@@ -39,9 +43,11 @@ public class StudentEntity implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
     
+    
     @Basic(optional = false)
-    @Column(name = "admn_num",unique = true,nullable = false)
-    private Long admnNum;
+    @ManyToOne(optional = false, targetEntity = StudentEnrollmentEntity.class)
+    @JoinColumn(name = "student_enrollment_id", referencedColumnName = "id", nullable = false )
+    private StudentEnrollmentEntity studentEnrollment;
     
     
     @Basic(optional = false)
@@ -117,13 +123,6 @@ public class StudentEntity implements Serializable {
         this.id = id;
     }
     
-    public Long getAdmnNum() {
-        return admnNum;
-    }
-    
-    public void setAdmnNum(Long admnNum) {
-        this.admnNum = admnNum;
-    }
     
     public String getRollNum() {
         return rollNum;
@@ -242,8 +241,16 @@ public class StudentEntity implements Serializable {
         studentFullName= getLastName()+","+getFirstName();
         return studentFullName;
     }
-    
-    
+
+    public StudentEnrollmentEntity getStudentEnrollment() {
+        return studentEnrollment;
+    }
+
+    public void setStudentEnrollment(StudentEnrollmentEntity studentEnrollment) {
+        this.studentEnrollment = studentEnrollment;
+    }
+
+   
     
     
 }

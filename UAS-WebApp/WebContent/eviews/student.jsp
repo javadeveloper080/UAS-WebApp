@@ -47,38 +47,43 @@
                     <div class="form-panel">
                         <h5><Strong>Manage Student Profile</Strong> </h5>
                                 <html:form  styleClass="" action="/studentAction.do?method=studentPage" method="post" styleId="studentForm">
+                            
+                              <p><em>To Add New Student Profile,Search Enrollment Number</em></p>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <html:text name="studentForm" property="enrollmentNumSearch" styleId="enrollmentNumSearch" styleClass="form-control" />
+                                        <html:button property="enrollmentNumSearchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentEnrollmentNumber();" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="enrollmentNumber">Student Enrollment Number</label>
+                                        <html:text name="studentForm" property="enrollmentNumber" styleId="enrollmentNumber"  readonly="true"/>
+                                    </div>
+                                </div>         
+                            </div>
+                            
+                            <hr />
                              <p><em>To Edit/Update Student Profile,Search By Roll Number.</em></p>
                             <!-- Search functionalities  -->
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <html:text name="studentForm" property="searchText" styleId="searchText" styleClass="form-control" />
+                                        <html:text name="studentForm" property="studentRollNumSearch" styleId="studentRollNumSearch" styleClass="form-control" />
                                         <html:button property="searchButton" styleClass="btn-theme" value="Search" onclick="checkValidStudentRollNumber();" />
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="rollNum">Student Roll Number & Full Name.</label>
-                                        <html:text name="studentForm" property="rollNum" styleId="rollNum"  readonly="true"/>
+                                        <html:text name="studentForm" property="studentRollNum" styleId="studentRollNum"  readonly="true"/>
                                         <html:text name="studentForm" property="studentFullName" styleId="studentFullName"  readonly="true"/>
                                     </div>
                                 </div>         
                             </div>
                                 <hr />
                                 <h5><p ><em><strong style="color:blue"><bean:write name="studentForm" property="statusMessage" /></strong></em></p></h5>
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        Admission Number : <html:text  property="admnNum"  styleId="admnNum"   styleClass="form-control" />
-                                    </div>
-                                </div>
-                                
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        Roll Number :  <html:text  property="rollNum"  styleId="rollNum"   styleClass="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
                             
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
@@ -178,7 +183,7 @@
                         
                         <div align="center">
                             <html:button property="addBtn" styleClass="btn-theme" value="Apply" onclick="validateForm();" />
-                            <html:button property="rsetBtn" styleClass="btn-theme" value="Reset" onclick="reset();" />
+                            <html:button property="reset" styleClass="btn-theme" value="Reset" onclick="reset();" />
                         </div> 
                         
                         
@@ -200,6 +205,11 @@
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     
+      <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
     
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
@@ -211,8 +221,7 @@
 
     function validateForm() {
         // get the form values
-        var admnNum = document.getElementById('admnNum').value;
-        var rollNum = document.getElementById('rollNum').value;
+        var enrollmentNumber = document.getElementById('enrollmentNumber').value;
         var firstName = document.getElementById('firstName').value;
         var lastName = document.getElementById('lastName').value;
         var motherName = document.getElementById('motherName').value;
@@ -220,18 +229,14 @@
         var mobile = document.getElementById('studentMob').value;
         var dob = document.getElementById('dob').value;
         var genderType = document.getElementById('genderType').value;
-        if (admnNum === null || admnNum === "") {
-            alert("Please Enter Admin Number");
-            document.getElementById('admnNum').cfocus();
+        if (enrollmentNumber === null || enrollmentNumber === "") {
+            alert("Please Enter Enrollment Number");
+            document.getElementById('enrollmentNumber').cfocus();
             return false;
         }
 
-        else if (rollNum === null || rollNum === "") {
-            alert("Please Enter Roll Number");
-            document.getElementById('rollNum').focus();
-            return false;
-        }
-        else if (firstName === null || firstName === "") {
+     
+         if (firstName === null || firstName === "") {
             alert("Please Enter Student First Name");
             document.getElementById('firstName').focus();
             return false;
@@ -278,17 +283,18 @@
         } else {
             document.getElementById('pageName').value = "SubmitAddType"
         }
+         document.getElementById('enrollmentNumSearch').value = "";
         document.studentForm.action = "studentAction.do?method=studentPage";
         document.studentForm.submit();
     }
 
 
     function reset() {
-        document.getElementById("studentForm").reset();
+         document.getElementById("studentForm").reset();
     }
     
     function checkValidStudentRollNumber() {
-        var   searchText= document.getElementById('searchText').value;
+        var   searchText= document.getElementById('studentRollNumSearch').value;
         if (searchText== null || searchText =="") {
             alert("Please Enter Roll Number in Search Box");
             document.getElementById('searchText').focus();
@@ -307,17 +313,58 @@
             success: function(response){
                 if(response=='false'){
                     alert('There is No Student found with this RollNumber :'+searchText);
-                    document.getElementById('rollNum').focus();
+                    document.getElementById('studentRollNumSearch').focus();
                     return false;
                 }
                 else{
-                    searchForm();
+                    searchExistingForm();
                 }
             }
         });
     }
     
-    function searchForm(){	
+      function checkValidStudentEnrollmentNumber() {
+        var   searchText= document.getElementById('enrollmentNumSearch').value;
+        if (enrollmentNumSearch== null || enrollmentNumSearch =="") {
+            alert("Please Enter Enrollment Number in Search Box");
+            document.getElementById('enrollmentNumSearch').focus();
+            return false;
+        }
+            
+        alert('Search with Enrollment Number : '+searchText);
+				
+        $.ajax({
+            type: "POST",
+            url: "/UAMS-WebApp/studentAction.do?method=findByStudentEnrollmentNumber",
+            data: {
+                "enrollmentNumSearch": searchText
+            },
+                    
+            success: function(response){
+                if(response=='EnrollmentNoFound'){
+                    alert('There is No Student found with this Enrollment Number :'+searchText);
+                    document.getElementById('enrollmentNumSearch').focus();
+                    return false;
+                }else if(response=='true'){
+                     searchNewForm();
+                }
+                else if(response!=null){
+                    alert('There is No Student found with this Enrollment Number :'+response);
+                    document.getElementById('enrollmentNumSearch').focus();
+                    return false;
+                }
+            }
+        });
+    }
+    
+    function searchExistingForm(){	
+        document.studentForm.action="studentAction.do?method=studentPage";
+        document.studentForm.submit();
+    }
+    
+    function searchNewForm(){	
+        var   enrollmentNumSearch= document.getElementById('enrollmentNumSearch').value;
+        document.getElementById('enrollmentNumSearch').value = enrollmentNumSearch;
         document.studentForm.action="studentAction.do?method=studentPage";
         document.studentForm.submit();
     }

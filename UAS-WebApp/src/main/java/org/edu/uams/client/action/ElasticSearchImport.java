@@ -87,7 +87,7 @@ public class ElasticSearchImport extends HttpServlet {
         StudentEntity studentEntity = studentDao.findByPrimaryKey(Long.valueOf("1"));
         XContentBuilder builder = jsonBuilder().startObject()
                 //                .field("_id", studentEntity.getId())
-                .field("admnNum", studentEntity.getAdmnNum())
+                .field("admnNum", studentEntity.getStudentEnrollment().getEnrollmentNumber())
                 .field("rollNum", studentEntity.getRollNum())
                 .field("firstName", studentEntity.getFirstName())
                 .field("lastName", studentEntity.getLastName())

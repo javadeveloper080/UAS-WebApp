@@ -171,17 +171,17 @@
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
-                            <table class="table table-striped table-advance table-hover" id="searchResTable">
+                            <table class="table table-striped table-advance table-hover">
                                 <h4>Student address table</h4>
                                 <hr>
                                 
                                 <thead>
                                     <tr>
-                                        <th scope="col"><i class="fa fa-bullhorn"></i>Student Roll Number</th>
-                                        <th scope="col"><i class="fa fa-bullhorn"></i>Student Full Name</th>
-                                        <th scope="col"><i class="fa fa-bullhorn"></i>Address Type</th>
-                                        <th scope="col"><i class="fa fa-bullhorn"></i>Address Line1</th>
-                                        <th scope="col"><i class="fa fa-bullhorn"></i>Zip Code</th>
+                                        <th scope="col"><i>Student Roll Number</i></th>
+                                        <th scope="col"><i>Student Full Name</i></th>
+                                        <th scope="col"><i>Address Type</i></th>
+                                        <th scope="col"><i>Address Line1</i></th>
+                                        <th scope="col"><i>Zip Code</i></th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>

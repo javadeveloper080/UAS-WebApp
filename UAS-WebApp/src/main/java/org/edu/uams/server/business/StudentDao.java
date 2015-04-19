@@ -22,5 +22,11 @@ public class StudentDao extends AbstractDao<StudentEntity> {
         params.put("rollNumber", rollNumber);
         return super.findByQuery(StudentEntity.FIND_BY_STUDENT_ROLL_NUMBER, params);
     }
+
+    public StudentEntity findByStudentEnrollmentNumber(String enrollmentNumber) {
+         Map<String, Object> params=new LinkedHashMap<>();
+        params.put("enrollmentNumber", enrollmentNumber);
+        return super.findByQuery(StudentEntity.FIND_BY_STUDENT_ENROLLMENT_NUMBER, params);
+    }
         
 }
