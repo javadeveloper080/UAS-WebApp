@@ -11,7 +11,7 @@
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Fee Category Type</title>
+        <title>Student Fee</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -47,8 +47,8 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h5><Strong>Add/Edit Fee Category type</Strong> </h5>
-                                    <html:form  styleClass="form-horizontal style-form" action="/studentFeeAction.do?method=studentFeePage" method="post">
+                            <h5><Strong>Manage Student Fee </Strong> </h5>
+                                    <html:form  styleClass="" action="/studentFeeAction.do?method=studentFeePage" method="post">
 
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -131,11 +131,11 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Fee category type Table</h4>
+                                <h4><i>Student Fee Table</i></h4>
                                 <hr>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> Roll Number</th>
+                                        <th> Roll Number</th>
                                         <th> Fee Name</th>
                                         <th> Total Amount:</th>
                                         <th> Fee Payment Date</th>
