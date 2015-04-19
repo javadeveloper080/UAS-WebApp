@@ -69,7 +69,7 @@
                                 <div class="row">    
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="paymentType">Payment Type.</label>
+                                            <label for="paymentType">Payment Type :</label>
                                             <html:select property="paymentType" styleId="paymentType" styleClass="form-control">
                                                 <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
                                                 <html:optionsCollection name="studentFeeForm" property="paymentTypeList" label="label" value="value" /> 
@@ -80,15 +80,15 @@
                                     
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="feeTypeId">Fee Type:</label>
+                                            <label for="feeTypeId">Fee Type :</label>
                                             <html:select  styleClass="form-control" property="feeTypeId" styleId="feeTypeId" onchange="myFunction()">
                                                 <html:option value="0">Select fee type</html:option>
                                                 <html:optionsCollection   name="studentFeeForm"
                                                                           property="feeTypeList" label="code" value="id" />
                                             </html:select>
+                                            <label id="selectedFeeAmount"/>
                                         </div>
                                     </div>
-                                    <p id="selectedFeeAmount"></p>  
                                 </div>
                                 
                                 <div class="row">
@@ -151,9 +151,9 @@
                                         <th> Student Name</th>
                                         <th> Payment Type</th>
                                         <th> Paid Amount</th>
-                                         <th>Balance Amount</th>
+                                        <th>Balance Amount</th>
                                         <th> Fee Payment Date</th>
-                                     <th> </th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -162,9 +162,9 @@
                                             <tr>
                                                 <td><bean:write name="studentFee" property="rollNum"/></td>
                                                 <td><bean:write name="studentFee" property="studentName"/></td>
-                                                 <td><bean:write name="studentFee" property="paymentType"/></td>
+                                                <td><bean:write name="studentFee" property="paymentType"/></td>
                                                 <td><bean:write name="studentFee" property="paidAmount"/></td>
-                                                 <td><bean:write name="studentFee" property="balanceAmount"/></td>
+                                                <td><bean:write name="studentFee" property="balanceAmount"/></td>
                                                 <td><bean:write name="studentFee" property="feePaymentDate"/></td>
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${studentFee.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>
@@ -225,6 +225,11 @@
         function myFunction() {
             alert('find')
             var feeTypeId = document.getElementById("feeTypeId").value;
+            var paymentType = document.getElementById("paymentType").value;
+            var balanceAmount = document.getElementById("balanceAmount").value;
+            var paidAmount = document.getElementById("paidAmount").value;
+            
+            
             $.ajax({
                 type: "POST",
                 url: "/UAMS-WebApp/typeTableAction.do?method=getFeeTypeAmount",
@@ -233,6 +238,11 @@
                 },
                 success: function(response){
                     document.getElementById("selectedFeeAmount").innerHTML = "Selected Fee Amount: " + response;
+                    if(paymentType!=null && paymentType=='FULL'){
+                        document.getElementById("paidAmount").value = response;
+                    
+                    }
+                    
                 }
             });
     
@@ -261,11 +271,13 @@
         function submitForm() {
             alert('Submit Form');
             var id = document.getElementById('id').value;
+            
             if (id != null && id > 0) {
-                document.getElementById('pageName').value = "SubmitEditType"
+                document.getElementById('pageName').value = "SubmitEditType";
             } else {
-                document.getElementById('pageName').value = "SubmitAddType"
+                document.getElementById('pageName').value = "SubmitAddType";
             }
+            document.getElementById('searchText').value = "";
             document.studentFeeForm.action = "studentFeeAction.do?method=studentFeePage";
             document.studentFeeForm.submit();
         }

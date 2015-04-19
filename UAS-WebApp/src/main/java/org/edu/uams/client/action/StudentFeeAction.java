@@ -47,9 +47,8 @@ public class StudentFeeAction extends DispatchAction {
         
         StudentEntity studentEntity = null;
         StudentFeeEntity studentFeeEntity = null;
-        FeeTypeEntity feeTypeEntity = null;
         
-        if (studentFeeForm.getSearchText()!=null) {
+        if (studentFeeForm.getSearchText()!=null && !studentFeeForm.getSearchText().isEmpty()) {
             studentEntity = studentDao.findByStudentRollNumber(studentFeeForm.getSearchText());
             if(studentEntity != null)
             {
@@ -59,22 +58,24 @@ public class StudentFeeAction extends DispatchAction {
             }
         }
         
-        if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
+       else if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentFeeEntity = new StudentFeeEntity();
             copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, true, studentDao, feeTypeDao);
             studentFeeDao.persist(studentFeeEntity);
+            studentFeeForm.resetform();
         } else if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_EDIT_TYPE)) {
             studentFeeEntity = studentFeeDao.findByPrimaryKey(studentFeeForm.getId());
             copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, true, studentDao, feeTypeDao);
             studentFeeDao.update(studentFeeEntity);
+            studentFeeForm.resetform();
         } else if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.GET_EDIT_TYPE_FORM)) {
             studentFeeEntity = studentFeeDao.findByPrimaryKey(studentFeeForm.getId());
+            studentFeeForm.resetform();
             if (studentFeeEntity != null) {
                 copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, false, studentDao, feeTypeDao);
             }
         }
         
-        studentFeeForm.resetform();
         List<FeeTypeEntity> feeTypeList = feeTypeDao.findAll();
         List<StudentFeeEntity> studentFeeList = studentFeeDao.findAll();
         studentFeeForm.setPaymentTypeList(getPaymentTypeList());
