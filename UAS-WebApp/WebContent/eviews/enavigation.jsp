@@ -71,7 +71,7 @@
                 </a>
                     
                 <ul class="sub">
-                    <li <c:if test="${requestScope.hostelBlockPage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=feeTypePage">Hostel Block</a></li>
+                    <li <c:if test="${requestScope.hostelBlockPage != null}"> class="active"</c:if> ><a  href="hostelBlockAction.do?method=hostelBlockPage">Hostel Block</a></li>
                 </ul>
                     
                     

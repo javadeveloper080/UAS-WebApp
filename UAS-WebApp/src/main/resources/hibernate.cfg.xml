@@ -43,6 +43,9 @@
   
         <mapping class="org.edu.uams.server.pojo.StudentFeeEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.StudentEnrollmentEntity"></mapping>
+        <mapping class="org.edu.uams.server.pojo.HostelBlockEntity"></mapping>
+        <mapping class="org.edu.uams.server.pojo.HostelRoomDetailsEntity"></mapping>
+        <mapping class="org.edu.uams.server.pojo.StudentHosteDetailsEntity"></mapping>
         
 
     </session-factory>

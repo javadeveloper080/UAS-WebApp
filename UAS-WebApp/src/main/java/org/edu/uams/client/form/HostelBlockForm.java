@@ -164,6 +164,23 @@ public class HostelBlockForm  extends ActionForm {
     public void setBlockEntitys(List<HostelBlockEntity> blockEntitys) {
         this.blockEntitys = blockEntitys;
     }
-    
-    
+
+    public void resetForm() {
+        
+        this.id = 0l;
+        this.name = null;
+        this.pageName = null;
+        this.addrLine1 = null;
+        this.addrLine2 = null;
+        this.addrLine3 = null;
+        this.addrLine4 = null;
+        this.city = null;
+        this.stateName = null;
+        this.zipCode = 0l;
+        this.inchargeName = null;
+        this.mobile = 0l;
+        this.hasBusAssigned = false;
+        this.addrLines = null;
+        this.blockEntitys = null;
+    }
 }

@@ -100,7 +100,11 @@
         <put name="title" value="Student Enrollments" />
         <put name="body" value="/eviews/allStudentEnrollmentPage.jsp" />
     </definition>
-
+    
+    <definition name="hostelBlockLayout" extends="baseTemplateLayout">
+        <put name="title" value="Hostel Block" />
+        <put name="body" value="/eviews/hostelBlockPage.jsp" />
+    </definition>
 
 
     
