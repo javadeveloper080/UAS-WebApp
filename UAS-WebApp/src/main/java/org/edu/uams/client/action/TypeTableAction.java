@@ -337,7 +337,12 @@ public class TypeTableAction extends DispatchAction {
         
         FeeTypeDao feeTypeDao = new FeeTypeDao();
         FeeTypeEntity typeEntity =feeTypeDao.findByPrimaryKey(key);
-        response.getWriter().write(typeEntity.getFeeAmount()+"");
+        if (typeEntity!=null) {
+              response.getWriter().write(typeEntity.getFeeAmount()+"");
+        }else{
+         response.getWriter().write(0);
+        }
+      
         
         return null;
     }

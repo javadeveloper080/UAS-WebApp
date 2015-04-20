@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="addrLine1">Student Roll Number & Full Name.</label>
+                                            <label for="rollNum">Student Roll Number & Full Name.</label>
                                             <html:text name="studentFeeForm" property="rollNum" styleId="rollNum"  readonly="true"/>
                                             <html:text name="studentFeeForm" property="studentName" styleId="studentName"  readonly="true"/>
                                         </div>
@@ -74,12 +74,14 @@
                                                 <html:option  styleClass="form-control" value=""></html:option>                                                                                                                                                             
                                                 <html:optionsCollection name="studentFeeForm" property="paymentTypeList" label="label" value="value" /> 
                                             </html:select>
+                                            <font color="red"> <label id="validatePaymentType"/></font> 
                                         </div>
                                     </div> 
                                     
                                     
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
+                                                      
                                             <label for="feeTypeId">Fee Type :</label>
                                             <html:select  styleClass="form-control" property="feeTypeId" styleId="feeTypeId" onchange="myFunction()">
                                                 <html:option value="0">Select fee type</html:option>
@@ -87,6 +89,7 @@
                                                                           property="feeTypeList" label="code" value="id" />
                                             </html:select>
                                             <label id="selectedFeeAmount"/>
+                                             <font color="red"> <label id="validateFeeType"/></font> 
                                         </div>
                                     </div>
                                 </div>
@@ -95,12 +98,14 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             Paid Amount: <html:text  property="paidAmount"  styleId="paidAmount"   styleClass="form-control" />
+                                            <font color="red"> <label id="validatePaidAmount"/></font> 
                                         </div>
                                     </div>
                                     
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             Balance Amount: <html:text  property="balanceAmount"  styleId="balanceAmount"   styleClass="form-control" />
+                                           <font color="red"> <label id="validateBalanceAmount"/></font> 
                                         </div>
                                     </div>
                                 </div>
@@ -111,12 +116,14 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             Fee Payment Date : <html:text  property="feePaymentDate"  styleId="feePaymentDate"   styleClass="form-control"/>
+                                          <font color="red"> <label id="validateFeePaymentDate"/></font> 
                                         </div>
                                     </div>
                                     
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             Discount Type: <html:text  property="discountType"  styleId="discountType"   styleClass="form-control" />
+                                          <font color="red"> <label id="validateDiscountType"/></font> 
                                         </div>
                                     </div>
                                     
@@ -223,7 +230,7 @@
     <script >
         
         function myFunction() {
-            alert('find')
+          
             var feeTypeId = document.getElementById("feeTypeId").value;
             var paymentType = document.getElementById("paymentType").value;
             var balanceAmount = document.getElementById("balanceAmount").value;
@@ -252,6 +259,51 @@
 
 
         function validateForm() {
+            var rollNum=document.getElementById('rollNum').value;
+            var paidAmount=document.getElementById('paidAmount').value;
+            var feePaymentDate=document.getElementById('feePaymentDate').value;
+            var feeTypeId=document.getElementById('feeTypeId').value;
+            
+            var paymentType=document.getElementById('paymentType').value;
+            var paidAmount=document.getElementById('paidAmount').value;
+            var balanceAmount=document.getElementById('balanceAmount').value;
+            
+            if (rollNum == null || rollNum == "") {
+                document.getElementById('rollNum').focus();
+                document.getElementById("validateRollNum").innerHTML = "Please Enter Student Roll Number";
+                return false;
+            }
+            
+            if (paidAmount == null || paidAmount == "") {
+                document.getElementById("validatePaidAmount").innerHTML = "Please Enter Paid Amount";
+                document.getElementById('paidAmount').focus();
+                return false;
+            }
+            
+            if (feePaymentDate == null || feePaymentDate == "") {
+                document.getElementById("validateFeePaymentDate").innerHTML = "Please Enter Fee Payment Date";
+                document.getElementById('feePaymentDate').focus();
+                return false;
+            }
+            if (paymentType == null || paymentType == "") {
+                document.getElementById("validatePaymentType").innerHTML = "Please Select Payment Type";
+                document.getElementById('paymentType').focus();
+                return false;
+            }
+            if (feeTypeId == null || feeTypeId == "") {
+                document.getElementById("validateFeeType").innerHTML = "Please Select Fee Type";
+                document.getElementById('feeTypeId').focus();
+                return false;
+            }
+            
+            if (paymentType=="PARTIAL") {
+                if (balanceAmount === null || balanceAmount === "") {
+                    document.getElementById("validateBalanceAmount").innerHTML = "Please Enter Balance Amount";
+                    document.getElementById('balanceAmount').focus();
+                    return false;
+                }
+            }
+            
             submitForm();
         }
 
@@ -287,7 +339,6 @@
         {
             document.getElementById('searchText').value = "";
             document.getElementById('rollNum').value = "";
-            document.getElementById('feeName').value = "";
             document.getElementById('paidAmount').value = "0.0";
             document.getElementById('feePaymentDate').value = "";
             document.getElementById('studentName').value = "";
