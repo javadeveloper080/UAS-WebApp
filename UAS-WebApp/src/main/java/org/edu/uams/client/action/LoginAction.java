@@ -109,7 +109,7 @@ public class LoginAction extends DispatchAction {
     
     private void sendPassWordAction(String passWord,
             String toEmailAdress, String name) {
-        String subject="V learning Password";
+        String subject="UAMS Forgot Password";
         String emailBody="Hi " + name + " ,\n  Please find your password below \n \n"
                 + passWord;
         EmailDTO dto=new EmailDTO( toEmailAdress, subject, emailBody);

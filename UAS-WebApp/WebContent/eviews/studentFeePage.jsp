@@ -145,11 +145,13 @@
                         </div>
                     </div><!-- col-lg-12-->      	
                 </div><!-- /row -->
-                
+             
                 <!-- GRID ELEMENTS -->
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
+                                 <font color="red"> <label id="mailSentFailed"/></font> 
+                                 <font color="green"> <label id="mailSentSucess"/></font> 
                             <table class="table table-striped table-advance table-hover">
                                 <h4><i>Student Fee Table</i></h4>
                                 <hr>
@@ -175,6 +177,7 @@
                                                 <td><bean:write name="studentFee" property="balanceAmount"/></td>
                                                 <td><bean:write name="studentFee" property="feePaymentDate"/></td>
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${studentFee.id});'><i class="fa fa-pencil"></i></button></td>
+                                                <td><button class="btn btn-info" onclick='sendFeeCopy(${studentFee.id});'>Send</button></td>
                                             </tr>
                                         </logic:iterate>
                                     </logic:notEmpty>
@@ -305,6 +308,26 @@
             document.getElementById('pageName').value = "GetEditTypeForm"
             document.studentFeeForm.action = "studentFeeAction.do?method=studentFeePage";
             document.studentFeeForm.submit();
+        }
+        
+        function sendFeeCopy(id) {
+                  document.getElementById("mailSentFailed").innerHTML = "";
+                   document.getElementById("mailSentSucess").innerHTML =  "";
+             $.ajax({
+                type: "POST",
+                url: "/UAMS-WebApp/studentFeeAction.do?method=sendFeePaidCopyToStudent",
+                data: {
+                    "id": id
+                },
+                success: function (response) {
+                    if (response == 'false') {
+                       document.getElementById("mailSentFailed").innerHTML = "Fee Copy Sent Failed";
+                    }
+                    else {
+                        document.getElementById("mailSentSucess").innerHTML = "Fee Copy Sent Sucesfully";
+                    }
+                }
+            });
         }
     
 

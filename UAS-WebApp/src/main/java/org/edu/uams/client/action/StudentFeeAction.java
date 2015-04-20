@@ -11,6 +11,7 @@ import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.StudentFeeForm;
 import org.edu.uams.server.api.ApplicationConstants;
+import org.edu.uams.server.api.EmailDTO;
 import org.edu.uams.server.api.PaymentType;
 import org.edu.uams.server.api.SeatCategoryType;
 import org.edu.uams.server.business.FeeTypeDao;
@@ -19,6 +20,7 @@ import org.edu.uams.server.business.StudentFeeDao;
 import org.edu.uams.server.pojo.FeeTypeEntity;
 import org.edu.uams.server.pojo.StudentEntity;
 import org.edu.uams.server.pojo.StudentFeeEntity;
+import org.edu.uams.server.util.SendMail;
 
 
 public class StudentFeeAction extends DispatchAction {
@@ -58,7 +60,7 @@ public class StudentFeeAction extends DispatchAction {
             }
         }
         
-       else if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
+        else if (studentFeeForm.getPageName() != null && studentFeeForm.getPageName().equals(ApplicationConstants.SUBMIT_ADD_TYPE)) {
             studentFeeEntity = new StudentFeeEntity();
             copyDataFromSQFormToSQEntity(studentFeeForm, studentFeeEntity, true, studentDao, feeTypeDao);
             studentFeeDao.persist(studentFeeEntity);
@@ -90,6 +92,36 @@ public class StudentFeeAction extends DispatchAction {
         request.setAttribute("studentModule", "true");
         request.setAttribute("studentFee", "true");
         return mapping.findForward("studentFeePage");
+    }
+    
+    
+    public ActionForward sendFeePaidCopyToStudent(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        
+        final StudentFeeForm studentFeeForm = (StudentFeeForm) form;
+        
+        StudentFeeDao studentFeeDao = new StudentFeeDao();
+        StudentFeeEntity studentFeeEntity = studentFeeDao.findByPrimaryKey(studentFeeForm.getId());
+        
+        StudentEntity studentEntity=studentFeeEntity.getStudent();
+        
+        String studentEmailAdress=studentEntity.getEmail();
+        
+        String subject="Fee Paid Copy :"+studentEntity.getRollNum();
+        
+        String emailBody="Dear " + studentEntity.getLastName() + " ,\n  Please find your Fee Paid Copy paid on "+studentFeeEntity.getFeePaymentDate()+" \n \n  "
+                        + studentFeeEntity.getFeeTypeEntity().getCode() +":" +studentFeeEntity.getFeeTypeEntity().getAmount()+" | Paid Amount:"+studentFeeEntity.getPaidAmount() +"\n \n"
+                + " Balance Amount:"+studentFeeEntity.getBalanceAmount()+"\n \n"
+                + " Payment Type  :"+studentFeeEntity.getPaymentType()+"\n \n"
+                + " Thanks \n \n ";
+        EmailDTO dto=new EmailDTO( studentEmailAdress, subject, emailBody);
+        try {
+        SendMail.sendMail(dto);
+         response.getWriter().write("true");
+        }catch(Exception e){
+         response.getWriter().write("false");
+        }
+        return null;
     }
     
     private void copyDataFromSQFormToSQEntity(StudentFeeForm studentFeeForm, StudentFeeEntity studentFeeEntity, boolean isEntity, StudentDao studentDao, FeeTypeDao feeTypeDao) {
@@ -125,4 +157,7 @@ public class StudentFeeAction extends DispatchAction {
         }
         return paymentTypeList;
     }
+    
+    
+    
 }
