@@ -12,6 +12,8 @@ import org.apache.struts.actions.DispatchAction;
 import org.edu.uams.client.dto.LabelValueBean;
 import org.edu.uams.client.form.StudentEnrollmentForm;
 import org.edu.uams.server.api.ApplicationConstants;
+import org.edu.uams.server.api.EmailDTO;
+import org.edu.uams.server.api.EnrollmentStatusType;
 import org.edu.uams.server.api.GenderType;
 import org.edu.uams.server.business.CourseTypeDao;
 import org.edu.uams.server.business.ProgramLevelTypeDao;
@@ -20,6 +22,7 @@ import org.edu.uams.server.pojo.CourseTypeEntity;
 import org.edu.uams.server.pojo.ProgramLevelTypeEntity;
 import org.edu.uams.server.pojo.StudentEnrollmentEntity;
 import org.edu.uams.server.util.ApplicationUtil;
+import org.edu.uams.server.util.SendMail;
 
 
 public class StudentEnrollmentAction extends DispatchAction {
@@ -56,6 +59,7 @@ public class StudentEnrollmentAction extends DispatchAction {
             copyFormDataToEntity(studentEnrollmentForm, enrollmentEntity,courseTypeDao, programLevelTypeDao,nextId);
             StudentEnrollmentEntity persited=studentEnrollmentDAO.persist(enrollmentEntity);
             if (persited!=null ) {
+                sendEmailToStudent(persited);
                 studentEnrollmentForm.setStatusMessage("You have Sucessfull enrolled for the selected course, Your Enrollemnt number is :"+persited.getEnrollmentNumber());
             }
         }
@@ -66,6 +70,62 @@ public class StudentEnrollmentAction extends DispatchAction {
         studentEnrollmentForm.setListOfProgamLevelTypes(programLevelTypeDao.findAll());
         
         return mapping.findForward(SUCCESS);
+    }
+    
+      public ActionForward allStudentEnrollmentPage(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        
+        StudentEnrollmentForm studentEnrollmentForm = (StudentEnrollmentForm) form;
+        StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
+        studentEnrollmentForm.setStudentEnrollmetList(studentEnrollmentDAO.findAll());
+        
+        request.setAttribute("studentModule", "true");
+        request.setAttribute("enrollments", "true");
+        return mapping.findForward("allStudentEnrollmentPage");
+    }
+    
+      
+      public ActionForward sendStatusToStudent(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+          
+          
+        StudentEnrollmentForm studentEnrollmentForm = (StudentEnrollmentForm) form;
+        StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
+        
+        StudentEnrollmentEntity studentEnrollmentEntity = studentEnrollmentDAO.findByPrimaryKey(studentEnrollmentForm.getId());
+        studentEnrollmentEntity.setEnrollmentStatusType(EnrollmentStatusType.valueOf(studentEnrollmentForm.getStatusMessage()));
+        studentEnrollmentDAO.update(studentEnrollmentEntity);
+        String studentEmailAdress=studentEnrollmentEntity.getEmail();
+        String subject=" Enrollment Number :"+studentEnrollmentEntity.getEnrollmentNumber();
+        
+        
+           String emailBody="Dear " + studentEnrollmentEntity.getLastName() + " ,\n  Your enrollment number "+studentEnrollmentEntity.getEnrollmentNumber()+" \n \n  "
+                        + "Applied Course" +":" +studentEnrollmentEntity.getAppliedCourseType().getCode()+"\n \n"
+                        + "has been "+studentEnrollmentForm.getStatusMessage()+"\n \n"
+                        + " Thanks, Admin \n \n ";
+        
+        
+        EmailDTO dto=new EmailDTO( studentEmailAdress, subject, emailBody);
+        SendMail.sendMail(dto);
+        
+        response.getWriter().write("done");
+        return null;
+    }
+    
+    public void sendEmailToStudent(StudentEnrollmentEntity studentEnrollmentEntity)
+        {
+        String studentEmailAdress=studentEnrollmentEntity.getEmail();
+        
+        String subject=" Enrollment Number :"+studentEnrollmentEntity.getEnrollmentNumber();
+        
+        String emailBody="Dear " + studentEnrollmentEntity.getLastName() + " ,\n  Please find  your enrollment number "+studentEnrollmentEntity.getEnrollmentNumber()+" \n \n  "
+                        + "Applied Course" +":" +studentEnrollmentEntity.getAppliedCourseType().getCode()+"\n \n"
+                + " Thanks, Admin \n \n ";
+        
+        EmailDTO dto=new EmailDTO( studentEmailAdress, subject, emailBody);
+        SendMail.sendMail(dto);
     }
     
     private void copyFormDataToEntity(StudentEnrollmentForm studentEnrollmentForm, StudentEnrollmentEntity enrollmentEntity,CourseTypeDao courseTypeDao,
@@ -81,6 +141,7 @@ public class StudentEnrollmentAction extends DispatchAction {
         enrollmentEntity.setEmail(studentEnrollmentForm.getEmail());
         enrollmentEntity.setFirstName(studentEnrollmentForm.getFirstName());
         enrollmentEntity.setGenderType(GenderType.valueOf(studentEnrollmentForm.getGenderType()));
+        enrollmentEntity.setEnrollmentStatusType(EnrollmentStatusType.PENDING);
         enrollmentEntity.setGrade(studentEnrollmentForm.getGrade());
         enrollmentEntity.setLastGraduatedCourseType(courseTypeDao.findByPrimaryKey(studentEnrollmentForm.getLastGraduatedCourseId()));
         if (studentEnrollmentForm.getGraduatedProgramLevelTypeId()!=null) {

@@ -3,10 +3,7 @@ package org.edu.uams.client.form;
 import java.util.List;
 import org.apache.struts.action.ActionForm;
 
-/**
- *
- * @author SARAT
- */
+
 public class StudentEnrollmentForm extends ActionForm {
     
     private long id;
@@ -30,9 +27,10 @@ public class StudentEnrollmentForm extends ActionForm {
     
     private List listOfCourses;
     private List listOfProgamLevelTypes;
+    private List studentEnrollmetList;
     
-     private List  genderTypeList;
-     
+    private List  genderTypeList;
+    
     private String statusMessage;
     
     
@@ -141,16 +139,16 @@ public class StudentEnrollmentForm extends ActionForm {
     public void setEnrollmentNumber(String enrollmentNumber) {
         this.enrollmentNumber = enrollmentNumber;
     }
-
+    
     public List getListOfProgamLevelTypes() {
         return listOfProgamLevelTypes;
     }
-
+    
     public void setListOfProgamLevelTypes(List listOfProgamLevelTypes) {
         this.listOfProgamLevelTypes = listOfProgamLevelTypes;
     }
     
-   
+    
     
     public Long getAppliedProgramLevelTypeId() {
         return appliedProgramLevelTypeId;
@@ -159,16 +157,16 @@ public class StudentEnrollmentForm extends ActionForm {
     public void setAppliedProgramLevelTypeId(Long appliedProgramLevelTypeId) {
         this.appliedProgramLevelTypeId = appliedProgramLevelTypeId;
     }
-
+    
     public Long getGraduatedProgramLevelTypeId() {
         return graduatedProgramLevelTypeId;
     }
-
+    
     public void setGraduatedProgramLevelTypeId(Long graduatedProgramLevelTypeId) {
         this.graduatedProgramLevelTypeId = graduatedProgramLevelTypeId;
     }
     
-   
+    
     
     public String getPageName() {
         return pageName;
@@ -185,13 +183,21 @@ public class StudentEnrollmentForm extends ActionForm {
     public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
     }
-
+    
     public List getGenderTypeList() {
         return genderTypeList;
     }
-
+    
     public void setGenderTypeList(List genderTypeList) {
         this.genderTypeList = genderTypeList;
+    }
+
+    public List getStudentEnrollmetList() {
+        return studentEnrollmetList;
+    }
+
+    public void setStudentEnrollmetList(List studentEnrollmetList) {
+        this.studentEnrollmetList = studentEnrollmetList;
     }
     
     
@@ -199,5 +205,10 @@ public class StudentEnrollmentForm extends ActionForm {
         dateEnrolled = null;
         grade = null;
         id = 0l;
+        studentEnrollmetList=null;
+        graduatedProgramLevelTypeId=null;
+        appliedProgramLevelTypeId=null;
+        listOfProgamLevelTypes=null;
+        
     }
 }

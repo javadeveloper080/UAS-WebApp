@@ -21,10 +21,7 @@ import org.edu.uams.server.pojo.StudentEnrollmentEntity;
 import org.edu.uams.server.pojo.StudentEntity;
 import org.edu.uams.server.util.ApplicationUtil;
 
-/**
- *
- * @author SARAT
- */
+
 public class StudentAction extends DispatchAction {
     
     /* forward name="success" path="" */

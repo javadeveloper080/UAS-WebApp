@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.edu.uams.server.api.EnrollmentStatusType;
 import org.edu.uams.server.api.GenderType;
 
 
@@ -61,6 +62,11 @@ public class StudentEnrollmentEntity implements Serializable {
     @Column(name = "gender_type", length = 100, nullable = false)
     @Enumerated(EnumType.STRING)
     private GenderType genderType;
+    
+    @Basic(optional = false)
+    @Column(name = "enrollment_status_type", length = 100, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private EnrollmentStatusType enrollmentStatusType;
     
     
     @Basic(optional = true)
@@ -232,9 +238,13 @@ public class StudentEnrollmentEntity implements Serializable {
         this.enrollmentNumber = enrollmentNumber;
     }
 
-  
-    
-    
+    public EnrollmentStatusType getEnrollmentStatusType() {
+        return enrollmentStatusType;
+    }
+
+    public void setEnrollmentStatusType(EnrollmentStatusType enrollmentStatusType) {
+        this.enrollmentStatusType = enrollmentStatusType;
+    }
     
     
     
