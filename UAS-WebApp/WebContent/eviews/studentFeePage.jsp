@@ -63,6 +63,7 @@
                                             <html:text name="studentFeeForm" property="rollNum" styleId="rollNum"  readonly="true"/>
                                             <html:text name="studentFeeForm" property="studentName" styleId="studentName"  readonly="true"/>
                                         </div>
+                                          <font color="red"> <label id="validateRollNum"/></font> 
                                     </div>         
                                 </div>
                                 
@@ -191,12 +192,6 @@
         </section><!-- /MAIN CONTENT -->
         
         
-        
-        
-        
-        
-        
-        
         <!--main content end-->
         
     </section>
@@ -233,8 +228,6 @@
           
             var feeTypeId = document.getElementById("feeTypeId").value;
             var paymentType = document.getElementById("paymentType").value;
-            var balanceAmount = document.getElementById("balanceAmount").value;
-            var paidAmount = document.getElementById("paidAmount").value;
             
             
             $.ajax({
@@ -247,14 +240,9 @@
                     document.getElementById("selectedFeeAmount").innerHTML = "Selected Fee Amount: " + response;
                     if(paymentType!=null && paymentType=='FULL'){
                         document.getElementById("paidAmount").value = response;
-                    
                     }
-                    
                 }
             });
-    
-    
-    
         }
 
 
@@ -269,20 +257,8 @@
             var balanceAmount=document.getElementById('balanceAmount').value;
             
             if (rollNum == null || rollNum == "") {
-                document.getElementById('rollNum').focus();
+                document.getElementById('searchText').focus();
                 document.getElementById("validateRollNum").innerHTML = "Please Enter Student Roll Number";
-                return false;
-            }
-            
-            if (paidAmount == null || paidAmount == "") {
-                document.getElementById("validatePaidAmount").innerHTML = "Please Enter Paid Amount";
-                document.getElementById('paidAmount').focus();
-                return false;
-            }
-            
-            if (feePaymentDate == null || feePaymentDate == "") {
-                document.getElementById("validateFeePaymentDate").innerHTML = "Please Enter Fee Payment Date";
-                document.getElementById('feePaymentDate').focus();
                 return false;
             }
             if (paymentType == null || paymentType == "") {
@@ -290,20 +266,32 @@
                 document.getElementById('paymentType').focus();
                 return false;
             }
-            if (feeTypeId == null || feeTypeId == "") {
+            
+            if (feeTypeId == null || feeTypeId == "" ||feeTypeId == "0") {
                 document.getElementById("validateFeeType").innerHTML = "Please Select Fee Type";
                 document.getElementById('feeTypeId').focus();
                 return false;
             }
             
+            if (paidAmount == null || paidAmount == "" || paidAmount == "0.0") {
+                document.getElementById("validatePaidAmount").innerHTML = "Please Enter Paid Amount";
+                document.getElementById('paidAmount').focus();
+                return false;
+            }
+            
             if (paymentType=="PARTIAL") {
-                if (balanceAmount === null || balanceAmount === "") {
+                if (balanceAmount === null || balanceAmount === "" || balanceAmount == "0.0") {
                     document.getElementById("validateBalanceAmount").innerHTML = "Please Enter Balance Amount";
                     document.getElementById('balanceAmount').focus();
                     return false;
                 }
             }
             
+            if (feePaymentDate == null || feePaymentDate == "") {
+                document.getElementById("validateFeePaymentDate").innerHTML = "Please Enter Fee Payment Date";
+                document.getElementById('feePaymentDate').focus();
+                return false;
+            }
             submitForm();
         }
 
