@@ -95,6 +95,13 @@
                 <artifactId>postgresql</artifactId>
                 <version>9.1-901.jdbc4</version>
             </dependency>
+            
+              <!-- H2 database driver -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.187</version>
+        </dependency>
 
 
             <dependency>
