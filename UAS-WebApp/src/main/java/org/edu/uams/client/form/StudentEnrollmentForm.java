@@ -31,7 +31,10 @@ public class StudentEnrollmentForm extends ActionForm {
     
     private List  genderTypeList;
     
+    private List enrollmentStatusTypeList;
+    
     private String statusMessage;
+    private String enrollmentStatusType;
     
     
     public Long getApplyCourseId() {
@@ -198,6 +201,22 @@ public class StudentEnrollmentForm extends ActionForm {
 
     public void setStudentEnrollmetList(List studentEnrollmetList) {
         this.studentEnrollmetList = studentEnrollmetList;
+    }
+
+    public String getEnrollmentStatusType() {
+        return enrollmentStatusType;
+    }
+
+    public void setEnrollmentStatusType(String enrollmentStatusType) {
+        this.enrollmentStatusType = enrollmentStatusType;
+    }
+
+    public List getEnrollmentStatusTypeList() {
+        return enrollmentStatusTypeList;
+    }
+
+    public void setEnrollmentStatusTypeList(List enrollmentStatusTypeList) {
+        this.enrollmentStatusTypeList = enrollmentStatusTypeList;
     }
     
     

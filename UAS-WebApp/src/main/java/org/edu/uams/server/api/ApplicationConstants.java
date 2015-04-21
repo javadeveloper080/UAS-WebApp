@@ -6,6 +6,7 @@ public interface ApplicationConstants {
     public static String SUBMIT_EDIT_TYPE="SubmitEditType";
     public static String GET_EDIT_TYPE_FORM="GetEditTypeForm";
     public static String SUBMIT_ADD_TYPE="SubmitAddType";
+    public static String FILTER_TYPE="FilterType";
     
     
     //ROLES

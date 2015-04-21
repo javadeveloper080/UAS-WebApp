@@ -28,11 +28,15 @@ import org.edu.uams.server.api.GenderType;
 @Table(name = "student_enrollment")
 public class StudentEnrollmentEntity implements Serializable {
     
-    public static final String FIND_ALL="SELECT s FROM StudentEnrollment s";
-    public static final String GET_LASTEST_ID="SELECT s.id FROM StudentEnrollment s order by id desc";
+    public static final String FIND_ALL="SELECT s FROM StudentEnrollment s order  by s.grade desc, s.dateEnrolled";
+    public static final String GET_LASTEST_ID="SELECT s.id FROM StudentEnrollment s order by s.id desc";
     public static String FIND_BY_STUDENT_ENROLLMENT_NUMBER="SELECT s FROM StudentEnrollment s where s.enrollmentNumber = :enrollmentNumber";
+    public static String FIND_BY_APPLIED_COURSE_ID="SELECT s FROM StudentEnrollment s join s.appliedCourseType c where c.id = :courseId order by s.grade desc, s.dateEnrolled";
+    public static String FIND_BY_STATUS="SELECT s FROM StudentEnrollment s  where s.enrollmentStatusType = :enrollmentStatusType order by s.grade desc, s.dateEnrolled";
+    public static String FIND_BY_APPLIED_COURSE_STATUS="SELECT s FROM StudentEnrollment s join s.appliedCourseType c where s.enrollmentStatusType = :enrollmentStatusType and c.id = :courseId order by s.grade desc, s.dateEnrolled";
     
     private static final long serialVersionUID = 1L;
+    
     
     
     
@@ -86,8 +90,8 @@ public class StudentEnrollmentEntity implements Serializable {
     @ManyToOne(optional = false, targetEntity = CourseTypeEntity.class)
     @JoinColumn(name = "attend_course_type_id", referencedColumnName = "id", nullable = false)
     private CourseTypeEntity lastGraduatedCourseType;
-
-     
+    
+    
     @ManyToOne(optional = false, targetEntity = ProgramLevelTypeEntity.class)
     @JoinColumn(name = "applied_degree_type_id", referencedColumnName = "id", nullable = false)
     private ProgramLevelTypeEntity appliedProgramLevelType;
@@ -137,111 +141,111 @@ public class StudentEnrollmentEntity implements Serializable {
     public void setGrade(Double grade) {
         this.grade = grade;
     }
-
+    
     public long getId() {
         return id;
     }
-
+    
     public void setId(long id) {
         this.id = id;
     }
-
+    
     public String getFirstName() {
         return firstName;
     }
-
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    
     public String getLastName() {
         return lastName;
     }
-
+    
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    
     public Date getDob() {
         return dob;
     }
-
+    
     public void setDob(Date dob) {
         this.dob = dob;
     }
-
+    
     public GenderType getGenderType() {
         return genderType;
     }
-
+    
     public void setGenderType(GenderType genderType) {
         this.genderType = genderType;
     }
-
+    
     public long getStudentMob() {
         return studentMob;
     }
-
+    
     public void setStudentMob(long studentMob) {
         this.studentMob = studentMob;
     }
-
+    
     public String getEmail() {
         return email;
     }
-
+    
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     public CourseTypeEntity getAppliedCourseType() {
         return appliedCourseType;
     }
-
+    
     public void setAppliedCourseType(CourseTypeEntity appliedCourseType) {
         this.appliedCourseType = appliedCourseType;
     }
-
+    
     public CourseTypeEntity getLastGraduatedCourseType() {
         return lastGraduatedCourseType;
     }
-
+    
     public void setLastGraduatedCourseType(CourseTypeEntity lastGraduatedCourseType) {
         this.lastGraduatedCourseType = lastGraduatedCourseType;
     }
-
+    
     public ProgramLevelTypeEntity getLastGraduatedProgramLevelType() {
         return lastGraduatedProgramLevelType;
     }
-
+    
     public void setLastGraduatedProgramLevelType(ProgramLevelTypeEntity lastGraduatedProgramLevelType) {
         this.lastGraduatedProgramLevelType = lastGraduatedProgramLevelType;
     }
-
+    
     public ProgramLevelTypeEntity getAppliedProgramLevelType() {
         return appliedProgramLevelType;
     }
-
+    
     public void setAppliedProgramLevelType(ProgramLevelTypeEntity appliedProgramLevelType) {
         this.appliedProgramLevelType = appliedProgramLevelType;
     }
-
-   
-
     
-
+    
+    
+    
+    
     public String getEnrollmentNumber() {
         return enrollmentNumber;
     }
-
+    
     public void setEnrollmentNumber(String enrollmentNumber) {
         this.enrollmentNumber = enrollmentNumber;
     }
-
+    
     public EnrollmentStatusType getEnrollmentStatusType() {
         return enrollmentStatusType;
     }
-
+    
     public void setEnrollmentStatusType(EnrollmentStatusType enrollmentStatusType) {
         this.enrollmentStatusType = enrollmentStatusType;
     }

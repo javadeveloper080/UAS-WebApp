@@ -108,7 +108,7 @@
             <forward name="hostelBlockPage" path="hostelBlockLayout" ></forward>
         </action>
         
-        <action name="studentEnrollmentForm" path="/studentEnrollment" parameter="method" type="org.edu.uams.client.action.StudentEnrollmentAction"
+        <action name="studentEnrollmentForm" path="/studentEnrollmentAction" parameter="method" type="org.edu.uams.client.action.StudentEnrollmentAction"
                 scope="request" >
             <forward name="success" path="/eviews/studentEnrollment.jsp" ></forward>
             <forward name="allStudentEnrollmentPage" path="AllStudentEnrollmentPageLayout" ></forward>

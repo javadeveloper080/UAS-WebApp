@@ -15,30 +15,6 @@
                             </html:form>
                 
                                 
-              <li class="sub-menu">
-                <a href="javascript:;"  <c:if test="${requestScope.studentModule != null}"> class="active"</c:if>>
-                    <i class="fa fa-th"></i>
-                    <span>Student</span>
-                </a>
-
-                <ul class="sub">
-                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do?method=studentPage">Student Profile</a></li>
-                </ul>
-                <ul class="sub">
-                    <li  <c:if test="${requestScope.studentAdd != null}"> class="active"</c:if> ><a  href="studentAddressAction.do?method=studentAdressPage">Student Address</a></li>
-                </ul>
-               
-                <ul class="sub">
-                    <li  <c:if test="${requestScope.studentFee != null}"> class="active"</c:if> ><a  href="studentFeeAction.do?method=studentFeePage">Student Fee</a></li>
-                </ul>
-                <ul class="sub">
-                    <li  <c:if test="${requestScope.studentQlfDetails != null}"> class="active"</c:if> ><a  href="studentQlfAction.do?method=studentQualificationPage">Student Qualification</a></li>
-                </ul>
-                
-                <ul class="sub">
-                    <li  <c:if test="${requestScope.enrollments != null}"> class="active"</c:if> ><a  href="studentEnrollment.do?method=allStudentEnrollmentPage">Student Enrollments</a></li>
-                </ul>
-            </li>                   
                 
             <li class="sub-menu">
                 <a href="javascript:;" <c:if test="${requestScope.feeModule != null}"> class="active"</c:if>>
@@ -115,6 +91,32 @@
                     <li <c:if test="${requestScope.courseTypePage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=courseTypePage">Course Type</a></li>
                 </ul>
             </li>
+            
+            
+                <li class="sub-menu">
+                <a href="javascript:;"  <c:if test="${requestScope.studentModule != null}"> class="active"</c:if>>
+                    <i class="fa fa-th"></i>
+                    <span>Student</span>
+                </a>
+
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentDetails != null}"> class="active"</c:if> ><a  href="studentAction.do?method=studentPage">Student Profile</a></li>
+                </ul>
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentAdd != null}"> class="active"</c:if> ><a  href="studentAddressAction.do?method=studentAdressPage">Student Address</a></li>
+                </ul>
+               
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentFee != null}"> class="active"</c:if> ><a  href="studentFeeAction.do?method=studentFeePage">Student Fee</a></li>
+                </ul>
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.studentQlfDetails != null}"> class="active"</c:if> ><a  href="studentQlfAction.do?method=studentQualificationPage">Student Qualification</a></li>
+                </ul>
+                
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.enrollments != null}"> class="active"</c:if> ><a  href="studentEnrollmentAction.do?method=allStudentEnrollmentPage">Student Enrollments</a></li>
+                </ul>
+            </li>               
            
                 
         </ul>

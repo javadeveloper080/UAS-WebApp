@@ -57,7 +57,7 @@
                         </li>
                         
                         <li class="mt">
-                            <a href="studentEnrollment.do?method=studentEnrollmentPage">
+                            <a href="studentEnrollmentAction.do?method=studentEnrollmentPage">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Student Enrollment</span>
                             </a>

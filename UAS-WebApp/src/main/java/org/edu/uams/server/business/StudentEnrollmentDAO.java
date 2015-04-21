@@ -8,15 +8,11 @@ package org.edu.uams.server.business;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import org.edu.uams.server.api.EnrollmentStatusType;
 import org.edu.uams.server.pojo.StudentEnrollmentEntity;
-import org.edu.uams.server.pojo.StudentEntity;
-import org.edu.uams.server.pojo.StudentQualificationEntity;
 import org.hibernate.Query;
 
-/**
- *
- * @author SARAT
- */
+
 public class StudentEnrollmentDAO  extends AbstractDao<StudentEnrollmentEntity> {
     
     public StudentEnrollmentDAO() {
@@ -46,7 +42,28 @@ public class StudentEnrollmentDAO  extends AbstractDao<StudentEnrollmentEntity> 
          Map<String, Object> params=new LinkedHashMap<>();
         params.put("enrollmentNumber", enrollmentNumber);
         return super.findByQuery(StudentEnrollmentEntity.FIND_BY_STUDENT_ENROLLMENT_NUMBER, params);
-      
     }
+    
+     
+    public List<StudentEnrollmentEntity> findByAppliedCourse(Long courseId) {
+        Map<String, Object> params=new LinkedHashMap<>();
+        params.put("courseId", courseId);
+        return super.findListByQuery(StudentEnrollmentEntity.FIND_BY_APPLIED_COURSE_ID, params);
+    }
+    
+    public List<StudentEnrollmentEntity> findByEnrollmentStatusType(String enrollmentStatusType) {
+        Map<String, Object> params=new LinkedHashMap<>();
+        params.put("enrollmentStatusType", EnrollmentStatusType.valueOf(enrollmentStatusType));
+        return super.findListByQuery(StudentEnrollmentEntity.FIND_BY_STATUS, params);
+    }
+    
+     public List<StudentEnrollmentEntity> findByAppliedCourseStatusType(Long courseId,String enrollmentStatusType) {
+        Map<String, Object> params=new LinkedHashMap<>();
+        params.put("enrollmentStatusType", EnrollmentStatusType.valueOf(enrollmentStatusType));
+        params.put("courseId", courseId);
+        return super.findListByQuery(StudentEnrollmentEntity.FIND_BY_APPLIED_COURSE_STATUS, params);
+    }
+    
+    
     
 }

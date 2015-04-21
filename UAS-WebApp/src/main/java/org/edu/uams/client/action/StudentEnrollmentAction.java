@@ -72,25 +72,57 @@ public class StudentEnrollmentAction extends DispatchAction {
         return mapping.findForward(SUCCESS);
     }
     
-      public ActionForward allStudentEnrollmentPage(ActionMapping mapping, ActionForm form,
+    public ActionForward allStudentEnrollmentPage(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
         StudentEnrollmentForm studentEnrollmentForm = (StudentEnrollmentForm) form;
         StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
-        studentEnrollmentForm.setStudentEnrollmetList(studentEnrollmentDAO.findAll());
         
+        List<StudentEnrollmentEntity> studentEnrollmetList=null;
+        
+        if (studentEnrollmentForm.getPageName() != null && studentEnrollmentForm.getPageName().equals(ApplicationConstants.FILTER_TYPE)) {
+           
+            if (studentEnrollmentForm.getApplyCourseId()!=null && studentEnrollmentForm.getApplyCourseId()>0
+                    && studentEnrollmentForm.getEnrollmentStatusType()!=null && !studentEnrollmentForm.getEnrollmentStatusType().isEmpty()) {
+                studentEnrollmetList=studentEnrollmentDAO.findByAppliedCourseStatusType(studentEnrollmentForm.getApplyCourseId(), studentEnrollmentForm.getEnrollmentStatusType());
+            }
+            
+            else if (studentEnrollmentForm.getApplyCourseId()!=null && studentEnrollmentForm.getApplyCourseId()>0
+                    && (studentEnrollmentForm.getEnrollmentStatusType()==null || studentEnrollmentForm.getEnrollmentStatusType().isEmpty())) {
+                studentEnrollmetList=studentEnrollmentDAO.findByAppliedCourse(studentEnrollmentForm.getApplyCourseId());
+            }
+            else if ((studentEnrollmentForm.getApplyCourseId()==null || studentEnrollmentForm.getApplyCourseId()==0 )
+                    && (studentEnrollmentForm.getEnrollmentStatusType()!=null && !studentEnrollmentForm.getEnrollmentStatusType().isEmpty())) {
+                studentEnrollmetList=studentEnrollmentDAO.findByEnrollmentStatusType(studentEnrollmentForm.getEnrollmentStatusType());
+            }
+            else{
+                studentEnrollmetList=studentEnrollmentDAO.findAll();
+            }
+            
+        }else{
+            studentEnrollmetList=studentEnrollmentDAO.findAll();
+        }
+        
+        
+        studentEnrollmentForm.setEnrollmentStatusTypeList(getEnrollmentStatusTypeList());
+        
+        CourseTypeDao courseTypeDao = new CourseTypeDao();
+        List<CourseTypeEntity> listOfCourses = courseTypeDao.findAll();
+        studentEnrollmentForm.setListOfCourses(listOfCourses);
+        
+        studentEnrollmentForm.setStudentEnrollmetList(studentEnrollmetList);
         request.setAttribute("studentModule", "true");
         request.setAttribute("enrollments", "true");
         return mapping.findForward("allStudentEnrollmentPage");
     }
     
-      
-      public ActionForward sendStatusToStudent(ActionMapping mapping, ActionForm form,
+    
+    public ActionForward sendStatusToStudent(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-          
-          
+        
+        
         StudentEnrollmentForm studentEnrollmentForm = (StudentEnrollmentForm) form;
         StudentEnrollmentDAO studentEnrollmentDAO = new StudentEnrollmentDAO();
         
@@ -101,10 +133,10 @@ public class StudentEnrollmentAction extends DispatchAction {
         String subject=" Enrollment Number :"+studentEnrollmentEntity.getEnrollmentNumber();
         
         
-           String emailBody="Dear " + studentEnrollmentEntity.getLastName() + " ,\n  Your enrollment number "+studentEnrollmentEntity.getEnrollmentNumber()+" \n \n  "
-                        + "Applied Course" +":" +studentEnrollmentEntity.getAppliedCourseType().getCode()+"\n \n"
-                        + "has been "+studentEnrollmentForm.getStatusMessage()+"\n \n"
-                        + " Thanks, Admin \n \n ";
+        String emailBody="Dear " + studentEnrollmentEntity.getLastName() + " ,\n  Your enrollment number "+studentEnrollmentEntity.getEnrollmentNumber()+" \n \n  "
+                + "Applied Course" +":" +studentEnrollmentEntity.getAppliedCourseType().getCode()+"\n \n"
+                + "has been "+studentEnrollmentForm.getStatusMessage()+"\n \n"
+                + " Thanks, Admin \n \n ";
         
         
         EmailDTO dto=new EmailDTO( studentEmailAdress, subject, emailBody);
@@ -115,13 +147,13 @@ public class StudentEnrollmentAction extends DispatchAction {
     }
     
     public void sendEmailToStudent(StudentEnrollmentEntity studentEnrollmentEntity)
-        {
+    {
         String studentEmailAdress=studentEnrollmentEntity.getEmail();
         
         String subject=" Enrollment Number :"+studentEnrollmentEntity.getEnrollmentNumber();
         
         String emailBody="Dear " + studentEnrollmentEntity.getLastName() + " ,\n  Please find  your enrollment number "+studentEnrollmentEntity.getEnrollmentNumber()+" \n \n  "
-                        + "Applied Course" +":" +studentEnrollmentEntity.getAppliedCourseType().getCode()+"\n \n"
+                + "Applied Course" +":" +studentEnrollmentEntity.getAppliedCourseType().getCode()+"\n \n"
                 + " Thanks, Admin \n \n ";
         
         EmailDTO dto=new EmailDTO( studentEmailAdress, subject, emailBody);
@@ -156,11 +188,19 @@ public class StudentEnrollmentAction extends DispatchAction {
     }
     
     
-     private List<LabelValueBean> getGenderTypeList() {
+    private List<LabelValueBean> getGenderTypeList() {
         List<LabelValueBean> genderTypeList = new ArrayList<>();
         for (GenderType genderType : GenderType.values()) {
             genderTypeList.add(new LabelValueBean(genderType.name(), genderType.name()));
         }
         return genderTypeList;
+    }
+    
+      private List<LabelValueBean> getEnrollmentStatusTypeList() {
+        List<LabelValueBean> enrollmentStatusTypeList = new ArrayList<>();
+        for (EnrollmentStatusType enrollmentStatusType : EnrollmentStatusType.values()) {
+            enrollmentStatusTypeList.add(new LabelValueBean(enrollmentStatusType.name(), enrollmentStatusType.name()));
+        }
+        return enrollmentStatusTypeList;
     }
 }

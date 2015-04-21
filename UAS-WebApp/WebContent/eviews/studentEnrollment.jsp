@@ -86,7 +86,7 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h1><Strong>Student Enrollment</Strong> </h1>
-                                    <html:form  styleClass="" action="/studentEnrollment" method="post" styleId="studentEnrollmentForm">
+                                    <html:form  styleClass="" action="/studentEnrollmentAction" method="post" styleId="studentEnrollmentForm">
                                 <h3><em>Student enrollment helps a student apply for a course in university</em></h3>
                                 <hr />
                                 
@@ -370,7 +370,7 @@
 
         function submitForm() {
             document.getElementById('pageName').value = "SubmitAddType"
-            document.studentEnrollmentForm.action = "studentEnrollment.do?method=studentEnrollmentPage";
+            document.studentEnrollmentForm.action = "studentEnrollmentAction.do?method=studentEnrollmentPage";
             document.studentEnrollmentForm.submit();
         }
 
