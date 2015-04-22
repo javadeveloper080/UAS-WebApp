@@ -2,14 +2,7 @@
 <%@taglib uri="/WEB-INF/tld/struts-logic.tld" prefix="logic"%>
 <%@taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
 
-<!-- Bootstrap core CSS -->
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<!--external css-->
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-<!-- Custom styles for this template -->
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
 
 <section id="container" >
     
@@ -227,35 +220,7 @@
     
 </section>
 
-<!-- js placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="assets/js/jquery.scrollTo.min.js"></script>
-<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
-<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-
-
-
-<!--external css-->
-<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
-<!-- Custom styles for this template -->
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
-
-
-<!--common script for all pages-->
-<script src="assets/js/common-scripts.js"></script>
-
-
-<!-- Bootstrap core CSS -->
-<!--    <link href="assets/css/bootstrap.css" rel="stylesheet">-->
-<script src="assets/css/bootstrap.min.css"></script>
 
 <!--script for this page-->
 
