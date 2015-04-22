@@ -1,12 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 package org.edu.uams.server.pojo;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,19 +26,41 @@ public class CourseTypeEntityTest extends  AbstractPojoTestCase{
     }
     
     
-
-    /**
-     * Test of getId method, of class CourseTypeEntity.
-     */
+    
     @Test
     public void testFindAll() {
+        Session session=getSession();
+        Transaction transaction = session.getTransaction();
+        CourseTypeEntity courseTypeEntity=new CourseTypeEntity("TEST", "DESCRIPTION");
+        transaction.begin();
+        session.save(courseTypeEntity);
+        transaction.commit();
         Query query = getSession().createQuery(CourseTypeEntity.FIND_ALL);
-        long expResult = 0L;
+        long expResult = 1L;
         long result = query.list().size();
         assertEquals(expResult, result);
         System.out.println("testing done");
     }
-
-   
+    
+    @Test
+    public void testFindByCode() {
+        Session session=getSession();
+        Transaction transaction = session.getTransaction();
+        CourseTypeEntity courseTypeEntity=new CourseTypeEntity("ABC", "DESCRIPTION");
+        transaction.begin();
+        session.save(courseTypeEntity);
+        transaction.commit();
+        Query query = getSession().createQuery(CourseTypeEntity.FIND_BY_CODE);
+        query.setParameter("code", "ABC");
+        long expResult = 1L;
+        long result = query.list().size();
+        assertEquals(expResult, result);
+        System.out.println("testing done");
+    }
+    
+    
+    
+    
+    
     
 }
