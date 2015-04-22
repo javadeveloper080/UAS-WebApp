@@ -2,26 +2,33 @@ package org.edu.uams.server.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import org.edu.uams.server.api.AddressType;
 
 import org.edu.uams.server.api.ApplicationConstants;
 import org.edu.uams.server.api.EnrollmentStatusType;
 import org.edu.uams.server.api.GenderType;
+import org.edu.uams.server.api.PaymentType;
 import org.edu.uams.server.api.SeatCategoryType;
 import org.edu.uams.server.business.CourseTypeDao;
 import org.edu.uams.server.business.ProgramLevelTypeDao;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
+import org.edu.uams.server.business.StudentAddressDAO;
 import org.edu.uams.server.business.StudentDao;
 import org.edu.uams.server.business.StudentEnrollmentDAO;
+import org.edu.uams.server.business.StudentFeeDao;
 import org.edu.uams.server.business.UserMasterDao;
 import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.CourseTypeEntity;
 import org.edu.uams.server.pojo.ProgramLevelTypeEntity;
 import org.edu.uams.server.pojo.FeeCategoryTypeEntity;
 import org.edu.uams.server.pojo.FeeTypeEntity;
+import org.edu.uams.server.pojo.StudentAddressEntity;
 import org.edu.uams.server.pojo.StudentEnrollmentEntity;
 import org.edu.uams.server.pojo.StudentEntity;
+import org.edu.uams.server.pojo.StudentFeeEntity;
 import org.edu.uams.server.pojo.UserMasterEntity;
 import org.edu.uams.server.pojo.UserMasterTypeEntity;
 
@@ -35,6 +42,9 @@ public class ApplicationIntializer {
     private static StudentDao studentDao = null;
     private static StudentEnrollmentDAO studentEnrollmentDAO = null;
     private static List<String> enrollmentNumbers = null;
+    private static StudentAddressDAO studentAddressDAO =null;
+    private static List<Long> listOfStudentIds =null;
+    private static StudentFeeDao studentFeeDao = null;
 
     public static void init() {
         createUserMasterTypeValues();
@@ -44,6 +54,8 @@ public class ApplicationIntializer {
         createFeeDataValues();
         createStudentEnrollmentValues();
         createStudentValues();
+        createStudentaddress();
+        createStudentFeeValues();
     }
 
     
@@ -166,6 +178,7 @@ public class ApplicationIntializer {
     }
 
     private static void createStudentValues() {
+        listOfStudentIds = new ArrayList<>();
         studentDao = new StudentDao();
         studentEnrollmentDAO = new StudentEnrollmentDAO();
         StudentEntity studentEntity = new StudentEntity();
@@ -190,6 +203,7 @@ public class ApplicationIntializer {
         studentEntity.setNationality("Indian");
         studentEntity.setSeatCategoryType(SeatCategoryType.valueOf("GENERAL"));
         studentDao.persist(studentEntity);
+        listOfStudentIds.add(studentEntity.getId());
 
         StudentEntity studentEntity2 = new StudentEntity();
         StudentEnrollmentEntity studentEnrollmentEntity2 = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(1));
@@ -212,6 +226,7 @@ public class ApplicationIntializer {
         studentEntity2.setNationality("Indian");
         studentEntity2.setSeatCategoryType(SeatCategoryType.valueOf("GENERAL"));
         studentDao.persist(studentEntity2);
+        listOfStudentIds.add(studentEntity2.getId());
         
         
         StudentEntity studentEntity3 = new StudentEntity();
@@ -235,6 +250,7 @@ public class ApplicationIntializer {
         studentEntity3.setNationality("Indian");
         studentEntity3.setSeatCategoryType(SeatCategoryType.valueOf("GENERAL"));
         studentDao.persist(studentEntity3);
+        listOfStudentIds.add(studentEntity3.getId());
     }
 
     private static void createStudentEnrollmentValues() {
@@ -315,6 +331,85 @@ public class ApplicationIntializer {
         enrollmentNumbers.add(enrollmentNumber3);
 
         studentEnrollmentDAO.persist(enrollmentEntity3);
+    }
+
+    private static void createStudentaddress() {
+        studentAddressDAO = new StudentAddressDAO();
+
+        StudentAddressEntity studentAddressEntity1 = new StudentAddressEntity();
+        studentAddressEntity1.setAddrLine1("Flat 105");
+        studentAddressEntity1.setAddrLine2("H.No 66");
+        studentAddressEntity1.setAddrLine3("Marathalli");
+        studentAddressEntity1.setAddrLine4("Aswathnagar");
+        studentAddressEntity1.setCity("Bangalore");
+        studentAddressEntity1.setStateName("Karnataka");
+        studentAddressEntity1.setZipCode("560037");
+        studentAddressEntity1.setAddressType(AddressType.valueOf("PERMADDRESS"));
+        studentAddressEntity1.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(0)));
+        studentAddressEntity1.setCountry("India");
+        studentAddressDAO.persist(studentAddressEntity1);
+        
+        StudentAddressEntity studentAddressEntity2 = new StudentAddressEntity();
+        studentAddressEntity2.setAddrLine1("Flat 101");
+        studentAddressEntity2.setAddrLine2("H.No 88");
+        studentAddressEntity2.setAddrLine3("Indra Nagar");
+        studentAddressEntity2.setAddrLine4("");
+        studentAddressEntity2.setCity("Bangalore");
+        studentAddressEntity2.setStateName("Karnataka");
+        studentAddressEntity2.setZipCode("560033");
+        studentAddressEntity2.setAddressType(AddressType.valueOf("PERMADDRESS"));
+        studentAddressEntity2.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(1)));
+        studentAddressEntity2.setCountry("India");
+        studentAddressDAO.persist(studentAddressEntity2);
+        
+        StudentAddressEntity studentAddressEntity3 = new StudentAddressEntity();
+        studentAddressEntity3.setAddrLine1("Flat 201");
+        studentAddressEntity3.setAddrLine2("H.No 87");
+        studentAddressEntity3.setAddrLine3("K R Puram");
+        studentAddressEntity3.setAddrLine4("");
+        studentAddressEntity3.setCity("Bangalore");
+        studentAddressEntity3.setStateName("Karnataka");
+        studentAddressEntity3.setZipCode("560018");
+        studentAddressEntity3.setAddressType(AddressType.valueOf("PERMADDRESS"));
+        studentAddressEntity3.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(2)));
+        studentAddressEntity3.setCountry("India");
+        studentAddressDAO.persist(studentAddressEntity3);
+            
+    }
+
+    private static void createStudentFeeValues() {
+        studentFeeDao = new StudentFeeDao();
+        StudentFeeEntity studentFeeEntity = new StudentFeeEntity();
+        studentFeeEntity.setDiscountType("10%");
+        studentFeeEntity.setFeePaymentDate("7/12/2014");
+        studentFeeEntity.setFeeTypeEntity(feeTypeDao.findByCode("REG FEE"));
+        studentFeeEntity.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(0)));
+        studentFeeEntity.setPaidAmount(10000.00);
+        studentFeeEntity.setBalanceAmount(20000.00);
+        studentFeeEntity.setPaymentType(PaymentType.valueOf("PARTIAL"));
+        studentFeeDao.persist(studentFeeEntity);
+        
+         StudentFeeEntity studentFeeEntity2 = new StudentFeeEntity();
+        studentFeeEntity2.setDiscountType("15%");
+        studentFeeEntity2.setFeePaymentDate("7/15/2014");
+        studentFeeEntity2.setFeeTypeEntity(feeTypeDao.findByCode("REG FEE"));
+        studentFeeEntity2.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(1)));
+        studentFeeEntity2.setPaidAmount(12000.00);
+        studentFeeEntity2.setBalanceAmount(18000.00);
+        studentFeeEntity2.setPaymentType(PaymentType.valueOf("PARTIAL"));
+        studentFeeDao.persist(studentFeeEntity2);
+        
+        
+        StudentFeeEntity studentFeeEntity3 = new StudentFeeEntity();
+        studentFeeEntity3.setDiscountType("8%");
+        studentFeeEntity3.setFeePaymentDate("7/15/2014");
+        studentFeeEntity3.setFeeTypeEntity(feeTypeDao.findByCode("REG FEE"));
+        studentFeeEntity3.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(2)));
+        studentFeeEntity3.setPaidAmount(15000.00);
+        studentFeeEntity3.setBalanceAmount(15000.00);
+        studentFeeEntity3.setPaymentType(PaymentType.valueOf("PARTIAL"));
+        studentFeeDao.persist(studentFeeEntity3);
+        
     }
 
 }
