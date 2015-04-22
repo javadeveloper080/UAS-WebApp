@@ -34,11 +34,16 @@ public class CourseTypeEntityTest extends  AbstractPojoTestCase{
         CourseTypeEntity courseTypeEntity=new CourseTypeEntity("TEST", "DESCRIPTION");
         transaction.begin();
         session.save(courseTypeEntity);
-        transaction.commit();
+               transaction.commit();
         Query query = getSession().createQuery(CourseTypeEntity.FIND_ALL);
         long expResult = 1L;
         long result = query.list().size();
         assertEquals(expResult, result);
+        
+         transaction.begin();
+        session.delete(courseTypeEntity);
+        session.flush();
+        transaction.commit();
         System.out.println("testing done");
     }
     
@@ -49,12 +54,16 @@ public class CourseTypeEntityTest extends  AbstractPojoTestCase{
         CourseTypeEntity courseTypeEntity=new CourseTypeEntity("ABC", "DESCRIPTION");
         transaction.begin();
         session.save(courseTypeEntity);
-        transaction.commit();
+            transaction.commit();
         Query query = getSession().createQuery(CourseTypeEntity.FIND_BY_CODE);
         query.setParameter("code", "ABC");
         long expResult = 1L;
         long result = query.list().size();
         assertEquals(expResult, result);
+        transaction.begin();
+        session.delete(courseTypeEntity);
+        session.flush();
+        transaction.commit();
         System.out.println("testing done");
     }
     
