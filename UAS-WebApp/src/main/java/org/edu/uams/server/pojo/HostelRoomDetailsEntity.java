@@ -23,7 +23,7 @@ import javax.persistence.Table;
  *
  * @author Mohammed.Tauseef
  */
-@Entity(name = "HostelRoomDetails")
+@Entity(name = "HosteRoomDetails")
 @Table(name = "hostel_room_details")
 public class HostelRoomDetailsEntity  implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -42,6 +42,8 @@ public class HostelRoomDetailsEntity  implements Serializable {
     @Column(name = "room_type", nullable = false, length = 100)
     private String roomType;
     
+    @Column(name = "room_capacity")
+    private Integer roomCapacity;
     
     @Basic(optional = false)
     @Column(name = "room_image")
@@ -59,6 +61,14 @@ public class HostelRoomDetailsEntity  implements Serializable {
     @ManyToOne(optional = false)
     private HostelBlockEntity blockEntity;
 
+    public Integer getRoomCapacity() {
+        return roomCapacity;
+    }
+
+    public void setRoomCapacity(Integer roomCapacity) {
+        this.roomCapacity = roomCapacity;
+    }
+    
     public long getId() {
         return id;
     }

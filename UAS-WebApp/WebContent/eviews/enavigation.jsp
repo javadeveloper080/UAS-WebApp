@@ -52,7 +52,7 @@
                     
                     
                 <ul class="sub">
-                    <li <c:if test="${requestScope.hostelRoomsPage != null}"> class="active"</c:if> ><a  href="typeTableAction.do?method=feeTypePage">Hostel Rooms</a></li>
+                    <li <c:if test="${requestScope.hostelRoomsPage != null}"> class="active"</c:if> ><a  href="hostelRoomDetailAction.do?method=hostelRoomPage">Hostel Rooms</a></li>
                 </ul>
             </li>
             

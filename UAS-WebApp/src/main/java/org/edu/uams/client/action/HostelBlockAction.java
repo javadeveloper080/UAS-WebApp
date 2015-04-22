@@ -43,6 +43,7 @@ public class HostelBlockAction extends DispatchAction {
             hostelBlockForm.setMobile(hostelBlockEntity.getMobile());
             hostelBlockForm.setStateName(hostelBlockEntity.getStateName());
             hostelBlockForm.setZipCode(hostelBlockEntity.getZipCode());
+            hostelBlockForm.setName(hostelBlockEntity.getName());
             hostelBlockForm.setId(hostelBlockEntity.getId());
         }
         
@@ -58,7 +59,7 @@ public class HostelBlockAction extends DispatchAction {
             hostelBlockEntity.setMobile(hostelBlockForm.getMobile());
             hostelBlockEntity.setStateName(hostelBlockForm.getStateName());
             hostelBlockEntity.setZipCode(hostelBlockForm.getZipCode());
-            
+            hostelBlockEntity.setName(hostelBlockForm.getName());
             
             hostelBlockDao.update(hostelBlockEntity);
             hostelBlockForm.resetForm();
@@ -76,6 +77,7 @@ public class HostelBlockAction extends DispatchAction {
             hostelBlockEntity.setMobile(hostelBlockForm.getMobile());
             hostelBlockEntity.setStateName(hostelBlockForm.getStateName());
             hostelBlockEntity.setZipCode(hostelBlockForm.getZipCode());
+            hostelBlockEntity.setName(hostelBlockForm.getName());
             hostelBlockDao.persist(hostelBlockEntity);
             hostelBlockForm.resetForm();
         }

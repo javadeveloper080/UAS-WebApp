@@ -106,7 +106,10 @@
         <put name="body" value="/eviews/hostelBlockPage.jsp" />
     </definition>
 
-
+    <definition name="hostelRoomLayout" extends="baseTemplateLayout">
+        <put name="title" value="Hostel Room" />
+        <put name="body" value="/eviews/hostelRoomDetailsPage.jsp" />
+    </definition>
     
     
 </tiles-definitions>

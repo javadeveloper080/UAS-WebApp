@@ -35,22 +35,44 @@ public class HostelRoomDetailsForm  extends ActionForm{
     
     private List<HostelRoomDetailsEntity> roomDetailsEntitys;
     
-    private HostelBlockEntity blockEntity;
+    private List<HostelBlockEntity> blockEntitys;
     
     private Long hBlockId;
+    
+    private String hblockName;
+    
+    private Integer roomCapacity;
 
+    public String getHblockName() {
+        return hblockName;
+    }
+
+    public void setHblockName(String hblockName) {
+        this.hblockName = hblockName;
+    }
+
+    
+    public Integer getRoomCapacity() {
+        return roomCapacity;
+    }
+
+    public void setRoomCapacity(Integer roomCapacity) {
+        this.roomCapacity = roomCapacity;
+    }
+
+    
     public long getId() {
         return id;
     }
 
-    public HostelBlockEntity getBlockEntity() {
-        return blockEntity;
+    public List<HostelBlockEntity> getBlockEntitys() {
+        return blockEntitys;
     }
 
-    public void setBlockEntity(HostelBlockEntity blockEntity) {
-        this.blockEntity = blockEntity;
+    public void setBlockEntitys(List<HostelBlockEntity> blockEntitys) {
+        this.blockEntitys = blockEntitys;
     }
-    
+
     public void setId(long id) {
         this.id = id;
     }
@@ -118,6 +140,19 @@ public class HostelRoomDetailsForm  extends ActionForm{
     public void sethBlockId(Long hBlockId) {
         this.hBlockId = hBlockId;
     }
-    
+
+    public void resetForm() {
+        this.id = 0;
+        this.pageName = "";
+        this.roomName = "";
+        this.roomType = "";
+        this.roomImage = "";
+        this.roomDescription = "";
+        this.roomPrice = 0.0;
+        this.roomDetailsEntitys = null;
+        this.blockEntitys = null;
+        this.hBlockId = 0l;
+        this.hblockName = "";
+    }
     
 }

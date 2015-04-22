@@ -22,6 +22,7 @@
         <form-bean name="studentQlfForm" type="org.edu.uams.client.form.StudentQualificationForm"/>
         <form-bean name="studentEnrollmentForm" type="org.edu.uams.client.form.StudentEnrollmentForm" />
         <form-bean name="hostelBlockForm" type="org.edu.uams.client.form.HostelBlockForm" />
+        <form-bean name="hostelRoomDetailsForm" type="org.edu.uams.client.form.HostelRoomDetailsForm" />
          
     </form-beans>
 
@@ -106,6 +107,10 @@
         
         <action path="/hostelBlockAction" name="hostelBlockForm"  scope="request" type="org.edu.uams.client.action.HostelBlockAction" parameter="method">
             <forward name="hostelBlockPage" path="hostelBlockLayout" ></forward>
+        </action>
+        
+        <action path="/hostelRoomDetailAction" name="hostelRoomDetailsForm"  scope="request" type="org.edu.uams.client.action.HostelRoomDetailAction" parameter="method">
+            <forward name="hostelRoomPage" path="hostelRoomLayout" ></forward>
         </action>
         
         <action name="studentEnrollmentForm" path="/studentEnrollmentAction" parameter="method" type="org.edu.uams.client.action.StudentEnrollmentAction"
