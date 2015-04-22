@@ -132,7 +132,7 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="hostelBlockForm" property="blockEntitys">
-                                        <logic:iterate id="hostelBlockTable" name="hostelBlockForm" property="blockEntitys" type="org.edu.uams.server.pojo.BusFacultyEntity">
+                                        <logic:iterate id="hostelBlockTable" name="hostelBlockForm" property="blockEntitys" type="org.edu.uams.server.pojo.HostelBlockEntity">
                                             <tr>
                                                 <td><bean:write name="hostelBlockTable" property="name"/></td>
                                                 <td><bean:write name="hostelBlockTable" property="addrLines"/></td>

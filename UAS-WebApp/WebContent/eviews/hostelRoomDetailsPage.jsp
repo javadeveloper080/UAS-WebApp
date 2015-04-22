@@ -124,13 +124,13 @@
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="hostelRoomDetailsForm" property="roomDetailsEntitys">
-                                        <logic:iterate id="roomDetailTable" name="hostelRoomDetailsForm" property="busFacultyList" type="org.edu.uams.server.pojo.BusFacultyEntity">
+                                        <logic:iterate id="roomDetailTable" name="hostelRoomDetailsForm" property="roomDetailsEntitys" type="org.edu.uams.server.pojo.HostelRoomDetailsEntity">
                                             <tr>
                                                 <td><bean:write name="roomDetailTable" property="roomName"/></td>
                                                 <td><bean:write name="roomDetailTable" property="roomType"/></td>
                                                 <td><bean:write name="roomDetailTable" property="roomDescription"/></td>
-                                                <td><bean:write name="roomDetailTable" property="inchargeName"/></td>
                                                 <td><bean:write name="roomDetailTable" property="roomPrice"/></td>
+                                                <td><bean:write name="roomDetailTable" property="roomCapacity"/></td>
                                                 <td><bean:write name="roomDetailTable" property="hblockName"/></td>
                                                 <td><button class="btn btn-primary btn-xs" onclick='getEditTypeForm(${roomDetailTable.id});'><i class="fa fa-pencil"></i></button></td>
                                             </tr>

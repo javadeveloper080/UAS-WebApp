@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 /**
@@ -61,6 +62,17 @@ public class HostelRoomDetailsEntity  implements Serializable {
     @ManyToOne(optional = false)
     private HostelBlockEntity blockEntity;
 
+    @Transient
+    private String hblockName;
+
+    public String getHblockName() {
+        if(blockEntity != null)
+        {
+            return blockEntity.getName();
+        }
+        return hblockName;
+    }
+    
     public Integer getRoomCapacity() {
         return roomCapacity;
     }

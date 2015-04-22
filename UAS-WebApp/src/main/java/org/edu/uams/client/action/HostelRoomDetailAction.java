@@ -59,7 +59,7 @@ public class HostelRoomDetailAction extends DispatchAction {
             detailsEntity.setRoomPrice(hostelRoomDetailsForm.getRoomPrice());
             detailsEntity.setRoomType(hostelRoomDetailsForm.getRoomType());
             
-            hostelBlockDao.update(hostelBlockEntity);
+            detailsDao.update(detailsEntity);
             hostelRoomDetailsForm.resetForm();
         }
         
@@ -67,7 +67,7 @@ public class HostelRoomDetailAction extends DispatchAction {
         {
             HostelRoomDetailsEntity detailsEntity = new HostelRoomDetailsEntity();
            
-             HostelBlockEntity hostelBlockEntity = hostelBlockDao.findByPrimaryKey(hostelRoomDetailsForm.gethBlockId());
+            HostelBlockEntity hostelBlockEntity = hostelBlockDao.findByPrimaryKey(hostelRoomDetailsForm.gethBlockId());
             detailsEntity.setBlockEntity(hostelBlockEntity);
             detailsEntity.setRoomCapacity(hostelRoomDetailsForm.getRoomCapacity());
             detailsEntity.setRoomDescription(hostelRoomDetailsForm.getRoomDescription());
@@ -76,7 +76,7 @@ public class HostelRoomDetailAction extends DispatchAction {
             detailsEntity.setRoomPrice(hostelRoomDetailsForm.getRoomPrice());
             detailsEntity.setRoomType(hostelRoomDetailsForm.getRoomType());
             
-            hostelBlockDao.persist(hostelBlockEntity);
+            detailsDao.persist(detailsEntity);
             hostelRoomDetailsForm.resetForm();
         }
         

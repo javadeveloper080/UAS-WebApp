@@ -153,6 +153,7 @@ public class HostelRoomDetailsForm  extends ActionForm{
         this.blockEntitys = null;
         this.hBlockId = 0l;
         this.hblockName = "";
+        this.roomCapacity = 0;
     }
     
 }
