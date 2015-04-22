@@ -1,9 +1,8 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
-
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.edu.uams.server.pojo;
 
 import org.hibernate.Query;
@@ -16,43 +15,51 @@ import static org.junit.Assert.*;
  *
  * @author Mohammed.Tauseef
  */
-public class FeeTypeEntityTest extends  AbstractPojoTestCase{
-    
+public class FeeTypeEntityTest extends AbstractPojoTestCase {
+
     public FeeTypeEntityTest() {
     }
-    
-    
-    
+
     @Test
     public void testFindAll() {
-        Session session=getSession();
+        Session session = getSession();
         Transaction transaction = session.getTransaction();
-        FeeCategoryTypeEntity feeCategoryTypeEntity=new FeeCategoryTypeEntity("TEST", "DESCRIPTION");
-        FeeTypeEntity feeTypeEntity=new FeeTypeEntity("ABC", "DESCRIPTION",feeCategoryTypeEntity);
+        FeeCategoryTypeEntity feeCategoryTypeEntity = new FeeCategoryTypeEntity("TEST", "DESCRIPTION");
+        transaction.begin();
+        session.save(feeCategoryTypeEntity);
+        transaction.commit();
+        FeeTypeEntity feeTypeEntity = new FeeTypeEntity("ABC", "DESCRIPTION", feeCategoryTypeEntity);
         transaction.begin();
         session.save(feeTypeEntity);
-               transaction.commit();
+        transaction.commit();
         Query query = getSession().createQuery(FeeTypeEntity.FIND_ALL);
         long expResult = 1L;
         long result = query.list().size();
       //  assertEquals(expResult, result);
-        
-         transaction.begin();
+
+        transaction.begin();
         session.delete(feeTypeEntity);
         session.flush();
         transaction.commit();
         System.out.println("testing done");
     }
-    
+
     @Test
     public void testFindByCode() {
-        Session session=getSession();
+        Session session = getSession();
         Transaction transaction = session.getTransaction();
-        FeeCategoryTypeEntity feeCategoryTypeEntity=new FeeCategoryTypeEntity("TEST", "DESCRIPTION");
-        FeeTypeEntity feeTypeEntity=new FeeTypeEntity("ABC", "DESCRIPTION",feeCategoryTypeEntity);
+        FeeCategoryTypeEntity feeCategoryTypeEntity = (FeeCategoryTypeEntity)getSession().createQuery(FeeCategoryTypeEntity.FIND_ALL).list().get(0);
+        if(feeCategoryTypeEntity == null){        
+        new FeeCategoryTypeEntity("TEST", "DESCRIPTION");
+        transaction.begin();
+        session.save(feeCategoryTypeEntity);
+        transaction.commit();
+        }
+        
+        FeeTypeEntity feeTypeEntity = new FeeTypeEntity("ABC", "DESCRIPTION", feeCategoryTypeEntity);
         transaction.begin();
         session.save(feeTypeEntity);
-            transaction.commit();
+        transaction.commit();
         Query query = getSession().createQuery(FeeTypeEntity.FIND_BY_CODE);
         query.setParameter("code", "ABC");
         long expResult = 1L;
@@ -64,5 +71,5 @@ public class FeeTypeEntityTest extends  AbstractPojoTestCase{
         transaction.commit();
         System.out.println("testing done");
     }
-    
+
 }
