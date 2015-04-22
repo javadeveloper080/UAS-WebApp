@@ -168,9 +168,9 @@ public class ApplicationIntializer {
             feeCategoryTypeDao.persist(fcType6);
             feeCategoryTypeDao.persist(fcType7);
 
-            FeeTypeEntity feetType1 = new FeeTypeEntity("EXM-BE-2015 ", "BE EXAM FEE 2015", fcType4);
-            FeeTypeEntity feetType2 = new FeeTypeEntity("EXM-BCOM-2015 ", "BCOM EXAM FEE 2015", fcType4);
-            FeeTypeEntity feetType3 = new FeeTypeEntity("EXM-BSC-2015 ", "BSC EXAM FEE 2015", fcType4);
+            FeeTypeEntity feetType1 = new FeeTypeEntity("EXM-BE-2015", "BE EXAM FEE 2015", fcType4);
+            FeeTypeEntity feetType2 = new FeeTypeEntity("EXM-BCOM-2015", "BCOM EXAM FEE 2015", fcType4);
+            FeeTypeEntity feetType3 = new FeeTypeEntity("EXM-BSC-2015", "BSC EXAM FEE 2015", fcType4);
             feeTypeDao.persist(feetType1);
             feeTypeDao.persist(feetType2);
             feeTypeDao.persist(feetType3);
@@ -382,7 +382,7 @@ public class ApplicationIntializer {
         StudentFeeEntity studentFeeEntity = new StudentFeeEntity();
         studentFeeEntity.setDiscountType("10%");
         studentFeeEntity.setFeePaymentDate("7/12/2014");
-        studentFeeEntity.setFeeTypeEntity(feeTypeDao.findByCode("REG FEE"));
+        studentFeeEntity.setFeeTypeEntity(feeTypeDao.findByCode("EXM-BE-2015"));
         studentFeeEntity.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(0)));
         studentFeeEntity.setPaidAmount(10000.00);
         studentFeeEntity.setBalanceAmount(20000.00);
@@ -392,7 +392,7 @@ public class ApplicationIntializer {
          StudentFeeEntity studentFeeEntity2 = new StudentFeeEntity();
         studentFeeEntity2.setDiscountType("15%");
         studentFeeEntity2.setFeePaymentDate("7/15/2014");
-        studentFeeEntity2.setFeeTypeEntity(feeTypeDao.findByCode("REG FEE"));
+        studentFeeEntity2.setFeeTypeEntity(feeTypeDao.findByCode("EXM-BE-2015"));
         studentFeeEntity2.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(1)));
         studentFeeEntity2.setPaidAmount(12000.00);
         studentFeeEntity2.setBalanceAmount(18000.00);
@@ -403,7 +403,7 @@ public class ApplicationIntializer {
         StudentFeeEntity studentFeeEntity3 = new StudentFeeEntity();
         studentFeeEntity3.setDiscountType("8%");
         studentFeeEntity3.setFeePaymentDate("7/15/2014");
-        studentFeeEntity3.setFeeTypeEntity(feeTypeDao.findByCode("REG FEE"));
+        studentFeeEntity3.setFeeTypeEntity(feeTypeDao.findByCode("EXM-BE-2015"));
         studentFeeEntity3.setStudent(studentDao.findByPrimaryKey(listOfStudentIds.get(2)));
         studentFeeEntity3.setPaidAmount(15000.00);
         studentFeeEntity3.setBalanceAmount(15000.00);
