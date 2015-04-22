@@ -18,8 +18,12 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
                 
-                 <mapping class="org.edu.uams.server.pojo.CourseTypeEntity" />
-	
+                <mapping class="org.edu.uams.server.pojo.CourseTypeEntity" />
+                <mapping class="org.edu.uams.server.pojo.UserMasterTypeEntity"/>
+                <mapping class="org.edu.uams.server.pojo.FeeTypeEntity" />
+                <mapping class="org.edu.uams.server.pojo.FeeCategoryTypeEntity" />
+                <mapping class="org.edu.uams.server.pojo.ProgramLevelTypeEntity" />
+
 	</session-factory>
 
 			

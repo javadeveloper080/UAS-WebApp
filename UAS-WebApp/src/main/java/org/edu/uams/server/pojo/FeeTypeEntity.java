@@ -41,7 +41,6 @@ public class FeeTypeEntity implements Type {
     @Column(name = "description", nullable = false, length =100)
     private String description;
     
-    @Basic(optional = false)
     @Column(name = "fee_amount")
     private Double feeAmount;
     
