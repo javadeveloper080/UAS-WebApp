@@ -42,14 +42,20 @@ public class FeeTypeEntityTest extends AbstractPojoTestCase {
         session.delete(feeTypeEntity);
         session.flush();
         transaction.commit();
+        
+        transaction.begin();
+        session.delete(feeCategoryTypeEntity);
+        session.flush();
+        transaction.commit();
+        
         System.out.println("testing done");
     }
     
     @Test
     public void testFindByCode() {
-         Session session = getSession();
+        Session session = getSession();
         Transaction transaction = session.getTransaction();
-       
+        
         FeeCategoryTypeEntity feeCategoryTypeEntity = new FeeCategoryTypeEntity("TEST", "DESCRIPTION");
         transaction.begin();
         session.save(feeCategoryTypeEntity);
@@ -62,7 +68,7 @@ public class FeeTypeEntityTest extends AbstractPojoTestCase {
         
         Query query = getSession().createQuery(FeeTypeEntity.FIND_BY_CODE);
         query.setParameter("code", "ABC");
-      
+        
         long expResult = 1L;
         long result = query.list().size();
         assertEquals(expResult, result);
