@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.edu.uams.client.action;
 
@@ -25,54 +25,41 @@ import org.edu.uams.server.util.ApplicationUtil;
  *
  */
 public class UserAction extends DispatchAction {
-
-
-//	public ActionForward registerUser(ActionMapping mapping,ActionForm form,
-//			HttpServletRequest req,HttpServletResponse res)throws Exception
-//			{
-//		UserForm userForm = (UserForm)form;
-//		UsersRoleTypeDao userMasterTypeDao = new UsersRoleTypeDao();
-//
-//		List<UserMasterTypeEntity> userTypeList = userMasterTypeDao.findAll();
-//
-//		userForm.setUserTypeList(userTypeList);
-//
-//		return mapping.findForward("userRegister");
-//
-//			}
-
-
-
-
-	public ActionForward userRegistrationAction(ActionMapping mapping,ActionForm form,
-			HttpServletRequest req,HttpServletResponse res)throws Exception{
-
-		UserForm userForm = (UserForm)form;
-
-		UserMasterDao userMasterDao = new UserMasterDao();
-		UserMasterEntity userMasterEntity=new UserMasterEntity();
-		setValues(userForm, userMasterEntity);
-		userMasterEntity=userMasterDao.persist(userMasterEntity);
-		if (userMasterEntity.getId()>0) {
-			DisplayMessageForm displayMessageForm=new DisplayMessageForm();
-			displayMessageForm.setMessage("Congrats registration sucessfull. please login");
-			req.setAttribute("displayMessageForm", displayMessageForm);
-			return mapping.findForward("registrationSuccess");	
-		}
-		else{
-			
-			DisplayMessageForm displayMessageForm=new DisplayMessageForm();
-			displayMessageForm.setMessage("Registarion failed. please contact admin");
-			req.setAttribute("displayMessageForm", displayMessageForm);
-			return mapping.findForward("registrationFail");
-
-		}
-	}
-
-
-
-
-	private void setValues(UserForm userForm,UserMasterEntity userMasterEntity) {
+    
+    
+    
+    
+    
+    
+    public ActionForward userRegistrationAction(ActionMapping mapping,ActionForm form,
+            HttpServletRequest req,HttpServletResponse res)throws Exception{
+        
+        UserForm userForm = (UserForm)form;
+        
+        UserMasterDao userMasterDao = new UserMasterDao();
+        UserMasterEntity userMasterEntity=new UserMasterEntity();
+        setValues(userForm, userMasterEntity);
+        userMasterEntity=userMasterDao.persist(userMasterEntity);
+        if (userMasterEntity.getId()>0) {
+            DisplayMessageForm displayMessageForm=new DisplayMessageForm();
+            displayMessageForm.setMessage("Congrats registration sucessfull. please login");
+            req.setAttribute("displayMessageForm", displayMessageForm);
+            return mapping.findForward("registrationSuccess");
+        }
+        else{
+            
+            DisplayMessageForm displayMessageForm=new DisplayMessageForm();
+            displayMessageForm.setMessage("Registarion failed. please contact admin");
+            req.setAttribute("displayMessageForm", displayMessageForm);
+            return mapping.findForward("registrationFail");
+            
+        }
+    }
+    
+    
+    
+    
+    private void setValues(UserForm userForm,UserMasterEntity userMasterEntity) {
 //		userMasterEntity.setAddressLine1(userForm.getAddressLine1());
 //		userMasterEntity.setAddressLine2(userForm.getAddressLine2());
 //		userMasterEntity.setCity(userForm.getCity());
@@ -85,17 +72,17 @@ public class UserAction extends DispatchAction {
 //		userMasterEntity.setPassWord(userForm.getPassWord());
 //		userMasterEntity.setPin(userForm.getPin());
 //		userMasterEntity.setState(userForm.getState());
-		
+        
 //		if (userForm.getUserTypeId()!=null) {
 //			UserMasterTypeEntity userMasterTypeEntity = new UsersRoleTypeDao().findByPrimaryKey(userForm.getUserTypeId());
 //			userMasterEntity.setUserMasterType(	userMasterTypeEntity);
 //		}
-	
-
-
-	}
         
-        public ActionForward usersPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
+        
+        
+    }
+    
+    public ActionForward usersPage(ActionMapping mapping,ActionForm form,HttpServletRequest req,
             HttpServletResponse res)throws Exception
     {
         UserForm userForm = (UserForm)form;
@@ -126,7 +113,7 @@ public class UserAction extends DispatchAction {
             userMasterEntity.setId(userForm.getId());
             userMasterEntity.setUserType(userMasterTypeDao.findByPrimaryKey(userForm.getUserTypeId()));
             userMasterEntity.setEmail(userForm.getEmail());
-             if(userForm.getInActiveOn()!= null){
+            if(userForm.getInActiveOn()!= null){
                 userMasterEntity.setInActiveOn(ApplicationUtil.formatStringToDate(userForm.getInActiveOn()));
             }
             userMasterDao.update(userMasterEntity);
@@ -147,10 +134,21 @@ public class UserAction extends DispatchAction {
             userForm.clearFormValues();
         }else if(userForm.getPageName()!=null && userForm.getPageName().equals("checkUniqueUserName"))
         {
-            UserMasterEntity userMasterEntity = userMasterDao.findUserName(userForm.getUserName());
-            ApplicationUtil.checkUniqueCodeHelper(userMasterEntity, userForm.getId(), res);
-            userForm.clearFormValues();
+            Long key = userForm.getId();
+            UserMasterEntity userMasterEntity = userMasterDao.findUserNameOrEmail(userForm.getUserName(),userForm.getEmail());
             
+            if (userMasterEntity!=null) {
+                Long pkKey= userMasterEntity.getId();
+                if (key!=null && key>0 && pkKey.equals(key)) {
+                    res.getWriter().write("false");
+                }else if (userMasterEntity.getUserName().equals(userForm.getUserName())) {
+                    res.getWriter().write("userName");
+                }else if (userMasterEntity.getEmail().equalsIgnoreCase(userForm.getEmail())) {
+                    res.getWriter().write("email");
+                }
+            }else{
+                res.getWriter().write("false");
+            }
             return null;
         }
         

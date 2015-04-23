@@ -81,11 +81,11 @@ public class BusFacultyEntity  implements Serializable {
     
     
     @Basic(optional = false)
-    @Column(name = "mobile",unique = true)
+    @Column(name = "mobile")
     private long mobile;
     
     @Basic(optional = true)
-    @Column(name = "licence_num",unique = true)
+    @Column(name = "licence_num")
     private String licenceNum;
     
     

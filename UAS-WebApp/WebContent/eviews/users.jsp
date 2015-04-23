@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <div class="form-panel">
                         
-                        <h5><Strong>Add/Edit User type</Strong> </h5>
+                        <h5><Strong>Add/Edit Users</Strong> </h5>
                                 <html:form  styleClass="" action="/userAction" method="post">
                             
                             
@@ -89,15 +89,15 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> User type Table</h4>
+                                <h4><i >Users Table</i></h4>
                                 <hr>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> User Name</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Email</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Role</th>
-                                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> In Active</th>
+                                        <th><i>User Name</i></th>
+                                        <th><i >Password</i> </th>
+                                        <th><i >Email</i> </th>
+                                        <th><i >Role</i> </th>
+                                        <th><i >In Active</i> </th>
                                 </thead>
                                 <tbody>
                                     <logic:notEmpty name="userForm" property="usersList">
@@ -141,7 +141,7 @@
     });
 
     function validateForm() {
-        alert("Validate Form Values");
+     //   alert("Validate Form Values");
         // get the form values
         var userName = document.getElementById('userName').value;
         var password = document.getElementById('password').value;
@@ -196,9 +196,14 @@
                 "email": email
             },
             success: function (response) {
-                if (response == 'true') {
-                    alert('Code is ' + userName + ' present');
+                if (response == 'userName') {
+                    alert('User Name : ' + userName + ' present, Choose other one');
                     document.getElementById('userName').focus();
+                    return false;
+                }
+                if (response == 'email') {
+                    alert('Email : ' + email + ' present,Choose other email');
+                    document.getElementById('email').focus();
                     return false;
                 }
                 else {
@@ -214,7 +219,6 @@
 
 
     function getEditTypeForm(id) {
-        alert('Get Editff Type' + id);
         document.getElementById('id').value = id;
         document.getElementById('pageName').value = "GetEditTypeForm"
         document.userForm.action = "userAction.do?method=usersPage";
@@ -236,7 +240,6 @@
 
     function rset()
     {
-        alert('reset');
         document.getElementById('userName').value = "";
         document.getElementById('password').value = "";
         document.getElementById('email').value = "";

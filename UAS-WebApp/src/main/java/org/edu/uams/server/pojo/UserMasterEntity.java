@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
@@ -20,11 +18,6 @@ import org.edu.uams.server.api.HasId;
 
 
 @Entity(name = "UserMaster")
-@NamedQueries( {
-    @NamedQuery(name = UserMasterEntity.FIND_BY_USERNAME, query = "SELECT u from UserMaster u where u.userName = :userName"),
-    @NamedQuery(name = UserMasterEntity.FIND_ALL, query = "SELECT u FROM UserMaster u left join u.userType ut"),
-    @NamedQuery(name = UserMasterEntity.FIND_BY_LOGIN_NAME_PWD, query = "SELECT u FROM UserMaster u")
-})
 @Table(name = "user_master",uniqueConstraints=
            @UniqueConstraint(columnNames = {"user_name", "email"}))
 public class UserMasterEntity implements HasId  {
@@ -37,6 +30,7 @@ public class UserMasterEntity implements HasId  {
     public static final String FIND_BY_EMAIL = "SELECT u from UserMaster u where u.email = :email";
     public static final  String  FIND_ALL="SELECT u FROM UserMaster u left join u.userType ut";
     public static final  String  FIND_BY_LOGIN_NAME_PWD="SELECT u FROM UserMaster u where u.userName=:userName and u.password=:passWord";
+    public static String FIND_USER_NAME_OR_EMAIL="SELECT u FROM UserMaster u where ( u.userName=:userName or u.email=:email)";
     
     
     @Id
