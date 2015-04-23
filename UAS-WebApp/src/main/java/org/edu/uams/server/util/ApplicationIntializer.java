@@ -185,6 +185,7 @@ public class ApplicationIntializer {
 
         StudentEnrollmentEntity studentEnrollmentEntity = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(0));
         studentEntity.setStudentEnrollment(studentEnrollmentEntity);
+        studentEnrollmentEntity.setHasAdmitted(Boolean.TRUE);
         int year = Calendar.getInstance().get(Calendar.YEAR);
 
         studentEntity.setRollNum(studentEnrollmentEntity.getEnrollmentNumber() + "-" + year);
@@ -208,6 +209,7 @@ public class ApplicationIntializer {
         StudentEntity studentEntity2 = new StudentEntity();
         StudentEnrollmentEntity studentEnrollmentEntity2 = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(1));
         studentEntity2.setStudentEnrollment(studentEnrollmentEntity2);
+        studentEnrollmentEntity.setHasAdmitted(Boolean.TRUE);
         year = Calendar.getInstance().get(Calendar.YEAR);
 
         studentEntity2.setRollNum(studentEnrollmentEntity2.getEnrollmentNumber() + "-" + year);
@@ -232,6 +234,7 @@ public class ApplicationIntializer {
         StudentEntity studentEntity3 = new StudentEntity();
         StudentEnrollmentEntity studentEnrollmentEntity3 = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(2));
         studentEntity3.setStudentEnrollment(studentEnrollmentEntity3);
+        studentEnrollmentEntity.setHasAdmitted(Boolean.TRUE);
         year = Calendar.getInstance().get(Calendar.YEAR);
 
         studentEntity3.setRollNum(studentEnrollmentEntity3.getEnrollmentNumber() + "-" + year);
@@ -273,7 +276,7 @@ public class ApplicationIntializer {
         enrollmentEntity.setEmail("siva@gmail.com");
         enrollmentEntity.setFirstName("Siva");
         enrollmentEntity.setGenderType(GenderType.valueOf("MALE"));
-        enrollmentEntity.setEnrollmentStatusType(EnrollmentStatusType.PENDING);
+        enrollmentEntity.setEnrollmentStatusType(EnrollmentStatusType.ACCEPT);
         enrollmentEntity.setGrade(7.8);
         enrollmentEntity.setLastGraduatedCourseType(courseTypeDao.findByCode("CSE"));
         enrollmentEntity.setLastGraduatedProgramLevelType(programLevelTypeDao.findByCode("BACHELOR'S"));
@@ -296,7 +299,7 @@ public class ApplicationIntializer {
         enrollmentEntity2.setEmail("githa@gmail.com");
         enrollmentEntity2.setFirstName("Githa");
         enrollmentEntity2.setGenderType(GenderType.valueOf("FEMALE"));
-        enrollmentEntity2.setEnrollmentStatusType(EnrollmentStatusType.PENDING);
+        enrollmentEntity2.setEnrollmentStatusType(EnrollmentStatusType.ACCEPT);
         enrollmentEntity2.setGrade(7.8);
         enrollmentEntity2.setLastGraduatedCourseType(courseTypeDao.findByCode("CSE"));
         enrollmentEntity2.setLastGraduatedProgramLevelType(programLevelTypeDao.findByCode("BACHELOR'S"));
@@ -319,7 +322,7 @@ public class ApplicationIntializer {
         enrollmentEntity3.setEmail("lohitha@gmail.com");
         enrollmentEntity3.setFirstName("Lohitha");
         enrollmentEntity3.setGenderType(GenderType.valueOf("FEMALE"));
-        enrollmentEntity3.setEnrollmentStatusType(EnrollmentStatusType.PENDING);
+        enrollmentEntity3.setEnrollmentStatusType(EnrollmentStatusType.ACCEPT);
         enrollmentEntity3.setGrade(8.8);
         enrollmentEntity3.setLastGraduatedCourseType(courseTypeDao.findByCode("EEE"));
         enrollmentEntity3.setLastGraduatedProgramLevelType(programLevelTypeDao.findByCode("BACHELOR'S"));
@@ -331,6 +334,52 @@ public class ApplicationIntializer {
         enrollmentNumbers.add(enrollmentNumber3);
 
         studentEnrollmentDAO.persist(enrollmentEntity3);
+        
+        
+        StudentEnrollmentEntity enrollmentEntity4 = new StudentEnrollmentEntity();
+        nextId = studentEnrollmentDAO.getLastestId() + 1;
+
+        enrollmentEntity4.setAppliedCourseType(appliedCourse);
+        enrollmentEntity4.setAppliedProgramLevelType(appliedDProgramLevelType);
+        enrollmentEntity4.setDateEnrolled(ApplicationUtil.formatStringToDate("10/06/2014"));
+        enrollmentEntity4.setDob(ApplicationUtil.formatStringToDate("04/10/1998"));
+        enrollmentEntity4.setEmail("lohitha@gmail.com");
+        enrollmentEntity4.setFirstName("Lohitha");
+        enrollmentEntity4.setGenderType(GenderType.valueOf("FEMALE"));
+        enrollmentEntity4.setEnrollmentStatusType(EnrollmentStatusType.PENDING);
+        enrollmentEntity4.setGrade(8.8);
+        enrollmentEntity4.setLastGraduatedCourseType(courseTypeDao.findByCode("EEE"));
+        enrollmentEntity4.setLastGraduatedProgramLevelType(programLevelTypeDao.findByCode("BACHELOR'S"));
+        enrollmentEntity4.setLastName("Kumari");
+        enrollmentEntity4.setStudentMob(9855123466L);
+
+        String enrollmentNumber4 = appliedDProgramLevelType.getCode() + "-" + appliedCourse.getCode() + "-" + nextId;
+        enrollmentEntity4.setEnrollmentNumber(enrollmentNumber4);
+
+        studentEnrollmentDAO.persist(enrollmentEntity4);
+        
+        
+         StudentEnrollmentEntity enrollmentEntity5 = new StudentEnrollmentEntity();
+        nextId = studentEnrollmentDAO.getLastestId() + 1;
+
+        enrollmentEntity5.setAppliedCourseType(appliedCourse);
+        enrollmentEntity5.setAppliedProgramLevelType(appliedDProgramLevelType);
+        enrollmentEntity5.setDateEnrolled(ApplicationUtil.formatStringToDate("10/06/2014"));
+        enrollmentEntity5.setDob(ApplicationUtil.formatStringToDate("04/10/1998"));
+        enrollmentEntity5.setEmail("lohitha@gmail.com");
+        enrollmentEntity5.setFirstName("Lohitha");
+        enrollmentEntity5.setGenderType(GenderType.valueOf("FEMALE"));
+        enrollmentEntity5.setEnrollmentStatusType(EnrollmentStatusType.REJECT);
+        enrollmentEntity5.setGrade(8.8);
+        enrollmentEntity5.setLastGraduatedCourseType(courseTypeDao.findByCode("EEE"));
+        enrollmentEntity5.setLastGraduatedProgramLevelType(programLevelTypeDao.findByCode("BACHELOR'S"));
+        enrollmentEntity5.setLastName("Kumari");
+        enrollmentEntity5.setStudentMob(9855123466L);
+
+        String enrollmentNumber5 = appliedDProgramLevelType.getCode() + "-" + appliedCourse.getCode() + "-" + nextId;
+        enrollmentEntity5.setEnrollmentNumber(enrollmentNumber5);
+
+        studentEnrollmentDAO.persist(enrollmentEntity5);
     }
 
     private static void createStudentaddress() {

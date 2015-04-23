@@ -72,17 +72,14 @@ public class HostelBlockEntity  implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "incharge_name", length = 100, nullable = false)
-    @Enumerated(EnumType.STRING)
     private String inchargeName;
     
     
     @Basic(optional = false)
-    @Column(name = "mobile",unique = true)
+    @Column(name = "mobile")
     private long mobile;
     
-    @Basic(optional = false)
-    @Column(name = "has_bus_assigned",nullable = false)
-    private boolean hasBusAssigned;
+
     
     @Transient
     private String addrLines;
@@ -176,13 +173,7 @@ public class HostelBlockEntity  implements Serializable {
         this.inchargeName = inchargeName;
     }
    
-    public boolean isHasBusAssigned() {
-        return hasBusAssigned;
-    }
 
-    public void setHasBusAssigned(boolean hasBusAssigned) {
-        this.hasBusAssigned = hasBusAssigned;
-    }
     
     public String getAddrLines() {
         return addrLine1+addrLine2+addrLine3+addrLine4+city;

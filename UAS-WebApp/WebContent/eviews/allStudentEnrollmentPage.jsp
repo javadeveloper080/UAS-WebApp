@@ -71,6 +71,7 @@
                                         <th>Date Enrolled</th>
                                         <th>Grade</th>
                                         <th>Status</th>
+                                        <th>Admitted</th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -85,6 +86,7 @@
                                                 <td><bean:write name="studentEnrollment" property="dateEnrolled"/></td>
                                                 <td><bean:write name="studentEnrollment" property="grade"/></td>
                                                 <td><bean:write name="studentEnrollment" property="enrollmentStatusType"/></td>
+                                                 <td><bean:write name="studentEnrollment" property="hasAdmitted"/></td>
                                                 <td><button class="btn btn-info" onclick='accept(${studentEnrollment.id});'>Accept</button></td>
                                                 <td><button class="btn btn-info" onclick='reject(${studentEnrollment.id});'>Reject</button></td>
                                             </tr>

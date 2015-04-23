@@ -34,11 +34,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
+<!--                                    <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             Room Image :   <html:text name="hostelRoomDetailsForm" property="roomImage" styleId="roomImage" styleClass="form-control"/>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">

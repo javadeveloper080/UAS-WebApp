@@ -114,6 +114,11 @@ public class StudentEnrollmentEntity implements Serializable {
     @Column(name = "enrollment_number",unique = true,nullable = false)
     private String enrollmentNumber;
     
+    
+    @Basic(optional = false)
+    @Column(name = "has_admitted")
+    private boolean hasAdmitted;
+    
     public StudentEnrollmentEntity() {
     }
     
@@ -248,6 +253,14 @@ public class StudentEnrollmentEntity implements Serializable {
     
     public void setEnrollmentStatusType(EnrollmentStatusType enrollmentStatusType) {
         this.enrollmentStatusType = enrollmentStatusType;
+    }
+
+    public boolean isHasAdmitted() {
+        return hasAdmitted;
+    }
+
+    public void setHasAdmitted(boolean hasAdmitted) {
+        this.hasAdmitted = hasAdmitted;
     }
     
     

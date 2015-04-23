@@ -130,16 +130,16 @@
                     <div class="col-md-12">
                         <div class="content-panel">
                             <table class="table table-striped table-advance table-hover">
-                                <h4><i class="fa fa-angle-right"></i> Bus Faculty Table</h4>
+                                <h4><i> Bus Faculty Table</i></h4>
                                 <hr>
                                 <thead>
                                     <tr>
-                                        <th><i class="fa fa-bullhorn"></i> First name</th>
-                                        <th><i class="fa fa-bullhorn"></i> Last name</th>
-                                        <th><i class="fa fa-bullhorn"></i> Address </th>
-                                        <th><i class="fa fa-bullhorn"></i> Mobile</th>
-                                        <th><i class="fa fa-bullhorn"></i> License expiry Date</th>
-                                        <th><i class="fa fa-bullhorn"></i> Faculty Type</th>
+                                        <th><i > First name</i></th>
+                                        <th><i > Last name</i></th>
+                                        <th><i > Address</i> </th>
+                                        <th><i > Mobile</i></th>
+                                        <th><i > License expiry Date</i></th>
+                                        <th><i > Faculty Type</i></th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -149,7 +149,7 @@
                                             <tr>
                                                 <td><bean:write name="transportFacultyTable" property="firstName"/></td>
                                                 <td><bean:write name="transportFacultyTable" property="lastName"/></td>
-                                                <td><bean:write name="transportFacultyTable" property="addrLines"/></td>
+                                                <td><bean:write name="transportFacultyTable" property="addrLine1"/></td>
                                                 <td><bean:write name="transportFacultyTable" property="mobile"/></td>
                                                 <td><bean:write name="transportFacultyTable" property="licenceExpiryDate"/></td>
                                                 <td><bean:write name="transportFacultyTable" property="facultyType"/></td>

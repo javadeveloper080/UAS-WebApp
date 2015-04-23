@@ -46,8 +46,7 @@ public class HostelRoomDetailsEntity  implements Serializable {
     @Column(name = "room_capacity")
     private Integer roomCapacity;
     
-    @Basic(optional = false)
-    @Column(name = "room_image")
+    @Transient
     private String roomImage;
     
     @Basic(optional = true)
