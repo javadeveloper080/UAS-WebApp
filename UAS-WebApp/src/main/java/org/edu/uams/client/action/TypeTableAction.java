@@ -18,6 +18,7 @@ import org.edu.uams.server.business.CourseTypeDao;
 import org.edu.uams.server.business.ProgramLevelTypeDao;
 import org.edu.uams.server.business.FeeCategoryTypeDao;
 import org.edu.uams.server.business.FeeTypeDao;
+import org.edu.uams.server.business.LetterTemplateDao;
 import org.edu.uams.server.business.UserMasterTypeDao;
 import org.edu.uams.server.pojo.CourseTypeEntity;
 import org.edu.uams.server.pojo.ProgramLevelTypeEntity;
@@ -317,6 +318,13 @@ public class TypeTableAction extends DispatchAction {
         {
             UserMasterTypeDao userMasterTypeDao = new UserMasterTypeDao();
             Type typeEntity =userMasterTypeDao.findByCode(typeTableForm.getCode());
+            ApplicationUtil.checkUniqueCodeHelper(typeEntity, key, response);
+        }
+        
+        if(typeTableForm.getPageName()!=null && typeTableForm.getPageName().equals("LetterTemplate"))
+        {
+            LetterTemplateDao letterTemplateDao = new LetterTemplateDao();
+            Type typeEntity =letterTemplateDao.findByCode(typeTableForm.getCode());
             ApplicationUtil.checkUniqueCodeHelper(typeEntity, key, response);
         }
         
