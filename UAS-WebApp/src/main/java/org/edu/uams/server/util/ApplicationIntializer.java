@@ -186,6 +186,7 @@ public class ApplicationIntializer {
         StudentEnrollmentEntity studentEnrollmentEntity = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(0));
         studentEntity.setStudentEnrollment(studentEnrollmentEntity);
         studentEnrollmentEntity.setHasAdmitted(Boolean.TRUE);
+        studentEnrollmentDAO.update(studentEnrollmentEntity);
         int year = Calendar.getInstance().get(Calendar.YEAR);
 
         studentEntity.setRollNum(studentEnrollmentEntity.getEnrollmentNumber() + "-" + year);
@@ -209,7 +210,8 @@ public class ApplicationIntializer {
         StudentEntity studentEntity2 = new StudentEntity();
         StudentEnrollmentEntity studentEnrollmentEntity2 = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(1));
         studentEntity2.setStudentEnrollment(studentEnrollmentEntity2);
-        studentEnrollmentEntity.setHasAdmitted(Boolean.TRUE);
+        studentEnrollmentEntity2.setHasAdmitted(Boolean.TRUE);
+          studentEnrollmentDAO.update(studentEnrollmentEntity2);
         year = Calendar.getInstance().get(Calendar.YEAR);
 
         studentEntity2.setRollNum(studentEnrollmentEntity2.getEnrollmentNumber() + "-" + year);
@@ -234,7 +236,8 @@ public class ApplicationIntializer {
         StudentEntity studentEntity3 = new StudentEntity();
         StudentEnrollmentEntity studentEnrollmentEntity3 = studentEnrollmentDAO.findByStudentEnrollmentNumber(enrollmentNumbers.get(2));
         studentEntity3.setStudentEnrollment(studentEnrollmentEntity3);
-        studentEnrollmentEntity.setHasAdmitted(Boolean.TRUE);
+        studentEnrollmentEntity3.setHasAdmitted(Boolean.TRUE);
+         studentEnrollmentDAO.update(studentEnrollmentEntity3);
         year = Calendar.getInstance().get(Calendar.YEAR);
 
         studentEntity3.setRollNum(studentEnrollmentEntity3.getEnrollmentNumber() + "-" + year);
