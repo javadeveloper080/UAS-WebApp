@@ -23,6 +23,9 @@
         <form-bean name="studentEnrollmentForm" type="org.edu.uams.client.form.StudentEnrollmentForm" />
         <form-bean name="hostelBlockForm" type="org.edu.uams.client.form.HostelBlockForm" />
         <form-bean name="hostelRoomDetailsForm" type="org.edu.uams.client.form.HostelRoomDetailsForm" />
+        <form-bean name="fileUploadForm" type="org.edu.uams.client.form.FileUploadForm" />
+        
+        <form-bean name="letterTemplateForm" type="org.edu.uams.client.form.LetterTemplateForm" />
          
     </form-beans>
 
@@ -83,7 +86,7 @@
         <!--TRANSPORT TABLE ENTRY ENDS-->
         
         
-          <!--  STUDENT ACTION ENTRIES STARTS HERE  -->
+        <!--  STUDENT ACTION ENTRIES STARTS HERE  -->
         
         <action path="/studentAction" name="studentForm" type="org.edu.uams.client.action.StudentAction" 
                 parameter="method" scope="request" >
@@ -148,7 +151,30 @@
             <forward name="usersPage" path="UsersPage" />
         </action>
         
-      
+        
+        <!--  DOCUMENT ACTION  HERE  -->
+        
+        <action
+            path="/uploadPage"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/eviews/fileupload.jsp"/>
+        
+        
+            
+        
+        <action
+            name="fileUploadForm" path="/uploadDocument" parameter="method"
+            type="org.edu.uams.client.action.FileUploadAction"
+            validate="true"
+            input="/eviews/fileupload.jsp">
+            <forward name="uploadFileSuccess" path="/eviews/uploadFileDisplay.jsp"/>
+        </action>
+                
+                
+        <action path="/letterTemplateAction" name="letterTemplateForm" parameter="method"
+                scope="request" type="org.edu.uams.client.action.LetterTemplateAction" >
+            <forward name="letterTemplatePage" path="LetterTemplatePage" />
+        </action>
 
     </action-mappings>
 

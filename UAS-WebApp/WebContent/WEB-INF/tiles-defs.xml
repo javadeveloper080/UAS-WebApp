@@ -112,4 +112,12 @@
     </definition>
     
     
+    <definition name="LetterTemplatePage" extends="baseTemplateLayout">
+        <put name="title" value="Letter Template" />
+        <put name="body" value="/eviews/letterTemplate.jsp" />
+    </definition>
+    
+    
+    
+    
 </tiles-definitions>

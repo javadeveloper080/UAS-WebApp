@@ -116,6 +116,19 @@
                 <ul class="sub">
                     <li  <c:if test="${requestScope.enrollments != null}"> class="active"</c:if> ><a  href="studentEnrollmentAction.do?method=allStudentEnrollmentPage">Student Enrollments</a></li>
                 </ul>
+            </li>    
+            
+            
+             <li class="sub-menu">
+                <a href="javascript:;"  <c:if test="${requestScope.communicationModule != null}"> class="active"</c:if>>
+                    <i class="fa fa-th"></i>
+                    <span>Communication</span>
+                </a>
+
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.letterTemplatePage != null}"> class="active"</c:if> ><a  href="letterTemplateAction.do?method=letterTemplatePage">Letter Template </a></li>
+                </ul>
+               
             </li>               
            
                 
