@@ -71,7 +71,7 @@
 							<tbody>
 								<logic:notEmpty name="letterTemplateForm"
 									property="generatedTemplateList">
-									<logic:iterate id="genrateTable" name="studentAddressForm"
+									<logic:iterate id="genrateTable" name="letterTemplateForm"
 										property="generatedTemplateList"
 										type="org.edu.uams.server.pojo.GeneratedLetterEntity">
 										<tr>

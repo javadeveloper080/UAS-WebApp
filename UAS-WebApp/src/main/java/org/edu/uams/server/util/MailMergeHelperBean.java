@@ -98,7 +98,7 @@ public class MailMergeHelperBean
 			ByteArrayOutputStream outStream = new ByteArrayOutputStream();
 			doc.save(outStream, SaveFormat.PDF);
 			DocumentEntity documentEntity=new DocumentEntity();
-			documentEntity.setFileName(templateFileName+"_"+studentRollNum+DocType.pdf.getFileExtension());
+			documentEntity.setFileName(templateFileName+"_"+studentRollNum+"."+DocType.pdf.getFileExtension());
 			documentEntity.setMimeType(DocType.pdf.getMimeType());
 			documentEntity.setFileBytes(outStream.toByteArray());
 			long documentID = documentDao.persist(documentEntity).getId();
