@@ -9,14 +9,17 @@ package org.edu.uams.server.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.edu.uams.client.dto.MergeDataSourceDTO;
 import org.edu.uams.server.api.DocType;
 import org.edu.uams.server.business.DocumentDao;
+import org.edu.uams.server.business.GeneratedLettersDao;
+import org.edu.uams.server.business.StudentDao;
 import org.edu.uams.server.pojo.DocumentEntity;
+import org.edu.uams.server.pojo.GeneratedLetterEntity;
+import org.edu.uams.server.pojo.LetterTemplateEntity;
 
 import com.aspose.words.Document;
 import com.aspose.words.DocumentBuilder;
@@ -34,9 +37,9 @@ import com.aspose.words.TextFormFieldType;
  */
 public class MailMergeHelperBean
 {
-	/**
+/*	*//**
 	 * The main entry point for the application.
-	 */
+	 *//*
 	public static void main(String[] args) throws Exception
 	{
 
@@ -49,16 +52,17 @@ public class MailMergeHelperBean
 		mergeDataSourceDTOList.add(mergeDataSourceDTO);
 		
 		createMergeLetters(mergeDataSourceDTOList);
-	}
+	}*/
 
 
 
-	private static void createMergeLetters(List<MergeDataSourceDTO> mergeDataSourceDTOList) throws Exception, IOException {
-		long templateDocID=100002L;
+	public  void createMergeLetters(List<MergeDataSourceDTO> mergeDataSourceDTOList,LetterTemplateEntity letterTemplateEntity) throws Exception, IOException {
 
 		DocumentDao documentDao =new DocumentDao();
+		GeneratedLettersDao generatedLettersDao=new GeneratedLettersDao();
+		StudentDao studentDao=new StudentDao();
 
-		org.edu.uams.server.api.Document templateDoc = (org.edu.uams.server.api.Document)documentDao.findByPrimaryKey(templateDocID);
+		org.edu.uams.server.api.Document templateDoc = (org.edu.uams.server.api.Document)documentDao.findByPrimaryKey(letterTemplateEntity.getDocumentId());
 
 		// Load the template document.
 		//	Document doc = new Document(dataDir + "Template.doc");
@@ -80,7 +84,7 @@ public class MailMergeHelperBean
 			doc.getMailMerge().execute(fieldNames, fieldValues);
 
 			// Save the finished document.
-			String constituentid=mergeDataSourceDTO.getConstituentid();
+			String studentRollNum=mergeDataSourceDTO.getStudentNumber();
 
 			String templateFileName=templateDoc.getFileName();
 
@@ -94,10 +98,16 @@ public class MailMergeHelperBean
 			ByteArrayOutputStream outStream = new ByteArrayOutputStream();
 			doc.save(outStream, SaveFormat.PDF);
 			DocumentEntity documentEntity=new DocumentEntity();
-			documentEntity.setFileName(templateFileName+"_"+constituentid);
+			documentEntity.setFileName(templateFileName+"_"+studentRollNum+DocType.pdf.getFileExtension());
 			documentEntity.setMimeType(DocType.pdf.getMimeType());
 			documentEntity.setFileBytes(outStream.toByteArray());
 			long documentID = documentDao.persist(documentEntity).getId();
+		
+			GeneratedLetterEntity generatedLetterEntity=new GeneratedLetterEntity();
+			generatedLetterEntity.setDocumentId(documentID);
+			generatedLetterEntity.setLetterTemplate(letterTemplateEntity);
+			generatedLetterEntity.setStudent(studentDao.findByStudentRollNumber(mergeDataSourceDTO.getStudentNumber()));
+			generatedLettersDao.persist(generatedLetterEntity);
 			outStream.close();
 			System.out.println("Done");
 			System.out.println(documentID);

@@ -3,6 +3,7 @@
 package org.edu.uams.server.pojo;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import org.edu.uams.server.api.AddressType;
 
 /**
@@ -27,6 +29,7 @@ public class StudentAddressEntity implements Serializable {
     public static String FIND_ALL="SELECT s FROM StudentAddress s";
     public static String FIND_BY_STUDENT_ID="SELECT sa FROM StudentAddress sa JOIN sa.student s  where s.id = :studentId";
     public static String FIND_BY_STUDENT_ADDRESSTYPE="SELECT sa FROM StudentAddress sa JOIN sa.student s  where s.id = :studentId and sa.addressType=:addressType";
+    public static String FIND_STUDENTS_ADDRESS_ROLL_NUMBERS="SELECT sa FROM StudentAddress sa JOIN sa.student s  where s.rollNum in (:rollNumbers)";
         
     private static final long serialVersionUID = 1L;
     

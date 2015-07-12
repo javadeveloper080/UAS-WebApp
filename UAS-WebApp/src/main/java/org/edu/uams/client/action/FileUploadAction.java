@@ -59,10 +59,13 @@ public class FileUploadAction extends DispatchAction{
         DocumentDao documentDao =new DocumentDao();
         DocumentEntity document=documentDao.findByPrimaryKey(documentId);
         
+        
+        
         if (document!=null) {
             
-            
-            File path = new File("docs");
+    		//Get the servers upload directory real path name
+    	    String filePath = getServlet().getServletContext().getRealPath("/") +"upload";
+            File path = new File(filePath);
             if (!path.isDirectory()) {
                 path.mkdir();
             }

@@ -117,7 +117,12 @@
         <put name="body" value="/eviews/letterTemplate.jsp" />
     </definition>
     
+    <definition name="GeneratedLetterTemplatePage" extends="baseTemplateLayout">
+        <put name="title" value="Generated Letter Template" />
+        <put name="body" value="/eviews/ generatedLettersPage.jsp" />
+    </definition>
     
+   
     
     
 </tiles-definitions>

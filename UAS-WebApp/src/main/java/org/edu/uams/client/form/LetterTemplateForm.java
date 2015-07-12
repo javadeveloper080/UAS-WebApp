@@ -4,12 +4,8 @@
 package org.edu.uams.client.form;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import org.apache.struts.action.ActionErrors;
 
 import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 import org.apache.struts.upload.FormFile;
 
 
@@ -25,9 +21,14 @@ public class LetterTemplateForm extends ActionForm {
     private String code;
     private String pageName;
     private List letterTemplateList;
+    private List generatedTemplateList;
     private long documentId;
-    private FormFile file;
+    private FormFile templatefile;
+    private String templatefileName;
+    private String templatefileId;
+    private FormFile xmlfile;
     private String message ;
+    private long letterTemplateId;
     
     public String getDescription() {
         return description;
@@ -79,44 +80,23 @@ public class LetterTemplateForm extends ActionForm {
     
     
     
-    public FormFile getFile() {
-        return file;
-    }
-    
-    public void setFile(FormFile file) {
-        this.file = file;
-    }
-    
-//    public ActionErrors validateForm(ActionMapping mapping,
-//            HttpServletRequest request) {
-//
-//        ActionErrors errors = new ActionErrors();
-//
-//        if( getFile().getFileSize()== 0){
-//            errors.add("common.file.err",
-//                    new ActionMessage("error.common.file.required"));
-//            return errors;
-//        }
-//
-//        //only allow textfile to upload
-//        if(!"text/plain".equals(getFile().getContentType())){
-//            errors.add("common.file.err.ext",
-//                    new ActionMessage("error.common.file.textfile.only"));
-//            return errors;
-//        }
-//
-//        //file size cant larger than 10kb
-//        System.out.println(getFile().getFileSize());
-//        if(getFile().getFileSize() > 10240){ //10kb
-//            errors.add("common.file.err.size",
-//                    new ActionMessage("error.common.file.size.limit", 10240));
-//            return errors;
-//        }
-//
-//        return errors;
-//    }
-    
-    public String getMessage() {
+    public FormFile getTemplatefile() {
+		return templatefile;
+	}
+
+	public void setTemplatefile(FormFile templatefile) {
+		this.templatefile = templatefile;
+	}
+
+	public FormFile getXmlfile() {
+		return xmlfile;
+	}
+
+	public void setXmlfile(FormFile xmlfile) {
+		this.xmlfile = xmlfile;
+	}
+
+	public String getMessage() {
         return message;
     }
     
@@ -131,9 +111,44 @@ public class LetterTemplateForm extends ActionForm {
         this.letterTemplateList = null;
         this.id = 0l;
         this.documentId = 0l;
-        this.file=null;
+        this.xmlfile=null;
+        this.templatefile=null;
         this.message = null;
+        this.templatefileName = null;
+		this.templatefileId = null;
     }
+
+	public String getTemplatefileName() {
+		return templatefileName;
+	}
+
+	public void setTemplatefileName(String templatefileName) {
+		this.templatefileName = templatefileName;
+	}
+
+	public String getTemplatefileId() {
+		return templatefileId;
+	}
+
+	public void setTemplatefileId(String templatefileId) {
+		this.templatefileId = templatefileId;
+	}
+
+	public long getLetterTemplateId() {
+		return letterTemplateId;
+	}
+
+	public void setLetterTemplateId(long letterTemplateId) {
+		this.letterTemplateId = letterTemplateId;
+	}
+
+	public List getGeneratedTemplateList() {
+		return generatedTemplateList;
+	}
+
+	public void setGeneratedTemplateList(List generatedTemplateList) {
+		this.generatedTemplateList = generatedTemplateList;
+	}
     
     
 }

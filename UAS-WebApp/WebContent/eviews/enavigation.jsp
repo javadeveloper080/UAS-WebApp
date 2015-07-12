@@ -126,8 +126,13 @@
                 </a>
 
                 <ul class="sub">
-                    <li  <c:if test="${requestScope.letterTemplatePage != null}"> class="active"</c:if> ><a  href="letterTemplateAction.do?method=letterTemplatePage">Letter Template </a></li>
+                    <li  <c:if test="${requestScope.letterTemplatePage != null}"> class="active"</c:if> ><a  href="letterTemplateAction.do?method=letterTemplatePage">Batch Letter Process</a></li>
                 </ul>
+                
+                <ul class="sub">
+                    <li  <c:if test="${requestScope.generatedLetterPage != null}"> class="active"</c:if> ><a  href="letterTemplateAction.do?method=generatedLetterPage">Generated Letters</a></li>
+                </ul>
+                
                
             </li>               
            

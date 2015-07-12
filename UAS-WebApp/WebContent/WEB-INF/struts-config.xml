@@ -163,7 +163,7 @@
             
         
         <action
-            name="fileUploadForm" path="/uploadDocument" parameter="method"
+            name="fileUploadForm" path="/fileUploadAction" parameter="method"
             type="org.edu.uams.client.action.FileUploadAction"
             validate="true"
             input="/eviews/fileupload.jsp">
@@ -174,7 +174,9 @@
         <action path="/letterTemplateAction" name="letterTemplateForm" parameter="method"
                 scope="request" type="org.edu.uams.client.action.LetterTemplateAction" >
             <forward name="letterTemplatePage" path="LetterTemplatePage" />
+            <forward name="generatedLetterPage" path="GeneratedLetterTemplatePage" />
         </action>
+        
 
     </action-mappings>
 

@@ -31,12 +31,13 @@ public class StudentEntity implements Serializable {
     public static final String FIND_ALL="SELECT a FROM Student a";
     public static String FIND_BY_STUDENT_ROLL_NUMBER="SELECT s FROM Student s  where s.rollNum = :rollNumber";
     public static String FIND_BY_STUDENT_ENROLLMENT_NUMBER="SELECT s FROM Student s join  s.studentEnrollment se where se.enrollmentNumber = :enrollmentNumber";
-       
+    public static String FIND_STUDENTS_ROLL_NUMBERS="SELECT s FROM Student s where s.rollNum in (:rollNumbers)";
+    
     private static final long serialVersionUID = 1L;
  
     
 
-    
+  
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
