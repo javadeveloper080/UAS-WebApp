@@ -48,7 +48,7 @@
         <mapping class="org.edu.uams.server.pojo.StudentHosteDetailsEntity"></mapping>
         <mapping class="org.edu.uams.server.pojo.DocumentEntity"></mapping>
          <mapping class="org.edu.uams.server.pojo.LetterTemplateEntity"></mapping>
-        
+        <mapping class="org.edu.uams.server.pojo.GeneratedLetterEntity"></mapping>
         
 
     </session-factory>
